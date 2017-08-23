@@ -154,6 +154,7 @@ cookie 传不明白了= =
 <p>cookie 传不明白了= =</p>
 <p>最后一点也不优雅 决定用大佬的直接 ajax 的方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">url: <span class="string">'http://www.wechall.net/challenge/training/programming1/index.php?action=request'</span>,</div><div class="line">type: <span class="string">'get'</span>,</div><div class="line">dataType: <span class="string">'text'</span>,</div><div class="line">success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> newUrl=<span class="string">"index.php?answer="</span>+data;</div><div class="line"><span class="built_in">window</span>.location.href=newUrl;</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>好像自己写的没问题 是因为 wechall 那个锁定IP？</p>
 
   </section>
 

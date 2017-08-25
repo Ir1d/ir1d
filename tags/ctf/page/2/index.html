@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>globals | Neverland</title>
+    <title>Neverland</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,27 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="Register Globals
-将所有提交的参数注册为全局变量
-注意到这一段
-123if (strtolower($login[0]) === &#39;admin&#39;) &amp;#123;  $chall-&amp;gt;onChallengeSolved(GWF_Session::getUserID());&amp;#125;
-所以直接http://www.wechall.net/challenge/training/ph">
+    <meta name="description" content="">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="globals | Neverland">
-    <meta name="twitter:description" content="Register Globals
-将所有提交的参数注册为全局变量
-注意到这一段
-123if (strtolower($login[0]) === &#39;admin&#39;) &amp;#123;  $chall-&amp;gt;onChallengeSolved(GWF_Session::getUserID());&amp;#125;
-所以直接http://www.wechall.net/challenge/training/ph">
+    <meta name="twitter:title" content="Neverland">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="globals | Neverland">
-    <meta property="og:description" content="Register Globals
-将所有提交的参数注册为全局变量
-注意到这一段
-123if (strtolower($login[0]) === &#39;admin&#39;) &amp;#123;  $chall-&amp;gt;onChallengeSolved(GWF_Session::getUserID());&amp;#125;
-所以直接http://www.wechall.net/challenge/training/ph">
+    <meta property="og:title" content="Neverland">
+    <meta property="og:description" content="">
 
     
     <meta name="author" content="Ir1d">
@@ -49,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Neverland" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://ir1d.cf/2017/08/23/globals/"/>
+    <link rel="canonical" href="http://ir1d.cf"/>
 
                  
 </head>
@@ -139,88 +127,62 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2017-08-23T06:11:45.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ctf/">ctf</a>
- </span>
-      <span class="page-pv">
-      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">globals</h1>
-  </header>
-
-  <section class="post">
-    <p>Register Globals</p>
-<p>将所有提交的参数注册为全局变量</p>
-<p>注意到这一段</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (strtolower($login[<span class="number">0</span>]) === <span class="string">'admin'</span>) &#123;</div><div class="line">  $chall-&gt;onChallengeSolved(GWF_Session::getUserID());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>所以直接<code>http://www.wechall.net/challenge/training/php/globals/globals.php?login[0]=admin</code> 就好了</p>
-
-  </section>
-
-</article>
-
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/08/23/simplesub1/" title="simplesub1">simplesub1</a></h2>
-                <p class="excerpt">
-                
-                Simple Substitution I
-http://quipqiup.com/
-这个太厉害了
-刚开始找Clues往里填找了半天都不好使
-后来删掉了直接solve= = 就出来了
-
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-08-23T06:34:41.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ctf/">ctf</a>
-</span><a class="btn-border-small" href="/2017/08/23/simplesub1/">继续阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/08/23/transposition1/" title="transposition1">transposition1</a></h2>
-                <p class="excerpt">
-                
-                http://tholman.com/other/transposition/
-然后调那个key length试到2发现好像能看懂= =
-
-
-UPDATE noescvotes SET $who=$who+1 WHERE id=1
-
-
-把 who 替换成
-
-
-barack=111,bill=bill
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-08-23T04:06:40.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ctf/">ctf</a>
-</span><a class="btn-border-small" href="/2017/08/23/transposition1/">继续阅读</a></div>
-                       
-            </div>
-        
-     
-   
-   
+  <ol class="post-list">
   
-</section>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/21/PHP-0817/" title="link to post.title">PHP-0817</a></h2>
+      <p class="excerpt">
+    
+      http://www.wechall.net/challenge/php0817/index.php
+学习了 LFI 这一套理论
+Local File Inclusion 就和之前有人卡评测机的时候用1#include &amp;lt;/etc/passwd&amp;gt;
+差不多吧
+这个题的巧妙之处在于 php 之中很多东西在 switch 这里都会被转换成 0
+所以就水掉了……
 
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-21T13:54:38.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/21/PHP-0817/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
   
+    
+  </ol>
+
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
+    
+    <span class="pagination__page-number" > 2 / 2 </span>
+    
+  </nav>
+
+ <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+    
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</div>
+
 
             <footer class="footer">
     <span class="footer__copyright">

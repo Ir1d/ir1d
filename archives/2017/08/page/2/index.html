@@ -133,6 +133,87 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/22/LFI/" title="link to post.title">LFI</a></h2>
+      <p class="excerpt">
+    
+      PHP LFI
+坑点是后面会加一个.html
+http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html
+这里的思路是加一个%00
+
+
+Everything after the null byte will be deleted.
+
+
+太帅了=_^
+好像就是传说中的 Null Byte Injection ？
+http://w
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-22T12:17:00.000Z" class="post-list__meta--date date">2017-08-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/22/LFI/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/22/programming1/" title="link to post.title">programming1</a></h2>
+      <p class="excerpt">
+    
+      先从一个链接获取文字再用这个文字生成新的链接= =
+cookie 传不明白了= =
+最后一点也不优雅 决定用大佬的直接 ajax 的方法
+123456789$.ajax(&amp;#123;url: &#39;http://www.wechall.net/challenge/training/programming1/index.php?action=request&#39;,type: &#39;get&#39;,dataType: 
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-22T11:54:06.000Z" class="post-list__meta--date date">2017-08-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/22/programming1/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/21/auth-bypass1/" title="link to post.title">auth_bypass1</a></h2>
+      <p class="excerpt">
+    
+      MySQL Authentication Bypass - The classic
+对于 MySQL 不是很了解
+写 or 1=1 搞了半天
+实际上应该是 or &amp;#39;1&amp;#39;=&amp;#39;1&amp;#39;;
+以及这个分号加的…… 没想到
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-21T14:19:57.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/21/auth-bypass1/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/21/PHP-0817/" title="link to post.title">PHP-0817</a></h2>
+      <p class="excerpt">
+    
+      http://www.wechall.net/challenge/php0817/index.php
+学习了 LFI 这一套理论
+Local File Inclusion 就和之前有人卡评测机的时候用1#include &amp;lt;/etc/passwd&amp;gt;
+差不多吧
+这个题的巧妙之处在于 php 之中很多东西在 switch 这里都会被转换成 0
+所以就水掉了……
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-21T13:54:38.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/21/PHP-0817/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/08/21/20170821/" title="link to post.title">20170821</a></h2>
       <p class="excerpt">
     

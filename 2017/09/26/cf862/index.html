@@ -15,27 +15,30 @@
     <meta name="description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
 A 问最少对集合修改几次，使得集合的mex值是给定的值
+从小到大处理即可
 B
 
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Codeforces Round | Neverland">
     <meta name="twitter:description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
 A 问最少对集合修改几次，使得集合的mex值是给定的值
+从小到大处理即可
 B
 
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="Codeforces Round | Neverland">
     <meta property="og:description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
 A 问最少对集合修改几次，使得集合的mex值是给定的值
+从小到大处理即可
 B
 
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
 
     
     <meta name="author" content="Ir1d">
@@ -161,10 +164,54 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
     <p><code>Codeforces Round #435 (Div. 2)</code></p>
 <p>100场div1指日可待【</p>
 <p>A 问最少对集合修改几次，使得集合的mex值是给定的值</p>
+<p>从小到大处理即可</p>
 <p>B</p>
 <blockquote>
 <p>A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there is no more than one edge between them. A cycle and a loop aren’t the same .</p>
 </blockquote>
+<p>问可以往一个树最多加多少边使得新图仍然是二分图</p>
+<p>注意到树本身是二分图，加边必然是在两个点集之间，而这些边最多有$l * r$条，已经有了$n - 1$条，所以答案显然</p>
+<p>注意建树要加双向边，以及爆int的问题别忘了开long long</p>
+<p>C</p>
+<p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
+<p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^17$可以用来区分（不会重复而且不会超出）</p>
+<p>然后就可以先放$1, 2, 3, \cdots, n - 3$ 记它们的xor和是s</p>
+<p>那么此时后三个数的xor和是$s xor x$</p>
+<p>就可以放$0， 2^17， 2^17 xor s xor x$</p>
+<p>注意题中要求所有数不能相同，所以如果s和x是相等的，后两个数就相等了就不合题意了</p>
+<p>所以此时放$2^17, 2^18, 2^17 xor 2^18$</p>
+<p>至于为什么选择$2^17$和$2^18$，是为了$2^17 xor 2^18$和$2^17 xor  x xor s$的值始终大于1e5</p>
+<p>就是那个$2^17$的最高位是1然后它和别的数那一位是0的数xor之后答案那位是1就保证了比1e5大</p>
+<p>D</p>
+<p>交互题</p>
+<p>每次可以查询一个01串和某个给定的01串的hamming distance（编辑距离）</p>
+<p>然后要求在15次查询之内确定01串中一定是0的一个位置和一定是1的一个位置即可</p>
+<p>要记得flush缓冲区</p>
+<p>题意不是要完全确定01串，只要确定一个0一个1即可</p>
+<p>这个查询的核心操作是要得到一个区间里的0/1的个数</p>
+<p>用类似前缀和的思路，我们先查询全是1的串的答案然后到时候减一下就好了</p>
+<p>酱紫之后发现可以再查询$011111…$然后就得到第一个数是0还是1了</p>
+<p>之后找另一个数的位置，不难发现可以二分最左侧的那个，即只要不是连续的那么就有一个要找的数出现了</p>
+<p>E</p>
+<p>给a和b两个数列定义f函数并求值</p>
+<p>$f(j) = |\sum_{i=1}^n(-1)^{(i-1)}*(a<em>i-b</em>{i+j})|$</p>
+<p>每次区间加一个数 然后 查询所有f(j)的最小值</p>
+<p>注意到可以把f(f)的式子拆开变成$|\sum_{i=1}^n{i-1}<em>a<em>i+\sum</em>{i=1}^n(-1)^i</em>b_{i+j}|$</p>
+<p>然后发现前一项是定值，而且整个式子在绝对值里面，如果前一项值是c，每次只需要找和-c最接近的一个后一项就行了</p>
+<p>换言之，可以用一个set维护所有的后一项</p>
+<p>对于修改操作，如果修改的区间长是偶数，发现加了多少次就减了多少次</p>
+<p>如果是奇数，那就看l的奇偶性判断是加还是减</p>
+<p>巧妙之处在于发现求这个最值不需要每次遍历来找，只需要这个值尽可能接近0就行，而且修改是对a操作的b一直不变，所以XD</p>
+<p>std用了一个非常巧妙的方法在一次循环里得到了对于所有j的第二项和</p>
+<p>注意j变到j+1的时候是要取相反数然后对第一个和最后一个数加加减减</p>
+<p>F</p>
+<p>有n个字符串，q个操作</p>
+<p>第一种是查询$[a, b]$的某个子区间，使得区间长度乘上区间lcp的值最大</p>
+<p>第二种是修改某个字符串</p>
+<p>// 先坑着= =</p>
+<p>求出相邻的lcp长度，区间lcp等于区间最小值</p>
+<p>标程是对h分类，小的用线段树维护，大的直接set</p>
+<p>学习了下nbc的代码 不是很懂QAQ</p>
 
   </section>
 
@@ -179,7 +226,8 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
                 <h2 class="post-list__post-title post-title"><a href="/2017/09/27/20170927/" title="20170927">20170927</a></h2>
                 <p class="excerpt">
                 
-                我总是想起那天下午 两个少年在五道口、看蛋糕店里有人自拍
+                我总是想起那天下午 两个少年在五道口
+看蛋糕店里有人自拍
 然后我们指着蛋糕说 这是我一周的饭钱
 做点什么改变吧
 
@@ -229,7 +277,26 @@ cf补题
         &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
         由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
     </span>
+  
+         <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
     
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+   
 </footer>
 
 

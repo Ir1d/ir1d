@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Codeforces Round | Neverland</title>
+    <title>Codeforces Round 435 (Div. 2) | Neverland</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -14,31 +14,28 @@
 
     <meta name="description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
-A 问最少对集合修改几次，使得集合的mex值是给定的值
+A问最少对集合修改几次，使得集合的mex值是给定的值
 从小到大处理即可
 B
-
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of node">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Codeforces Round | Neverland">
+    <meta name="twitter:title" content="Codeforces Round 435 (Div. 2) | Neverland">
     <meta name="twitter:description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
-A 问最少对集合修改几次，使得集合的mex值是给定的值
+A问最少对集合修改几次，使得集合的mex值是给定的值
 从小到大处理即可
 B
-
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of node">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Codeforces Round | Neverland">
+    <meta property="og:title" content="Codeforces Round 435 (Div. 2) | Neverland">
     <meta property="og:description" content="Codeforces Round #435 (Div. 2)
 100场div1指日可待【
-A 问最少对集合修改几次，使得集合的mex值是给定的值
+A问最少对集合修改几次，使得集合的mex值是给定的值
 从小到大处理即可
 B
-
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of no">
+A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of node">
 
     
     <meta name="author" content="Ir1d">
@@ -157,23 +154,21 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
       </span> 
    
     </div>
-    <h1 class="post-title">Codeforces Round</h1>
+    <h1 class="post-title">Codeforces Round 435 (Div. 2)</h1>
   </header>
 
   <section class="post">
     <p><code>Codeforces Round #435 (Div. 2)</code></p>
 <p>100场div1指日可待【</p>
-<p>A 问最少对集合修改几次，使得集合的mex值是给定的值</p>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>问最少对集合修改几次，使得集合的mex值是给定的值</p>
 <p>从小到大处理即可</p>
-<p>B</p>
-<blockquote>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><blockquote>
 <p>A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there is no more than one edge between them. A cycle and a loop aren’t the same .</p>
 </blockquote>
 <p>问可以往一个树最多加多少边使得新图仍然是二分图</p>
 <p>注意到树本身是二分图，加边必然是在两个点集之间，而这些边最多有$l * r$条，已经有了$n - 1$条，所以答案显然</p>
 <p>注意建树要加双向边，以及爆int的问题别忘了开long long</p>
-<p>C</p>
-<p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
 <p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^17$可以用来区分（不会重复而且不会超出）</p>
 <p>然后就可以先放$1, 2, 3, \cdots, n - 3$ 记它们的xor和是s</p>
 <p>那么此时后三个数的xor和是$s xor x$</p>
@@ -182,8 +177,7 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
 <p>所以此时放$2^17, 2^18, 2^17 xor 2^18$</p>
 <p>至于为什么选择$2^17$和$2^18$，是为了$2^17 xor 2^18$和$2^17 xor  x xor s$的值始终大于1e5</p>
 <p>就是那个$2^17$的最高位是1然后它和别的数那一位是0的数xor之后答案那位是1就保证了比1e5大</p>
-<p>D</p>
-<p>交互题</p>
+<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>交互题</p>
 <p>每次可以查询一个01串和某个给定的01串的hamming distance（编辑距离）</p>
 <p>然后要求在15次查询之内确定01串中一定是0的一个位置和一定是1的一个位置即可</p>
 <p>要记得flush缓冲区</p>
@@ -192,8 +186,7 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
 <p>用类似前缀和的思路，我们先查询全是1的串的答案然后到时候减一下就好了</p>
 <p>酱紫之后发现可以再查询$011111…$然后就得到第一个数是0还是1了</p>
 <p>之后找另一个数的位置，不难发现可以二分最左侧的那个，即只要不是连续的那么就有一个要找的数出现了</p>
-<p>E</p>
-<p>给a和b两个数列定义f函数并求值</p>
+<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>给a和b两个数列定义f函数并求值</p>
 <p>$f(j) = |\sum_{i=1}^n(-1)^{(i-1)}*(a<em>i-b</em>{i+j})|$</p>
 <p>每次区间加一个数 然后 查询所有f(j)的最小值</p>
 <p>注意到可以把f(f)的式子拆开变成$|\sum_{i=1}^n{i-1}<em>a<em>i+\sum</em>{i=1}^n(-1)^i</em>b_{i+j}|$</p>
@@ -204,8 +197,7 @@ A loop is an edge, which connects a node with itself. Graph doesn’t contain mu
 <p>巧妙之处在于发现求这个最值不需要每次遍历来找，只需要这个值尽可能接近0就行，而且修改是对a操作的b一直不变，所以XD</p>
 <p>std用了一个非常巧妙的方法在一次循环里得到了对于所有j的第二项和</p>
 <p>注意j变到j+1的时候是要取相反数然后对第一个和最后一个数加加减减</p>
-<p>F</p>
-<p>有n个字符串，q个操作</p>
+<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>有n个字符串，q个操作</p>
 <p>第一种是查询$[a, b]$的某个子区间，使得区间长度乘上区间lcp的值最大</p>
 <p>第二种是修改某个字符串</p>
 <p>// 先坑着= =</p>

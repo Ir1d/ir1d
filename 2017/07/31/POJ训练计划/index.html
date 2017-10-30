@@ -232,6 +232,18 @@
 <p>1936：判断s是否是t的子序列 遍历t 同时维护s的一个指针就行了</p>
 <p>2388：排序后输出位于中间的就行了</p>
 <p>2299：求逆序对 归并就行</p>
+<p>3349：hash判重就行 把每个雪花的六个角排序一下= =</p>
+<p>3274：给出牛的个数n和总共特征个数k，求最长的区间，使得区间内所有牛的k个特征相加之和都相等。<br>比如样例区间 每个牛内部差分再对序列求前缀和 问题就转化成在前缀和序列中找相等的两个元素</p>
+<p>注意一定要先差分的才能将问题转化</p>
+<p>从<code>sum[j][0] - sum[i][0] = sum[j][1] - sum[i][1] = …… = sum[j][k] - sum[i][k]</code><br>变成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sum[i][1] - sum[i][0] = sum[j][1] - sum[j][0]</div><div class="line">sum[i][2] - sum[i][0] = sum[j][2] - sum[j][0]</div><div class="line">……</div><div class="line">sum[i][k] - sum[i][0] = sum[j][k] - sum[j][0]</div></pre></td></tr></table></figure></p>
+<p>2151：概率dp</p>
+<p>设<code>dp[i][j][k]</code>表示第i个队在前j道题中解出k道的概率</p>
+<p><code>dp[i][j][k]=dp[i][j-1][k-1]*p[i][j]+dp[i][j-1][k]*(1-p[i][j]);</code> //这两种来源，第j道做出来或者没做出来+前j-1道做k-1或者k道题概率</p>
+<p>设<code>s[i][k]</code>表示第i队做出的题小于等于k的概率<br><code>s[i][k]=dp[i][M][0]+dp[i][M][1]+...+dp[i][M][k];</code></p>
+<p>每个队至少做出一道题概率为<code>P1=(1-s[1][0])*(1-s[2][0])*...(1-s[T][0]);</code></p>
+<p>每个队做出的题数都在1~N-1的概率为<code>P2=(s[1][N-1]-s[1][0])*(s[2][N-1]-s[2][0])*...(s[T][N-1]-s[T][0]);</code></p>
+<p>最后的答案就是<code>P1-P2</code>，代表至少一个队作出n到以上（1 - 所有队作出<code>0...n-1</code>的概率）</p>
+<p>1840：判断方程是否有根 先枚举前两项可能的值再枚举后三个的值看看是否有和为0就行 hash姿势不对会mle 直接用map会tle = = 而且poj还没有unordered_map</p>
 
   </section>
 

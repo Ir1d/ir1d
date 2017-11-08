@@ -133,240 +133,243 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/29/教学计划整理-文科/" title="link to post.title">教学计划整理-文科</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/25/regex/" title="link to post.title">regex</a></h2>
       <p class="excerpt">
     
-      中文系汉语言文学专业历史学系世界史专业外国语学院法语专业精读 视听说 历史 国家的地区概况 笔译 口译 报刊选读 写作 文体学 语法
-英语专业文学史 普通语言学 精读 写作 视听 口语 …… 还有好多 Qrz
-艺术学院没找到美术 Qrz
-经济学院学科基础课
-数学 高数线代概统
-经济 经济学原理 微观宏观经济学 计量经济学
-太多了 就不整理了
-只是一点缥缈的兴趣 在如山的作业和无尽的期许面前 加油
+      匹配空字符串：/^$/
+匹配wechall：/^wechall$
+匹配特定文件名的图片后缀：/^wechall4?\.(?:jpg|gif|tiff|bmp|png)$/
+需要对文件名添加捕获分组：/^(wechall4?)\.(?:jpg|gif|tiff|bmp|png)$/
 
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-29T14:57:44.000Z" class="post-list__meta--date date">2017-09-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/课程整理/">课程整理</a>
-</span><a class="btn-border-small" href="/2017/09/29/教学计划整理-文科/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-24T22:47:57.000Z" class="post-list__meta--date date">2017-08-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/25/regex/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/29/教学计划整理-理科/" title="link to post.title">教学计划整理-理科</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/limited-access/" title="link to post.title">limited_access</a></h2>
       <p class="excerpt">
     
-      教学计划包括四部分： 公共与基础课、核心课程、限选课程、通识与自主选修课程
-公共与基础课包括全校公共必修课和学科基础课程；核心课程指以该专业中最核心的理论和技能为内容的课程；限选课程包括原部分专业必修课、专业限选课程、跨院系课程；通识与自主选修课程包括专业选修课、本科生科研训练、跨院系课程或院系自主设立的其他课程模块
-数院数学与应用数学分基础数学方向（宽口径），金融数学方向保研要求 基础数学9门选
+      .htaccess里面写限制了GET需要验证123&amp;lt;Limit GET&amp;gt;require valid-user&amp;lt;/Limit&amp;gt;
+所以换成POST就好了
+POST的新姿势
+123&amp;lt;form method=&#34;POST&#34; action=&#34;https://www.wechall.net/challenge/wannabe7331/limited_access/protected
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-29T13:43:41.000Z" class="post-list__meta--date date">2017-09-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/课程整理/">课程整理</a>
-</span><a class="btn-border-small" href="/2017/09/29/教学计划整理-理科/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-23T09:42:56.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/limited-access/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/29/通识教育整理-理科/" title="link to post.title">通识教育整理-理科</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/auth-bypass2/" title="link to post.title">auth_bypass2</a></h2>
       <p class="excerpt">
     
-      数学科学学院高等代数《高等代数》 北京大学数学力学系几何与代数教研室代数小组
-抽象代数《抽象代数》 赵春来《代数学引论》 丁石孙
-几何学《解析几何》 尤承业《解析几何》 丘维声
-概率论《概率论》 何书元 《概率论引论》 汪仁官
-《随机数学》钱，敏平 叶俊 《概率论基础》 李贤平
-复变函数《复变函数》 谭小江 伍胜健Complex Analysis, Ahlfors L.V, 《简明复分析》 龚升
+      2比1多了一个密码校验的过程
+sql里面union可以把select结果合并到一起
+
+
+username：’union select 1,’admin’,’e10adc3949ba59abbe56e057f20f883
+
+password:123456
+
+
+
+把username代入之后得到的是这个
+
+
+SELECT * FROM users WHERE username=’’union selec
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-23T07:07:11.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/auth-bypass2/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/simplesub1/" title="link to post.title">simplesub1</a></h2>
+      <p class="excerpt">
+    
+      Simple Substitution I
+http://quipqiup.com/
+这个太厉害了
+刚开始找Clues往里填找了半天都不好使
+后来删掉了直接solve= = 就出来了
 
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-29T06:01:05.000Z" class="post-list__meta--date date">2017-09-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/课程整理/">课程整理</a>
-</span><a class="btn-border-small" href="/2017/09/29/通识教育整理-理科/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-23T06:34:41.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/simplesub1/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/29/20170928/" title="link to post.title">20170928</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/globals/" title="link to post.title">globals</a></h2>
       <p class="excerpt">
     
-      你好久没和我正常说话了
-翻到你的朋友的朋友圈 看你还是照常地和别人互动
-只是不主动和我说点什么了
-一周多 都只是 嗯w 好 好的
-北京突然好冷了呢 我感觉好无奈
-翻到了你的微博 说你吃醋了 说你想一个人
-好想把寄出去的明信片收回去啊 感觉自己就是个傻子
-沾了一手的胶水 还因为手上出汗把字给抹了
-就是个傻子吧
-看你朋友圈里发一些东西 渐渐地看不懂了 然后发现会有秒删 大概是一不小心放错了分组对我可见
+      Register Globals
+将所有提交的参数注册为全局变量
+注意到这一段
+123if (strtolower($login[0]) === &#39;admin&#39;) &amp;#123;  $chall-&amp;gt;onChallengeSolved(GWF_Session::getUserID());&amp;#125;
+所以直接http://www.wechall.net/challenge/training/ph
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-28T16:07:38.000Z" class="post-list__meta--date date">2017-09-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/09/29/20170928/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-23T06:11:45.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/globals/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/28/通识教育整理-文科/" title="link to post.title">通识教育整理-文科</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/transposition1/" title="link to post.title">transposition1</a></h2>
       <p class="excerpt">
     
-      从元培大佬获得核心课程手册 整理一下通识教育
-先写文科的吧 好向往的
-中国语言文学系古代汉语阅读古代文献 《古代汉语》 郭锡良
-现代汉语现代汉语语法学的入门知识 《现代汉语》 北京大学中文系现代汉语教研室编
-中国古代文学史中文系主干基础课 《中国古代文学史》 袁世硕，陈文新（“马克思主义理论研究和建设工程”教材） 《中国文学史》 袁行霈 《中国文学史参考资料简编》 北京大学古代文学教研室
-语言学概
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-09-28T14:51:09.000Z" class="post-list__meta--date date">2017-09-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/课程整理/">课程整理</a>
-</span><a class="btn-border-small" href="/2017/09/28/通识教育整理-文科/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/28/enti1/" title="link to post.title">初等数论及其应用 - 第一章</a></h2>
-      <p class="excerpt">
-    
-      
-算术基本定理：没个正整数可以按递增次序唯一地写成素数的乘积
+      http://tholman.com/other/transposition/
+然后调那个key length试到2发现好像能看懂= =
 
-现代数论的发展始于高斯
-二次互反律 这个定律把素数$p$是否为模另一个素数$q$的完全平方与$q$是否为$p$的完全平方联系起来
-找出大素数和分解大数在时间上的强反差是$RSA$密码系统的基石
-$RSA$系统中，用户公私两把秘钥，每个用户可以用别人的公钥来加密信息，但只有拥有相应私钥的用户才能解密
-一个方程若要求解为整数，则成为丢番图
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-09-28T07:19:06.000Z" class="post-list__meta--date date">2017-09-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/初等数论及其应用/">初等数论及其应用</a>
-</span><a class="btn-border-small" href="/2017/09/28/enti1/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/28/笔记/" title="link to post.title">笔记</a></h2>
-      <p class="excerpt">
-    
-      用来统计挖的坑
-初等数论及其应用
-网络科学引论
-算法导论
-Multivariable Calculus
 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-09-28T07:14:39.000Z" class="post-list__meta--date date">2017-09-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/合集/">合集</a>
-</span><a class="btn-border-small" href="/2017/09/28/笔记/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/27/20170927/" title="link to post.title">20170927</a></h2>
-      <p class="excerpt">
-    
-      我总是想起那天下午 两个少年在五道口
-看蛋糕店里有人自拍
-然后我们指着蛋糕说 这是我一周的饭钱
-做点什么改变吧
+UPDATE noescvotes SET $who=$who+1 WHERE id=1
 
+
+把 who 替换成
+
+
+barack=111,bill=bill
+
+
+最开始没找到上哪里传这个名字以为只能点按钮= =
+然后突然发现地址直接输就好了
+这个直接把wh
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-27T10:05:31.000Z" class="post-list__meta--date date">2017-09-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/09/27/20170927/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-23T04:06:40.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/transposition1/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/26/cf862/" title="link to post.title">Codeforces Round 435 (Div. 2)</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/23/encodings1/" title="link to post.title">encodings1</a></h2>
       <p class="excerpt">
     
-      Codeforces Round #435 (Div. 2)
-100场div1指日可待【
-A问最少对集合修改几次，使得集合的mex值是给定的值
-从小到大处理即可
-B
-A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of node
+      这种解密没什么头绪
+翻了翻题解
+可能要观察到长度是441=7*7*9？
+然后就是把每7位看做一个2进制数 转成ascii就好了
+12345678var str = &#34;101010011010001101001111001101000001110100110010111110001110100010000011010011110011010000001101110101101110001011010
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-26T14:49:31.000Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/cf/">cf</a>
-</span><a class="btn-border-small" href="/2017/09/26/cf862/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-23T01:55:07.000Z" class="post-list__meta--date date">2017-08-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/23/encodings1/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/26/20170926/" title="link to post.title">20170926</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/22/LFI/" title="link to post.title">LFI</a></h2>
       <p class="excerpt">
     
-      在树洞收了中文系的学姐的书
-学姐的字好可爱 书的第一页还画了个维尼熊
-觉得应该开始补题 数学 英语 四级
-去医院
-把走路牌刷到黑牌
-cf补题
-加油
+      PHP LFI
+坑点是后面会加一个.html
+http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html
+这里的思路是加一个%00
+
+
+Everything after the null byte will be deleted.
+
+
+太帅了=_^
+好像就是传说中的 Null Byte Injection ？
+http://w
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-22T12:17:00.000Z" class="post-list__meta--date date">2017-08-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/22/LFI/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/22/programming1/" title="link to post.title">programming1</a></h2>
+      <p class="excerpt">
+    
+      先从一个链接获取文字再用这个文字生成新的链接= =
+cookie 传不明白了= =
+最后一点也不优雅 决定用大佬的直接 ajax 的方法
+123456789$.ajax(&amp;#123;url: &#39;http://www.wechall.net/challenge/training/programming1/index.php?action=request&#39;,type: &#39;get&#39;,dataType: 
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-08-22T11:54:06.000Z" class="post-list__meta--date date">2017-08-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/22/programming1/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/21/auth-bypass1/" title="link to post.title">auth_bypass1</a></h2>
+      <p class="excerpt">
+    
+      MySQL Authentication Bypass - The classic
+对于 MySQL 不是很了解
+写 or 1=1 搞了半天
+实际上应该是 or &amp;#39;1&amp;#39;=&amp;#39;1&amp;#39;;
+以及这个分号加的…… 没想到
 
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-26T14:45:40.000Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/09/26/20170926/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-21T14:19:57.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/21/auth-bypass1/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/25/20170925/" title="link to post.title">20170925</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/21/PHP-0817/" title="link to post.title">PHP-0817</a></h2>
       <p class="excerpt">
     
-      昨天参加科协的ingress安利会
-发现自己对这些东西实在是没什么兴趣了
-不管是科幻小说还是安利ingress的这种事情 竟然都提不起兴趣了
-看到自己的卡在地上躺着 很是难受 但是也没有捡
-都过去了吧
-准备ppt的时候又去翻了翻md的相册
-都是你
-都是你
-你最近睡得越来越少了
-感觉好忙 很少和我说话了
-清楚地感觉到你在和我越来越远 但是没有办法也没有机会挽回啊
-就好像拍到很有趣的东西 但是没有发给
+      http://www.wechall.net/challenge/php0817/index.php
+学习了 LFI 这一套理论
+Local File Inclusion 就和之前有人卡评测机的时候用1#include &amp;lt;/etc/passwd&amp;gt;
+差不多吧
+这个题的巧妙之处在于 php 之中很多东西在 switch 这里都会被转换成 0
+所以就水掉了……
+
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-25T15:40:27.000Z" class="post-list__meta--date date">2017-09-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/09/25/20170925/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-21T13:54:38.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/ctf/">ctf</a>
+</span><a class="btn-border-small" href="/2017/08/21/PHP-0817/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/24/20170924/" title="link to post.title">20170924</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/08/17/subject/" title="link to post.title">subject</a></h2>
       <p class="excerpt">
     
-      看了点 xma 盛况
-把计概的哈希写完了
-整理了安利 ingress 用的视频
-把力学课退掉了
-西方美术史在犹豫中没选上被人抢了
-飞发了条pyq然后删了说忘记分组了
-然后我觉得咖啡大概是假的
-昨天去理科2号楼的报告厅停pivot的留学讲座 很暖和 很适合睡觉
-知道了暑期科研这种东西
-觉得刷gpa还是很重要
-数学很重要
-物理退了吧 我可以自己学 可以不摊gpa
-还要把英语啊python啊抓一抓的 所
+      一晚上接近通宵可能中间睡了一会吧其实深夜也没有什么特别的觉得白天吵闹的话还是因为无法割舍吧深夜不过是提供一个契机来与世隔绝白天又不是不可以晚上一听歌就恐怕是真的不打算睡觉了
+唔
+定时作息养成规律生活自律给我自由
+
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-09-23T19:11:09.000Z" class="post-list__meta--date date">2017-09-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/09/24/20170924/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-08-17T07:41:29.000Z" class="post-list__meta--date date">2017-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/08/17/subject/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -378,7 +381,7 @@ cf补题
     
       <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
     
-    <span class="pagination__page-number" > 2 / 6 </span>
+    <span class="pagination__page-number" > 2 / 3 </span>
     
       <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/3/">更早 →</a>
     

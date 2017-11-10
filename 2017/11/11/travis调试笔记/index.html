@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="XD, Ir1d" />
+  <meta name="keywords" content="travis," />
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Neverland">
-<meta property="og:url" content="http://ir1d.cf/archives/2017/index.html">
+<meta name="description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
+<meta name="keywords" content="travis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="travis调试笔记">
+<meta property="og:url" content="http://ir1d.cf/2017/11/11/travis调试笔记/index.html">
 <meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-10T18:51:18.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neverland">
+<meta name="twitter:title" content="travis调试笔记">
+<meta name="twitter:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://ir1d.cf/archives/2017/"/>
+  <link rel="canonical" href="http://ir1d.cf/2017/11/11/travis调试笔记/"/>
 
 
 
 
 
-  <title>Archive | Neverland</title>
+  <title>travis调试笔记 | Neverland</title>
   
 
 
@@ -156,7 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,485 +265,192 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2017/11/11/travis调试笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">travis调试笔记</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T02:36:03+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 28 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/胡乱折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">胡乱折腾</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/travis调试笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/11/travis调试笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/11/travis调试笔记/" itemprop="url">
-              
-                <span itemprop="name">travis调试笔记</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-11T02:36:03+08:00"
-              content="2017-11-11" >
-          11-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/09/start-of-something-new/" itemprop="url">
-              
-                <span itemprop="name">start of something new</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-09T04:42:26+08:00"
-              content="2017-11-09" >
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/29/教学计划整理-文科/" itemprop="url">
-              
-                <span itemprop="name">教学计划整理-文科</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-29T22:57:44+08:00"
-              content="2017-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/29/教学计划整理-理科/" itemprop="url">
-              
-                <span itemprop="name">教学计划整理-理科</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-29T21:43:41+08:00"
-              content="2017-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>下午用TravisCI来实现自动部署到Github Release，踩了不少坑</p>
+<p><code>after_script</code> 是在 <code>deploy</code> 段结束之后执行的，<code>after_success</code> 或者 <code>before_deploy</code> 是在 <code>deploy</code> 之前，文档里面写得很清楚</p>
+<p>别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没有注意到加了进去，不过收到了 Github 的邮件说检测到 Token 被泄露，当前这个被自动注销掉了。</p>
+<p>推荐使用<code>travis setup releases</code> 来完成<code>.travis.yml</code>的<code>deploy</code>部分的编写</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install travis -v 1.8.8 --no-rdoc --no-ri</div></pre></td></tr></table></figure>
+<p>两步验证也是个坑，简而言之就是用上边这个<code>travis</code>工具来写<code>deploy</code>部分，不要去自己到处生成<code>Token</code>。记得选那个<code>secure key</code>。</p>
+<p>如果<code>build</code>的时候出现<code>HEAD detached</code> 应该是需要在<code>deploy</code>里面加上<code>skip_cleanup: true</code>，不清楚为什么那个工具不能自己加上。</p>
+<p><code>on tags: true</code>的作用是只对打<code>tag</code>的<code>build</code>进行<code>deploy</code>操作</p>
+<p>如果需要<code>sudo</code>要加上<code>sudo: enabled</code></p>
+<p>检查<code>yml</code>写得对不对可以去 <a href="http://lint.travis-ci.org/" target="_blank" rel="external">http://lint.travis-ci.org/</a></p>
+<p>话说一个<code>build</code>是没有时间限制的，只不过如果长时间没有输出或者类似状况会被停掉</p>
+<p>以及<code>build</code>是可以设置成定时进行的，要注意的地方是<code>Github</code>对一次<code>commit</code>的状态更新次数有限制，并不能无限制地</p>
+<p>大概就这些 有点记不清了 反正还有问题可以再问嘛</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/29/通识教育整理-理科/" itemprop="url">
-              
-                <span itemprop="name">通识教育整理-理科</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-29T14:01:05+08:00"
-              content="2017-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/28/通识教育整理-文科/" itemprop="url">
-              
-                <span itemprop="name">通识教育整理-文科</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-28T22:51:09+08:00"
-              content="2017-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/28/enti1/" itemprop="url">
-              
-                <span itemprop="name">初等数论及其应用 - 第一章</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-28T15:19:06+08:00"
-              content="2017-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/28/笔记/" itemprop="url">
-              
-                <span itemprop="name">笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-28T15:14:39+08:00"
-              content="2017-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/26/cf862/" itemprop="url">
-              
-                <span itemprop="name">Codeforces Round 435 (Div. 2)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-26T22:49:31+08:00"
-              content="2017-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/22/cpppp/" itemprop="url">
-              
-                <span itemprop="name">cpppp</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-22T08:38:14+08:00"
-              content="2017-09-22" >
-          09-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/25/LSB/" itemprop="url">
-              
-                <span itemprop="name">LSB</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-25T16:54:53+08:00"
-              content="2017-08-25" >
-          08-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/25/attachment/" itemprop="url">
-              
-                <span itemprop="name">attachment</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-25T16:24:33+08:00"
-              content="2017-08-25" >
-          08-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/travis/" rel="tag"><i class="fa fa-tag"></i> travis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/start-of-something-new/" rel="next" title="start of something new">
+                <i class="fa fa-chevron-left"></i> start of something new
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -746,6 +458,17 @@
 
 
           
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
 
         </div>
         
@@ -961,6 +684,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -978,6 +705,18 @@
       <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://ir1d.cf/2017/11/11/travis调试笔记/';
+          this.page.identifier = '2017/11/11/travis调试笔记/';
+          this.page.title = 'travis调试笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

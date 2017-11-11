@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
+<meta name="description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑">
 <meta name="keywords" content="travis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="travis调试笔记">
 <meta property="og:url" content="http://ir1d.cf/2017/11/11/travis调试笔记/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
+<meta property="og:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-10T18:51:18.415Z">
+<meta property="og:updated_time" content="2017-11-11T16:51:53.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="travis调试笔记">
-<meta name="twitter:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑 after_script 是在 deploy 段结束之后执行的，after_success 或者 before_deploy 是在 deploy 之前，文档里面写得很清楚 别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没">
+<meta name="twitter:description" content="下午用TravisCI来实现自动部署到Github Release，踩了不少坑">
 
 
 
@@ -380,6 +380,7 @@
 
       
         <p>下午用TravisCI来实现自动部署到Github Release，踩了不少坑</p>
+<a id="more"></a>
 <p><code>after_script</code> 是在 <code>deploy</code> 段结束之后执行的，<code>after_success</code> 或者 <code>before_deploy</code> 是在 <code>deploy</code> 之前，文档里面写得很清楚</p>
 <p>别的文章里大多写得很详细，就是不能把自己 Github 账号的 Access Token 给 push 到 repo 里。我当时 push 的时候没有注意到加了进去，不过收到了 Github 的邮件说检测到 Token 被泄露，当前这个被自动注销掉了。</p>
 <p>推荐使用<code>travis setup releases</code> 来完成<code>.travis.yml</code>的<code>deploy</code>部分的编写</p>

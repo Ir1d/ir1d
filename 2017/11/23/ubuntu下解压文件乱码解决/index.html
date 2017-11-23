@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="ctf," />
+  <meta name="keywords" content="记录," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="PHP LFI 坑点是后面会加一个.html http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html 这里的思路是加一个%00   Everything after the null byte will be deleted.   太帅了=_^ 好像就是传说中的 Null Byte Injection ？ http://w">
-<meta name="keywords" content="ctf">
+<meta name="description" content="rar卸掉 unrar-free 安装 p7zip p7zip-full zipunzip -O GBK filename">
+<meta name="keywords" content="记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LFI">
-<meta property="og:url" content="http://ir1d.cf/2017/08/22/ctf/LFI/index.html">
+<meta property="og:title" content="ubuntu下解压文件乱码解决">
+<meta property="og:url" content="http://ir1d.cf/2017/11/23/ubuntu下解压文件乱码解决/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="PHP LFI 坑点是后面会加一个.html http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html 这里的思路是加一个%00   Everything after the null byte will be deleted.   太帅了=_^ 好像就是传说中的 Null Byte Injection ？ http://w">
+<meta property="og:description" content="rar卸掉 unrar-free 安装 p7zip p7zip-full zipunzip -O GBK filename">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-12T14:44:41.795Z">
+<meta property="og:updated_time" content="2017-11-23T10:07:50.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LFI">
-<meta name="twitter:description" content="PHP LFI 坑点是后面会加一个.html http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html 这里的思路是加一个%00   Everything after the null byte will be deleted.   太帅了=_^ 好像就是传说中的 Null Byte Injection ？ http://w">
+<meta name="twitter:title" content="ubuntu下解压文件乱码解决">
+<meta name="twitter:description" content="rar卸掉 unrar-free 安装 p7zip p7zip-full zipunzip -O GBK filename">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://ir1d.cf/2017/08/22/ctf/LFI/"/>
+  <link rel="canonical" href="http://ir1d.cf/2017/11/23/ubuntu下解压文件乱码解决/"/>
 
 
 
 
 
-  <title>LFI | Neverland</title>
+  <title>ubuntu下解压文件乱码解决 | Neverland</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2017/08/22/ctf/LFI/">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2017/11/23/ubuntu下解压文件乱码解决/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ir1d">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LFI</h1>
+          <h1 class="post-title" itemprop="name headline">ubuntu下解压文件乱码解决</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-22T20:17:00+08:00">
-                2017-08-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-23T18:03:33+08:00">
+                2017-11-23
               </time>
             
 
@@ -327,9 +327,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/22/ctf/LFI/#comments" itemprop="discussionUrl">
+                <a href="/2017/11/23/ubuntu下解压文件乱码解决/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/22/ctf/LFI/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/11/23/ubuntu下解压文件乱码解决/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,18 +357,9 @@
       
 
       
-        <p>PHP LFI</p>
-<p>坑点是后面会加一个<code>.html</code></p>
-<p><a href="http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html" target="_blank" rel="external">http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html</a></p>
-<p>这里的思路是加一个<code>%00</code></p>
-<blockquote>
-<ul>
-<li>Everything after the null byte will be deleted.</li>
-</ul>
-</blockquote>
-<p>太帅了<code>=_^</code></p>
-<p>好像就是传说中的 Null Byte Injection ？</p>
-<p><code>http://www.wechall.net/challenge/training/php/lfi/up/index.php?file=../../solution.php%00</code></p>
+        <h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><p>卸掉 <code>unrar-free</code></p>
+<p>安装 <code>p7zip p7zip-full</code></p>
+<h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><p><code>unzip -O GBK filename</code></p>
 
       
     </div>
@@ -386,7 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"><i class="fa fa-tag"></i> ctf</a>
+            <a href="/tags/记录/" rel="tag"><i class="fa fa-tag"></i> 记录</a>
           
         </div>
       
@@ -399,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/22/ctf/programming1/" rel="next" title="programming1">
-                <i class="fa fa-chevron-left"></i> programming1
+              <a href="/2017/11/20/icpc2017北京站/" rel="next" title="icpc2017北京站">
+                <i class="fa fa-chevron-left"></i> icpc2017北京站
               </a>
             
           </div>
@@ -408,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/23/ctf/encodings1/" rel="prev" title="encodings1">
-                encodings1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -470,8 +457,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,6 +537,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rar"><span class="nav-number">1.</span> <span class="nav-text">rar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">2.</span> <span class="nav-text">zip</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -689,9 +701,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ir1d.cf/2017/08/22/ctf/LFI/';
-          this.page.identifier = '2017/08/22/ctf/LFI/';
-          this.page.title = 'LFI';
+          this.page.url = 'http://ir1d.cf/2017/11/23/ubuntu下解压文件乱码解决/';
+          this.page.identifier = '2017/11/23/ubuntu下解压文件乱码解决/';
+          this.page.title = 'ubuntu下解压文件乱码解决';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ir1dblog.disqus.com/embed.js';

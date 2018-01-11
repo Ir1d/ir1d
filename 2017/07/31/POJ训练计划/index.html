@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-23T10:08:22.392Z">
+<meta property="og:updated_time" content="2018-01-11T14:54:57.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ训练计划">
 <meta name="twitter:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
@@ -450,6 +450,7 @@
 <p>每个队做出的题数都在1~N-1的概率为<code>P2=(s[1][N-1]-s[1][0])*(s[2][N-1]-s[2][0])*...(s[T][N-1]-s[T][0]);</code></p>
 <p>最后的答案就是<code>P1-P2</code>，代表至少一个队作出n到以上（1 - 所有队作出<code>0...n-1</code>的概率）</p>
 <p>1840：判断方程是否有根 先枚举前两项可能的值再枚举后三个的值看看是否有和为0就行 hash姿势不对会mle 直接用map会tle = = 而且poj还没有unordered_map</p>
+<p>2002：问平面上一堆点能组成多少个正方形，正方形的边允许不和坐标轴平行。方法是枚举一条边上的两个点，因为是正方形，此时就可以算出另外两个点，只需要二分一下看看是否存在就好了。注意每个正方形会被计算两次。</p>
 
       
     </div>
@@ -661,7 +662,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

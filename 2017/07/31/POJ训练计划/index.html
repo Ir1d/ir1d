@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-12T14:40:29.349Z">
+<meta property="og:updated_time" content="2018-01-13T07:55:32.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ训练计划">
 <meta name="twitter:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
@@ -454,6 +454,17 @@
 <p>2503：应该是想要考哈希+二分，但是map一下就好了。值得一提的是gets会接受空行</p>
 <p>3253：求哈夫曼树，priority_queue一波</p>
 <p>2513：把字符串映射到点，再判断是否有欧拉通路。因为是无向图，只需要统计顶点度数为奇数的数和判断全图是否联通。至于如何映射字符串到点，用map会多个log超时，选用trie。好久没写并查集忘记了初始化竟然看了好久才发现。</p>
+<h2 id="简单搜索"><a href="#简单搜索" class="headerlink" title="简单搜索"></a>简单搜索</h2><p>2488：爆搜即可，注意字典序的要求，字母用来表示列，就是说要列优先最小，再行最小。具体体现在dx, dy数组的设置上。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123;<span class="number">-1</span>, <span class="number">1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123;<span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>&#125;;</div></pre></td></tr></table></figure>
+<p>3083：bfs很好写，难点在于如何按照左（右）手边靠墙走，核心仍然在于方向数组</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dxl[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dyl[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dxr[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dyr[] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</div><div class="line"><span class="comment">// 然后dfs枚举方向的时候：</span></div><div class="line">f(i, <span class="number">0</span>, <span class="number">4</span>) &#123;</div><div class="line">  t = (i + op + <span class="number">3</span>) % <span class="number">4</span>;</div><div class="line">  nx = x + dx[t]; ny = y + dy[t];</div><div class="line">&#125;</div><div class="line"><span class="comment">// op用来表示方向</span></div></pre></td></tr></table></figure>
+<p>发现dxl实际上是从12点方向顺时针转，drl是逆时针转，从而刚好对应位置-1就是要找的方向，取模之后相当于是+3</p>
+<p>3009：看起来很吓人但是实际上不难处理，把之前的dfs每次选一步走改成每次选一个方向走就好了。</p>
+<p>1321：给一个不规则棋盘问放k个子的方案数，dfs枚举方案。值得注意的是允许当前位置不放子，所以还要记录横竖的vis数组。</p>
+<p>2251：三维的地图，bfs或者dfs都可以</p>
+<p>3278：bfs思路很好想，但是几年前简直是又wa又t一时爽。注意写法可能会忽略掉n==k的情况。用pair放到queue里写会很慢，不妨把时间戳放到外面开个数组单独记录。</p>
+<p>1426：直接爆搜就过了 感觉会有更优美的写法</p>
+<p>3126：实际上就是处理出来质数然后bfs就好了，然而筛法写错的我= =</p>
 
       
     </div>
@@ -645,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初期"><span class="nav-number">1.</span> <span class="nav-text">初期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图算法"><span class="nav-number">1.2.</span> <span class="nav-text">图算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.3.</span> <span class="nav-text">数据结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初期"><span class="nav-number">1.</span> <span class="nav-text">初期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图算法"><span class="nav-number">1.2.</span> <span class="nav-text">图算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.3.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单搜索"><span class="nav-number">1.4.</span> <span class="nav-text">简单搜索</span></a></li></ol></li></ol></div>
             
 
           </div>

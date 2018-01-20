@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="函数指针命令行参数位运算引用 - 引用作为函数的返回值不可通过常量指针修改其指向的内容动态分配空间内联函数、函数重载、缺省参数缺省参数可以在扩充函数参数是避免对原有的调用语句的修改类、成员函数、内联成员函数构造函数析构函数静态成员 – 全局 – 易于维护成员对象 – 封闭类友元函数、友元类 友元类关系不能传递、不能继承this指针比如有一个class C12C *p = NULL;p-&amp;gt;ma">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-17T13:57:55.609Z">
+<meta property="og:updated_time" content="2018-01-20T09:32:08.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程设笔记">
 <meta name="twitter:description" content="函数指针命令行参数位运算引用 - 引用作为函数的返回值不可通过常量指针修改其指向的内容动态分配空间内联函数、函数重载、缺省参数缺省参数可以在扩充函数参数是避免对原有的调用语句的修改类、成员函数、内联成员函数构造函数析构函数静态成员 – 全局 – 易于维护成员对象 – 封闭类友元函数、友元类 友元类关系不能传递、不能继承this指针比如有一个class C12C *p = NULL;p-&amp;gt;ma">
@@ -381,7 +381,8 @@
       
         <p>函数指针<br>命令行参数<br>位运算<br>引用 - 引用作为函数的返回值<br>不可通过常量指针修改其指向的内容<br>动态分配空间<br>内联函数、函数重载、缺省参数<br>缺省参数可以在扩充函数参数是避免对原有的调用语句的修改<br>类、成员函数、内联成员函数<br>构造函数<br>析构函数<br>静态成员 – 全局 – 易于维护<br>成员对象 – 封闭类<br>友元函数、友元类 友元类关系不能传递、不能继承<br><strong>this指针</strong><br>比如有一个<code>class C</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C *p = <span class="literal">NULL</span>;</div><div class="line">p-&gt;magic();</div></pre></td></tr></table></figure></p>
 <p>等价于<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C *p = <span class="literal">NULL</span>;</div><div class="line">magic(p);</div></pre></td></tr></table></figure></p>
-<p>如果后一种语句合法那么前一种就合法<br>常量对象<br>常亮成员函数不应修改对象，也不能调用非常亮成员函数（静态除外）<br>常引用避免构造函数的开销<br><code>=</code>返回值最好为引用 复制构造函数也要避免浅拷贝<br>运算符可以重载为友元函数<br>继承、派生<br>继承关系、复合关系<br>protected</p>
+<p>如果后一种语句合法那么前一种就合法<br>常量对象<br>常亮成员函数不应修改对象，也不能调用非常亮成员函数（静态除外）<br>常引用避免构造函数的开销<br><code>=</code>返回值最好为引用 复制构造函数也要避免浅拷贝<br>运算符可以重载为友元函数<br>继承、派生<br>继承关系、复合关系<br>protected<br>虚函数、多态 virtual关键字<br>构造函数和析构函数中调用虚函数不是多态<br>虚函数表会占用空间<br>也有额外的时间开销 – 多态的函数调用过程是查询虚函数表<br>一个基类的指针删除派生类对象的时候希望先调用派生类析构函数再调用基类的析构函数<br>不允许虚函数作为构造函数<br>抽象类中成员函数允许调用纯虚函数，但是构造函数、析构函数中不允许<br>函数模板 – 泛型程序设计<br>STL<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">" "</span>);</div><div class="line"><span class="built_in">std</span>::copy(a.begin(), a.end(), output);</div><div class="line"><span class="comment">// 相当于是用 cout 输出 a 里面的元素，用空格分隔开</span></div></pre></td></tr></table></figure></p>
+<p>copy到vector的时候它不会自动扩空间</p>
 
       
     </div>
@@ -503,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="看叉姐的repo翻到矩阵相关的板子">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-28T00:00:56.199Z">
+<meta property="og:updated_time" content="2018-01-28T08:51:26.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵乘法小优化">
 <meta name="twitter:description" content="看叉姐的repo翻到矩阵相关的板子">
@@ -382,7 +382,7 @@
         <p>看叉姐的repo翻到矩阵相关的板子</p>
 <a id="more"></a>
 <p>然后发现里面有这样一句话</p>
-<p><code>乘法的时候将$B$数组转置一下然后$C[i][j] = \sum{A[i][k]\times B[j][k]}$会有奇效。</code></p>
+<p>乘法的时候将$B$数组转置一下然后$C[i][j] = \sum{A[i][k]\times B[j][k]}$会有奇效。</p>
 <p>然后操作了一番发现的确是这么回事 Qrz%%%</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">srand(time(<span class="number">0</span>));</div><div class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) a[i][j] = rand(), b[i][j] = rand();</div><div class="line"><span class="keyword">double</span> st = clock();</div><div class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</div><div class="line">  c[i][j] += a[i][k] * b[k][j];</div><div class="line"><span class="keyword">double</span> ed = clock();</div><div class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) &#123;</div><div class="line">  d[i][j] = b[j][i]; c[i][j] = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</div><div class="line">  c[i][j] += a[i][k] * d[j][k];</div><div class="line"><span class="keyword">double</span> e2 = clock();</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, ((e2 - ed) - (ed - st)) / CLOCKS_PER_SEC);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, CLOCKS_PER_SEC);</div></pre></td></tr></table></figure>
 <p>本机大概能差<code>0.02s</code></p>

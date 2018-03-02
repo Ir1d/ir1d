@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="ctf," />
+  <meta name="keywords" content="记录," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content=".htaccess里面写限制了GET需要验证123&amp;lt;Limit GET&amp;gt;require valid-user&amp;lt;/Limit&amp;gt; 所以换成POST就好了 POST的新姿势 123&amp;lt;form method=&quot;POST&quot; action=&quot;https://www.wechall.net/challenge/wannabe7331/limited_access/protected">
-<meta name="keywords" content="ctf">
+<meta name="description" content="你可能需要这个【 https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560 甚至可能需要手动编译整个wxwidgets">
+<meta name="keywords" content="记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="limited_access">
-<meta property="og:url" content="http://ir1d.cf/2017/08/23/ctf/limited-access/index.html">
+<meta property="og:title" content="安装wxPython">
+<meta property="og:url" content="http://ir1d.cf/2018/03/01/安装wxPython/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content=".htaccess里面写限制了GET需要验证123&amp;lt;Limit GET&amp;gt;require valid-user&amp;lt;/Limit&amp;gt; 所以换成POST就好了 POST的新姿势 123&amp;lt;form method=&quot;POST&quot; action=&quot;https://www.wechall.net/challenge/wannabe7331/limited_access/protected">
+<meta property="og:description" content="你可能需要这个【 https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560 甚至可能需要手动编译整个wxwidgets">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-12T14:44:41.815Z">
+<meta property="og:updated_time" content="2018-03-01T01:19:35.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="limited_access">
-<meta name="twitter:description" content=".htaccess里面写限制了GET需要验证123&amp;lt;Limit GET&amp;gt;require valid-user&amp;lt;/Limit&amp;gt; 所以换成POST就好了 POST的新姿势 123&amp;lt;form method=&quot;POST&quot; action=&quot;https://www.wechall.net/challenge/wannabe7331/limited_access/protected">
+<meta name="twitter:title" content="安装wxPython">
+<meta name="twitter:description" content="你可能需要这个【 https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560 甚至可能需要手动编译整个wxwidgets">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://ir1d.cf/2017/08/23/ctf/limited-access/"/>
+  <link rel="canonical" href="http://ir1d.cf/2018/03/01/安装wxPython/"/>
 
 
 
 
 
-  <title>limited_access | Neverland</title>
+  <title>安装wxPython | Neverland</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2017/08/23/ctf/limited-access/">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2018/03/01/安装wxPython/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ir1d">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">limited_access</h1>
+          <h1 class="post-title" itemprop="name headline">安装wxPython</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-23T17:42:56+08:00">
-                2017-08-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T07:55:54+08:00">
+                2018-03-01
               </time>
             
 
@@ -337,9 +337,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/23/ctf/limited-access/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/01/安装wxPython/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/23/ctf/limited-access/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/01/安装wxPython/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,13 +367,9 @@
       
 
       
-        <p><code>.htaccess</code>里面写限制了GET需要验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Limit GET&gt;</div><div class="line">require valid-user</div><div class="line">&lt;/Limit&gt;</div></pre></td></tr></table></figure></p>
-<p>所以换成POST就好了</p>
-<p>POST的新姿势</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"https://www.wechall.net/challenge/wannabe7331/limited_access/protected/protected.php"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>当然curl也行</p>
-<p><code>curl -v -H &quot;Cookie: [WC=asdf]&quot;  -X POST http://www.wechall.net/challenge/wannabe7331/limited_access/protected/protected.php</code></p>
-<p>酱紫</p>
+        <p>你可能需要这个【</p>
+<p><a href="https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560" target="_blank" rel="external">https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560</a></p>
+<p>甚至可能需要手动编译整个wxwidgets</p>
 
       
     </div>
@@ -391,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"><i class="fa fa-tag"></i> ctf</a>
+            <a href="/tags/记录/" rel="tag"><i class="fa fa-tag"></i> 记录</a>
           
         </div>
       
@@ -404,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/ctf/auth-bypass2/" rel="next" title="auth_bypass2">
-                <i class="fa fa-chevron-left"></i> auth_bypass2
+              <a href="/2018/02/24/telegram-bots/" rel="next" title="telegram-bots">
+                <i class="fa fa-chevron-left"></i> telegram-bots
               </a>
             
           </div>
@@ -413,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/25/ctf/regex/" rel="prev" title="regex">
-                regex <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -694,9 +686,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ir1d.cf/2017/08/23/ctf/limited-access/';
-          this.page.identifier = '2017/08/23/ctf/limited-access/';
-          this.page.title = 'limited_access';
+          this.page.url = 'http://ir1d.cf/2018/03/01/安装wxPython/';
+          this.page.identifier = '2018/03/01/安装wxPython/';
+          this.page.title = '安装wxPython';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ir1dblog.disqus.com/embed.js';

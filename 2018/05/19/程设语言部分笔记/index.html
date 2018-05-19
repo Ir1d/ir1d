@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar-small.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar-small.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar-small.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/avatar-small.png?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程设实习,C++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="断更了好久…… 其实也说不清在忙什么…… 莫名其妙的…… 雾：下文内含大量typo（拼音输入法）  OpenJudge - B:按距离排序 给struct重载() 来当比较器传给std::sort OpenJudge - G:你真的搞清楚为啥 while(cin &amp;gt;&amp;gt; n) 能成立了吗？ 123operator bool() &amp;#123;  // 重载强制类型转换&amp;#125; 修改指针">
+<meta name="keywords" content="程设实习,C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程设语言部分笔记">
+<meta property="og:url" content="http://ir1d.cf/2018/05/19/程设语言部分笔记/index.html">
+<meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="断更了好久…… 其实也说不清在忙什么…… 莫名其妙的…… 雾：下文内含大量typo（拼音输入法）  OpenJudge - B:按距离排序 给struct重载() 来当比较器传给std::sort OpenJudge - G:你真的搞清楚为啥 while(cin &amp;gt;&amp;gt; n) 能成立了吗？ 123operator bool() &amp;#123;  // 重载强制类型转换&amp;#125; 修改指针">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-19T02:30:27.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="程设语言部分笔记">
+<meta name="twitter:description" content="断更了好久…… 其实也说不清在忙什么…… 莫名其妙的…… 雾：下文内含大量typo（拼音输入法）  OpenJudge - B:按距离排序 给struct重载() 来当比较器传给std::sort OpenJudge - G:你真的搞清楚为啥 while(cin &amp;gt;&amp;gt; n) 能成立了吗？ 123operator bool() &amp;#123;  // 重载强制类型转换&amp;#125; 修改指针">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ir1d.cf/2018/05/19/程设语言部分笔记/"/>
+
+
+
+
+
+  <title>程设语言部分笔记 | Neverland</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-100955771-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neverland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-friends">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Friends
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2018/05/19/程设语言部分笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">程设语言部分笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T10:27:43+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/19/程设语言部分笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/19/程设语言部分笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>断更了好久……</p>
+<p>其实也说不清在忙什么……</p>
+<p>莫名其妙的……</p>
+<p>雾：下文内含大量typo（拼音输入法）</p>
+<hr>
+<p><a href="http://cxsjsx.openjudge.cn/hw201808/B/" target="_blank" rel="external">OpenJudge - B:按距离排序</a> 给struct重载() 来当比较器传给std::sort</p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201807/G/" target="_blank" rel="external">OpenJudge - G:你真的搞清楚为啥 while(cin &gt;&gt; n) 能成立了吗？</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="comment">// 重载强制类型转换</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改指针一定要小心，尤其是模板里面 <code>*a = *b</code> 注意指针指向的地址是否变了 是否只改变了值</p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201807/C/" target="_blank" rel="external">OpenJudge - C:山寨版istream_iterator</a><br><code>operator *()</code> 重载解引用运算符   <code>operator ++(int)</code> 是后缀自增运算符</p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201808/E/" target="_blank" rel="external">OpenJudge - E:很难蒙混过关的CArray3d三维数组模板类</a></p>
+<p>写得很痛苦，的确没有蒙混过关，还是应该老实的……</p>
+<blockquote>
+<ul>
+<li>建议做法：</li>
+</ul>
+<ol>
+<li>a[i][j][k] 这个表达式的第一个[]返回一个<strong>内部类</strong>的对象，该内部类也重载了[],且返回值为指针。</li>
+<li>必要时需重载对象到指针的强制类型转换运算符</li>
+</ol>
+</blockquote>
+<p><a href="http://cxsjsx.openjudge.cn/hw201808/F/" target="_blank" rel="external">OpenJudge - F:我自己的 ostream_iterator</a></p>
+<p>刚开始一直在想怎么让他赋值进去就直接能输出，后来发现实际上是后面有一个++的过程，++的时候输出就好了。<br>然后再就是<code>*x=*a</code>重载的是<code>*</code>运算符不是等号= =</p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201809/A/" target="_blank" rel="external">OpenJudge - A:List</a> </p>
+<p>简直惨痛。。。 merge自己到自己的操作要忽略掉就好了= = 果然还是应该写对拍</p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201809/F/" target="_blank" rel="external">OpenJudge - F:冷血格斗场</a></p>
+<p>听说是当年pkusc的题，就是找lowerbound 然后再找前面的一个 比较比较就好了</p>
+<p>没考虑到的地方是可能lowerbound的前面找到的那个并不是id最小的，要再lowerbound一下= =</p>
+<p><a href="http://cxsjsx.openjudge.cn/2016mid2018/08/" target="_blank" rel="external">OpenJudge - 08:编程填空：维护平面点</a></p>
+<p><a href="http://cxsjsx.openjudge.cn/hw201809/H/" target="_blank" rel="external">OpenJudge - H:编程填空：数据库内的学生信息</a></p>
+<p>比较器的写法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></div><div class="line"><span class="class"><span class="title">struct</span> <span class="title">Greater</span> &#123;</span></div><div class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y)</span> <span class="keyword">const</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> x &gt; y;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">typedef</span> T first_argument_type;</div><div class="line">  <span class="keyword">typedef</span> T second_argument_type;</div><div class="line">  <span class="keyword">typedef</span> <span class="keyword">bool</span> result_type;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>upd：重写了 后三个typedef 不是必须的<br><a href="http://cxsjsx.openjudge.cn/2015mid2018/11/" target="_blank" rel="external">OpenJudge - 11:编程填空：数据库内的学生信息</a></p>
+<p><strong>太难了= =</strong></p>
+<p><strong>static的初始化方式</strong></p>
+<p>printf – <code>%x</code> 十六进制</p>
+<hr>
+<p>期中复习</p>
+<p>常引用：不是引用的内容不能修改，是不能通过常引用修改<br><code>const T</code> 或者 <code>const T &amp;</code>类型不能用来初始化 <code>T&amp;</code>类型，除非经过了强制类型转换<br>调用内联函数的语句前必须已经出现内联函数的定义（整个函数体），不能只有声明<br>同名函数只有参数表不同才算是重载，两个同名函数的参数表相同而返回值不同不是重载，是重复定义<br>new分配的空间一定要delete释放，否则程序运行结束后也不会被系统收回<br>一个string对象的大小（sizeof）是固定的（在不同编译器中并不相同，与字符串长度无关）<br>string对象中只存放地址和其他信息<br>大写字母ASCII码小于小写字母<br>struct默认公有，class默认私有<br>局部变量存储空间是动态分配在栈中的<br><strong><code>CTest* pArray[3] = {new CTest(4), new CTest(1, 2)};</code> 只生成了两个对象，第三个没有生成</strong><br>复制构造函数的参数一般用const引用，这样既能以常量对象，也能以非常量对象作为参数<br><strong>函数的参数对象以及作为函数返回值的对象，在消亡时也会引发析构函数调用</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">CDemo::CDemo(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</div><div class="line"><span class="comment">// 构造函数</span></div><div class="line">&#125;</div><div class="line">CDemo dl;</div><div class="line"><span class="function">CDemo <span class="title">Test</span><span class="params">()</span> </span>&#123; <span class="comment">// 返回值是临时对象</span></div><div class="line">  foo();</div><div class="line">  <span class="keyword">return</span> dl;</div><div class="line">&#125;</div><div class="line">CDemo d4;</div><div class="line">d4 = <span class="number">6</span>; <span class="comment">// 这里6先被转换成临时对象，然后再赋值。语句执行完毕后临时对象消亡，调用析构函数</span></div></pre></td></tr></table></figure></p>
+<p>并非所有对象生成的时候都通过上面的构造函数初始化，作为参数和返回值的时候是调用复制构造函数，需要另外再写<br>不能通过对常量对象调用普通成员函数，但是可以调用const的<br>两个成员函数的名字和参数表相同，但是一个const，另一个不是，算重载<br>封闭类生成的时候先执行所有成员对象的构造函数，再执行封闭类自己的构造函数<br>消亡的时候是先执行封闭类的析构函数，后执行成员对象的。<br>常量型成员变量和引用型必须要在构造函数的初始化列表中初始化<br>友元函数内部可以访问该类对象的private<br>不能吧其他类的私有成员函数声明为友元<br>交叉调用的时候允许写一个提前声明<code>class s;</code>但是在定义出现之前，不允许任何会导致该类对象被生成的语句。使用该类的指针或者引用是没有问题的<br>可以声明另一个类是自己的友元<br>友元关系不能传递<br>类的非内联成员函数的函数体只能出现在某一个<code>.cpp</code>文件中，不能放在头文件中被多个<code>.cpp</code>文件包含，否则链接时会发生重复定义的错误<br>如果编写了构造函数，则编译器不自动生成默认构造函数，一个类不一定会有默认（无参）构造函数，但是一定会有复制构造函数<br><code>=</code>只能重载为成员函数<br>在delete之前判断是否是NULL<br>注意赋值给自己的时候的指针的处理<br>参数os只能是ostream的引用，而不能使ostream对象，是因为ostream的复制构造函数是私有的，不能生成参数对象<br>类型强制转换运算符是单目运算符，只能被重载为成员函数 <code>operator double()  {}</code><br><code>++a</code>或者<code>--a</code>前置：<code>CDemo&amp; operator ++();</code><br><code>a++</code>或者<code>a--</code>后置：<code>CDemo operator ++(int);</code><br>运算符重载不改变优先级<br>不能被重载的运算符：<code>.</code> <code>.*</code>（成员指针访问运算符） <code>::</code> <code>?:</code> <code>sizeof</code><br>重载<code>() [] -&gt;</code>或者 赋值<code>=</code>时，只能重载为成员函数<br>派生类的成员函数只能访问所作用的那个对象（this指向的）的基类保护成员，不能访问其他基类对象的基类保护成员<br>如果一个派生类对象使用默认复制构造函数初始化的，那么他内部包含的基类对象也要用基类的复制构造函数初始化<br>封闭类类似<br>派生类对象生成的时候，先从上至下执行所有基类的构造函数，再按照成员对象的定义顺序执行各个成员对象的构造函数，最后执行自身的<br>消亡时，先执行自身的，后面与够早的次序相反<br>如果是public派生，派生类对象也是基类对象，如果是private或者protected，就不成立<br>多态的函数调用语句被称为是<code>动态联编</code>的<br>虚函数表的地址在对象存储空间的最前端<br>成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数是多态的<br>析构函数和构造函数中调用的虚函数不是多态<br>只要基类中的某个函数被声明成虚函数，则派生类中的同名、同参数表的成员函数及时前面没写virtual也是虚函数<br>虚析构函数：只要基类的析构函数是虚函数，那么派生类的析构函数不论是否用virtual声明，都是虚析构函数<br><strong>一个类如果定义了虚函数，则最好将析构函数也定义成虚函数</strong><br>独立的抽象类的对象不存在，但是被包含在派生类对象中的抽象类的对象是可以存在的<br>抽象类的成员函数内可以调用纯虚函数，但是在构造函数或析构函数内部不能<br>cerr clog 不能被重定向<br>cerr 不使用缓冲区 clog 使用<br><code>while (cin &gt;&gt; n)</code> 是因为把ostream到bool的转换重载了</p>
+<p>顺序容器：vector, deque, list<br>关联容器：set, multiset, map, multimap<br>容器适配器：stack, queue, priority_queue<br>rend():只想容器中的第一个元素前面的位置的反向迭代器<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = v.rbegin(); it != v.rend(); ++it);</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>容器</th>
+<th>迭代器功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector</td>
+<td>随机</td>
+</tr>
+<tr>
+<td>deque</td>
+<td>随机</td>
+</tr>
+<tr>
+<td>list</td>
+<td>双向</td>
+</tr>
+<tr>
+<td>set/ multiset</td>
+<td>双向</td>
+</tr>
+<tr>
+<td>map/ multimap</td>
+<td>双向</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>不支持迭代器</td>
+</tr>
+<tr>
+<td>queue</td>
+<td>不支持迭代器</td>
+</tr>
+<tr>
+<td>priority_queue</td>
+<td>不支持迭代器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">cout</span>,<span class="string">" "</span>);</div><div class="line">copy (v.begin(), v.end(), output);</div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">std</span>::set_union(v1.begin(), v1.end(), v2.begin(), v2.end(), <span class="built_in">std</span>::back_inserter(dest1));</div></pre></td></tr></table></figure>
+<hr>
+<p>考完试：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">int</span> <span class="title">sz</span>&gt;</span></div><div class="line"><span class="class"><span class="title">class</span> <span class="title">A</span> &#123;</span></div><div class="line">  <span class="keyword">public</span>:</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> c;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">template</span> &lt; &gt; <span class="keyword">int</span>  A &lt;<span class="keyword">int</span>, <span class="number">40</span>&gt;::c = <span class="number">0</span>;</div><div class="line"><span class="keyword">template</span> &lt; &gt; <span class="keyword">int</span>  A &lt;<span class="keyword">int</span>, <span class="number">50</span>&gt;::c = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>const算不算重载<br>什么时候需要在初始化列表里初始化</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/程设实习/" rel="tag"><i class="fa fa-tag"></i> 程设实习</a>
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/efb转发微信消息到tg/" rel="next" title="efb转发微信消息到tg">
+                <i class="fa fa-chevron-left"></i> efb转发微信消息到tg
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ir1d</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ir1d" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ir1d</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://ir1d.cf/2018/05/19/程设语言部分笔记/';
+          this.page.identifier = '2018/05/19/程设语言部分笔记/';
+          this.page.title = '程设语言部分笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+

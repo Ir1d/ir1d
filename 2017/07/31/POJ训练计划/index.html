@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-14T12:00:55.290Z">
+<meta property="og:updated_time" content="2018-05-22T14:20:02.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ训练计划">
 <meta name="twitter:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
@@ -482,6 +482,9 @@
 <p>2676：计算概论实验班选拔考试考了就懒得再写了= =</p>
 <p>1129：给点染色的最小色数</p>
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>1837：<code>dp[i][c[k] * d[i] + j] += dp[i - 1][j];</code> 第二维是两侧重量差（体积）。因为有负的所以平移一波。</p>
+<p>1276：01背包和多重背包的混合。考虑每一个多重背包，如果<code>num[i] * c[i]</code>大于体积，那么可以对这个物体看作是完全背包，否则拆成log个，然后当成01背包来做</p>
+<p>3267：给一堆词，问一个字符串最少删掉多少字符后可以由这些单词中的某几个（可重复）顺序连接而成。</p>
+<p><code>dp[i] = min(dp[i + 1] + 1, dp[i + match] - (len[j] - match))</code> 其中 <code>match</code> 表示从当前位置开始需要延伸 <code>match</code> 长度来包含 <code>len[j]</code> ，这样 <code>len[j] - match</code> 就是需要删掉的那部分了 <code>dp[i]</code>的含义是从第 <code>i</code> 个位置开始的答案</p>
 
       
     </div>

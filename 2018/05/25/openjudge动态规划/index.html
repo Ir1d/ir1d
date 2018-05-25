@@ -86,15 +86,18 @@
 
 
 
+<meta name="description" content="感觉之前使用md的姿势好像不对 = = ref: https://fancypei.github.io/OpenjudgeDP/  LCIS $$O(n^2)$$  dp[i][j] 表示a串前i个和以b[j]结尾的串的LCIS的长度 转移是： dp[i][j]=max(dp[i][j],dp[i-1][k]+1)    a[i]==b[j]&amp;amp;&amp;amp;b[k]&amp;lt;b[j]   1&amp;l">
 <meta name="keywords" content="openjudge,动态规划,dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openjudge动态规划">
 <meta property="og:url" content="http://ir1d.cf/2018/05/25/openjudge动态规划/index.html">
 <meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="感觉之前使用md的姿势好像不对 = = ref: https://fancypei.github.io/OpenjudgeDP/  LCIS $$O(n^2)$$  dp[i][j] 表示a串前i个和以b[j]结尾的串的LCIS的长度 转移是： dp[i][j]=max(dp[i][j],dp[i-1][k]+1)    a[i]==b[j]&amp;amp;&amp;amp;b[k]&amp;lt;b[j]   1&amp;l">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-25T11:42:36.559Z">
+<meta property="og:updated_time" content="2018-05-25T15:16:29.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openjudge动态规划">
+<meta name="twitter:description" content="感觉之前使用md的姿势好像不对 = = ref: https://fancypei.github.io/OpenjudgeDP/  LCIS $$O(n^2)$$  dp[i][j] 表示a串前i个和以b[j]结尾的串的LCIS的长度 转移是： dp[i][j]=max(dp[i][j],dp[i-1][k]+1)    a[i]==b[j]&amp;amp;&amp;amp;b[k]&amp;lt;b[j]   1&amp;l">
 
 
 
@@ -386,7 +389,55 @@
       
 
       
-        
+        <p>感觉之前使用md的姿势好像不对 = =</p>
+<p>ref: <a href="https://fancypei.github.io/OpenjudgeDP/" target="_blank" rel="external">https://fancypei.github.io/OpenjudgeDP/</a></p>
+<blockquote>
+<p>LCIS $$O(n^2)$$</p>
+</blockquote>
+<p><code>dp[i][j]</code> 表示a串前i个和以<code>b[j]</code>结尾的串的LCIS的长度</p>
+<p>转移是：</p>
+<p><code>dp[i][j]=max(dp[i][j],dp[i-1][k]+1)    a[i]==b[j]&amp;&amp;b[k]&lt;b[j]   1&lt;=k&lt;j</code></p>
+<p><code>dp[i][j]=max(dp[i][j],dp[i-1][j])     a[i]!=b[j]</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">  <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++) &#123;</div><div class="line">    dp[i][j] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (x[i] != y[j]) &#123;</div><div class="line">      dp[i][j] = dp[i - <span class="number">1</span>][j];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">for</span> (k = <span class="number">1</span>; k &lt; j; ++k) &#123;</div><div class="line">        <span class="keyword">if</span> (dp[i][j] &lt; dp[i - <span class="number">1</span>][k] &amp;&amp; y[k] &lt; y[j]) &#123;</div><div class="line">          dp[i][j] = dp[i - <span class="number">1</span>][k];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      dp[i][j] += <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第二个式子i从i-1转移过来，所以可以把i放到外层。这样内层循环的时候<code>a[i]</code>是固定的。根据第一个式子，<code>a[i] == b[j] &gt; b[k]</code>，实际上要找的是<code>b[j] &lt; a[i]</code> 的最大的<code>dp[i - 1][j]</code>，在内层循环的同时存一下就好了，不需要再去枚举那个k了。所以平方的复杂度就能做了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">  mlen = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++) &#123;</div><div class="line">    dp[i][j] = dp[i - <span class="number">1</span>][j];</div><div class="line">    <span class="comment">//更新mlen</span></div><div class="line">    <span class="keyword">if</span> (y[j] &lt; x[i] &amp;&amp; dp[i - <span class="number">1</span>][j] &gt; mlen) &#123;</div><div class="line">      mlen = dp[i - <span class="number">1</span>][j];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//计算dp[i][j]</span></div><div class="line">    <span class="keyword">if</span> (y[j] == x[i]) &#123;</div><div class="line">      dp[i][j] = mlen + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/Ir1d/Fantasy/blob/master/POJ/2127.cpp" target="_blank" rel="external">https://github.com/Ir1d/Fantasy/blob/master/POJ/2127.cpp</a></p>
+<p>（openjudge没有spj）</p>
+<p>记录路径的姿势都忘光了= =</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = n; p = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (ans--) &#123;</div><div class="line">  st[++p] = b[y];</div><div class="line">  <span class="keyword">while</span> (a[x] != b[y]) --x;</div><div class="line">  y = pre[x][y];</div><div class="line">  --x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ref: <a href="http://blog.fly2best.com/algorithm/2013/05/11/longges-common-increasing-subsequence/" target="_blank" rel="external">http://blog.fly2best.com/algorithm/2013/05/11/longges-common-increasing-subsequence/</a></p>
+<ul>
+<li>山区建小学 <a href="http://noi.openjudge.cn/ch0206/7624/" target="_blank" rel="external">http://noi.openjudge.cn/ch0206/7624/</a></li>
+</ul>
+<p>四边形不等式</p>
+<ul>
+<li>7627 鸡蛋的硬度</li>
+</ul>
+<p><code>f[i][j]=min(1+max(f[i-1][t-1],f[i][j-t])</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) f[<span class="number">1</span>][i] = i;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">10</span>; i++)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; j++) &#123;</div><div class="line">  f[i][j] = <span class="number">1</span> + max(f[i - <span class="number">1</span>][<span class="number">0</span>], f[i][j - <span class="number">1</span>]);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">2</span>; t &lt;= j; t++)</div><div class="line">    f[i][j] = min(f[i][j], <span class="number">1</span> + max(f[i - <span class="number">1</span>][t - <span class="number">1</span>], f[i][j - t]));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>9265:取数游戏</p>
+<p>自然数1到N，按顺序列成一排，你可以从中取走任意个数，但是相邻的两个不可以同时被取走.</p>
+<p>答案是斐波那契数，考虑最后一个取(dp[i - 2])，或者不取（dp[i - 1]）.</p>
+</li>
+<li><p>9267:核电站</p>
+<p>加强，变成不能连续m个</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">g(i, <span class="number">0</span>, m) dp[i] = <span class="number">1L</span>L &lt;&lt; i;</div><div class="line">--dp[m];</div><div class="line">g(i, m + <span class="number">1</span>, n) &#123;</div><div class="line">  dp[i] = <span class="number">2</span> * dp[i - <span class="number">1</span>] - dp[i - m - <span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>9268:酒鬼</p>
+<p>不能连续取三个，问取出的最大权值和</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// f是最远，g是到i结束</span></div><div class="line"><span class="comment">// 答案是f[n]</span></div><div class="line"><span class="keyword">for</span> (i = <span class="number">3</span>; i &lt;= n; i++) &#123;</div><div class="line">  g[i] = v[i] + max(f[i - <span class="number">2</span>], v[i - <span class="number">1</span>] + f[i - <span class="number">3</span>]);</div><div class="line">  f[i] = max(g[i], f[i - <span class="number">1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>POJ3046</p>
+<p><a href="https://blog.csdn.net/jaihk662/article/details/77951670" target="_blank" rel="external">https://blog.csdn.net/jaihk662/article/details/77951670</a></p>
+<p>需要滚动数组</p>
+</li>
+</ul>
+<p><code>dp[i][j]</code>表示前i个集合取j个数的种类数</p>
+<p>然后 $$dp[i][j] = \sum_{k=0}^{min(cnt_i, j)} dp[i - 1][j - k]$$ </p>
+
       
     </div>
     

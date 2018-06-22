@@ -93,9 +93,9 @@
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'MFOAFRM2TL',
+      apiKey: 'cd77d6af2d9d1fecb8c392250ed56bb3',
+      indexName: 'ir1d-blog',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -281,6 +281,14 @@
 
       
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
     </ul>
   
 
@@ -289,6 +297,33 @@
 
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -460,34 +495,7 @@
 <p>匿了</p>
 <p>祝大家今后顺利 后会有期</p>
 <p>永远相信美好的事情即将发生</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/icpc2017bj1.jpg" alt="练习赛前" title="">
-                </div>
-                <div class="image-caption">练习赛前</div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/icpc2017bj2.jpg" alt="练习赛前" title="">
-                </div>
-                <div class="image-caption">练习赛前</div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/icpc2017bj3.jpg" alt="正式赛后" title="">
-                </div>
-                <div class="image-caption">正式赛后</div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/icpc2017bj4.png" alt="证件合影" title="">
-                </div>
-                <div class="image-caption">证件合影</div>
-            </figure>
+<p><img src="/images/icpc2017bj1.jpg" alt="练习赛前"><br><img src="/images/icpc2017bj2.jpg" alt="练习赛前"><br><img src="/images/icpc2017bj3.jpg" alt="正式赛后"><br><img src="/images/icpc2017bj4.png" alt="证件合影"></p>
 
       
     </div>
@@ -622,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -951,6 +959,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
 
 
 

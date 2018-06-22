@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-22T14:39:47.942Z</updated>
+  <updated>2018-06-06T16:56:22.850Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://ir1d.cf/2018/06/22/hello-world/"/>
-    <id>http://ir1d.cf/2018/06/22/hello-world/</id>
-    <published>2018-06-22T14:39:47.942Z</published>
-    <updated>2018-06-22T14:39:47.942Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>openjudge动态规划</title>
@@ -426,7 +405,7 @@
     <published>2018-01-27T23:28:40.000Z</published>
     <updated>2018-01-28T07:33:29.781Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/d4881b876b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/d4881b876b8a</a></p><a id="more"></a><p>忙了20多天组织完这个六重</p><p>也不知道是否值得</p><p>就当是神奇的经历吧</p><p>感谢大家的帮助 当天赶完了战报 想了好多 写起来感觉大学国文真的是白学了QAQ</p><p>准备的过程和出锅的时候甚至是满满的无力感</p><p>有种那年NOI的时候的flashback</p><p>可我怎么就没想到呢= =</p><p>不过好在是在大连做的</p><p>我们甚至可以拆了补一补做成正儿八经的六重</p><p>表白大连蓝军</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/145746-552077acfb413edb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>2018.1.27.12:51 - 2018.1.28 14:42</p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/d4881b876b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/d4881b876b8a</a></p><a id="more"></a><p>忙了20多天组织完这个六重</p><p>也不知道是否值得</p><p>就当是神奇的经历吧</p><p>感谢大家的帮助 当天赶完了战报 想了好多 写起来感觉大学国文真的是白学了QAQ</p><p>准备的过程和出锅的时候甚至是满满的无力感</p><p>有种那年NOI的时候的flashback</p><p>可我怎么就没想到呢= =</p><p>不过好在是在大连做的</p><p>我们甚至可以拆了补一补做成正儿八经的六重</p><p>表白大连蓝军</p><p><img src="https://upload-images.jianshu.io/upload_images/145746-552077acfb413edb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p><p>2018.1.27.12:51 - 2018.1.28 14:42</p>]]></content>
     
     <summary type="html">
     
@@ -553,6 +532,29 @@
       <category term="MOOC" scheme="http://ir1d.cf/tags/MOOC/"/>
     
       <category term="程序设计实习" scheme="http://ir1d.cf/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git代理</title>
+    <link href="http://ir1d.cf/2018/01/13/git%E4%BB%A3%E7%90%86/"/>
+    <id>http://ir1d.cf/2018/01/13/git代理/</id>
+    <published>2018-01-13T08:01:05.000Z</published>
+    <updated>2018-01-13T08:03:43.432Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+    
+      <category term="操作" scheme="http://ir1d.cf/tags/%E6%93%8D%E4%BD%9C/"/>
     
   </entry>
   

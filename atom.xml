@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Neverland</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://ir1d.cf/"/>
+  <updated>2018-06-22T14:39:47.942Z</updated>
+  <id>http://ir1d.cf/</id>
+  
+  <author>
+    <name>Ir1d</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://ir1d.cf/2018/06/22/hello-world/"/>
+    <id>http://ir1d.cf/2018/06/22/hello-world/</id>
+    <published>2018-06-22T14:39:47.942Z</published>
+    <updated>2018-06-22T14:39:47.942Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>openjudge动态规划</title>
+    <link href="http://ir1d.cf/2018/05/25/openjudge%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>http://ir1d.cf/2018/05/25/openjudge动态规划/</id>
+    <published>2018-05-25T11:42:16.000Z</published>
+    <updated>2018-06-06T16:56:22.850Z</updated>
+    
+    <content type="html"><![CDATA[<p>感觉之前使用md的姿势好像不对 = =</p><a id="more"></a><p>ref: <a href="https://fancypei.github.io/OpenjudgeDP/" target="_blank" rel="noopener">https://fancypei.github.io/OpenjudgeDP/</a></p><blockquote><p>LCIS $O(n^2)$</p></blockquote><p><code>dp[i][j]</code> 表示a串前i个和以<code>b[j]</code>结尾的串的LCIS的长度</p><p>转移是：</p><p><code>dp[i][j]=max(dp[i][j],dp[i-1][k]+1)    a[i]==b[j]&amp;&amp;b[k]&lt;b[j]   1&lt;=k&lt;j</code></p><p><code>dp[i][j]=max(dp[i][j],dp[i-1][j])     a[i]!=b[j]</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (x[i] != y[j]) &#123;</span><br><span class="line">      dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (k = <span class="number">1</span>; k &lt; j; ++k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dp[i][j] &lt; dp[i - <span class="number">1</span>][k] &amp;&amp; y[k] &lt; y[j]) &#123;</span><br><span class="line">          dp[i][j] = dp[i - <span class="number">1</span>][k];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      dp[i][j] += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>第二个式子i从i-1转移过来，所以可以把i放到外层。这样内层循环的时候<code>a[i]</code>是固定的。根据第一个式子，<code>a[i] == b[j] &gt; b[k]</code>，实际上要找的是<code>b[j] &lt; a[i]</code> 的最大的<code>dp[i - 1][j]</code>，在内层循环的同时存一下就好了，不需要再去枚举那个k了。所以平方的复杂度就能做了</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">  mlen = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">    dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">    <span class="comment">//更新mlen</span></span><br><span class="line">    <span class="keyword">if</span> (y[j] &lt; x[i] &amp;&amp; dp[i - <span class="number">1</span>][j] &gt; mlen) &#123;</span><br><span class="line">      mlen = dp[i - <span class="number">1</span>][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算dp[i][j]</span></span><br><span class="line">    <span class="keyword">if</span> (y[j] == x[i]) &#123;</span><br><span class="line">      dp[i][j] = mlen + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/Ir1d/Fantasy/blob/master/POJ/2127.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/POJ/2127.cpp</a></p><p>（openjudge没有spj）</p><p>记录路径的姿势都忘光了= =</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = n; p = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (ans--) &#123;</span><br><span class="line">  st[++p] = b[y];</span><br><span class="line">  <span class="keyword">while</span> (a[x] != b[y]) --x;</span><br><span class="line">  y = pre[x][y];</span><br><span class="line">  --x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>ref: <a href="http://blog.fly2best.com/algorithm/2013/05/11/longges-common-increasing-subsequence/" target="_blank" rel="noopener">http://blog.fly2best.com/algorithm/2013/05/11/longges-common-increasing-subsequence/</a></p><ul><li>山区建小学 <a href="http://noi.openjudge.cn/ch0206/7624/" target="_blank" rel="noopener">http://noi.openjudge.cn/ch0206/7624/</a></li></ul><p>四边形不等式</p><ul><li>7627 鸡蛋的硬度</li></ul><p><code>f[i][j]=min(1+max(f[i-1][t-1],f[i][j-t])</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) f[<span class="number">1</span>][i] = i;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; j++) &#123;</span><br><span class="line">  f[i][j] = <span class="number">1</span> + max(f[i - <span class="number">1</span>][<span class="number">0</span>], f[i][j - <span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">2</span>; t &lt;= j; t++)</span><br><span class="line">    f[i][j] = min(f[i][j], <span class="number">1</span> + max(f[i - <span class="number">1</span>][t - <span class="number">1</span>], f[i][j - t]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>9265:取数游戏</p><p>自然数1到N，按顺序列成一排，你可以从中取走任意个数，但是相邻的两个不可以同时被取走.</p><p>答案是斐波那契数，考虑最后一个取(dp[i - 2])，或者不取（dp[i - 1]）.</p></li><li><p>9267:核电站</p><p>加强，变成不能连续m个</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">0</span>, m) dp[i] = <span class="number">1L</span>L &lt;&lt; i;</span><br><span class="line">--dp[m];</span><br><span class="line">g(i, m + <span class="number">1</span>, n) &#123;</span><br><span class="line">  dp[i] = <span class="number">2</span> * dp[i - <span class="number">1</span>] - dp[i - m - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>9268:酒鬼</p><p>不能连续取三个，问取出的最大权值和</p></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// f是最远，g是到i结束</span></span><br><span class="line"><span class="comment">// 答案是f[n]</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">  g[i] = v[i] + max(f[i - <span class="number">2</span>], v[i - <span class="number">1</span>] + f[i - <span class="number">3</span>]);</span><br><span class="line">  f[i] = max(g[i], f[i - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>POJ3046</p><p><a href="https://blog.csdn.net/jaihk662/article/details/77951670" target="_blank" rel="noopener">https://blog.csdn.net/jaihk662/article/details/77951670</a></p><p>需要滚动数组</p></li></ul><p><code>dp[i][j]</code>表示前i个集合取j个数的种类数</p><p>然后 $dp[i][j] = \sum_{k=0}^{min(cnt_i, j)} dp[i - 1][j - k]$</p><ul><li><p>9288:Zju2061 Buy the Ticket</p><p>排队买票 卡特兰数</p><p>相当于在一个格点阵列中，从 (0, 0) 点走到 (n, m) 点且不穿过对角线 x = y 的方法数 。</p><p>最后答案要乘上排列数（阶乘）</p></li><li><p>6046:数据包的调度机制</p><p>区间dp，<code>dp[i][j]</code> 是把<code>[i, j]</code>这一段的数据包发出去的最小代价，然后转移的时候枚举这一段里面哪一个是最后发出的。因为是个栈，所以最后一个发出的那个包前面的是第一段，那个包后面的是第二段。</p><p><a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/6046.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/6046.cpp</a></p></li><li><p>4149:课程大作业</p><p><code>dp[i][S]</code>表示前i天完成S的最小代价</p><p>过不了</p><p><code>dp[S]</code>表示完成S的最小代价，每次枚举第一个完成哪个，记忆化搜索</p><p><a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/4149.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/4149.cpp</a></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;感觉之前使用md的姿势好像不对 = =&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="合集" scheme="http://ir1d.cf/categories/%E5%90%88%E9%9B%86/"/>
+    
+    
+      <category term="openjudge" scheme="http://ir1d.cf/tags/openjudge/"/>
+    
+      <category term="动态规划" scheme="http://ir1d.cf/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="dp" scheme="http://ir1d.cf/tags/dp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openjudge补习</title>
+    <link href="http://ir1d.cf/2018/05/25/openjudge%E8%A1%A5%E4%B9%A0/"/>
+    <id>http://ir1d.cf/2018/05/25/openjudge补习/</id>
+    <published>2018-05-25T05:07:23.000Z</published>
+    <updated>2018-05-25T11:42:43.443Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>8758 2的幂次方表示</p><p>印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了</p></li><li><p>整数划分</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, i) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + dp[i - j][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// dp[i][j] 是i分成j份的方案数</span></span><br></pre></td></tr></table></figure></li><li><p>zipper</p><p>问A和B两个串 能否交叉组合成C，要求AB内部相对顺序不变</p><p><code>dp[i][j]</code> 表示<code>A[1..i]</code>和<code>B[1..j]</code> 能否拼成<code>C[1..i+j]</code> 转移就判一下最后一个字符是否匹配</p></li></ul><ul><li><strong>复杂的整数划分问题</strong></li></ul><p>第一行: N划分成K个正整数之和的划分数目<br>第二行: N划分成若干个不同正整数之和的划分数目<br>第三行: N划分成若干个奇正整数之和的划分数目</p><p>ref: <a href="https://blog.csdn.net/tp7309/article/details/54880495" target="_blank" rel="noopener">https://blog.csdn.net/tp7309/article/details/54880495</a></p><blockquote><p>n划分成可相同的正整数</p></blockquote><p><code>dp[i][j]</code> 表示把i分成不超过j的数的和<br><code>dp[i][j] = dp[i][j - 1] + dp[i - j][j]</code><br>要么每个数都小于j，要么至少有一个等于j，把那个j去掉。</p><p><code>i &lt; j</code>时 <code>dp[i][j] = 0</code></p><p>边界：<code>dp[0][0] = 1;</code></p><blockquote><p>不相同</p></blockquote><p><code>dp[i][j] = dp[i][j - 1] + dp[i - j][j - 1]</code><br>要么每个数都小于j，要么有一个数等于j，把唯一的那个j去掉，剩下的数都小于j了。</p><blockquote><p>k个数</p></blockquote><p><code>dp[i][j]</code> 表示把i分成j份<br><code>dp[i][j] = dp[i - j][j] + dp[i - 1][j - 1]</code><br>要么给之前的j组每个数加一，要么取出来一个1单独装一组</p><p><code>i &lt; j</code>时 <code>dp[i][j] = dp[i][i]</code></p><p>边界：<code>dp[0][i] = 1;</code></p><blockquote><p>分成奇数</p></blockquote><p><code>f[i][j]</code> 表示i分成j个正奇数<br><code>g[i][j]</code> 分成正偶数</p><p><code>g[i][j] = f[i - j][j]</code><br>偶数来自每一组奇数加一<br><code>f[i][j] = f[i - 1][j - 1] + g[i - j][j]</code><br>奇数来自偶数加一，或者最后一个1单独一组<br>边界：<code>f[0][0] = g[0][0] = 1</code></p><ul><li><p>6047:切蛋糕</p><p><code>dp[i][j[k]</code>表示<code>i*j</code>大小的切k块的答案（最大块面积的最小值）</p><p>转移的时候就枚举横竖的切法就可以了</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">    dp[i][j][<span class="number">1</span>] = i * j;</span><br><span class="line">    g(k, <span class="number">2</span>, <span class="number">20</span>) &#123;</span><br><span class="line">      dp[i][j][k] = oo;</span><br><span class="line">      f(r, <span class="number">1</span>, i) &#123;</span><br><span class="line">        f(p, <span class="number">1</span>, k) &#123;</span><br><span class="line">          dp[i][j][k] = <span class="built_in">std</span>::min(dp[i][j][k], <span class="built_in">std</span>::max(dp[r][j][p], dp[i - r][j][k - p]));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      f(c, <span class="number">1</span>, j) &#123;</span><br><span class="line">        f(p, <span class="number">1</span>, k) &#123;</span><br><span class="line">          dp[i][j][k] = <span class="built_in">std</span>::min(dp[i][j][k], <span class="built_in">std</span>::max(dp[i][c][p], dp[i][j - c][k - p]));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><hr><p>感觉比之前菜多了…… 重开几页补补题吧QAQ</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;8758 2的幂次方表示&lt;/p&gt;
+&lt;p&gt;印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;整数划分&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
+      
+    
+    </summary>
+    
+      <category term="合集" scheme="http://ir1d.cf/categories/%E5%90%88%E9%9B%86/"/>
+    
+    
+      <category term="openjudge" scheme="http://ir1d.cf/tags/openjudge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程设算法上机练习小结</title>
+    <link href="http://ir1d.cf/2018/05/19/%E7%A8%8B%E8%AE%BE%E7%AE%97%E6%B3%95%E4%B8%8A%E6%9C%BA%E7%BB%83%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
+    <id>http://ir1d.cf/2018/05/19/程设算法上机练习小结/</id>
+    <published>2018-05-19T13:16:05.000Z</published>
+    <updated>2018-05-19T13:53:13.533Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="练习一"><a href="#练习一" class="headerlink" title="练习一"></a>练习一</h1><ul><li><p>A:浮点数求高精度幂</p><p>正常的高精度快速幂，处理小数点的位置注意一下</p></li><li><p>B:Integer Inquiry<br>  高精度加法</p></li><li><p><strong>C:Communication System</strong><br>  每一类选一个使得最后的 <code>最小带宽/总价格</code> 最大<br>  可以枚举最小的带宽是啥 然后贪心找价格最小的</p><p>  dp的话<code>dp[i][j]</code>表示到第<code>i</code>类，带宽是<code>j</code>的答案<br>  当时一直在想<code>j</code>的范围没给不是很好办，后来看代码发现开到<code>1k</code>就可以了</p><p>  代码： <a href="https://github.com/Ir1d/Fantasy/blob/master/POJ/1018.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/POJ/1018.cpp</a><br>  注意 <code>POJ 1018</code> 得用 <code>C++</code> 交，不知道为啥</p></li><li><p>D:判断闰年<br>  <code>if</code>就好了</p></li><li><p>E:生理周期<br>  枚举或者<code>CRT</code></p></li><li><p>F:完美立方<br>  枚举</p></li><li><p>G:画家问题<br>  枚举第一行的结果，然后之后的操作就确定了，找答案最小的就可以了</p></li><li><p><strong>H:恼人的青蛙</strong><br>  枚举？</p></li><li><p><strong>I:放苹果</strong><br>  应该直接组合数吧？ dfs过了</p></li><li><p>J:古代密码<br>  就是给每个字母的出现次序排个序看能不能对应上</p></li></ul><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;练习一&quot;&gt;&lt;a href=&quot;#练习一&quot; class=&quot;headerlink&quot; title=&quot;练习一&quot;&gt;&lt;/a&gt;练习一&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A:浮点数求高精度幂&lt;/p&gt;
+&lt;p&gt;正常的高精度快速幂，处理小数点的位置注意一下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="算法" scheme="http://ir1d.cf/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="程设" scheme="http://ir1d.cf/tags/%E7%A8%8B%E8%AE%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>爬虫小结</title>
+    <link href="http://ir1d.cf/2018/05/19/%E7%88%AC%E8%99%AB%E5%B0%8F%E7%BB%93/"/>
+    <id>http://ir1d.cf/2018/05/19/爬虫小结/</id>
+    <published>2018-05-19T02:32:00.000Z</published>
+    <updated>2018-05-19T02:35:14.446Z</updated>
+    
+    <content type="html"><![CDATA[<p>爬虫小结</p><p>爬了个小站，其实对方主要是在防注入（？），并没有怎么反爬所以其实不太困难，美中不足的是写挂了好多地方，然后有懒得增量更新爬到的结果，所以反反复复算是爬了三次，给服务器带来了不少压力。</p><p>其实是第一次用py写模拟登录（惭愧）</p><p>首先是患者列表，在翻页的时候抓包发现没有请求，翻开发者工具发现是藏在IndexedDB里面，然后补习了一下导出的姿势</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db;</span><br><span class="line"><span class="keyword">var</span> DB_NAME = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">var</span> DB_VERSION = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> STORE_NAME = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = indexedDB.open(DB_NAME, DB_VERSION);</span><br><span class="line">request.onupgradeneeded = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create a new object store if this is the first time we're using</span></span><br><span class="line">  <span class="comment">// this DB_NAME/DB_VERSION combo.</span></span><br><span class="line">  request.result.createObjectStore(STORE_NAME, &#123;<span class="attr">autoIncrement</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">&#125;;</span><br><span class="line">request.onsuccess = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  db = request.result;</span><br><span class="line">  <span class="comment">// Enable our buttons once the IndexedDB instance is available.</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> res;</span><br><span class="line"><span class="keyword">var</span> transaction = db.transaction(STORE_NAME, <span class="string">'readonly'</span>);</span><br><span class="line"><span class="keyword">var</span> objectStore = transaction.objectStore(STORE_NAME);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">'getAll'</span> <span class="keyword">in</span> objectStore) &#123;</span><br><span class="line">  <span class="comment">// IDBObjectStore.getAll() will return the full set of items in our store.</span></span><br><span class="line">  objectStore.getAll().onsuccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    res = event.target.result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后就是常规操作，模拟登录什么的，然后有一个坑点是request库遇到302会跟着重定向过去，但是cookie没有存= =</p><p>解决方案是开个Session</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REQ = requests.Session()</span><br><span class="line">r = REQ.post(loginUrl, headers=header, data=payload)</span><br></pre></td></tr></table></figure><p>对于Cookie的处理选择用dict，然后面向StackOverflow编程学习到了崭新的更新dict的操作</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic = REQ.cookies.get_dict()</span><br><span class="line">cookie = &#123;**cookie, **dic&#125;</span><br></pre></td></tr></table></figure><p>然后也学习到了从Chrome的工具里header变成python dict的方法和把dict变成Cookie串的方法= =<br>回想当年自己真的是太naive了呀</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert Chrome headers to Python's Requests dictionary </span></span><br><span class="line">dict([[h.partition(<span class="string">':'</span>)[<span class="number">0</span>], h.partition(<span class="string">':'</span>)[<span class="number">2</span>]] <span class="keyword">for</span> h <span class="keyword">in</span> rawheaders.split(<span class="string">'\n'</span>)])</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">(s)</span>:</span> <span class="comment"># Converts dict to cookie string</span></span><br><span class="line">  res = <span class="string">""</span></span><br><span class="line">  <span class="keyword">for</span> k <span class="keyword">in</span> s:</span><br><span class="line">    res += k + <span class="string">'='</span> + s[k] + <span class="string">';'</span></span><br><span class="line">  <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>以及regex中加个括号得到group可以只选中匹配出来的字符串的一部分，真的赞！</p><p>捕捉异常的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">  logging.exception(<span class="string">"message"</span>)</span><br></pre></td></tr></table></figure></p><p>创建文件夹：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'&#123;&#125;_res/&#123;&#125;'</span>.format(CRAWL_ID, idx)):</span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    os.makedirs(<span class="string">'&#123;&#125;_res/&#123;&#125;'</span>.format(CRAWL_ID, idx))</span><br><span class="line">  <span class="keyword">except</span> OSError <span class="keyword">as</span> exc: <span class="comment"># Guard against race condition</span></span><br><span class="line">    <span class="keyword">if</span> exc.errno != errno.EEXIST:</span><br><span class="line">      <span class="keyword">raise</span> <span class="comment"># 套在 try except里面</span></span><br></pre></td></tr></table></figure><p>下载图片：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">photoRes = requests.get(curUrl, headers=newHeader)</span><br><span class="line"><span class="comment"># if photoRes.status_code == 200:</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'&#123;&#125;_res/&#123;&#125;/&#123;&#125;.&#123;&#125;'</span>.format(CRAWL_ID, idx, idNum, curName.split(<span class="string">'.'</span>)[<span class="number">-1</span>]), <span class="string">'ab'</span>) <span class="keyword">as</span> f:</span><br><span class="line">  f.write(photoRes.content)</span><br></pre></td></tr></table></figure><p>最后一个坑：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">photoNames = [x[<span class="string">'picId'</span>] <span class="keyword">for</span> x <span class="keyword">in</span> jsonRes[<span class="string">'result'</span>] <span class="keyword">if</span> <span class="string">"X光"</span> <span class="keyword">in</span> str(x[<span class="string">'tags'</span>])]</span><br></pre></td></tr></table></figure><p>注意到<code>x[&#39;tags&#39;]</code>可以是<code>None</code> 所以加上 <code>str</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;爬虫小结&lt;/p&gt;
+&lt;p&gt;爬了个小站，其实对方主要是在防注入（？），并没有怎么反爬所以其实不太困难，美中不足的是写挂了好多地方，然后有懒得增量更新爬到的结果，所以反反复复算是爬了三次，给服务器带来了不少压力。&lt;/p&gt;
+&lt;p&gt;其实是第一次用py写模拟登录（惭愧）&lt;/p&gt;
+&lt;p&gt;
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="爬虫" scheme="http://ir1d.cf/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="python" scheme="http://ir1d.cf/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程设语言部分笔记</title>
+    <link href="http://ir1d.cf/2018/05/19/%E7%A8%8B%E8%AE%BE%E8%AF%AD%E8%A8%80%E9%83%A8%E5%88%86%E7%AC%94%E8%AE%B0/"/>
+    <id>http://ir1d.cf/2018/05/19/程设语言部分笔记/</id>
+    <published>2018-05-19T02:27:43.000Z</published>
+    <updated>2018-05-19T02:30:27.780Z</updated>
+    
+    <content type="html"><![CDATA[<p>断更了好久……</p><p>其实也说不清在忙什么……</p><p>莫名其妙的……</p><p>雾：下文内含大量typo（拼音输入法）</p><hr><p><a href="http://cxsjsx.openjudge.cn/hw201808/B/" target="_blank" rel="noopener">OpenJudge - B:按距离排序</a> 给struct重载() 来当比较器传给std::sort</p><p><a href="http://cxsjsx.openjudge.cn/hw201807/G/" target="_blank" rel="noopener">OpenJudge - G:你真的搞清楚为啥 while(cin &gt;&gt; n) 能成立了吗？</a></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 重载强制类型转换</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>修改指针一定要小心，尤其是模板里面 <code>*a = *b</code> 注意指针指向的地址是否变了 是否只改变了值</p><p><a href="http://cxsjsx.openjudge.cn/hw201807/C/" target="_blank" rel="noopener">OpenJudge - C:山寨版istream_iterator</a><br><code>operator *()</code> 重载解引用运算符   <code>operator ++(int)</code> 是后缀自增运算符</p><p><a href="http://cxsjsx.openjudge.cn/hw201808/E/" target="_blank" rel="noopener">OpenJudge - E:很难蒙混过关的CArray3d三维数组模板类</a></p><p>写得很痛苦，的确没有蒙混过关，还是应该老实的……</p><blockquote><ul><li>建议做法：</li></ul><ol><li>a[i][j][k] 这个表达式的第一个[]返回一个<strong>内部类</strong>的对象，该内部类也重载了[],且返回值为指针。</li><li>必要时需重载对象到指针的强制类型转换运算符</li></ol></blockquote><p><a href="http://cxsjsx.openjudge.cn/hw201808/F/" target="_blank" rel="noopener">OpenJudge - F:我自己的 ostream_iterator</a></p><p>刚开始一直在想怎么让他赋值进去就直接能输出，后来发现实际上是后面有一个++的过程，++的时候输出就好了。<br>然后再就是<code>*x=*a</code>重载的是<code>*</code>运算符不是等号= =</p><p><a href="http://cxsjsx.openjudge.cn/hw201809/A/" target="_blank" rel="noopener">OpenJudge - A:List</a> </p><p>简直惨痛。。。 merge自己到自己的操作要忽略掉就好了= = 果然还是应该写对拍</p><p><a href="http://cxsjsx.openjudge.cn/hw201809/F/" target="_blank" rel="noopener">OpenJudge - F:冷血格斗场</a></p><p>听说是当年pkusc的题，就是找lowerbound 然后再找前面的一个 比较比较就好了</p><p>没考虑到的地方是可能lowerbound的前面找到的那个并不是id最小的，要再lowerbound一下= =</p><p><a href="http://cxsjsx.openjudge.cn/2016mid2018/08/" target="_blank" rel="noopener">OpenJudge - 08:编程填空：维护平面点</a></p><p><a href="http://cxsjsx.openjudge.cn/hw201809/H/" target="_blank" rel="noopener">OpenJudge - H:编程填空：数据库内的学生信息</a></p><p>比较器的写法</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">Greater</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &gt; y;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">typedef</span> T first_argument_type;</span><br><span class="line">  <span class="keyword">typedef</span> T second_argument_type;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">bool</span> result_type;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>upd：重写了 后三个typedef 不是必须的<br><a href="http://cxsjsx.openjudge.cn/2015mid2018/11/" target="_blank" rel="noopener">OpenJudge - 11:编程填空：数据库内的学生信息</a></p><p><strong>太难了= =</strong></p><p><strong>static的初始化方式</strong></p><p>printf – <code>%x</code> 十六进制</p><hr><p>期中复习</p><p>常引用：不是引用的内容不能修改，是不能通过常引用修改<br><code>const T</code> 或者 <code>const T &amp;</code>类型不能用来初始化 <code>T&amp;</code>类型，除非经过了强制类型转换<br>调用内联函数的语句前必须已经出现内联函数的定义（整个函数体），不能只有声明<br>同名函数只有参数表不同才算是重载，两个同名函数的参数表相同而返回值不同不是重载，是重复定义<br>new分配的空间一定要delete释放，否则程序运行结束后也不会被系统收回<br>一个string对象的大小（sizeof）是固定的（在不同编译器中并不相同，与字符串长度无关）<br>string对象中只存放地址和其他信息<br>大写字母ASCII码小于小写字母<br>struct默认公有，class默认私有<br>局部变量存储空间是动态分配在栈中的<br><strong><code>CTest* pArray[3] = {new CTest(4), new CTest(1, 2)};</code> 只生成了两个对象，第三个没有生成</strong><br>复制构造函数的参数一般用const引用，这样既能以常量对象，也能以非常量对象作为参数<br><strong>函数的参数对象以及作为函数返回值的对象，在消亡时也会引发析构函数调用</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CDemo::CDemo(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line">&#125;</span><br><span class="line">CDemo dl;</span><br><span class="line"><span class="function">CDemo <span class="title">Test</span><span class="params">()</span> </span>&#123; <span class="comment">// 返回值是临时对象</span></span><br><span class="line">  foo();</span><br><span class="line">  <span class="keyword">return</span> dl;</span><br><span class="line">&#125;</span><br><span class="line">CDemo d4;</span><br><span class="line">d4 = <span class="number">6</span>; <span class="comment">// 这里6先被转换成临时对象，然后再赋值。语句执行完毕后临时对象消亡，调用析构函数</span></span><br></pre></td></tr></table></figure></p><p>并非所有对象生成的时候都通过上面的构造函数初始化，作为参数和返回值的时候是调用复制构造函数，需要另外再写<br>不能通过对常量对象调用普通成员函数，但是可以调用const的<br>两个成员函数的名字和参数表相同，但是一个const，另一个不是，算重载<br>封闭类生成的时候先执行所有成员对象的构造函数，再执行封闭类自己的构造函数<br>消亡的时候是先执行封闭类的析构函数，后执行成员对象的。<br>常量型成员变量和引用型必须要在构造函数的初始化列表中初始化<br>友元函数内部可以访问该类对象的private<br>不能吧其他类的私有成员函数声明为友元<br>交叉调用的时候允许写一个提前声明<code>class s;</code>但是在定义出现之前，不允许任何会导致该类对象被生成的语句。使用该类的指针或者引用是没有问题的<br>可以声明另一个类是自己的友元<br>友元关系不能传递<br>类的非内联成员函数的函数体只能出现在某一个<code>.cpp</code>文件中，不能放在头文件中被多个<code>.cpp</code>文件包含，否则链接时会发生重复定义的错误<br>如果编写了构造函数，则编译器不自动生成默认构造函数，一个类不一定会有默认（无参）构造函数，但是一定会有复制构造函数<br><code>=</code>只能重载为成员函数<br>在delete之前判断是否是NULL<br>注意赋值给自己的时候的指针的处理<br>参数os只能是ostream的引用，而不能使ostream对象，是因为ostream的复制构造函数是私有的，不能生成参数对象<br>类型强制转换运算符是单目运算符，只能被重载为成员函数 <code>operator double()  {}</code><br><code>++a</code>或者<code>--a</code>前置：<code>CDemo&amp; operator ++();</code><br><code>a++</code>或者<code>a--</code>后置：<code>CDemo operator ++(int);</code><br>运算符重载不改变优先级<br>不能被重载的运算符：<code>.</code> <code>.*</code>（成员指针访问运算符） <code>::</code> <code>?:</code> <code>sizeof</code><br>重载<code>() [] -&gt;</code>或者 赋值<code>=</code>时，只能重载为成员函数<br>派生类的成员函数只能访问所作用的那个对象（this指向的）的基类保护成员，不能访问其他基类对象的基类保护成员<br>如果一个派生类对象使用默认复制构造函数初始化的，那么他内部包含的基类对象也要用基类的复制构造函数初始化<br>封闭类类似<br>派生类对象生成的时候，先从上至下执行所有基类的构造函数，再按照成员对象的定义顺序执行各个成员对象的构造函数，最后执行自身的<br>消亡时，先执行自身的，后面与够早的次序相反<br>如果是public派生，派生类对象也是基类对象，如果是private或者protected，就不成立<br>多态的函数调用语句被称为是<code>动态联编</code>的<br>虚函数表的地址在对象存储空间的最前端<br>成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数是多态的<br>析构函数和构造函数中调用的虚函数不是多态<br>只要基类中的某个函数被声明成虚函数，则派生类中的同名、同参数表的成员函数及时前面没写virtual也是虚函数<br>虚析构函数：只要基类的析构函数是虚函数，那么派生类的析构函数不论是否用virtual声明，都是虚析构函数<br><strong>一个类如果定义了虚函数，则最好将析构函数也定义成虚函数</strong><br>独立的抽象类的对象不存在，但是被包含在派生类对象中的抽象类的对象是可以存在的<br>抽象类的成员函数内可以调用纯虚函数，但是在构造函数或析构函数内部不能<br>cerr clog 不能被重定向<br>cerr 不使用缓冲区 clog 使用<br><code>while (cin &gt;&gt; n)</code> 是因为把ostream到bool的转换重载了</p><p>顺序容器：vector, deque, list<br>关联容器：set, multiset, map, multimap<br>容器适配器：stack, queue, priority_queue<br>rend():只想容器中的第一个元素前面的位置的反向迭代器<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = v.rbegin(); it != v.rend(); ++it);</span><br></pre></td></tr></table></figure></p><table><thead><tr><th>容器</th><th>迭代器功能</th></tr></thead><tbody><tr><td>vector</td><td>随机</td></tr><tr><td>deque</td><td>随机</td></tr><tr><td>list</td><td>双向</td></tr><tr><td>set/ multiset</td><td>双向</td></tr><tr><td>map/ multimap</td><td>双向</td></tr><tr><td>stack</td><td>不支持迭代器</td></tr><tr><td>queue</td><td>不支持迭代器</td></tr><tr><td>priority_queue</td><td>不支持迭代器</td></tr></tbody></table><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">cout</span>,<span class="string">" "</span>);</span><br><span class="line">copy (v.begin(), v.end(), output);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::set_union(v1.begin(), v1.end(), v2.begin(), v2.end(), <span class="built_in">std</span>::back_inserter(dest1));</span><br></pre></td></tr></table></figure><hr><p>考完试：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">int</span> <span class="title">sz</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span> &lt; &gt; <span class="keyword">int</span>  A &lt;<span class="keyword">int</span>, <span class="number">40</span>&gt;::c = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">template</span> &lt; &gt; <span class="keyword">int</span>  A &lt;<span class="keyword">int</span>, <span class="number">50</span>&gt;::c = <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>const算不算重载<br>什么时候需要在初始化列表里初始化</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;断更了好久……&lt;/p&gt;
+&lt;p&gt;其实也说不清在忙什么……&lt;/p&gt;
+&lt;p&gt;莫名其妙的……&lt;/p&gt;
+&lt;p&gt;雾：下文内含大量typo（拼音输入法）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;http://cxsjsx.openjudge.cn/hw201808/B/&quot; target
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="程设实习" scheme="http://ir1d.cf/tags/%E7%A8%8B%E8%AE%BE%E5%AE%9E%E4%B9%A0/"/>
+    
+      <category term="C++" scheme="http://ir1d.cf/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>efb转发微信消息到tg</title>
+    <link href="http://ir1d.cf/2018/03/10/efb%E8%BD%AC%E5%8F%91%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%88%B0tg/"/>
+    <id>http://ir1d.cf/2018/03/10/efb转发微信消息到tg/</id>
+    <published>2018-03-10T15:57:50.000Z</published>
+    <updated>2018-05-19T02:36:50.330Z</updated>
+    
+    <content type="html"><![CDATA[<p>折腾很多坑</p><p>在NanoApe指点下得知应该装v1.6.6</p><p>然后就很好办啦</p><p>ref: <a href="https://konano.github.io/2018/02/17/EFB-use/" target="_blank" rel="noopener">https://konano.github.io/2018/02/17/EFB-use/</a></p><p>upd(2018.5.19): 经常掉线 其实很不好用= =</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;折腾很多坑&lt;/p&gt;
+&lt;p&gt;在NanoApe指点下得知应该装v1.6.6&lt;/p&gt;
+&lt;p&gt;然后就很好办啦&lt;/p&gt;
+&lt;p&gt;ref: &lt;a href=&quot;https://konano.github.io/2018/02/17/EFB-use/&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装wxPython</title>
+    <link href="http://ir1d.cf/2018/03/01/%E5%AE%89%E8%A3%85wxPython/"/>
+    <id>http://ir1d.cf/2018/03/01/安装wxPython/</id>
+    <published>2018-02-28T23:55:54.000Z</published>
+    <updated>2018-03-01T01:19:35.825Z</updated>
+    
+    <content type="html"><![CDATA[<p>你可能需要这个【</p><p><a href="https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560" target="_blank" rel="noopener">https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560</a></p><p>甚至可能需要手动编译整个wxwidgets</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;你可能需要这个【&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wxWidgets/Phoenix/issues/412#issuecomment-346273560&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://g
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>telegram-bots</title>
+    <link href="http://ir1d.cf/2018/02/24/telegram-bots/"/>
+    <id>http://ir1d.cf/2018/02/24/telegram-bots/</id>
+    <published>2018-02-24T03:49:44.000Z</published>
+    <updated>2018-02-24T05:17:11.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>写 Telegram bot 的时候遇到了问题，一直在纠结为什么我的 bot 需要 <code>/asdf@bot</code> 而不是 <code>/asdf</code> 就行= =</p><p>最后发现问题在这里：<a href="https://core.telegram.org/bots#privacy-mode" target="_blank" rel="noopener">https://core.telegram.org/bots#privacy-mode</a></p><p>官方API：<a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener">https://core.telegram.org/bots/api</a></p><p>一些现成的整理：<a href="https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets" target="_blank" rel="noopener">https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets</a></p><p>以及 TG bot 传文件大小是50M= = 图片是10M</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;写 Telegram bot 的时候遇到了问题，一直在纠结为什么我的 bot 需要 &lt;code&gt;/asdf@bot&lt;/code&gt; 而不是 &lt;code&gt;/asdf&lt;/code&gt; 就行= =&lt;/p&gt;
+&lt;p&gt;最后发现问题在这里：&lt;a href=&quot;https://core.tele
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习记录</title>
+    <link href="http://ir1d.cf/2018/02/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://ir1d.cf/2018/02/09/机器学习记录/</id>
+    <published>2018-02-09T08:03:20.000Z</published>
+    <updated>2018-02-16T14:27:38.712Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>[done] Andrew NG coursera 机器学习</li><li>cs229 <a href="https://see.stanford.edu/course/cs229" target="_blank" rel="noopener">https://see.stanford.edu/course/cs229</a></li><li><a href="http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial" target="_blank" rel="noopener">UFLDL</a><br><a href="http://ufldl.stanford.edu/tutorial/" target="_blank" rel="noopener">UFLDL2</a><br>西瓜书《机器学习》 机器学习实战</li><li>机器学习基石（林轩田）<br>机器学习技法<blockquote><p>李宏毅</p></blockquote></li></ol><p>配合着台湾林轩田的《机器学习基石+技法》把李航的《统计学习方法》这本书走一遍</p><p><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses.html" target="_blank" rel="noopener">http://speech.ee.ntu.edu.tw/~tlkagk/courses.html</a><br><a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists" target="_blank" rel="noopener">https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists</a></p><p>花书</p><ol start="5"><li>Neural Network for Machine Learning-coursera-多伦多大学</li><li>cs224n</li><li>cs231n</li><li>Neural Networks for NLP</li><li><a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank" rel="noopener">http://neuralnetworksanddeeplearning.com/chap1.html</a></li><li>deeplearning <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses.html" target="_blank" rel="noopener">http://speech.ee.ntu.edu.tw/~tlkagk/courses.html</a><br><a href="http://blog.csdn.net/zouxy09/article/details/8775360" target="_blank" rel="noopener">http://blog.csdn.net/zouxy09/article/details/8775360</a><br><a href="https://www.cs.ox.ac.uk/people/nando.defreitas/machinelearning/" target="_blank" rel="noopener">https://www.cs.ox.ac.uk/people/nando.defreitas/machinelearning/</a></li><li>drl CS 294</li><li>MIT 6.S191 (bilibili未搬运) <a href="https://www.youtube.com/watch?v=JN6H4rQvwgY&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=JN6H4rQvwgY&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI</a></li><li>David Silver</li><li><a href="https://www.coursera.org/specializations/machine-learning" target="_blank" rel="noopener">https://www.coursera.org/specializations/machine-learning</a></li><li>deeplearning.ai coursera</li><li><a href="http://gameaibook.org" target="_blank" rel="noopener">http://gameaibook.org</a></li><li>《Patten Recognition and Machine Learning》，《Elements of Statistical Learning》<br>Machine Learning A Probabilistic Perspective Learning</li><li><a href="http://deeplearning.net/reading-list/" target="_blank" rel="noopener">http://deeplearning.net/reading-list/</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;[done] Andrew NG coursera 机器学习&lt;/li&gt;
+&lt;li&gt;cs229 &lt;a href=&quot;https://see.stanford.edu/course/cs229&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https:
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="机器学习" scheme="http://ir1d.cf/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2017小结</title>
+    <link href="http://ir1d.cf/2018/02/08/2017%E5%B0%8F%E7%BB%93/"/>
+    <id>http://ir1d.cf/2018/02/08/2017小结/</id>
+    <published>2018-02-08T04:11:09.000Z</published>
+    <updated>2018-02-08T05:00:24.018Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天小年<br>偶然看到学妹发的WC2018的节目，发现时间原来过得好快<br>这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD<br>本来以为都忘记了的事，突然发现原来记得清清楚楚<br>翻了翻知乎上几个OI相关的问题，pyc问的时候我还是个上台拿衣服的孩子吧= =<br>转眼间，大半的答主都不认识了<br>高三一年下来，不那么跳了，写了很久的很长的东西，却还是完全没有剖析清楚内心<br>出了些意外，不过还好无大碍<br>高考还算可以，靠着pkusc的运气还是混进了园子<br>还是很喜欢你<br>可能每次写回忆录写得都是一篇流水 也并没有什么特别值得叙说的事<br>就当是结局圆满吧<br>2018 愿安 希望可以变得自信点<br>愿大家诸事顺遂，永远行走在光明向上的路上。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天小年&lt;br&gt;偶然看到学妹发的WC2018的节目，发现时间原来过得好快&lt;br&gt;这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD&lt;br&gt;本来以为都忘记了的事，突然发现原来记得清清楚楚&lt;br&gt;翻了翻知乎上几个OI相关的问题，pyc问的时
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>20180206comments</title>
+    <link href="http://ir1d.cf/2018/02/06/20180206comments/"/>
+    <id>http://ir1d.cf/2018/02/06/20180206comments/</id>
+    <published>2018-02-06T14:24:42.000Z</published>
+    <updated>2018-02-06T14:29:07.886Z</updated>
+    
+    <content type="html"><![CDATA[<p>高中同学聚会，见到大家其实很开心</p><p>有人喝酒 听到了不少劲爆的消息</p><p>有个老哥还喝醉了</p><p>喝醉的老哥感觉很爱面子 一直反复在说高考</p><p>是梦魔吧……sigh</p><p>愿安</p><p>很容易就想起你了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;高中同学聚会，见到大家其实很开心&lt;/p&gt;
+&lt;p&gt;有人喝酒 听到了不少劲爆的消息&lt;/p&gt;
+&lt;p&gt;有个老哥还喝醉了&lt;/p&gt;
+&lt;p&gt;喝醉的老哥感觉很爱面子 一直反复在说高考&lt;/p&gt;
+&lt;p&gt;是梦魔吧……sigh&lt;/p&gt;
+&lt;p&gt;愿安&lt;/p&gt;
+&lt;p&gt;很容易就想起你了&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cprimerplus</title>
+    <link href="http://ir1d.cf/2018/02/05/cprimerplus/"/>
+    <id>http://ir1d.cf/2018/02/05/cprimerplus/</id>
+    <published>2018-02-05T14:10:39.000Z</published>
+    <updated>2018-02-09T08:03:47.448Z</updated>
+    
+    <content type="html"><![CDATA[<p>八进制 023 <code>%o</code> <code>%lo</code></p><p>十六进制0xdbf <code>%x</code> <code>%lx</code></p><p><code>&#39;\007&#39;, &#39;\07&#39;, &#39;\7&#39;</code>都是八进制表示</p><p><code>3.4l</code>表示使数字成为long double类型，默认是double</p><p>c只保证float有6位精度</p><p>当缓冲区满、遇到换行符、需要输入的时候刷新缓冲区</p><p>或者使用<code>fflush()</code>函数</p><p><code>%p</code>输出指针 <code>%%</code> 百分号</p><p><code>%5.2f</code>是字符宽度为5，小数点后2位的浮点数</p><p><code>%10d</code>是右对齐 <code>%-10d</code>是左对齐</p><p>printf返回值是输出成功的个数<br>printf的float和double都是<code>%f</code>而scanf的float是<code>%f</code>double是<code>%lf</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;八进制 023 &lt;code&gt;%o&lt;/code&gt; &lt;code&gt;%lo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;十六进制0xdbf &lt;code&gt;%x&lt;/code&gt; &lt;code&gt;%lx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;#39;\007&amp;#39;, &amp;#39;\07&amp;#39;, &amp;#
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="C" scheme="http://ir1d.cf/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bsgs</title>
+    <link href="http://ir1d.cf/2018/01/28/bsgs/"/>
+    <id>http://ir1d.cf/2018/01/28/bsgs/</id>
+    <published>2018-01-28T04:06:16.000Z</published>
+    <updated>2018-01-28T08:05:32.292Z</updated>
+    
+    <content type="html"><![CDATA[<p>BSGS 可以用来求离散对数</p><p><a href="http://kzoacn.is-programmer.com/posts/97193.html" target="_blank" rel="noopener">http://kzoacn.is-programmer.com/posts/97193.html</a></p><p><a href="http://blog.csdn.net/FromATP/article/details/56013530" target="_blank" rel="noopener">http://blog.csdn.net/FromATP/article/details/56013530</a></p><p>注意朴素的 BSGS 要求 a 和 c 互质</p><p>POJ 2471 用 map 很容易 TLE ，手动开 <code>-O2</code> 过的</p><p><code>#pragma GCC optimize(&quot;O2&quot;)</code>交<code>G++</code></p><p>扩展BSGS是不断提取a和c的公因子直到互质</p><p><a href="http://blog.csdn.net/clove_unique/article/details/51227328" target="_blank" rel="noopener">http://blog.csdn.net/clove_unique/article/details/51227328</a></p><p>简易hash= =<br>把冲突的往后一个位置堆直到不冲突= =</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;BSGS 可以用来求离散对数&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://kzoacn.is-programmer.com/posts/97193.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://kzoacn.is-programm
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="BSGS" scheme="http://ir1d.cf/tags/BSGS/"/>
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>矩阵乘法小优化</title>
+    <link href="http://ir1d.cf/2018/01/28/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%B0%8F%E4%BC%98%E5%8C%96/"/>
+    <id>http://ir1d.cf/2018/01/28/矩阵乘法小优化/</id>
+    <published>2018-01-27T23:56:59.000Z</published>
+    <updated>2018-01-28T08:51:26.052Z</updated>
+    
+    <content type="html"><![CDATA[<p>看叉姐的repo翻到矩阵相关的板子</p><a id="more"></a><p>然后发现里面有这样一句话</p><p>乘法的时候将$B$数组转置一下然后$C[i][j] = \sum{A[i][k]\times B[j][k]}$会有奇效。</p><p>然后操作了一番发现的确是这么回事 Qrz%%%</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) a[i][j] = rand(), b[i][j] = rand();</span><br><span class="line"><span class="keyword">double</span> st = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * b[k][j];</span><br><span class="line"><span class="keyword">double</span> ed = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) &#123;</span><br><span class="line">  d[i][j] = b[j][i]; c[i][j] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * d[j][k];</span><br><span class="line"><span class="keyword">double</span> e2 = clock();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, ((e2 - ed) - (ed - st)) / CLOCKS_PER_SEC);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, CLOCKS_PER_SEC);</span><br></pre></td></tr></table></figure><p>本机大概能差<code>0.02s</code></p><p>以及惊讶地发现<code>CLOCKS_PER_SEC</code>在新电脑上是<code>1e6</code>了</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看叉姐的repo翻到矩阵相关的板子&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="算法" scheme="http://ir1d.cf/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="矩阵乘法" scheme="http://ir1d.cf/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大连六重</title>
+    <link href="http://ir1d.cf/2018/01/28/%E5%A4%A7%E8%BF%9E%E5%85%AD%E9%87%8D/"/>
+    <id>http://ir1d.cf/2018/01/28/大连六重/</id>
+    <published>2018-01-27T23:28:40.000Z</published>
+    <updated>2018-01-28T07:33:29.781Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/d4881b876b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/d4881b876b8a</a></p><a id="more"></a><p>忙了20多天组织完这个六重</p><p>也不知道是否值得</p><p>就当是神奇的经历吧</p><p>感谢大家的帮助 当天赶完了战报 想了好多 写起来感觉大学国文真的是白学了QAQ</p><p>准备的过程和出锅的时候甚至是满满的无力感</p><p>有种那年NOI的时候的flashback</p><p>可我怎么就没想到呢= =</p><p>不过好在是在大连做的</p><p>我们甚至可以拆了补一补做成正儿八经的六重</p><p>表白大连蓝军</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/145746-552077acfb413edb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>2018.1.27.12:51 - 2018.1.28 14:42</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/d4881b876b8a&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.jianshu.com/p/d4881b876b8a&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Ingress" scheme="http://ir1d.cf/categories/Ingress/"/>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="竹笋" scheme="http://ir1d.cf/tags/%E7%AB%B9%E7%AC%8B/"/>
+    
+      <category term="大连" scheme="http://ir1d.cf/tags/%E5%A4%A7%E8%BF%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>离散数学基础笔记</title>
+    <link href="http://ir1d.cf/2018/01/25/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    <id>http://ir1d.cf/2018/01/25/离散数学基础笔记/</id>
+    <published>2018-01-25T11:34:07.000Z</published>
+    <updated>2018-01-28T10:01:41.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>完美的数学终于“自我相关”<br>数理逻辑 – 用计算的方法代替人们思维中的逻辑推理过程<br>命题演算、谓词演算<br>悖论不能作为命题 – 真值不存在 – “这句话是错的”<br>命题非真即假 – 这是个基本假设<br>排中律 – 具有属性 / 不具有属性<br>反证法就是利用的排中律 – 非假即真<br>有穷事物可以逐个验证来判断真假 – 但是无穷事物无法逐一检验<br>原子命题、复合命题、逻辑连接词<br>形式化的第一步 – 抽象 – 仅关注命题的本质属性（真值）<br>异或 – <code>p xor q</code> == $(p \land \lnot q)  \lor  (\lnot p \land q)$<br><strong>p 蕴含 q – 仅在 p真q假 时为假</strong><br>命题公式用来把真值连接 可以看做是一个真值函数<br>自然语言命题的形式化 – 经过抽象形式化为命题公式<br>假言易位 – 逆否命题 – $a\to b &lt;=&gt; \lnot b \to  \lnot a$<br>归谬论 – $(a\to b) \land (a\to \lnot b) &lt;=&gt; \lnot a$<br>重言式代入原理 – 将重言式A的某个变元p替换为B 仍然是重言式<br>命题公式的替换原理 – 将子公式的部分出现替换为逻辑等价的公式 得到的新命题公式和原来的逻辑等价<br>证明逻辑等价式和逻辑蕴含式 – 真值表法、对赋值进行讨论、推演法（利用已知的，运用代入原理和替换原理）<br>范式 – 把<code>蕴含</code>这个连接词去掉<br>范式用于重言式和矛盾式的识别<br>重言式识别：合取范式的每个析取子句都包含了至少一个互补文字对<br>矛盾式识别：析取范式的每个析取子句都包含了至少一个互补文字对<br><code>p蕴含q</code> 利用蕴含等值式变成 $\lnot p \lor q$<br><code>p双向蕴含q</code> 利用等价等值式变为$(\lnot p \lor q)\land(p \lor \lnot q)$或者$(p\land q) \lor (\lnot p\land\lnot q)$<br>利用德摩根律把否定词放到括号里（作用于文字）<br>最后再用分配律<br>一个公式的析取范式或合取范式都不是唯一的<br>析取范式也可以同时是合取范式<br>最为规范的范式 – 唯一性　– 主范式<br>主析取范式 – 每个合取子句均恰好出现一次<br>主合取范式 – 每个析取子句均恰好出现一次<br>极小项只有唯一的成真赋值<br>主析取范式包含的极小项的成真赋值也是主析取范式的成真赋值<br>具有相同主析取范式的公式是等值的 – 属于同一个等值类<br>主合取范式对应极大项和成假赋值<br>等值类与真值函数一一对应<br>功能完备集去掉冗余连接词得到极小的功能完备集 – 可以表示所有的真值函数<br>Peirce记号 – $p \downarrow q = \lnot (p  \lor  q)$<br>形式系统 – 符号体系<br>证明是演绎在公式集合为空集的时候的特例<br>命题演算形式系统(PC)的公理</p><ul><li><p>$A1:A\to (B\to A)$</p></li><li><p>$A2:(A\to (B\to C))\to ((A\to B)\to (A\to C))$</p></li><li>$A3:(\lnot A\to \lnot b)\to (B\to A)$</li></ul><p>推理规则 – 分离规则<br>$A, A\to B / B$ 即A成立且已知A蕴含B时可以得到B成立<br>PC的定理 – 有一个证明序列 – 是重言式<br>演绎结果 – 存在演绎结果<br>元（meta）定理</p><ul><li><p>演绎公理 – $\gamma \vdash A \to  B \iff \gamma \bigcup {A} \vdash B$</p></li><li><p>归谬定理 – $\gamma \bigcup {\lnot  A} \vdash B, r \bigcup {\lnot  A} \vdash \lnot  B$，那么$\gamma \vdash A$</p></li><li><p>穷举定理 – $\gamma \bigcup {\lnot A} \vdash B, \gamma \bigcup {A} \vdash B$，那么$\gamma \vdash B$成立</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;完美的数学终于“自我相关”&lt;br&gt;数理逻辑 – 用计算的方法代替人们思维中的逻辑推理过程&lt;br&gt;命题演算、谓词演算&lt;br&gt;悖论不能作为命题 – 真值不存在 – “这句话是错的”&lt;br&gt;命题非真即假 – 这是个基本假设&lt;br&gt;排中律 – 具有属性 / 不具有属性&lt;br&gt;反证法
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="离散数学" scheme="http://ir1d.cf/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="MOOC" scheme="http://ir1d.cf/tags/MOOC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu视频加速</title>
+    <link href="http://ir1d.cf/2018/01/20/ubuntu%E8%A7%86%E9%A2%91%E5%8A%A0%E9%80%9F/"/>
+    <id>http://ir1d.cf/2018/01/20/ubuntu视频加速/</id>
+    <published>2018-01-20T10:14:35.000Z</published>
+    <updated>2018-01-20T10:15:24.646Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>mplayer -af scaletempo</code></p><p>用<code>[</code>和<code>]</code>控制速度</p><p><code>scaletempo</code>是防止走音</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;mplayer -af scaletempo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用&lt;code&gt;[&lt;/code&gt;和&lt;code&gt;]&lt;/code&gt;控制速度&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;scaletempo&lt;/code&gt;是防止走音&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu16.04安装pycaffe</title>
+    <link href="http://ir1d.cf/2018/01/18/ubuntu16-04%E5%AE%89%E8%A3%85pycaffe/"/>
+    <id>http://ir1d.cf/2018/01/18/ubuntu16-04安装pycaffe/</id>
+    <published>2018-01-18T08:44:44.000Z</published>
+    <updated>2018-01-26T02:17:36.610Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide" target="_blank" rel="noopener">https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide</a></p><p>装pycaffe的时候要改Makefile.config的很多地方= =</p><p><a href="http://caffe.berkeleyvision.org/installation.html#python" target="_blank" rel="noopener">http://caffe.berkeleyvision.org/installation.html#python</a></p><p><a href="https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9" target="_blank" rel="noopener">https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/B
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
+    
+      <category term="caffe" scheme="http://ir1d.cf/tags/caffe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程设笔记</title>
+    <link href="http://ir1d.cf/2018/01/16/%E7%A8%8B%E8%AE%BE%E7%AC%94%E8%AE%B0/"/>
+    <id>http://ir1d.cf/2018/01/16/程设笔记/</id>
+    <published>2018-01-16T01:46:37.000Z</published>
+    <updated>2018-01-22T03:44:40.783Z</updated>
+    
+    <content type="html"><![CDATA[<p>函数指针<br>命令行参数<br>位运算<br>引用 - 引用作为函数的返回值<br>不可通过常量指针修改其指向的内容<br>动态分配空间<br>内联函数、函数重载、缺省参数<br>缺省参数可以在扩充函数参数是避免对原有的调用语句的修改<br>类、成员函数、内联成员函数<br>构造函数<br>析构函数<br>静态成员 – 全局 – 易于维护<br>成员对象 – 封闭类<br>友元函数、友元类 友元类关系不能传递、不能继承<br><strong>this指针</strong><br>比如有一个<code>class C</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">p-&gt;magic();</span><br></pre></td></tr></table></figure></p><p>等价于<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">magic(p);</span><br></pre></td></tr></table></figure></p><p>如果后一种语句合法那么前一种就合法<br>常量对象<br>常亮成员函数不应修改对象，也不能调用非常亮成员函数（静态除外）<br>常引用避免构造函数的开销<br><code>=</code>返回值最好为引用 复制构造函数也要避免浅拷贝<br>运算符可以重载为友元函数<br>继承、派生<br>继承关系、复合关系<br>protected<br>虚函数、多态 virtual关键字<br>构造函数和析构函数中调用虚函数不是多态<br>虚函数表会占用空间<br>也有额外的时间开销 – 多态的函数调用过程是查询虚函数表<br>一个基类的指针删除派生类对象的时候希望先调用派生类析构函数再调用基类的析构函数<br>不允许虚函数作为构造函数<br>抽象类中成员函数允许调用纯虚函数，但是构造函数、析构函数中不允许<br>函数模板 – 泛型程序设计<br>STL<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">" "</span>);</span><br><span class="line"><span class="built_in">std</span>::copy(a.begin(), a.end(), output);</span><br><span class="line"><span class="comment">// 相当于是用 cout 输出 a 里面的元素，用空格分隔开</span></span><br></pre></td></tr></table></figure></p><p>copy到vector的时候它不会自动扩空间<br>智能指针 shared_ptr 不能托管数组的指针<br>不能取地址的表达式是右值<br>lambda表达式<br>强制类型转换<br>异常</p><p>八数码中不改变排列的奇偶性</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;函数指针&lt;br&gt;命令行参数&lt;br&gt;位运算&lt;br&gt;引用 - 引用作为函数的返回值&lt;br&gt;不可通过常量指针修改其指向的内容&lt;br&gt;动态分配空间&lt;br&gt;内联函数、函数重载、缺省参数&lt;br&gt;缺省参数可以在扩充函数参数是避免对原有的调用语句的修改&lt;br&gt;类、成员函数、内联成员函数&lt;b
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="MOOC" scheme="http://ir1d.cf/tags/MOOC/"/>
+    
+      <category term="程序设计实习" scheme="http://ir1d.cf/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%B9%A0/"/>
+    
+  </entry>
+  
+</feed>

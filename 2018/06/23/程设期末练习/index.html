@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="04  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点    写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题   减法和除">
+  <meta name="description" content="04:What a Ridiculous Election  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就">
 <meta name="keywords" content="程设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设期末练习">
 <meta property="og:url" content="http://ir1d.cf/2018/06/23/程设期末练习/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="04  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点    写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题   减法和除">
+<meta property="og:description" content="04:What a Ridiculous Election  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T04:52:00.388Z">
+<meta property="og:updated_time" content="2018-06-23T08:25:37.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程设期末练习">
-<meta name="twitter:description" content="04  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点    写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题   减法和除">
+<meta name="twitter:description" content="04:What a Ridiculous Election  注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，而是要看当前的step和上一次的比较dp[s][i][j]表示到达s状态用了i次操作一和j次操作二的结果然后注意输出答案的时候要在终点枚举所有的i和j  05:42点  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就">
 
 
 
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2018-06-23 11:13:56 / Modified: 12:52:00" itemprop="dateCreated datePublished" datetime="2018-06-23T11:13:56+08:00">2018-06-23</time>
+              <time title="Created: 2018-06-23 11:13:56 / Modified: 16:25:37" itemprop="dateCreated datePublished" datetime="2018-06-23T11:13:56+08:00">2018-06-23</time>
             
 
             
@@ -472,15 +472,32 @@
 
       
         <blockquote>
-<p>04</p>
+<p><a href="http://cxsjsx.openjudge.cn/2018rec/04/" target="_blank" rel="noopener">04:What a Ridiculous Election</a></p>
 </blockquote>
 <p>注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，<br>而是要看当前的step和上一次的比较<br><code>dp[s][i][j]</code>表示到达s状态用了<code>i</code>次操作一和<code>j</code>次操作二的结果<br>然后注意输出答案的时候要在终点枚举所有的<code>i</code>和<code>j</code></p>
 <blockquote>
 <p><a href="http://cxsjsx.openjudge.cn/2018rec/05/" target="_blank" rel="noopener">05:42点</a></p>
 </blockquote>
-<p>  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p>
-<p>  减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p>
-<p>  ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p>
+<p>写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p>
+<p>减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p>
+<p>ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p>
+<blockquote>
+<p><a href="http://cxsjsx.openjudge.cn/2018rec/06/" target="_blank" rel="noopener">06:A Knight’s Journey</a></p>
+</blockquote>
+<p>深搜注意回退删除标记 = =<br>用时间戳表示<code>vis</code>数组的时候，不是每个 case 开始的时候都清空，需要保证全局唯一</p>
+<blockquote>
+<p><a href="http://cxsjsx.openjudge.cn/2018rec/07/" target="_blank" rel="noopener">07:Sudoku</a></p>
+</blockquote>
+<p>数独，多case要初始化，深搜回退要恢复状态= =</p>
+<blockquote>
+<p><a href="http://cxsjsx.openjudge.cn/2018rec/10/" target="_blank" rel="noopener">10:股票买卖</a></p>
+</blockquote>
+<p><code>ll[i]</code> 表示 i 左侧极差<br><code>rr[i]</code> 表示 i 右侧极差<br>这样答案就是 $max{ll[i], rr[i + 1]}$</p>
+<p>先用 <code>ll[i]</code> 得到 i 左侧最小的数和<code>a[i]</code>的差，然后对<code>ll[i]</code>求个前缀 max 就好了</p>
+<blockquote>
+<p>12:开餐馆</p>
+</blockquote>
+<p><code>dp[i]</code> 最后一个在 i 开，最大的价值<br>答案是数组的最大值</p>
 
       
     </div>
@@ -537,6 +554,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/24/cf491/" rel="prev" title="Codeforces Round \#491 (Div.2)">
+                Codeforces Round \#491 (Div.2) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -615,7 +636,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -627,12 +648,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
@@ -656,18 +671,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     

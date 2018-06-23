@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-23T04:52:00.388Z</updated>
+  <updated>2018-06-23T17:55:46.088Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -17,22 +17,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Codeforces Round \#491 (Div.2)</title>
+    <link href="http://ir1d.cf/2018/06/24/cf491/"/>
+    <id>http://ir1d.cf/2018/06/24/cf491/</id>
+    <published>2018-06-23T17:46:29.000Z</published>
+    <updated>2018-06-23T17:55:46.088Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;好久没打了，根本不在状态，深夜掉分场&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A. If at first you don’t succeed…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;坑点在判断数据是否合法，忘了加上$a &amp;lt; c$，$a &amp;lt; n$之类的，WA
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="codeforces" scheme="http://ir1d.cf/tags/codeforces/"/>
+    
+  </entry>
+  
+  <entry>
     <title>程设期末练习</title>
     <link href="http://ir1d.cf/2018/06/23/%E7%A8%8B%E8%AE%BE%E6%9C%9F%E6%9C%AB%E7%BB%83%E4%B9%A0/"/>
     <id>http://ir1d.cf/2018/06/23/程设期末练习/</id>
     <published>2018-06-23T03:13:56.000Z</published>
-    <updated>2018-06-23T04:52:00.388Z</updated>
+    <updated>2018-06-23T08:25:37.324Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>04</p></blockquote><p>注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，<br>而是要看当前的step和上一次的比较<br><code>dp[s][i][j]</code>表示到达s状态用了<code>i</code>次操作一和<code>j</code>次操作二的结果<br>然后注意输出答案的时候要在终点枚举所有的<code>i</code>和<code>j</code></p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/05/" target="_blank" rel="noopener">05:42点</a></p></blockquote><p>  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p><p>  减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p><p>  ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/04/" target="_blank" rel="noopener">04:What a Ridiculous Election</a></p></blockquote><p>注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，<br>而是要看当前的step和上一次的比较<br><code>dp[s][i][j]</code>表示到达s状态用了<code>i</code>次操作一和<code>j</code>次操作二的结果<br>然后注意输出答案的时候要在终点枚举所有的<code>i</code>和<code>j</code></p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/05/" target="_blank" rel="noopener">05:42点</a></p></blockquote><p>写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p><p>减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p><p>ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/06/" target="_blank" rel="noopener">06:A Knight’s Journey</a></p></blockquote><p>深搜注意回退删除标记 = =<br>用时间戳表示<code>vis</code>数组的时候，不是每个 case 开始的时候都清空，需要保证全局唯一</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/07/" target="_blank" rel="noopener">07:Sudoku</a></p></blockquote><p>数独，多case要初始化，深搜回退要恢复状态= =</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/10/" target="_blank" rel="noopener">10:股票买卖</a></p></blockquote><p><code>ll[i]</code> 表示 i 左侧极差<br><code>rr[i]</code> 表示 i 右侧极差<br>这样答案就是 $max{ll[i], rr[i + 1]}$</p><p>先用 <code>ll[i]</code> 得到 i 左侧最小的数和<code>a[i]</code>的差，然后对<code>ll[i]</code>求个前缀 max 就好了</p><blockquote><p>12:开餐馆</p></blockquote><p><code>dp[i]</code> 最后一个在 i 开，最大的价值<br>答案是数组的最大值</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;blockquote&gt;
-&lt;p&gt;04&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，&lt;br&gt;而是要看当前的step和上一次的比较&lt;br&gt;&lt;code&gt;dp[s][i][j]&lt;/code&gt;表示到达s状态用了&lt;code&gt;i&lt;
+&lt;p&gt;&lt;a href=&quot;http://cxsjsx.openjudge.cn/2018rec/04/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;04:What a Ridiculous Election&lt;/a&gt;&lt;/p&gt;
+&lt;/bloc
       
     
     </summary>
@@ -213,9 +241,9 @@
       <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
     
     
-      <category term="telegram" scheme="http://ir1d.cf/tags/telegram/"/>
-    
       <category term="ehForwarderBot" scheme="http://ir1d.cf/tags/ehForwarderBot/"/>
+    
+      <category term="telegram" scheme="http://ir1d.cf/tags/telegram/"/>
     
   </entry>
   
@@ -531,31 +559,6 @@
       <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
     
       <category term="caffe" scheme="http://ir1d.cf/tags/caffe/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程设笔记</title>
-    <link href="http://ir1d.cf/2018/01/16/%E7%A8%8B%E8%AE%BE%E7%AC%94%E8%AE%B0/"/>
-    <id>http://ir1d.cf/2018/01/16/程设笔记/</id>
-    <published>2018-01-16T01:46:37.000Z</published>
-    <updated>2018-06-23T04:52:05.440Z</updated>
-    
-    <content type="html"><![CDATA[<p>函数指针<br>命令行参数<br>位运算<br>引用 - 引用作为函数的返回值<br>不可通过常量指针修改其指向的内容<br>动态分配空间<br>内联函数、函数重载、缺省参数<br>缺省参数可以在扩充函数参数是避免对原有的调用语句的修改<br>类、成员函数、内联成员函数<br>构造函数<br>析构函数<br>静态成员 – 全局 – 易于维护<br>成员对象 – 封闭类<br>友元函数、友元类 友元类关系不能传递、不能继承<br><strong>this指针</strong><br>比如有一个<code>class C</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">p-&gt;magic();</span><br></pre></td></tr></table></figure></p><p>等价于<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">magic(p);</span><br></pre></td></tr></table></figure></p><p>如果后一种语句合法那么前一种就合法<br>常量对象<br>常亮成员函数不应修改对象，也不能调用非常亮成员函数（静态除外）<br>常引用避免构造函数的开销<br><code>=</code>返回值最好为引用 复制构造函数也要避免浅拷贝<br>运算符可以重载为友元函数<br>继承、派生<br>继承关系、复合关系<br>protected<br>虚函数、多态 virtual关键字<br>构造函数和析构函数中调用虚函数不是多态<br>虚函数表会占用空间<br>也有额外的时间开销 – 多态的函数调用过程是查询虚函数表<br>一个基类的指针删除派生类对象的时候希望先调用派生类析构函数再调用基类的析构函数<br>不允许虚函数作为构造函数<br>抽象类中成员函数允许调用纯虚函数，但是构造函数、析构函数中不允许<br>函数模板 – 泛型程序设计<br>STL<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">" "</span>);</span><br><span class="line"><span class="built_in">std</span>::copy(a.begin(), a.end(), output);</span><br><span class="line"><span class="comment">// 相当于是用 cout 输出 a 里面的元素，用空格分隔开</span></span><br></pre></td></tr></table></figure></p><p>copy到vector的时候它不会自动扩空间<br>智能指针 shared_ptr 不能托管数组的指针<br>不能取地址的表达式是右值<br>lambda表达式<br>强制类型转换<br>异常</p><p>八数码中不改变排列的奇偶性</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;函数指针&lt;br&gt;命令行参数&lt;br&gt;位运算&lt;br&gt;引用 - 引用作为函数的返回值&lt;br&gt;不可通过常量指针修改其指向的内容&lt;br&gt;动态分配空间&lt;br&gt;内联函数、函数重载、缺省参数&lt;br&gt;缺省参数可以在扩充函数参数是避免对原有的调用语句的修改&lt;br&gt;类、成员函数、内联成员函数&lt;b
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="程设" scheme="http://ir1d.cf/tags/%E7%A8%8B%E8%AE%BE/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-23T03:17:15.267Z</updated>
+  <updated>2018-06-23T03:42:48.397Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -21,9 +21,19 @@
     <link href="http://ir1d.cf/2018/06/23/%E7%A8%8B%E8%AE%BE%E6%9C%9F%E6%9C%AB%E7%BB%83%E4%B9%A0/"/>
     <id>http://ir1d.cf/2018/06/23/程设期末练习/</id>
     <published>2018-06-23T03:13:56.000Z</published>
-    <updated>2018-06-23T03:17:15.267Z</updated>
+    <updated>2018-06-23T03:42:48.397Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>04</p></blockquote><p>注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，<br>而是要看当前的step和上一次的比较<br><code>dp[s][i][j]</code>表示到达s状态用了<code>i</code>次操作一和<code>j</code>次操作二的结果<br>然后注意输出答案的时候要在终点枚举所有的<code>i</code>和<code>j</code></p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/05/" target="_blank" rel="noopener">05:42点</a></p></blockquote><p>  写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p><p>  减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p><p>  ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;04&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，&lt;br&gt;而是要看当前的step和上一次的比较&lt;br&gt;&lt;code&gt;dp[s][i][j]&lt;/code&gt;表示到达s状态用了&lt;code&gt;i&lt;
+      
     
     </summary>
     

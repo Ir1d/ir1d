@@ -464,13 +464,19 @@
       
         
           
-            <p>用来统计挖的坑</p>
-<p>初等数论及其应用</p>
-<p>网络科学引论</p>
-<p>算法导论</p>
-<p>Multivariable Calculus</p>
-
-          
+          用来统计挖的坑
+初等数论及其应用
+网络科学引论
+算法导论
+Multivariable Calculu
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/28/笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -632,54 +638,17 @@
       
         
           
-            <p><code>Codeforces Round #435 (Div. 2)</code></p>
-<p>100场div1指日可待【</p>
-<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>问最少对集合修改几次，使得集合的mex值是给定的值</p>
-<p>从小到大处理即可</p>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><blockquote>
-<p>A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there is no more than one edge between them. A cycle and a loop aren’t the same .</p>
-</blockquote>
-<p>问可以往一个树最多加多少边使得新图仍然是二分图</p>
-<p>注意到树本身是二分图，加边必然是在两个点集之间，而这些边最多有$l * r$条，已经有了$n - 1$条，所以答案显然</p>
-<p>注意建树要加双向边，以及爆int的问题别忘了开long long</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
-<p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^17$可以用来区分（不会重复而且不会超出）</p>
-<p>然后就可以先放$1, 2, 3, \cdots, n - 3$ 记它们的xor和是s</p>
-<p>那么此时后三个数的xor和是$s xor x$</p>
-<p>就可以放$0， 2^17， 2^17 xor s xor x$</p>
-<p>注意题中要求所有数不能相同，所以如果s和x是相等的，后两个数就相等了就不合题意了</p>
-<p>所以此时放$2^17, 2^18, 2^17 xor 2^18$</p>
-<p>至于为什么选择$2^17$和$2^18$，是为了$2^17 xor 2^18$和$2^17 xor  x xor s$的值始终大于1e5</p>
-<p>就是那个$2^17$的最高位是1然后它和别的数那一位是0的数xor之后答案那位是1就保证了比1e5大</p>
-<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>交互题</p>
-<p>每次可以查询一个01串和某个给定的01串的hamming distance（编辑距离）</p>
-<p>然后要求在15次查询之内确定01串中一定是0的一个位置和一定是1的一个位置即可</p>
-<p>要记得flush缓冲区</p>
-<p>题意不是要完全确定01串，只要确定一个0一个1即可</p>
-<p>这个查询的核心操作是要得到一个区间里的0/1的个数</p>
-<p>用类似前缀和的思路，我们先查询全是1的串的答案然后到时候减一下就好了</p>
-<p>酱紫之后发现可以再查询$011111…$然后就得到第一个数是0还是1了</p>
-<p>之后找另一个数的位置，不难发现可以二分最左侧的那个，即只要不是连续的那么就有一个要找的数出现了</p>
-<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>给a和b两个数列定义f函数并求值</p>
-<p>$f(j) = |\sum_{i=1}^n(-1)^{(i-1)}*(a_i-b_{i+j})|$</p>
-<p>每次区间加一个数 然后 查询所有f(j)的最小值</p>
-<p>注意到可以把f(f)的式子拆开变成$|\sum_{i=1}^n{i-1}<em>a_i+\sum_{i=1}^n(-1)^i</em>b_{i+j}|$</p>
-<p>然后发现前一项是定值，而且整个式子在绝对值里面，如果前一项值是c，每次只需要找和-c最接近的一个后一项就行了</p>
-<p>换言之，可以用一个set维护所有的后一项</p>
-<p>对于修改操作，如果修改的区间长是偶数，发现加了多少次就减了多少次</p>
-<p>如果是奇数，那就看l的奇偶性判断是加还是减</p>
-<p>巧妙之处在于发现求这个最值不需要每次遍历来找，只需要这个值尽可能接近0就行，而且修改是对a操作的b一直不变，所以XD</p>
-<p>std用了一个非常巧妙的方法在一次循环里得到了对于所有j的第二项和</p>
-<p>注意j变到j+1的时候是要取相反数然后对第一个和最后一个数加加减减</p>
-<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>有n个字符串，q个操作</p>
-<p>第一种是查询$[a, b]$的某个子区间，使得区间长度乘上区间lcp的值最大</p>
-<p>第二种是修改某个字符串</p>
-<p>// 先坑着= =</p>
-<p>求出相邻的lcp长度，区间lcp等于区间最小值</p>
-<p>标程是对h分类，小的用线段树维护，大的直接set</p>
-<p>学习了下nbc的代码 不是很懂QAQ</p>
-
-          
+          Codeforces Round #435 (Div. 2)
+100场div1指日可待【
+A问最少对
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/26/cf862/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -841,12 +810,16 @@
       
         
           
-            <p>计概课对语言知识要求好高 觉得应该着手认认真真的学习<code>c++</code></p>
-<p>于是借来室友的<code>C++ primer plus</code>学习这一套理论</p>
-<p>tag 是 cpppp 的都会是相关的笔记</p>
-<p>hmmm 留给程设好了……</p>
-
-          
+          计概课对语言知识要求好高 觉得应该着手认认真真的学习c++
+于是借来室友的C++ primer pl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/22/cpppp/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1008,11 +981,18 @@
       
         
           
-            <p>感觉是个有趣的东西</p>
-<p>用<code>steganabara-1.1.1.jar</code>过滤</p>
-<p>肉眼识别了一波</p>
+          感觉是个有趣的东西
+用steganabara-1.1.1.jar过滤
+肉眼识别了一波
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/25/ctf/LSB/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1174,11 +1154,17 @@
       
         
           
-            <p>就是一个txt压成了zip封在php里面</p>
-<p>就是图种的感觉= =</p>
-<p>学到了这个 <code>foremost -i attachment.php</code></p>
-
-          
+          就是一个txt压成了zip封在php里面
+就是图种的感觉= =
+学到了这个 foremost -i 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/25/ctf/attachment/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1340,11 +1326,17 @@
       
         
           
-            <p>先把16进制转换成10进制的ascii码</p>
-<p>然后就是枚举偏移量看得到的认不认识 就行了= =</p>
-<p>guesswork 真的猜不出来= =</p>
-
-          
+          先把16进制转换成10进制的ascii码
+然后就是枚举偏移量看得到的认不认识 就行了= =
+gues
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/25/ctf/caesar2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1506,12 +1498,17 @@
       
         
           
-            <p>匹配空字符串：<code>/^$/</code></p>
-<p>匹配wechall：<code>/^wechall$</code></p>
-<p>匹配特定文件名的图片后缀：<code>/^wechall4?\.(?:jpg|gif|tiff|bmp|png)$/</code></p>
-<p>需要对文件名添加捕获分组：<code>/^(wechall4?)\.(?:jpg|gif|tiff|bmp|png)$/</code></p>
-
-          
+          匹配空字符串：/^$/
+匹配wechall：/^wechall$
+匹配特定文件名的图片后缀：/^we
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/25/ctf/regex/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1673,15 +1670,15 @@
       
         
           
-            <p><code>.htaccess</code>里面写限制了GET需要验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Limit GET&gt;</span><br><span class="line">require valid-user</span><br><span class="line">&lt;/Limit&gt;</span><br></pre></td></tr></table></figure></p>
-<p>所以换成POST就好了</p>
-<p>POST的新姿势</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"https://www.wechall.net/challenge/wannabe7331/limited_access/protected/protected.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当然curl也行</p>
-<p><code>curl -v -H &quot;Cookie: [WC=asdf]&quot;  -X POST http://www.wechall.net/challenge/wannabe7331/limited_access/protected/protected.php</code></p>
-<p>酱紫</p>
-
-          
+          .htaccess里面写限制了GET需要验证123&lt;Limit GET&gt;require 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/limited-access/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1843,35 +1840,19 @@
       
         
           
-            <p>2比1多了一个密码校验的过程</p>
-<p>sql里面union可以把select结果合并到一起</p>
-<blockquote>
-<ul>
-<li>username：’union select 1,’admin’,’e10adc3949ba59abbe56e057f20f883</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>password:123456</li>
-</ul>
-</blockquote>
-<p>把username代入之后得到的是这个</p>
-<blockquote>
-<ul>
-<li>SELECT * FROM users WHERE username=’’union select 1,’admin’,’e10adc3949ba59abbe56e057f20f883’</li>
-</ul>
-</blockquote>
-<p>result中肯定就有</p>
-<blockquote>
-<ul>
-<li>1,’admin’,’e10adc3949ba59abbe56e057f20f883’</li>
-</ul>
-</blockquote>
-<p>这样就构造出来了 <code>result[&#39;password&#39;]</code></p>
-<p>这里可以试着跑sql指令</p>
-<p><a href="https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_columns" target="_blank" rel="noopener">https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_columns</a></p>
+          2比1多了一个密码校验的过程
+sql里面union可以把select结果合并到一起
 
-          
+
+userna
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/auth-bypass2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2033,13 +2014,18 @@
       
         
           
-            <p>Simple Substitution I</p>
-<p><a href="http://quipqiup.com/" target="_blank" rel="noopener">http://quipqiup.com/</a></p>
-<p>这个太厉害了</p>
-<p>刚开始找Clues往里填找了半天都不好使</p>
-<p>后来删掉了直接solve= = 就出来了</p>
+          Simple Substitution I
+http://quipqiup.com/
+这个太厉害了
 
-          
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/simplesub1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

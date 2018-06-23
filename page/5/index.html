@@ -464,13 +464,18 @@
       
         
           
-            <p>Register Globals</p>
-<p>将所有提交的参数注册为全局变量</p>
-<p>注意到这一段</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (strtolower($login[<span class="number">0</span>]) === <span class="string">'admin'</span>) &#123;</span><br><span class="line">  $chall-&gt;onChallengeSolved(GWF_Session::getUserID());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>所以直接<code>http://www.wechall.net/challenge/training/php/globals/globals.php?login[0]=admin</code> 就好了</p>
-
-          
+          Register Globals
+将所有提交的参数注册为全局变量
+注意到这一段
+123if (str
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/globals/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -632,36 +637,16 @@
       
         
           
-            <p><a href="http://tholman.com/other/transposition/" target="_blank" rel="noopener">http://tholman.com/other/transposition/</a></p>
-<p>然后调那个key length<br>试到2发现好像能看懂= =</p>
-<blockquote>
-<ul>
-<li>UPDATE noescvotes SET <code>$who</code>=<code>$who</code>+1 WHERE id=1</li>
-</ul>
-</blockquote>
-<p>把 who 替换成</p>
-<blockquote>
-<ul>
-<li>barack<code>=111,</code>bill<code>=</code>bill</li>
-</ul>
-</blockquote>
-<p>最开始没找到上哪里传这个名字以为只能点按钮= =</p>
-<p>然后突然发现地址直接输就好了</p>
-<p>这个直接把who改成</p>
-<blockquote>
-<ul>
-<li>barack`=111</li>
-</ul>
-</blockquote>
-<p>会出问题= =</p>
-<p>哎这样就好了</p>
-<blockquote>
-<ul>
-<li>？vote_for=bill`=111;#</li>
-</ul>
-</blockquote>
-
-          
+          http://tholman.com/other/transposition/
+然后调那个key l
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/transposition1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -823,13 +808,18 @@
       
         
           
-            <p>这种解密没什么头绪</p>
-<p>翻了翻题解</p>
-<p>可能要观察到长度是<code>441=7*7*9</code>？</p>
-<p>然后就是把每7位看做一个2进制数 转成ascii就好了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"101010011010001101001111001101000001110100110010111110001110100010000011010011110011010000001101110101101110001011010011110100010000011001011101110110001111011111100100110010111001000100000110000111100111100011110100111010010101110010000010110011101111111010111100100100000111000011000011110011111001111101111101111111001011001000100000110100111100110100000110010111000011110011111100111100111110100110000111100101110100110010111100100101110"</span>;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">while</span> (str != <span class="string">""</span>) &#123;</span><br><span class="line">    i = <span class="built_in">String</span>.fromCharCode(<span class="built_in">parseInt</span>(str.substr(<span class="number">0</span>, <span class="number">7</span>), <span class="number">2</span>));</span><br><span class="line">    message = message + i;</span><br><span class="line">    str = str.substr(<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(message);</span><br></pre></td></tr></table></figure>
-
-          
+          这种解密没什么头绪
+翻了翻题解
+可能要观察到长度是441=7*7*9？
+然后就是把每7位看做一个2进
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/23/ctf/encodings1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -991,20 +981,17 @@
       
         
           
-            <p>PHP LFI</p>
-<p>坑点是后面会加一个<code>.html</code></p>
-<p><a href="http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html" target="_blank" rel="noopener">http://sp4hack.blogspot.ca/2012/10/we-chall-training-php-lfi.html</a></p>
-<p>这里的思路是加一个<code>%00</code></p>
-<blockquote>
-<ul>
-<li>Everything after the null byte will be deleted.</li>
-</ul>
-</blockquote>
-<p>太帅了<code>=_^</code></p>
-<p>好像就是传说中的 Null Byte Injection ？</p>
-<p><code>http://www.wechall.net/challenge/training/php/lfi/up/index.php?file=../../solution.php%00</code></p>
-
-          
+          PHP LFI
+坑点是后面会加一个.html
+http://sp4hack.blogspot.ca/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/22/ctf/LFI/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1166,13 +1153,17 @@
       
         
           
-            <p>先从一个链接获取文字再用这个文字生成新的链接= =</p>
-<p>cookie 传不明白了= =</p>
-<p>最后一点也不优雅 决定用大佬的直接 ajax 的方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">url: <span class="string">'http://www.wechall.net/challenge/training/programming1/index.php?action=request'</span>,</span><br><span class="line">type: <span class="string">'get'</span>,</span><br><span class="line">dataType: <span class="string">'text'</span>,</span><br><span class="line">success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> newUrl=<span class="string">"index.php?answer="</span>+data;</span><br><span class="line"><span class="built_in">window</span>.location.href=newUrl;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>好像自己写的没问题 是因为 wechall 那个锁定IP？</p>
-
-          
+          先从一个链接获取文字再用这个文字生成新的链接= =
+cookie 传不明白了= =
+最后一点也不优雅
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/22/ctf/programming1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1334,13 +1325,16 @@
       
         
           
-            <p>MySQL Authentication Bypass - The classic</p>
-<p>对于 MySQL 不是很了解</p>
-<p>写 <code>or 1=1</code> 搞了半天</p>
-<p>实际上应该是 <code>or &#39;1&#39;=&#39;1&#39;;</code></p>
-<p>以及这个分号加的…… 没想到</p>
-
-          
+          MySQL Authentication Bypass - The classic
+对于 MySQL
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/21/ctf/auth-bypass1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1502,14 +1496,15 @@
       
         
           
-            <p><a href="http://www.wechall.net/challenge/php0817/index.php" target="_blank" rel="noopener">http://www.wechall.net/challenge/php0817/index.php</a></p>
-<p>学习了 LFI 这一套理论</p>
-<p>Local File Inclusion 就和之前有人卡评测机的时候用<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;/etc/passwd&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>差不多吧</p>
-<p>这个题的巧妙之处在于 php 之中很多东西在 switch 这里都会被转换成 0</p>
-<p>所以就水掉了……</p>
-
-          
+          http://www.wechall.net/challenge/php0817/index.php
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/21/ctf/PHP-0817/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1671,11 +1666,15 @@
       
         
           
-            <p>一晚上接近通宵<br>可能中间睡了一会吧<br>其实深夜也没有什么特别的<br>觉得白天吵闹的话还是因为无法割舍吧<br>深夜不过是提供一个契机来与世隔绝<br>白天又不是不可以<br>晚上一听歌就恐怕是真的不打算睡觉了</p>
-<p>唔</p>
-<p>定时作息养成规律生活<br>自律给我自由</p>
-
-          
+          一晚上接近通宵可能中间睡了一会吧其实深夜也没有什么特别的觉得白天吵闹的话还是因为无法割舍吧深夜不过是
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/17/notes/subject/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1837,13 +1836,16 @@
       
         
           
-            <p>你能扛起明天吗<br>你能养活自己吗<br>那你怎么养活她<br>为什么将会是你<br>凭什么可以是你</p>
-<p>学姐<br>你看那麻雀<br>和你好像<br>它也会飞</p>
-<p>我好想你<br>好想去找你<br>上一句是假的<br>上一句是假的</p>
-<p>会好起来的<br>会的</p>
-<p>不放弃也不勉强<br>哪怕比永远还远一点</p>
-
-          
+          你能扛起明天吗你能养活自己吗那你怎么养活她为什么将会是你凭什么可以是你
+学姐你看那麻雀和你好像它也会
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/16/notes/明天/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2030,94 +2032,17 @@
       
         
           
-            <p>3299：公式转换题，需要读题，不能只看样例</p>
-<p>2159：判断同构，按频率排序</p>
-<p>1083：区间加+单点最值</p>
-<p>2739：预处理素数表+尺取法</p>
-<p>2262：暴力</p>
-<p>1503：高精度加法</p>
-<p>3006：暴力</p>
-<p>2255：dfs的过程中把两个序列中同一个子树给对应上就好了</p>
-<p>3094：模拟</p>
-<hr>
-<h1 id="初期"><a href="#初期" class="headerlink" title="初期"></a>初期</h1><h2 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h2><p>1753：暴力</p>
-<p>2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号改变,其余都不会改变.</p>
-<p><a href="https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers&#39;-refrigerator/" target="_blank" rel="noopener">https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers&#39;-refrigerator/</a></p>
-<p>1328：贪心策略依然是从左往右，尽量让每颗雷达覆盖最大岛屿数。</p>
-<p>将每个海岛转化为能覆盖它的雷达坐标的区间</p>
-<p>2109：<a href="http://blog.csdn.net/code_pang/article/details/8263971" target="_blank" rel="noopener">http://blog.csdn.net/code_pang/article/details/8263971</a></p>
-<p>3295：模拟 求值</p>
-<p>1068：模拟</p>
-<p>2632：模拟= = RE一时爽</p>
-<p>1573：模拟</p>
-<p>2993：模拟 不太好写= =</p>
-<p>2996：翘了 似乎是模拟就好= =</p>
-<h2 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h2><p>1860：判有没有负环</p>
-<p>3259：判负环 注意边是单向还是双向 好久没写多case的了= =这么生疏</p>
-<p>1062：枚举地位建图跑最短路</p>
-<p>2253：求最短路上的最大边最小</p>
-<p>可以二分答案+并查集</p>
-<p>POJ上边不知道为啥有时候G++交是WA而C++交是AC 然后有的时候还反过来= =</p>
-<p>还可以改一改最短路= =</p>
-<p>注意别把double的变量在传参之类的时候一不小心当int用了酿成惨案</p>
-<p>1125：Floyd</p>
-<p>2240：spfa找正环 或者直接Floyd看</p>
-<p>多case的题调不出来的时候一定要想一想是不是哪里忘记初始化了</p>
-<p>1789：prim</p>
-<p>2485：prim</p>
-<p>1258：prim</p>
-<p>3026：prim 写起来挺麻烦的 坐标反的 = =</p>
-<p>1094：处理字符别忘记了换行符 可以处理出来元素之间的大小关系 然后就很方便了</p>
-<p>3041：把原图的点和边互换构图 然后之前是这样找尽量少的行列覆盖点</p>
-<p>现在是找尽量少的点覆盖行列 就是最小点覆盖了 然后发现这个点只与一行一列相关 所以新图是一个二分图 二分图的最小点覆盖数值上等于二分图最大匹配 想了很久还是不是很懂匈牙利的实现里面的一处trick 于是写了dinic跑最大流= =</p>
-<p>3020：把每个可以放置的点作为新点 如果两个点在原图相邻那么就可以放 所以连一条边 求的就是最小路径覆盖 拆点构图 得到的是二分图</p>
-<p>3436：点有流量限制就拆点就好了</p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>1035：模拟就好了 很久没写题代码能力捉急= =</p>
-<p>3080：后缀数组最长公共子串 注意要求的是字典序最小的 二分答案从前往后找就行了</p>
-<p>调了好久发现对后缀数组的理解还是不到位= =</p>
-<p>1936：判断s是否是t的子序列 遍历t 同时维护s的一个指针就行了</p>
-<p>2388：排序后输出位于中间的就行了</p>
-<p>2299：求逆序对 归并就行</p>
-<p>3349：hash判重就行 把每个雪花的六个角排序一下= =</p>
-<p>3274：给出牛的个数n和总共特征个数k，求最长的区间，使得区间内所有牛的k个特征相加之和都相等。<br>比如样例区间 每个牛内部差分再对序列求前缀和 问题就转化成在前缀和序列中找相等的两个元素</p>
-<p>注意一定要先差分的才能将问题转化</p>
-<p>从<code>sum[j][0] - sum[i][0] = sum[j][1] - sum[i][1] = …… = sum[j][k] - sum[i][k]</code><br>变成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum[i][1] - sum[i][0] = sum[j][1] - sum[j][0]</span><br><span class="line">sum[i][2] - sum[i][0] = sum[j][2] - sum[j][0]</span><br><span class="line">……</span><br><span class="line">sum[i][k] - sum[i][0] = sum[j][k] - sum[j][0]</span><br></pre></td></tr></table></figure></p>
-<p>2151：概率dp</p>
-<p>设<code>dp[i][j][k]</code>表示第i个队在前j道题中解出k道的概率</p>
-<p><code>dp[i][j][k]=dp[i][j-1][k-1]*p[i][j]+dp[i][j-1][k]*(1-p[i][j]);</code> //这两种来源，第j道做出来或者没做出来+前j-1道做k-1或者k道题概率</p>
-<p>设<code>s[i][k]</code>表示第i队做出的题小于等于k的概率<br><code>s[i][k]=dp[i][M][0]+dp[i][M][1]+...+dp[i][M][k];</code></p>
-<p>每个队至少做出一道题概率为<code>P1=(1-s[1][0])*(1-s[2][0])*...(1-s[T][0]);</code></p>
-<p>每个队做出的题数都在1~N-1的概率为<code>P2=(s[1][N-1]-s[1][0])*(s[2][N-1]-s[2][0])*...(s[T][N-1]-s[T][0]);</code></p>
-<p>最后的答案就是<code>P1-P2</code>，代表至少一个队作出n到以上（1 - 所有队作出<code>0...n-1</code>的概率）</p>
-<p>1840：判断方程是否有根 先枚举前两项可能的值再枚举后三个的值看看是否有和为0就行 hash姿势不对会mle 直接用map会tle = = 而且poj还没有unordered_map</p>
-<p>2002：问平面上一堆点能组成多少个正方形，正方形的边允许不和坐标轴平行。方法是枚举一条边上的两个点，因为是正方形，此时就可以算出另外两个点，只需要二分一下看看是否存在就好了。注意每个正方形会被计算两次。</p>
-<p>2503：应该是想要考哈希+二分，但是map一下就好了。值得一提的是gets会接受空行</p>
-<p>3253：求哈夫曼树，priority_queue一波</p>
-<p>2513：把字符串映射到点，再判断是否有欧拉通路。因为是无向图，只需要统计顶点度数为奇数的数和判断全图是否联通。至于如何映射字符串到点，用map会多个log超时，选用trie。好久没写并查集忘记了初始化竟然看了好久才发现。</p>
-<h2 id="简单搜索"><a href="#简单搜索" class="headerlink" title="简单搜索"></a>简单搜索</h2><p>2488：爆搜即可，注意字典序的要求，字母用来表示列，就是说要列优先最小，再行最小。具体体现在dx, dy数组的设置上。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123;<span class="number">-1</span>, <span class="number">1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123;<span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>3083：bfs很好写，难点在于如何按照左（右）手边靠墙走，核心仍然在于方向数组</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dxl[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dyl[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dxr[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dyr[] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line"><span class="comment">// 然后dfs枚举方向的时候：</span></span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">4</span>) &#123;</span><br><span class="line">  t = (i + op + <span class="number">3</span>) % <span class="number">4</span>;</span><br><span class="line">  nx = x + dx[t]; ny = y + dy[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// op用来表示方向</span></span><br></pre></td></tr></table></figure>
-<p>发现dxl实际上是从12点方向顺时针转，drl是逆时针转，从而刚好对应位置-1就是要找的方向，取模之后相当于是+3</p>
-<p>3009：看起来很吓人但是实际上不难处理，把之前的dfs每次选一步走改成每次选一个方向走就好了。</p>
-<p>1321：给一个不规则棋盘问放k个子的方案数，dfs枚举方案。值得注意的是允许当前位置不放子，所以还要记录横竖的vis数组。</p>
-<p>2251：三维的地图，bfs或者dfs都可以</p>
-<p>3278：bfs思路很好想，但是几年前简直是又wa又t一时爽。注意写法可能会忽略掉n==k的情况。用pair放到queue里写会很慢，不妨把时间戳放到外面开个数组单独记录。</p>
-<p>1426：直接爆搜就过了 感觉会有更优美的写法</p>
-<p>3126：实际上就是处理出来质数然后bfs就好了，然而筛法写错的我= =</p>
-<p>3087：模拟就好了，写法是dfs而已</p>
-<p>3414：著名的倒水问题，bfs。注意数组大小</p>
-<p>2531：dfs把这堆东西分成两组</p>
-<p>1416：找数字的分割方式使得各部分的和与x最近，好像应该dp不过dfs就过了。</p>
-<p>2676：计算概论实验班选拔考试考了就懒得再写了= =</p>
-<p>1129：给点染色的最小色数</p>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>1837：<code>dp[i][c[k] * d[i] + j] += dp[i - 1][j];</code> 第二维是两侧重量差（体积）。因为有负的所以平移一波。</p>
-<p>1276：01背包和多重背包的混合。考虑每一个多重背包，如果<code>num[i] * c[i]</code>大于体积，那么可以对这个物体看作是完全背包，否则拆成log个，然后当成01背包来做</p>
-<p>3267：给一堆词，问一个字符串最少删掉多少字符后可以由这些单词中的某几个（可重复）顺序连接而成。</p>
-<p><code>dp[i] = min(dp[i + 1] + 1, dp[i + match] + (match - len[j]))</code> 其中 <code>match</code> 表示从当前位置开始需要延伸 <code>match</code> 长度来包含 <code>len[j]</code> ，这样 <code>len[j] - match</code> 就是需要删掉的那部分了 <code>dp[i]</code>的含义是从第 <code>i</code> 个位置开始的答案</p>
-<p>1836：给一个序列，问最少要删掉多少个，使得每一个元素都有一个性质：向左<strong>或</strong>向右看不会有<code>&gt;=</code>自己的元素。方法是求两个方向的 LIS，然后求前缀和后缀 max。最后 <code>res = max(l[i] + r[i + 1])</code> 。注意从 discuss 拿到的这组数据： <code>8 3 4 5 1 2 5 4 3</code> 答案是 <code>2</code><br>1260：给出每种品质的价格和需求，没多买一种品质需要多加钱，低品质可以用高品质代替。问最少花多少钱。 <code>dp[i]</code> 表示 前 <code>i</code> 种品质最少要花多少钱，转移的时候要么自己买，要么枚举一段相邻的品质用当前品质的价格来买。为什么是连续的呢？因为保证了价格递增，如果不是连续的，那么分成两段可以更便宜。</p>
-
-          
+          3299：公式转换题，需要读题，不能只看样例
+2159：判断同构，按频率排序
+1083：区间加+单点
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/31/POJ训练计划/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

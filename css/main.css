@@ -1750,6 +1750,9 @@ pre .javascript .function {
   border: 1px solid #eee;
   opacity: 1;
 }
+.site-author-image {
+  border-radius: 100%;
+}
 img:hover {
   -webkit-transform: rotateZ(360deg);
   -moz-transform: rotateZ(360deg);
@@ -1842,7 +1845,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bb42db;
+  background: #c19ddf;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2815,7 +2818,7 @@ ul.breadcrumb li+li:last-child {
 .site-meta {
   padding: 20px 0;
   color: #fff;
-  background: #222;
+  background: #69f;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-meta {

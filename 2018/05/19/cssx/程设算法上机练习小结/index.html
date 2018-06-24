@@ -108,22 +108,25 @@
 
 
 
-  <meta name="keywords" content="程设">
+  <meta name="description" content="练习一 A:浮点数求高精度幂 正常的高精度快速幂，处理小数点的位置注意一下  B:Integer Inquiry  高精度加法  C:Communication System  每一类选一个使得最后的 最小带宽/总价格 最大  可以枚举最小的带宽是啥 然后贪心找价格最小的   dp的话dp[i][j]表示到第i类，带宽是j的答案  当时一直在想j的范围没给不是很好办，后来看代码发现开到1k就可以了">
+<meta name="keywords" content="程设">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程设期末上机汇总">
-<meta property="og:url" content="http://ir1d.cf/2018/06/24/程设期末上机汇总/index.html">
+<meta property="og:title" content="程设算法上机练习小结">
+<meta property="og:url" content="http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/index.html">
 <meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="练习一 A:浮点数求高精度幂 正常的高精度快速幂，处理小数点的位置注意一下  B:Integer Inquiry  高精度加法  C:Communication System  每一类选一个使得最后的 最小带宽/总价格 最大  可以枚举最小的带宽是啥 然后贪心找价格最小的   dp的话dp[i][j]表示到第i类，带宽是j的答案  当时一直在想j的范围没给不是很好办，后来看代码发现开到1k就可以了">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-24T11:41:13.327Z">
+<meta property="og:updated_time" content="2018-06-23T04:52:09.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程设期末上机汇总">
+<meta name="twitter:title" content="程设算法上机练习小结">
+<meta name="twitter:description" content="练习一 A:浮点数求高精度幂 正常的高精度快速幂，处理小数点的位置注意一下  B:Integer Inquiry  高精度加法  C:Communication System  每一类选一个使得最后的 最小带宽/总价格 最大  可以枚举最小的带宽是啥 然后贪心找价格最小的   dp的话dp[i][j]表示到第i类，带宽是j的答案  当时一直在想j的范围没给不是很好办，后来看代码发现开到1k就可以了">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ir1d.cf/2018/06/24/程设期末上机汇总/"/>
+  <link rel="canonical" href="http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/"/>
 
 
 
@@ -133,7 +136,7 @@
   };
 </script>
 
-  <title>程设期末上机汇总 | Neverland</title>
+  <title>程设算法上机练习小结 | Neverland</title>
   
 
 
@@ -358,7 +361,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2018/06/24/程设期末上机汇总/">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ir1d">
@@ -375,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">程设期末上机汇总
+          <h1 class="post-title" itemprop="name headline">程设算法上机练习小结
               
             
           </h1>
@@ -400,12 +403,24 @@
                 
               
 
-              <time title="Created: 2018-06-24 19:41:06 / Modified: 19:41:13" itemprop="dateCreated datePublished" datetime="2018-06-24T19:41:06+08:00">2018-06-24</time>
+              <time title="Created: 2018-05-19 21:16:05" itemprop="dateCreated datePublished" datetime="2018-05-19T21:16:05+08:00">2018-05-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-06-23 12:52:09" itemprop="dateModified" datetime="2018-06-23T12:52:09+08:00">2018-06-23</time>
               
             
           </span>
@@ -437,10 +452,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/24/程设期末上机汇总/#comments" itemprop="discussionUrl">
+                <a href="/2018/05/19/cssx/程设算法上机练习小结/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/24/程设期末上机汇总/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/05/19/cssx/程设算法上机练习小结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,7 +483,33 @@
       
 
       
-        
+        <h1 id="练习一"><a href="#练习一" class="headerlink" title="练习一"></a>练习一</h1><ul>
+<li><p>A:浮点数求高精度幂</p>
+<p>正常的高精度快速幂，处理小数点的位置注意一下</p>
+</li>
+<li><p>B:Integer Inquiry<br>  高精度加法</p>
+</li>
+<li><p><strong>C:Communication System</strong><br>  每一类选一个使得最后的 <code>最小带宽/总价格</code> 最大<br>  可以枚举最小的带宽是啥 然后贪心找价格最小的</p>
+<p>  dp的话<code>dp[i][j]</code>表示到第<code>i</code>类，带宽是<code>j</code>的答案<br>  当时一直在想<code>j</code>的范围没给不是很好办，后来看代码发现开到<code>1k</code>就可以了</p>
+<p>  代码： <a href="https://github.com/Ir1d/Fantasy/blob/master/POJ/1018.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/POJ/1018.cpp</a><br>  注意 <code>POJ 1018</code> 得用 <code>C++</code> 交，不知道为啥</p>
+</li>
+<li><p>D:判断闰年<br>  <code>if</code>就好了</p>
+</li>
+<li><p>E:生理周期<br>  枚举或者<code>CRT</code></p>
+</li>
+<li><p>F:完美立方<br>  枚举</p>
+</li>
+<li><p>G:画家问题<br>  枚举第一行的结果，然后之后的操作就确定了，找答案最小的就可以了</p>
+</li>
+<li><p><strong>H:恼人的青蛙</strong><br>  枚举？</p>
+</li>
+<li><p><strong>I:放苹果</strong><br>  应该直接组合数吧？ dfs过了</p>
+</li>
+<li><p>J:古代密码<br>  就是给每个字母的出现次序排个序看能不能对应上</p>
+</li>
+</ul>
+<hr>
+
       
     </div>
 
@@ -489,7 +530,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://ir1d.cf/2018/06/24/程设期末上机汇总/" title="程设期末上机汇总">http://ir1d.cf/2018/06/24/程设期末上机汇总/</a>
+    <a href="http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/" title="程设算法上机练习小结">http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -515,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/24/cf/cf991/" rel="next" title="Codeforces Round">
-                <i class="fa fa-chevron-left"></i> Codeforces Round
+              <a href="/2018/05/19/爬虫小结/" rel="next" title="爬虫小结">
+                <i class="fa fa-chevron-left"></i> 爬虫小结
               </a>
             
           </div>
@@ -524,6 +565,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/25/cssx/openjudge补习/" rel="prev" title="openjudge补习">
+                openjudge补习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -582,8 +627,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,7 +656,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -739,6 +793,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#练习一"><span class="nav-number">1.</span> <span class="nav-text">练习一</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -894,9 +964,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ir1d.cf/2018/06/24/程设期末上机汇总/';
-        this.page.identifier = '2018/06/24/程设期末上机汇总/';
-        this.page.title = '程设期末上机汇总';
+        this.page.url = 'http://ir1d.cf/2018/05/19/cssx/程设算法上机练习小结/';
+        this.page.identifier = '2018/05/19/cssx/程设算法上机练习小结/';
+        this.page.title = '程设算法上机练习小结';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

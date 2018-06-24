@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Codeforces Round #435 (Div. 2) 100场div1指日可待【">
+  <meta name="description" content="好久没打了，根本不在状态，深夜掉分场">
 <meta name="keywords" content="codeforces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 435 (Div. 2)">
-<meta property="og:url" content="http://ir1d.cf/2017/09/26/cf862/index.html">
+<meta property="og:title" content="Codeforces Round">
+<meta property="og:url" content="http://ir1d.cf/2018/06/24/cf/cf991/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="Codeforces Round #435 (Div. 2) 100场div1指日可待【">
+<meta property="og:description" content="好久没打了，根本不在状态，深夜掉分场">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T17:56:53.720Z">
+<meta property="og:updated_time" content="2018-06-24T11:52:51.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces Round 435 (Div. 2)">
-<meta name="twitter:description" content="Codeforces Round #435 (Div. 2) 100场div1指日可待【">
+<meta name="twitter:title" content="Codeforces Round">
+<meta name="twitter:description" content="好久没打了，根本不在状态，深夜掉分场">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ir1d.cf/2017/09/26/cf862/"/>
+  <link rel="canonical" href="http://ir1d.cf/2018/06/24/cf/cf991/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Codeforces Round 435 (Div. 2) | Neverland</title>
+  <title>Codeforces Round | Neverland</title>
   
 
 
@@ -361,7 +361,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2017/09/26/cf862/">
+    <link itemprop="mainEntityOfPage" href="http://ir1d.cf/2018/06/24/cf/cf991/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ir1d">
@@ -378,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Codeforces Round 435 (Div. 2)
+          <h1 class="post-title" itemprop="name headline">Codeforces Round
               
             
           </h1>
@@ -403,24 +403,12 @@
                 
               
 
-              <time title="Created: 2017-09-26 22:49:31" itemprop="dateCreated datePublished" datetime="2017-09-26T22:49:31+08:00">2017-09-26</time>
+              <time title="Created: 2018-06-24 01:46:29 / Modified: 19:52:51" itemprop="dateCreated datePublished" datetime="2018-06-24T01:46:29+08:00">2018-06-24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-06-24 01:56:53" itemprop="dateModified" datetime="2018-06-24T01:56:53+08:00">2018-06-24</time>
               
             
           </span>
@@ -452,10 +440,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/26/cf862/#comments" itemprop="discussionUrl">
+                <a href="/2018/06/24/cf/cf991/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/26/cf862/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/06/24/cf/cf991/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -483,53 +471,45 @@
       
 
       
-        <p><code>Codeforces Round #435 (Div. 2)</code></p>
-<p>100场div1指日可待【</p>
+        <p>好久没打了，根本不在状态，深夜掉分场</p>
 <a id="more"></a>
-<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>问最少对集合修改几次，使得集合的mex值是给定的值</p>
-<p>从小到大处理即可</p>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><blockquote>
-<p>A loop is an edge, which connects a node with itself. Graph doesn’t contain multiple edges when for each pair of nodes there is no more than one edge between them. A cycle and a loop aren’t the same .</p>
+<blockquote>
+<p>A. If at first you don’t succeed…</p>
 </blockquote>
-<p>问可以往一个树最多加多少边使得新图仍然是二分图</p>
-<p>注意到树本身是二分图，加边必然是在两个点集之间，而这些边最多有$l * r$条，已经有了$n - 1$条，所以答案显然</p>
-<p>注意建树要加双向边，以及爆int的问题别忘了开long long</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
-<p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^17$可以用来区分（不会重复而且不会超出）</p>
-<p>然后就可以先放$1, 2, 3, \cdots, n - 3$ 记它们的xor和是s</p>
-<p>那么此时后三个数的xor和是$s xor x$</p>
-<p>就可以放$0， 2^17， 2^17 xor s xor x$</p>
-<p>注意题中要求所有数不能相同，所以如果s和x是相等的，后两个数就相等了就不合题意了</p>
-<p>所以此时放$2^17, 2^18, 2^17 xor 2^18$</p>
-<p>至于为什么选择$2^17$和$2^18$，是为了$2^17 xor 2^18$和$2^17 xor  x xor s$的值始终大于1e5</p>
-<p>就是那个$2^17$的最高位是1然后它和别的数那一位是0的数xor之后答案那位是1就保证了比1e5大</p>
-<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>交互题</p>
-<p>每次可以查询一个01串和某个给定的01串的hamming distance（编辑距离）</p>
-<p>然后要求在15次查询之内确定01串中一定是0的一个位置和一定是1的一个位置即可</p>
-<p>要记得flush缓冲区</p>
-<p>题意不是要完全确定01串，只要确定一个0一个1即可</p>
-<p>这个查询的核心操作是要得到一个区间里的0/1的个数</p>
-<p>用类似前缀和的思路，我们先查询全是1的串的答案然后到时候减一下就好了</p>
-<p>酱紫之后发现可以再查询$011111…$然后就得到第一个数是0还是1了</p>
-<p>之后找另一个数的位置，不难发现可以二分最左侧的那个，即只要不是连续的那么就有一个要找的数出现了</p>
-<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>给a和b两个数列定义f函数并求值</p>
-<p>$f(j) = |\sum_{i=1}^n(-1)^{(i-1)}*(a_i-b_{i+j})|$</p>
-<p>每次区间加一个数 然后 查询所有f(j)的最小值</p>
-<p>注意到可以把f(f)的式子拆开变成$|\sum_{i=1}^n{i-1}<em>a_i+\sum_{i=1}^n(-1)^i</em>b_{i+j}|$</p>
-<p>然后发现前一项是定值，而且整个式子在绝对值里面，如果前一项值是c，每次只需要找和-c最接近的一个后一项就行了</p>
-<p>换言之，可以用一个set维护所有的后一项</p>
-<p>对于修改操作，如果修改的区间长是偶数，发现加了多少次就减了多少次</p>
-<p>如果是奇数，那就看l的奇偶性判断是加还是减</p>
-<p>巧妙之处在于发现求这个最值不需要每次遍历来找，只需要这个值尽可能接近0就行，而且修改是对a操作的b一直不变，所以XD</p>
-<p>std用了一个非常巧妙的方法在一次循环里得到了对于所有j的第二项和</p>
-<p>注意j变到j+1的时候是要取相反数然后对第一个和最后一个数加加减减</p>
-<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>有n个字符串，q个操作</p>
-<p>第一种是查询$[a, b]$的某个子区间，使得区间长度乘上区间lcp的值最大</p>
-<p>第二种是修改某个字符串</p>
-<p>// 先坑着= =</p>
-<p>求出相邻的lcp长度，区间lcp等于区间最小值</p>
-<p>标程是对h分类，小的用线段树维护，大的直接set</p>
-<p>学习了下nbc的代码 不是很懂QAQ</p>
+<p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p>
+<blockquote>
+<p>B. Getting an A</p>
+</blockquote>
+<p>问最少修改多少个数满足条件</p>
+<p>统计个数然后判一判，WA</p>
+<p>于是排个序暴力做</p>
+<p>double 转 int 竟然是 直接截断 // 埋下伏笔</p>
+<blockquote>
+<p>C. Candies</p>
+</blockquote>
+<p>交了九发= =</p>
+<p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p>
+<p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p>
+<ul>
+<li>qls: 整数题怎么有人写 double 的</li>
+</ul>
+<p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p>
+<p>又WA又T一时爽</p>
+<blockquote>
+<p>D. Bishwock</p>
+</blockquote>
+<p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p>
+<p>贪心放就好了，WA了一发少考虑了几种情况</p>
+<p>upd: fst…. 少判了几种情况</p>
+<blockquote>
+<p>E. Bus Number</p>
+</blockquote>
+<p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p>
+<p>当时就写了个爆搜上去 TLE</p>
+<p>最后五分钟想起来加个记忆化</p>
+<p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p>
+<p>加上<code>return s</code>就交，最后一秒钟返回pp</p>
+<p>upd: fst…. sb了</p>
 
       
     </div>
@@ -551,7 +531,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://ir1d.cf/2017/09/26/cf862/" title="Codeforces Round 435 (Div. 2)">http://ir1d.cf/2017/09/26/cf862/</a>
+    <a href="http://ir1d.cf/2018/06/24/cf/cf991/" title="Codeforces Round">http://ir1d.cf/2018/06/24/cf/cf991/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -577,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/22/cpppp/" rel="next" title="cpppp">
-                <i class="fa fa-chevron-left"></i> cpppp
+              <a href="/2018/06/23/程设期末推荐练习/" rel="next" title="程设期末推荐练习">
+                <i class="fa fa-chevron-left"></i> 程设期末推荐练习
               </a>
             
           </div>
@@ -587,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/28/笔记/" rel="prev" title="笔记">
-                笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/24/程设期末上机汇总/" rel="prev" title="程设期末上机汇总">
+                程设期末上机汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -648,17 +628,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -677,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -814,22 +785,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D"><span class="nav-number">4.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E"><span class="nav-number">5.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F"><span class="nav-number">6.</span> <span class="nav-text">F</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -985,9 +940,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ir1d.cf/2017/09/26/cf862/';
-        this.page.identifier = '2017/09/26/cf862/';
-        this.page.title = 'Codeforces Round 435 (Div. 2)';
+        this.page.url = 'http://ir1d.cf/2018/06/24/cf/cf991/';
+        this.page.identifier = '2018/06/24/cf/cf991/';
+        this.page.title = 'Codeforces Round';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

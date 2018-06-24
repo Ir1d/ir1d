@@ -35,11 +35,11 @@
   </entry>
   
   <entry>
-    <title>Codeforces Round \#491 (Div.2)</title>
-    <link href="http://ir1d.cf/2018/06/24/cf991/"/>
-    <id>http://ir1d.cf/2018/06/24/cf991/</id>
+    <title>Codeforces Round</title>
+    <link href="http://ir1d.cf/2018/06/24/cf/cf991/"/>
+    <id>http://ir1d.cf/2018/06/24/cf/cf991/</id>
     <published>2018-06-23T17:46:29.000Z</published>
-    <updated>2018-06-24T02:57:15.979Z</updated>
+    <updated>2018-06-24T11:52:51.289Z</updated>
     
     <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><a id="more"></a><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><p>upd: fst…. 少判了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p><p>upd: fst…. sb了</p>]]></content>
     
@@ -338,32 +338,9 @@
   </entry>
   
   <entry>
-    <title>2017小结</title>
-    <link href="http://ir1d.cf/2018/02/08/2017%E5%B0%8F%E7%BB%93/"/>
-    <id>http://ir1d.cf/2018/02/08/2017小结/</id>
-    <published>2018-02-08T04:11:09.000Z</published>
-    <updated>2018-06-23T04:49:37.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天小年<br>偶然看到学妹发的WC2018的节目，发现时间原来过得好快<br>这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD<br>本来以为都忘记了的事，突然发现原来记得清清楚楚<br>翻了翻知乎上几个OI相关的问题，pyc问的时候我还是个上台拿衣服的孩子吧= =<br>转眼间，大半的答主都不认识了<br>高三一年下来，不那么跳了，写了很久的很长的东西，却还是完全没有剖析清楚内心<br>出了些意外，不过还好无大碍<br>高考还算可以，靠着pkusc的运气还是混进了园子<br>还是很喜欢你<br>可能每次写回忆录写得都是一篇流水 也并没有什么特别值得叙说的事<br>就当是结局圆满吧<br>2018 愿安 希望可以变得自信点<br>愿大家诸事顺遂，永远行走在光明向上的路上。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;今天小年&lt;br&gt;偶然看到学妹发的WC2018的节目，发现时间原来过得好快&lt;br&gt;这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD&lt;br&gt;本来以为都忘记了的事，突然发现原来记得清清楚楚&lt;br&gt;翻了翻知乎上几个OI相关的问题，pyc问的时
-      
-    
-    </summary>
-    
-      <category term="回忆录" scheme="http://ir1d.cf/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>20180206comments</title>
-    <link href="http://ir1d.cf/2018/02/06/20180206comments/"/>
-    <id>http://ir1d.cf/2018/02/06/20180206comments/</id>
+    <link href="http://ir1d.cf/2018/02/06/oop/20180206comments/"/>
+    <id>http://ir1d.cf/2018/02/06/oop/20180206comments/</id>
     <published>2018-02-06T14:24:42.000Z</published>
     <updated>2018-06-23T04:49:42.947Z</updated>
     
@@ -543,6 +520,33 @@
     
     
       <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu16.04安装pycaffe</title>
+    <link href="http://ir1d.cf/2018/01/18/ubuntu16-04%E5%AE%89%E8%A3%85pycaffe/"/>
+    <id>http://ir1d.cf/2018/01/18/ubuntu16-04安装pycaffe/</id>
+    <published>2018-01-18T08:44:44.000Z</published>
+    <updated>2018-06-23T04:47:06.917Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide" target="_blank" rel="noopener">https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide</a></p><p>装pycaffe的时候要改Makefile.config的很多地方= =</p><p><a href="http://caffe.berkeleyvision.org/installation.html#python" target="_blank" rel="noopener">http://caffe.berkeleyvision.org/installation.html#python</a></p><p><a href="https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9" target="_blank" rel="noopener">https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/B
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
+    
+      <category term="caffe" scheme="http://ir1d.cf/tags/caffe/"/>
     
   </entry>
   

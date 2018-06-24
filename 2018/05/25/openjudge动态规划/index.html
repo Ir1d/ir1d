@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="感觉之前使用md的姿势好像不对 = =">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T04:51:15.575Z">
+<meta property="og:updated_time" content="2018-06-24T08:16:05.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openjudge动态规划">
 <meta name="twitter:description" content="感觉之前使用md的姿势好像不对 = =">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-23 12:51:15" itemprop="dateModified" datetime="2018-06-23T12:51:15+08:00">2018-06-23</time>
+                <time title="Modified: 2018-06-24 16:16:05" itemprop="dateModified" datetime="2018-06-24T16:16:05+08:00">2018-06-24</time>
               
             
           </span>
@@ -549,6 +549,204 @@
 <p><a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/4149.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/4149.cpp</a></p>
 </li>
 </ul>
+<ul>
+<li>1481 Maximum sum</li>
+</ul>
+<p>ll[i]为以i为终点<br>rr[i]为以i为起点</p>
+<p>ls[i]为前i个<br>rs[i]为后i个</p>
+<p>边界数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">-1 -1</span><br></pre></td></tr></table></figure>
+<p>时间复杂度O(n)</p>
+<ul>
+<li>162 Post Office</li>
+</ul>
+<p>dp[i][j]表示前i个位置放j个post office的最小代价<br>转移是dp[i][j] = min{dp[k][j - 1] + cost[k + 1][i]};<br>cost数组可以v^2p预处理</p>
+<p>时间复杂度O(v^2p)</p>
+<p>考虑优化：(四边形不等式)</p>
+<p>证明略</p>
+<p>决策变量k具有单调性</p>
+<p>从而优化到O(v^2)</p>
+<ul>
+<li>1759 LIS</li>
+</ul>
+<p>*lower_bound(dp, dp + n, a[i]) = a[i];</p>
+<ul>
+<li>1768 最大子矩阵</li>
+</ul>
+<p>枚举起始与终点行，转化为最大子段和</p>
+<ul>
+<li>1775 采药</li>
+</ul>
+<p>01背包</p>
+<ul>
+<li>1808 公共子序列</li>
+</ul>
+<p>LCS</p>
+<ul>
+<li>1944 吃糖果</li>
+</ul>
+<p>Fibonacci</p>
+<ul>
+<li>1996 登山</li>
+</ul>
+<p>转化成求两遍LIS</p>
+<ul>
+<li>2421 Exchange Rates</li>
+</ul>
+<p>题目比较坑</p>
+<p>dp[i][0], dp[i][1]分别是两种全部转化后最大多少</p>
+<p>一定存在一种最优策略是每次全部转化的</p>
+<ul>
+<li>2718 移动路线</li>
+</ul>
+<p>dp[i][j] += dp[i - 1][j] + dp[i][j - 1];</p>
+<ul>
+<li>2728 摘花生</li>
+</ul>
+<p>数字正方形</p>
+<p>dp[i][j] = std::max(dp[i - 1][j], dp[i][j - 1]) + a[i][j];</p>
+<ul>
+<li>2984    数字组合</li>
+</ul>
+<p>dp[i][j] 表示前i个数拼成j的方案数</p>
+<p>然后滚动数组优化成一维空间</p>
+<ul>
+<li>2988 计算字符串距离</li>
+</ul>
+<p>dp[i][j] 表示s的前i与t的前j的距离</p>
+<p>然后转移就是分各个情况就好</p>
+<p>注意和LCS不同之处在于预处理</p>
+<p>LCS刷0即可</p>
+<p>然而这个地方要<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, n) dp[i][<span class="number">0</span>] = i;</span><br><span class="line">g(i, <span class="number">1</span>, m) dp[<span class="number">0</span>][i] = i;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>2989 糖果</li>
+</ul>
+<p>转移是有条件的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, n) f(j, <span class="number">0</span>, k) &#123;</span><br><span class="line">  <span class="keyword">int</span> tee = (j - a[i] % k + k) % k;</span><br><span class="line">  dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">  <span class="keyword">if</span> (dp[i - <span class="number">1</span>][tee] || !tee)</span><br><span class="line">  dp[i][j] = <span class="built_in">std</span>::max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][(j - a[i] % k + k) % k] + a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3531 判断整除</li>
+</ul>
+<p>原来这个条件很常见。。。</p>
+<p>同上题</p>
+<p>………………刷表法的话就不用特判了= =</p>
+<ul>
+<li>3532 最大上升子序列和</li>
+</ul>
+<p>LIS 变个形</p>
+<ul>
+<li>4977 怪盗基德的滑翔翼</li>
+</ul>
+<p>求一下两个方向的LIS求max即可</p>
+<ul>
+<li>4978 宠物小精灵之收服</li>
+</ul>
+<p>二维费用的01背包问题</p>
+<p>背包九讲(<a href="https://github.com/tianyicui/pack/blob/master/V2.pdf" target="_blank" rel="noopener">https://github.com/tianyicui/pack/blob/master/V2.pdf</a>)</p>
+<ul>
+<li>4982 踩方格</li>
+</ul>
+<p>爆搜</p>
+<p>或者打个表发现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f[<span class="number">0</span>] = <span class="number">1</span>,f[<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line">f[i] = f[i - <span class="number">1</span>] * <span class="number">2</span> + f[i - <span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>6045 开餐馆</li>
+</ul>
+<p>dp[i]表示到i为止的最大收益</p>
+<p>O(n^2T)</p>
+<ul>
+<li>8787 数的划分</li>
+</ul>
+<p>dp[i][j]表示将i分成j份的方案数<br>dp[i][j]=dp[i-j][1]+dp[i-j][2]+dp[i-j][3]+…+dp[i-j][j-1]+dp[i-j][j];</p>
+<p>时间复杂度是n*k^2</p>
+<p>O(n*k)的方法：</p>
+<p>dp[i][j]=dp[i-j][1]+dp[i-j][2]+…+dp[i-j][j];</p>
+<p>dp[i-1][j-1]=dp[(i-1)-(j-1)][1]+dp[(i-1)-(j-1)][2]+…+dp[(i-1)-(j-1)][j-1]<br>=dp[i-j][1]+dp[i-j][2]+…+dp[i-j][j-1];</p>
+<p>因此，</p>
+<p>dp[i][j]=dp[i-j][1]+dp[i-j][2]+…+dp[i-j][j-1]+dp[i-j][j]<br>=dp[i-1][j-1]+dp[i-j][j];</p>
+<ul>
+<li>666 放苹果</li>
+</ul>
+<p>假如将7个苹果放进3个盘子里，可以分2种情况考虑：1，空着一个盘子不放，即将7个苹果放进2个盘子里；2，先每个盘子均放进一个苹果，再按照本规则继续放下去。</p>
+<p>于是有递推公式：F(X,Y)=F(X,Y-1)+F(X-Y,Y)</p>
+<p>F(X,1)，F(1,Y),F(0,Y),F(X,0)都等于1</p>
+<p><code>当X&lt;Y时，即比如说将5个苹果放进8个盘子里，根据题意，和将5个苹果放进5个盘子是一样的结果</code></p>
+<p>①最少的盘子放了一个，这样每个盘子至少一个，n个盘子先放上n个，剩下的m-n个可以随便放<br>②最少的盘子没有放，这样剩下的n-1个盘子还是随便放m个</p>
+<ul>
+<li>6049 买书</li>
+</ul>
+<p>考虑分别记录拼出i这个数最后一个用了啥</p>
+<p>注意到拼数的方案与顺序无关，因此可以递增地来考虑</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">dp[i][<span class="number">0</span>] += dp[i - <span class="number">10</span>][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">20</span>) &#123;</span><br><span class="line">dp[i][<span class="number">1</span>] += dp[i - <span class="number">20</span>][<span class="number">0</span>];</span><br><span class="line">dp[i][<span class="number">1</span>] += dp[i - <span class="number">20</span>][<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">50</span>) &#123;</span><br><span class="line">dp[i][<span class="number">2</span>] += dp[i - <span class="number">50</span>][<span class="number">0</span>];</span><br><span class="line">dp[i][<span class="number">2</span>] += dp[i - <span class="number">50</span>][<span class="number">1</span>];</span><br><span class="line">dp[i][<span class="number">2</span>] += dp[i - <span class="number">50</span>][<span class="number">2</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">dp[i][<span class="number">3</span>] += dp[i - <span class="number">100</span>][<span class="number">0</span>];</span><br><span class="line">dp[i][<span class="number">3</span>] += dp[i - <span class="number">100</span>][<span class="number">1</span>];</span><br><span class="line">dp[i][<span class="number">3</span>] += dp[i - <span class="number">100</span>][<span class="number">2</span>];</span><br><span class="line">dp[i][<span class="number">3</span>] += dp[i - <span class="number">100</span>][<span class="number">3</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>6252 通配符字符串匹配</li>
+</ul>
+<p>dp[i][j]表示s[1..i]与t[1..j]是否匹配</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">  tee = dp[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">if</span> (s[i] == <span class="string">'*'</span>) dp[i][<span class="number">0</span>] = tee;</span><br><span class="line">  g(j, <span class="number">1</span>, m) &#123;</span><br><span class="line">    tee |= dp[i - <span class="number">1</span>][j];</span><br><span class="line">    <span class="comment">// dp[i][j]</span></span><br><span class="line">    <span class="keyword">if</span> (s[i] == <span class="string">'?'</span> || s[i] == t[j]) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (s[i] == <span class="string">'*'</span>) dp[i][j] = tee;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>7113 Charm Bracelet</li>
+</ul>
+<p>01背包</p>
+<ul>
+<li>747 Divisibility</li>
+</ul>
+<p>同3531 判断整除</p>
+<p>而且数据更强？</p>
+<p>奥妙重重</p>
+<p>强烈怀疑3531放了个什么奇怪的数据</p>
+<p>刷表法姿势不对竟然也能过= =</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">  x = <span class="built_in">abs</span>(x);</span><br><span class="line">  x %= k;</span><br><span class="line">  f(j, <span class="number">0</span>, k) <span class="keyword">if</span> (dp[i - <span class="number">1</span>][j]) &#123;</span><br><span class="line">    dp[i][(j + x) % k] = <span class="number">1</span>;</span><br><span class="line">    dp[i][((j - x) % k + k) % k] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (dp[n][<span class="number">0</span>]) <span class="built_in">puts</span>(<span class="string">"Divisible"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>7614 最低通行费</li>
+</ul>
+<p>dp[i][j][k]表示到(i,j)走了k步的最小代价</p>
+<ul>
+<li>7624 山区建小学</li>
+</ul>
+<p>同162 Post Office</p>
+<ul>
+<li>7625 三角形最佳路径问题</li>
+</ul>
+<p>数字三角形</p>
+<ul>
+<li>7627 鸡蛋的硬度</li>
+</ul>
+<p><a href="http://blog.csdn.net/jerry99s/article/details/48802527" target="_blank" rel="noopener">http://blog.csdn.net/jerry99s/article/details/48802527</a></p>
+<ul>
+<li>8462 大盗阿福</li>
+</ul>
+<p>saffah出过，2014暑假集训中</p>
+<ul>
+<li>8464 股票买卖</li>
+</ul>
+<p>DP……预处理后缀最大值、最大获利、前缀最大值之类的求一下对应组合的max</p>
+<ul>
+<li>8467 鸣人的影分身</li>
+</ul>
+<p>同666</p>
+<ul>
+<li>8471 切割回文</li>
+</ul>
+<p>dp[i]表示s[1..i]最小需要的切割次数</p>
+<ul>
+<li>8780 拦截导弹</li>
+</ul>
+<p>LIS</p>
+<ul>
+<li>8782 乘积最大</li>
+</ul>
+<p>dp[i][j]表示前i个分成j份</p>
+<ul>
+<li>8785 装箱问题</li>
+</ul>
+<p>01背包</p>
+<ul>
+<li>90 滑雪</li>
+</ul>
+<p>DAG最长路</p>
+<ul>
+<li>8786 方格取数</li>
+</ul>
+<p>费用流/DP</p>
 
       
     </div>

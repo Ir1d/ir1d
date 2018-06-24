@@ -338,6 +338,59 @@
   </entry>
   
   <entry>
+    <title>2017小结</title>
+    <link href="http://ir1d.cf/2018/02/08/notes/2017%E5%B0%8F%E7%BB%93/"/>
+    <id>http://ir1d.cf/2018/02/08/notes/2017小结/</id>
+    <published>2018-02-08T04:11:09.000Z</published>
+    <updated>2018-06-23T04:49:37.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天小年<br>偶然看到学妹发的WC2018的节目，发现时间原来过得好快<br>这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD<br>本来以为都忘记了的事，突然发现原来记得清清楚楚<br>翻了翻知乎上几个OI相关的问题，pyc问的时候我还是个上台拿衣服的孩子吧= =<br>转眼间，大半的答主都不认识了<br>高三一年下来，不那么跳了，写了很久的很长的东西，却还是完全没有剖析清楚内心<br>出了些意外，不过还好无大碍<br>高考还算可以，靠着pkusc的运气还是混进了园子<br>还是很喜欢你<br>可能每次写回忆录写得都是一篇流水 也并没有什么特别值得叙说的事<br>就当是结局圆满吧<br>2018 愿安 希望可以变得自信点<br>愿大家诸事顺遂，永远行走在光明向上的路上。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天小年&lt;br&gt;偶然看到学妹发的WC2018的节目，发现时间原来过得好快&lt;br&gt;这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD&lt;br&gt;本来以为都忘记了的事，突然发现原来记得清清楚楚&lt;br&gt;翻了翻知乎上几个OI相关的问题，pyc问的时
+      
+    
+    </summary>
+    
+      <category term="回忆录" scheme="http://ir1d.cf/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>20180206comments</title>
+    <link href="http://ir1d.cf/2018/02/06/notes/20180206comments/"/>
+    <id>http://ir1d.cf/2018/02/06/notes/20180206comments/</id>
+    <published>2018-02-06T14:24:42.000Z</published>
+    <updated>2018-06-23T04:49:42.947Z</updated>
+    
+    <content type="html"><![CDATA[<p>高中同学聚会，见到大家其实很开心</p><p>有人喝酒 听到了不少劲爆的消息</p><p>有个老哥还喝醉了</p><p>喝醉的老哥感觉很爱面子 一直反复在说高考</p><p>是梦魔吧……sigh</p><p>愿安</p><p>很容易就想起你了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;高中同学聚会，见到大家其实很开心&lt;/p&gt;
+&lt;p&gt;有人喝酒 听到了不少劲爆的消息&lt;/p&gt;
+&lt;p&gt;有个老哥还喝醉了&lt;/p&gt;
+&lt;p&gt;喝醉的老哥感觉很爱面子 一直反复在说高考&lt;/p&gt;
+&lt;p&gt;是梦魔吧……sigh&lt;/p&gt;
+&lt;p&gt;愿安&lt;/p&gt;
+&lt;p&gt;很容易就想起你了&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="回忆录" scheme="http://ir1d.cf/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>cprimerplus</title>
     <link href="http://ir1d.cf/2018/02/05/cprimerplus/"/>
     <id>http://ir1d.cf/2018/02/05/cprimerplus/</id>
@@ -490,58 +543,6 @@
     
     
       <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu16.04安装pycaffe</title>
-    <link href="http://ir1d.cf/2018/01/18/ubuntu16-04%E5%AE%89%E8%A3%85pycaffe/"/>
-    <id>http://ir1d.cf/2018/01/18/ubuntu16-04安装pycaffe/</id>
-    <published>2018-01-18T08:44:44.000Z</published>
-    <updated>2018-06-23T04:47:06.917Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide" target="_blank" rel="noopener">https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide</a></p><p>装pycaffe的时候要改Makefile.config的很多地方= =</p><p><a href="http://caffe.berkeleyvision.org/installation.html#python" target="_blank" rel="noopener">http://caffe.berkeleyvision.org/installation.html#python</a></p><p><a href="https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9" target="_blank" rel="noopener">https://gist.github.com/titipata/f0ef48ad2f0ebc07bcb9</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/B
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
-    
-      <category term="caffe" scheme="http://ir1d.cf/tags/caffe/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程设笔记</title>
-    <link href="http://ir1d.cf/2018/01/16/cssx/%E7%A8%8B%E8%AE%BE%E7%AC%94%E8%AE%B0/"/>
-    <id>http://ir1d.cf/2018/01/16/cssx/程设笔记/</id>
-    <published>2018-01-16T01:46:37.000Z</published>
-    <updated>2018-06-23T04:52:05.440Z</updated>
-    
-    <content type="html"><![CDATA[<p>函数指针<br>命令行参数<br>位运算<br>引用 - 引用作为函数的返回值<br>不可通过常量指针修改其指向的内容<br>动态分配空间<br>内联函数、函数重载、缺省参数<br>缺省参数可以在扩充函数参数是避免对原有的调用语句的修改<br>类、成员函数、内联成员函数<br>构造函数<br>析构函数<br>静态成员 – 全局 – 易于维护<br>成员对象 – 封闭类<br>友元函数、友元类 友元类关系不能传递、不能继承<br><strong>this指针</strong><br>比如有一个<code>class C</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">p-&gt;magic();</span><br></pre></td></tr></table></figure></p><p>等价于<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C *p = <span class="literal">NULL</span>;</span><br><span class="line">magic(p);</span><br></pre></td></tr></table></figure></p><p>如果后一种语句合法那么前一种就合法<br>常量对象<br>常亮成员函数不应修改对象，也不能调用非常亮成员函数（静态除外）<br>常引用避免构造函数的开销<br><code>=</code>返回值最好为引用 复制构造函数也要避免浅拷贝<br>运算符可以重载为友元函数<br>继承、派生<br>继承关系、复合关系<br>protected<br>虚函数、多态 virtual关键字<br>构造函数和析构函数中调用虚函数不是多态<br>虚函数表会占用空间<br>也有额外的时间开销 – 多态的函数调用过程是查询虚函数表<br>一个基类的指针删除派生类对象的时候希望先调用派生类析构函数再调用基类的析构函数<br>不允许虚函数作为构造函数<br>抽象类中成员函数允许调用纯虚函数，但是构造函数、析构函数中不允许<br>函数模板 – 泛型程序设计<br>STL<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::ostream_iterator&lt;<span class="keyword">int</span>&gt; output(<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">" "</span>);</span><br><span class="line"><span class="built_in">std</span>::copy(a.begin(), a.end(), output);</span><br><span class="line"><span class="comment">// 相当于是用 cout 输出 a 里面的元素，用空格分隔开</span></span><br></pre></td></tr></table></figure></p><p>copy到vector的时候它不会自动扩空间<br>智能指针 shared_ptr 不能托管数组的指针<br>不能取地址的表达式是右值<br>lambda表达式<br>强制类型转换<br>异常</p><p>八数码中不改变排列的奇偶性</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;函数指针&lt;br&gt;命令行参数&lt;br&gt;位运算&lt;br&gt;引用 - 引用作为函数的返回值&lt;br&gt;不可通过常量指针修改其指向的内容&lt;br&gt;动态分配空间&lt;br&gt;内联函数、函数重载、缺省参数&lt;br&gt;缺省参数可以在扩充函数参数是避免对原有的调用语句的修改&lt;br&gt;类、成员函数、内联成员函数&lt;b
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="程设" scheme="http://ir1d.cf/tags/%E7%A8%8B%E8%AE%BE/"/>
     
   </entry>
   

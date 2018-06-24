@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-23T17:55:46.088Z</updated>
+  <updated>2018-06-24T02:57:15.979Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -18,23 +18,16 @@
   
   <entry>
     <title>Codeforces Round \#491 (Div.2)</title>
-    <link href="http://ir1d.cf/2018/06/24/cf491/"/>
-    <id>http://ir1d.cf/2018/06/24/cf491/</id>
+    <link href="http://ir1d.cf/2018/06/24/cf991/"/>
+    <id>http://ir1d.cf/2018/06/24/cf991/</id>
     <published>2018-06-23T17:46:29.000Z</published>
-    <updated>2018-06-23T17:55:46.088Z</updated>
+    <updated>2018-06-24T02:57:15.979Z</updated>
     
-    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p>]]></content>
+    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><a id="more"></a><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><p>upd: fst…. 少判了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p><p>upd: fst…. sb了</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;好久没打了，根本不在状态，深夜掉分场&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A. If at first you don’t succeed…&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;坑点在判断数据是否合法，忘了加上$a &amp;lt; c$，$a &amp;lt; n$之类的，WA
-      
+      &lt;p&gt;好久没打了，根本不在状态，深夜掉分场&lt;/p&gt;
     
     </summary>
     

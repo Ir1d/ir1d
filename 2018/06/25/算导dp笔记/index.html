@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="动态规划应用于子问题重叠的情况  要去刻画最优解的结构特征 尝试递归地定义最优解的值（就是我们常说的考虑从i - 1转移到i） 计算最优解 利用计算出的信息构造一个最优解  钢条切割给定一段钢条，和不同长度的价格，问如何切割使得总价格最大 为了求解规模为n的原问题，我们先求解形式完全一样，但规模更小的子问题。即当完成首次切割后，我们将两段钢条看成两个独立的钢条切割问题实例。我们通过组合相关子问题的">
+  <meta name="description" content="动态规划应用于子问题重叠的情况">
 <meta name="keywords" content="矩阵乘法,算法导论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算导dp笔记">
+<meta property="og:title" content="算导 动态规划部分 笔记">
 <meta property="og:url" content="http://ir1d.cf/2018/06/25/算导dp笔记/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="动态规划应用于子问题重叠的情况  要去刻画最优解的结构特征 尝试递归地定义最优解的值（就是我们常说的考虑从i - 1转移到i） 计算最优解 利用计算出的信息构造一个最优解  钢条切割给定一段钢条，和不同长度的价格，问如何切割使得总价格最大 为了求解规模为n的原问题，我们先求解形式完全一样，但规模更小的子问题。即当完成首次切割后，我们将两段钢条看成两个独立的钢条切割问题实例。我们通过组合相关子问题的">
+<meta property="og:description" content="动态规划应用于子问题重叠的情况">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T15:56:50.292Z">
+<meta property="og:updated_time" content="2018-06-25T16:33:36.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算导dp笔记">
-<meta name="twitter:description" content="动态规划应用于子问题重叠的情况  要去刻画最优解的结构特征 尝试递归地定义最优解的值（就是我们常说的考虑从i - 1转移到i） 计算最优解 利用计算出的信息构造一个最优解  钢条切割给定一段钢条，和不同长度的价格，问如何切割使得总价格最大 为了求解规模为n的原问题，我们先求解形式完全一样，但规模更小的子问题。即当完成首次切割后，我们将两段钢条看成两个独立的钢条切割问题实例。我们通过组合相关子问题的">
+<meta name="twitter:title" content="算导 动态规划部分 笔记">
+<meta name="twitter:description" content="动态规划应用于子问题重叠的情况">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>算导dp笔记 | Neverland</title>
+  <title>算导 动态规划部分 笔记 | Neverland</title>
   
 
 
@@ -378,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算导dp笔记
+          <h1 class="post-title" itemprop="name headline">算导 动态规划部分 笔记
               
             
           </h1>
@@ -403,12 +403,24 @@
                 
               
 
-              <time title="Created: 2018-06-25 22:59:18 / Modified: 23:56:50" itemprop="dateCreated datePublished" datetime="2018-06-25T22:59:18+08:00">2018-06-25</time>
+              <time title="Created: 2018-06-25 22:59:18" itemprop="dateCreated datePublished" datetime="2018-06-25T22:59:18+08:00">2018-06-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-06-26 00:33:36" itemprop="dateModified" datetime="2018-06-26T00:33:36+08:00">2018-06-26</time>
               
             
           </span>
@@ -472,6 +484,7 @@
 
       
         <p>动态规划应用于子问题重叠的情况</p>
+<a id="more"></a>
 <ol>
 <li>要去刻画最优解的结构特征</li>
 <li>尝试递归地定义最优解的值（就是我们常说的考虑从<code>i - 1</code>转移到<code>i</code>）</li>
@@ -517,7 +530,20 @@
 <p>无权最长（简单）路径</p>
 </blockquote>
 <p>此问题不具有，是NP完全的</p>
-<h2 id="子问题重叠"><a href="#子问题重叠" class="headerlink" title="子问题重叠"></a>子问题重叠</h2>
+<p>区别在于，要保证子问题无关：同一个原问题的一个子问题的解不影响另一个子问题的解。</p>
+<p>相关 —— 求解一个子问题时用到了某些资源，导致这些资源在求解其他子问题时不可用</p>
+<h2 id="子问题重叠"><a href="#子问题重叠" class="headerlink" title="子问题重叠"></a>子问题重叠</h2><p>子问题空间要足够小，即问题的递归算法会反复地求解相同的子问题，而不是一直生成新的子问题。</p>
+<h2 id="重构最优解"><a href="#重构最优解" class="headerlink" title="重构最优解"></a>重构最优解</h2><p>存表记录最优分割的位置，就不用重新按照代价来重构</p>
+<h1 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h1><p>子序列允许不连续</p>
+<p>每个<code>c[i][j]</code>只依赖于<code>c[i - 1][j]</code>、<code>c[i][j - 1]</code>和<code>c[i - 1][j - 1]</code></p>
+<p>记录最优方案的时候可以不需要额外建表（优化空间），因为重新选择一遍（转移过程）也是$O(1)$的</p>
+<h1 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h1><p>给二叉搜索树的每个节点定义一个权值，问如何安排使得权值和深度的乘积最小</p>
+<p>考虑当一棵子树成为了一个节点的子树时，答案（期望搜索代价）有何变化？</p>
+<p>由于每个节点的深度都增加了1，这棵子树的期望搜索代价的增加值应为所有概率之和</p>
+<blockquote>
+<p>tD / eD 动态规划：状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p>
+</blockquote>
+<h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2>
       
     </div>
 
@@ -538,7 +564,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://ir1d.cf/2018/06/25/算导dp笔记/" title="算导dp笔记">http://ir1d.cf/2018/06/25/算导dp笔记/</a>
+    <a href="http://ir1d.cf/2018/06/25/算导dp笔记/" title="算导 动态规划部分 笔记">http://ir1d.cf/2018/06/25/算导dp笔记/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -811,7 +837,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.</span> <span class="nav-text">矩阵链乘法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划原理"><span class="nav-number">3.</span> <span class="nav-text">动态规划原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最优子结构"><span class="nav-number">3.1.</span> <span class="nav-text">最优子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典问题"><span class="nav-number">3.1.1.</span> <span class="nav-text">经典问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子问题重叠"><span class="nav-number">3.2.</span> <span class="nav-text">子问题重叠</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.</span> <span class="nav-text">矩阵链乘法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划原理"><span class="nav-number">3.</span> <span class="nav-text">动态规划原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最优子结构"><span class="nav-number">3.1.</span> <span class="nav-text">最优子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典问题"><span class="nav-number">3.1.1.</span> <span class="nav-text">经典问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子问题重叠"><span class="nav-number">3.2.</span> <span class="nav-text">子问题重叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构最优解"><span class="nav-number">3.3.</span> <span class="nav-text">重构最优解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共子序列"><span class="nav-number">4.</span> <span class="nav-text">最长公共子序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最优二叉搜索树"><span class="nav-number">5.</span> <span class="nav-text">最优二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典问题（来自习题）"><span class="nav-number">6.</span> <span class="nav-text">经典问题（来自习题）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DAG-中的最长简单路径"><span class="nav-number">6.1.</span> <span class="nav-text">DAG 中的最长简单路径</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -974,7 +1000,7 @@
       var disqus_config = function () {
         this.page.url = 'http://ir1d.cf/2018/06/25/算导dp笔记/';
         this.page.identifier = '2018/06/25/算导dp笔记/';
-        this.page.title = '算导dp笔记';
+        this.page.title = '算导 动态规划部分 笔记';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

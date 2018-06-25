@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-24T11:41:13.327Z</updated>
+  <updated>2018-06-25T14:14:53.425Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Codeforces Round 492 (Div. 2) [Thanks, uDebug!]</title>
+    <link href="http://ir1d.cf/2018/06/25/cf/cf996/"/>
+    <id>http://ir1d.cf/2018/06/25/cf/cf996/</id>
+    <published>2018-06-25T12:45:31.000Z</published>
+    <updated>2018-06-25T14:14:53.425Z</updated>
+    
+    <content type="html"><![CDATA[<p>花式过 pp ，专业 fst 选手大显身手</p><a id="more"></a><blockquote><p>A. Hit the Lottery</p></blockquote><p>dp肯定是对的，至于为什么可以贪心呢？</p><blockquote><p>B. World Cup</p></blockquote><p>模拟</p><blockquote><p>C. Tesla</p></blockquote><p>半个小时过去没人过的那种…… 写了半天还是WA</p><p>题意是一个两排车道，要求把车停到路边（道牙子上），求方案</p><p>题解：先把能放的放进去。把双排道看成一个环，如果有空位能转动就一定有解</p><p>这种题坐标一定要按照题目要求来，不能题里是<code>1</code>开头你自己用<code>0</code>开头读入</p><blockquote><p>D. Suit and Tie</p></blockquote><p>数据是成对的，但是被打乱了，问最少要操作多少次可以恢复</p><p>注意到最开头的那个数没必要动，于是它对应的那个数必须换过来。以此类推，搞定</p><blockquote><p>E. Leaving the Bar</p></blockquote><p>输入一堆向量，问如何给他们定向(<code>1 / -1</code>)，使得他们的和的模长符合条件。</p><p>现场写的贪心的，竟然过了pp</p><p>然后发现有dalao加了个如果不符合条件就random shuffle之后重新贪心</p><p>哎……　咋就没想到呢　<a href="http://codeforces.com/contest/995/submission/39644972" target="_blank" rel="noopener">http://codeforces.com/contest/995/submission/39644972</a></p><p>woq…… stm 发现了一个从后往前贪心过了的= =</p><p>题解里证明说每三个模长合格的里面总是能找到两个组成一个模长合格的，这样最后直到只剩两个，顶多是$\sqrt{2} r$ </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;花式过 pp ，专业 fst 选手大显身手&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="codeforces" scheme="http://ir1d.cf/tags/codeforces/"/>
+    
+  </entry>
+  
+  <entry>
     <title>程设期末上机汇总</title>
     <link href="http://ir1d.cf/2018/06/24/cssx/%E7%A8%8B%E8%AE%BE%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E6%B1%87%E6%80%BB/"/>
     <id>http://ir1d.cf/2018/06/24/cssx/程设期末上机汇总/</id>
     <published>2018-06-24T11:41:06.000Z</published>
-    <updated>2018-06-24T11:41:13.327Z</updated>
+    <updated>2018-06-25T09:23:54.710Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>A02:马走日</p></blockquote><p>dfs的时候别忘了起点也要标记为vis</p><blockquote><p>A04:鸣人的影分身</p></blockquote><p>整数划分，允许分出来0</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, <span class="number">20</span>) dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= j) dp[i][j] = dp[i][j - <span class="number">1</span>] + dp[i -j][j];</span><br><span class="line">    <span class="keyword">else</span> dp[i][j] = dp[i][i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>B04:猴子摘桃</p></blockquote><p>可以尺取</p><p>注意枚举区间的姿势：如果枚举的是闭区间的端点，应该是<code>g(j, l, r)</code> 别漏了 <code>[r..r]</code> 这个</p><blockquote><p>B09:变换的迷宫</p></blockquote><p>注意到不能原地不动，所以还是会有无解的情况= = 忘了输出感叹号了</p><p><code>vis[x][y][ti % k]</code> 来标记是否可以再走</p><blockquote><p>B02:夺宝探险</p></blockquote><p>没什么特别的，dfs就可以了</p><p>但是又WA又T</p><p>发现自己看题里说第一行第一列就写了个<code>dfs(1, 1, 1)</code>，然而是从<code>0</code>开始读入的</p><blockquote><p>B10:游览规划</p></blockquote><p>枚举天数，二维代价dp</p><p>ref: <a href="https://blog.csdn.net/niwatori1217/article/details/51869474" target="_blank" rel="noopener">https://blog.csdn.net/niwatori1217/article/details/51869474</a></p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;A02:马走日&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;dfs的时候别忘了起点也要标记为vis&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A04:鸣人的影分身&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;整数划分，允许分出来0&lt;/p&gt;
+&lt;figure
+      
     
     </summary>
     
@@ -39,9 +76,9 @@
     <link href="http://ir1d.cf/2018/06/24/cf/cf991/"/>
     <id>http://ir1d.cf/2018/06/24/cf/cf991/</id>
     <published>2018-06-23T17:46:29.000Z</published>
-    <updated>2018-06-24T11:56:16.166Z</updated>
+    <updated>2018-06-25T14:16:17.826Z</updated>
     
-    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><a id="more"></a><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><p>upd: fst…. 少判了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p><p>upd: fst…. sb了</p>]]></content>
+    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><a id="more"></a><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><p>upd: fst…. 少判了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p><p>upd: fst…. sb了</p><p>hmmm 发现又枚举各个数字的个数过了的</p><p>题解：<a href="http://codeforces.com/blog/entry/60181" target="_blank" rel="noopener">http://codeforces.com/blog/entry/60181</a></p>]]></content>
     
     <summary type="html">
     
@@ -470,7 +507,7 @@
     <link href="http://ir1d.cf/2018/01/28/%E5%A4%A7%E8%BF%9E%E5%85%AD%E9%87%8D/"/>
     <id>http://ir1d.cf/2018/01/28/大连六重/</id>
     <published>2018-01-27T23:28:40.000Z</published>
-    <updated>2018-01-28T07:33:29.781Z</updated>
+    <updated>2018-06-24T13:00:59.045Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/d4881b876b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/d4881b876b8a</a></p><a id="more"></a><p>忙了20多天组织完这个六重</p><p>也不知道是否值得</p><p>就当是神奇的经历吧</p><p>感谢大家的帮助 当天赶完了战报 想了好多 写起来感觉大学国文真的是白学了QAQ</p><p>准备的过程和出锅的时候甚至是满满的无力感</p><p>有种那年NOI的时候的flashback</p><p>可我怎么就没想到呢= =</p><p>不过好在是在大连做的</p><p>我们甚至可以拆了补一补做成正儿八经的六重</p><p>表白大连蓝军</p><p><img src="https://upload-images.jianshu.io/upload_images/145746-552077acfb413edb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p><p>2018.1.27.12:51 - 2018.1.28 14:42</p>]]></content>
     
@@ -482,8 +519,6 @@
     
       <category term="Ingress" scheme="http://ir1d.cf/categories/Ingress/"/>
     
-    
-      <category term="记录" scheme="http://ir1d.cf/tags/%E8%AE%B0%E5%BD%95/"/>
     
       <category term="竹笋" scheme="http://ir1d.cf/tags/%E7%AB%B9%E7%AC%8B/"/>
     
@@ -515,34 +550,6 @@
       <category term="离散数学" scheme="http://ir1d.cf/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
     
       <category term="MOOC" scheme="http://ir1d.cf/tags/MOOC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu视频加速</title>
-    <link href="http://ir1d.cf/2018/01/20/ubuntu%E8%A7%86%E9%A2%91%E5%8A%A0%E9%80%9F/"/>
-    <id>http://ir1d.cf/2018/01/20/ubuntu视频加速/</id>
-    <published>2018-01-20T10:14:35.000Z</published>
-    <updated>2018-06-23T04:47:26.718Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>mplayer -af scaletempo</code></p><p>用<code>[</code>和<code>]</code>控制速度</p><p><code>scaletempo</code>是防止走音</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;mplayer -af scaletempo&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;用&lt;code&gt;[&lt;/code&gt;和&lt;code&gt;]&lt;/code&gt;控制速度&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;scaletempo&lt;/code&gt;是防止走音&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-25T14:14:53.425Z</updated>
+  <updated>2018-06-25T15:25:12.348Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算导dp笔记</title>
+    <link href="http://ir1d.cf/2018/06/25/%E7%AE%97%E5%AF%BCdp%E7%AC%94%E8%AE%B0/"/>
+    <id>http://ir1d.cf/2018/06/25/算导dp笔记/</id>
+    <published>2018-06-25T14:59:18.000Z</published>
+    <updated>2018-06-25T15:25:12.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>动态规划应用于子问题重叠的情况</p><p>要去刻画最优解的结构特征，尝试递归的定义最优解的值（就是我们常说的考虑从<code>i - 1</code>转移到<code>i</code>）</p><h2 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h2><p>给定一段钢条，和不同长度的价格，问如何切割使得总价格最大</p><p>##</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;动态规划应用于子问题重叠的情况&lt;/p&gt;
+&lt;p&gt;要去刻画最优解的结构特征，尝试递归的定义最优解的值（就是我们常说的考虑从&lt;code&gt;i - 1&lt;/code&gt;转移到&lt;code&gt;i&lt;/code&gt;）&lt;/p&gt;
+&lt;h2 id=&quot;钢条切割&quot;&gt;&lt;a href=&quot;#钢条切割&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="算法导论" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+    
+      <category term="矩阵乘法" scheme="http://ir1d.cf/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Codeforces Round 492 (Div. 2) [Thanks, uDebug!]</title>
@@ -485,7 +514,7 @@
     <link href="http://ir1d.cf/2018/01/28/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%B0%8F%E4%BC%98%E5%8C%96/"/>
     <id>http://ir1d.cf/2018/01/28/矩阵乘法小优化/</id>
     <published>2018-01-27T23:56:59.000Z</published>
-    <updated>2018-06-23T04:52:39.469Z</updated>
+    <updated>2018-06-25T15:00:01.811Z</updated>
     
     <content type="html"><![CDATA[<p>看叉姐的repo翻到矩阵相关的板子</p><a id="more"></a><p>然后发现里面有这样一句话</p><p>乘法的时候将$B$数组转置一下然后$C[i][j] = \sum{A[i][k]\times B[j][k]}$会有奇效。</p><p>然后操作了一番发现的确是这么回事 Qrz%%%</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) a[i][j] = rand(), b[i][j] = rand();</span><br><span class="line"><span class="keyword">double</span> st = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * b[k][j];</span><br><span class="line"><span class="keyword">double</span> ed = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) &#123;</span><br><span class="line">  d[i][j] = b[j][i]; c[i][j] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * d[j][k];</span><br><span class="line"><span class="keyword">double</span> e2 = clock();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, ((e2 - ed) - (ed - st)) / CLOCKS_PER_SEC);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, CLOCKS_PER_SEC);</span><br></pre></td></tr></table></figure><p>本机大概能差<code>0.02s</code></p><p>以及惊讶地发现<code>CLOCKS_PER_SEC</code>在新电脑上是<code>1e6</code>了</p>]]></content>
     
@@ -495,7 +524,7 @@
     
     </summary>
     
-      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
     
     
       <category term="矩阵乘法" scheme="http://ir1d.cf/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
@@ -523,33 +552,6 @@
       <category term="竹笋" scheme="http://ir1d.cf/tags/%E7%AB%B9%E7%AC%8B/"/>
     
       <category term="大连" scheme="http://ir1d.cf/tags/%E5%A4%A7%E8%BF%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>离散数学基础笔记</title>
-    <link href="http://ir1d.cf/2018/01/25/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    <id>http://ir1d.cf/2018/01/25/离散数学基础笔记/</id>
-    <published>2018-01-25T11:34:07.000Z</published>
-    <updated>2018-06-23T04:52:44.237Z</updated>
-    
-    <content type="html"><![CDATA[<p>完美的数学终于“自我相关”<br>数理逻辑 – 用计算的方法代替人们思维中的逻辑推理过程<br>命题演算、谓词演算<br>悖论不能作为命题 – 真值不存在 – “这句话是错的”<br>命题非真即假 – 这是个基本假设<br>排中律 – 具有属性 / 不具有属性<br>反证法就是利用的排中律 – 非假即真<br>有穷事物可以逐个验证来判断真假 – 但是无穷事物无法逐一检验<br>原子命题、复合命题、逻辑连接词<br>形式化的第一步 – 抽象 – 仅关注命题的本质属性（真值）<br>异或 – <code>p xor q</code> == $(p \land \lnot q)  \lor  (\lnot p \land q)$<br><strong>p 蕴含 q – 仅在 p真q假 时为假</strong><br>命题公式用来把真值连接 可以看做是一个真值函数<br>自然语言命题的形式化 – 经过抽象形式化为命题公式<br>假言易位 – 逆否命题 – $a\to b &lt;=&gt; \lnot b \to  \lnot a$<br>归谬论 – $(a\to b) \land (a\to \lnot b) &lt;=&gt; \lnot a$<br>重言式代入原理 – 将重言式A的某个变元p替换为B 仍然是重言式<br>命题公式的替换原理 – 将子公式的部分出现替换为逻辑等价的公式 得到的新命题公式和原来的逻辑等价<br>证明逻辑等价式和逻辑蕴含式 – 真值表法、对赋值进行讨论、推演法（利用已知的，运用代入原理和替换原理）<br>范式 – 把<code>蕴含</code>这个连接词去掉<br>范式用于重言式和矛盾式的识别<br>重言式识别：合取范式的每个析取子句都包含了至少一个互补文字对<br>矛盾式识别：析取范式的每个析取子句都包含了至少一个互补文字对<br><code>p蕴含q</code> 利用蕴含等值式变成 $\lnot p \lor q$<br><code>p双向蕴含q</code> 利用等价等值式变为$(\lnot p \lor q)\land(p \lor \lnot q)$或者$(p\land q) \lor (\lnot p\land\lnot q)$<br>利用德摩根律把否定词放到括号里（作用于文字）<br>最后再用分配律<br>一个公式的析取范式或合取范式都不是唯一的<br>析取范式也可以同时是合取范式<br>最为规范的范式 – 唯一性　– 主范式<br>主析取范式 – 每个合取子句均恰好出现一次<br>主合取范式 – 每个析取子句均恰好出现一次<br>极小项只有唯一的成真赋值<br>主析取范式包含的极小项的成真赋值也是主析取范式的成真赋值<br>具有相同主析取范式的公式是等值的 – 属于同一个等值类<br>主合取范式对应极大项和成假赋值<br>等值类与真值函数一一对应<br>功能完备集去掉冗余连接词得到极小的功能完备集 – 可以表示所有的真值函数<br>Peirce记号 – $p \downarrow q = \lnot (p  \lor  q)$<br>形式系统 – 符号体系<br>证明是演绎在公式集合为空集的时候的特例<br>命题演算形式系统(PC)的公理</p><ul><li><p>$A1:A\to (B\to A)$</p></li><li><p>$A2:(A\to (B\to C))\to ((A\to B)\to (A\to C))$</p></li><li>$A3:(\lnot A\to \lnot b)\to (B\to A)$</li></ul><p>推理规则 – 分离规则<br>$A, A\to B / B$ 即A成立且已知A蕴含B时可以得到B成立<br>PC的定理 – 有一个证明序列 – 是重言式<br>演绎结果 – 存在演绎结果<br>元（meta）定理</p><ul><li><p>演绎公理 – $\gamma \vdash A \to  B \iff \gamma \bigcup {A} \vdash B$</p></li><li><p>归谬定理 – $\gamma \bigcup {\lnot  A} \vdash B, r \bigcup {\lnot  A} \vdash \lnot  B$，那么$\gamma \vdash A$</p></li><li><p>穷举定理 – $\gamma \bigcup {\lnot A} \vdash B, \gamma \bigcup {A} \vdash B$，那么$\gamma \vdash B$成立</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;完美的数学终于“自我相关”&lt;br&gt;数理逻辑 – 用计算的方法代替人们思维中的逻辑推理过程&lt;br&gt;命题演算、谓词演算&lt;br&gt;悖论不能作为命题 – 真值不存在 – “这句话是错的”&lt;br&gt;命题非真即假 – 这是个基本假设&lt;br&gt;排中律 – 具有属性 / 不具有属性&lt;br&gt;反证法
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="离散数学" scheme="http://ir1d.cf/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="MOOC" scheme="http://ir1d.cf/tags/MOOC/"/>
     
   </entry>
   

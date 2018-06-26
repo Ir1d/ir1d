@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="动态规划应用于子问题重叠的情况">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T07:18:26.415Z">
+<meta property="og:updated_time" content="2018-06-26T07:23:51.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算导 动态规划部分 笔记">
 <meta name="twitter:description" content="动态规划应用于子问题重叠的情况">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-26 15:18:26" itemprop="dateModified" datetime="2018-06-26T15:18:26+08:00">2018-06-26</time>
+                <time title="Modified: 2018-06-26 15:23:51" itemprop="dateModified" datetime="2018-06-26T15:23:51+08:00">2018-06-26</time>
               
             
           </span>
@@ -541,9 +541,9 @@
 <p>考虑当一棵子树成为了一个节点的子树时，答案（期望搜索代价）有何变化？</p>
 <p>由于每个节点的深度都增加了1，这棵子树的期望搜索代价的增加值应为所有概率之和</p>
 <blockquote>
-<p>tD / eD 动态规划：状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p>
+<p>tD / eD 动态规划：<br>状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p>
 </blockquote>
-<h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2><p>$dp[i] = max(dp[j] + 1), (j-&gt;i \in E)$</p>
+<h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2><p>$dp[i] = max(dp[j] + 1), ((j, i) \in E)$</p>
 <h2 id="最长回文子序列"><a href="#最长回文子序列" class="headerlink" title="最长回文子序列"></a>最长回文子序列</h2><p>$$<br>dp[i][i + len] =<br>\begin{cases}<br>dp[i + 1][i + len - 1] + 2,  &amp; \text{if $s[i] == s[i + len]$} \[2ex]<br>max(dp[i + 1][i + len], dp[i][i + len - 1]), &amp; \text{else}<br>\end{cases}<br>$$</p>
 <p>边界：$dp[i][i] = 1$</p>
 <p>注意：$dp[i][j]$ 表示的是闭区间</p>
@@ -572,7 +572,9 @@
 <p>说的就是把回路给拆开吧</p>
 <p>思路一：</p>
 <p>$dp[i][j] 表示\ 1..i\ 和\ 1..j\ 两条路径$</p>
-<p>我们可以人为要求 $1..i$ 是</p>
+<p>我们可以人为要求 $1..i$ 是更快的那一条路径</p>
+<p>这样考虑第<code>i</code>个点分给谁</p>
+<p>如果是分给快的那条：$dp[i][j] = max(dp[i - 1][j]), j = 1..n$</p>
 
       
     </div>

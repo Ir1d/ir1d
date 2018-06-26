@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="动态规划应用于子问题重叠的情况">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T16:33:36.063Z">
+<meta property="og:updated_time" content="2018-06-26T07:18:26.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算导 动态规划部分 笔记">
 <meta name="twitter:description" content="动态规划应用于子问题重叠的情况">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-26 00:33:36" itemprop="dateModified" datetime="2018-06-26T00:33:36+08:00">2018-06-26</time>
+                <time title="Modified: 2018-06-26 15:18:26" itemprop="dateModified" datetime="2018-06-26T15:18:26+08:00">2018-06-26</time>
               
             
           </span>
@@ -543,7 +543,37 @@
 <blockquote>
 <p>tD / eD 动态规划：状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p>
 </blockquote>
-<h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2>
+<h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2><p>$dp[i] = max(dp[j] + 1), (j-&gt;i \in E)$</p>
+<h2 id="最长回文子序列"><a href="#最长回文子序列" class="headerlink" title="最长回文子序列"></a>最长回文子序列</h2><p>$$<br>dp[i][i + len] =<br>\begin{cases}<br>dp[i + 1][i + len - 1] + 2,  &amp; \text{if $s[i] == s[i + len]$} \[2ex]<br>max(dp[i + 1][i + len], dp[i][i + len - 1]), &amp; \text{else}<br>\end{cases}<br>$$</p>
+<p>边界：$dp[i][i] = 1$</p>
+<p>注意：$dp[i][j]$ 表示的是闭区间</p>
+<p>也可以转化为LCS问题，只需要把a串反转当做b，对a和b求lcs即可</p>
+<p>证明在： <a href="https://www.zhihu.com/question/34580085/answer/59539708" target="_blank" rel="noopener">https://www.zhihu.com/question/34580085/answer/59539708</a></p>
+<p>注意区分子串（要求连续）的问题</p>
+<h2 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h2><p>$O(n^2)$：$dp[i] = max(dp[j] + 1), s(j + 1 .. i) 是回文$</p>
+<p>$(O(n))$： Manacher</p>
+<blockquote>
+<p>Manacher</p>
+</blockquote>
+<p>$p[i]$ 表示从<code>i</code>向两侧延伸（当然要保证两侧对应位置相等）的最大长度</p>
+<p>为了处理方便，我们把原串每两个字符之间加一个（不包含在原串中的）<code>#</code>，开头加一个<code>$</code></p>
+<p>这样得到的回文串长度就保证是奇数了</p>
+<p>考虑如果按顺序得到了$p[1 .. i - 1]$，如何计算$p[i]$的值</p>
+<p>如果之前有一个位置比如说是<code>id</code>，有<code>p[id] + id &gt; i</code> 那么<code>i</code>这个位置是被覆盖了的，根据<code>id</code>处的对称性，我们找<code>p[id * 2 - i]</code>延伸的部分被<code>p[id]</code>延伸的部分所覆盖的那段，显然这段对称回去之后是可以从<code>i</code>处延伸出去的长度。</p>
+<p>如果找不到呢？就先让<code>p[i] = 1</code>吧。</p>
+<p>之后再暴力延伸一下。</p>
+<p>可以证明是$O(n)$的</p>
+<p>至于如何找是否有这么一个<code>id</code>呢？递推的时候存一个<code>max</code>就好了</p>
+<p>代码在：<a href="https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp</a></p>
+<p>##　双调欧几里得旅行商问题</p>
+<p>好像出成了某一年程设期末</p>
+<p>upd：其实是推荐练习里面的</p>
+<p>书上的提示是：从左到右扫描，对巡游路线的两个部分分别维护可能的最优解</p>
+<p>说的就是把回路给拆开吧</p>
+<p>思路一：</p>
+<p>$dp[i][j] 表示\ 1..i\ 和\ 1..j\ 两条路径$</p>
+<p>我们可以人为要求 $1..i$ 是</p>
+
       
     </div>
 
@@ -837,7 +867,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.</span> <span class="nav-text">矩阵链乘法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划原理"><span class="nav-number">3.</span> <span class="nav-text">动态规划原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最优子结构"><span class="nav-number">3.1.</span> <span class="nav-text">最优子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典问题"><span class="nav-number">3.1.1.</span> <span class="nav-text">经典问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子问题重叠"><span class="nav-number">3.2.</span> <span class="nav-text">子问题重叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构最优解"><span class="nav-number">3.3.</span> <span class="nav-text">重构最优解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共子序列"><span class="nav-number">4.</span> <span class="nav-text">最长公共子序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最优二叉搜索树"><span class="nav-number">5.</span> <span class="nav-text">最优二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典问题（来自习题）"><span class="nav-number">6.</span> <span class="nav-text">经典问题（来自习题）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DAG-中的最长简单路径"><span class="nav-number">6.1.</span> <span class="nav-text">DAG 中的最长简单路径</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.</span> <span class="nav-text">矩阵链乘法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划原理"><span class="nav-number">3.</span> <span class="nav-text">动态规划原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最优子结构"><span class="nav-number">3.1.</span> <span class="nav-text">最优子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典问题"><span class="nav-number">3.1.1.</span> <span class="nav-text">经典问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子问题重叠"><span class="nav-number">3.2.</span> <span class="nav-text">子问题重叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构最优解"><span class="nav-number">3.3.</span> <span class="nav-text">重构最优解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共子序列"><span class="nav-number">4.</span> <span class="nav-text">最长公共子序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最优二叉搜索树"><span class="nav-number">5.</span> <span class="nav-text">最优二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典问题（来自习题）"><span class="nav-number">6.</span> <span class="nav-text">经典问题（来自习题）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DAG-中的最长简单路径"><span class="nav-number">6.1.</span> <span class="nav-text">DAG 中的最长简单路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最长回文子序列"><span class="nav-number">6.2.</span> <span class="nav-text">最长回文子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最长回文子串"><span class="nav-number">6.3.</span> <span class="nav-text">最长回文子串</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1068,6 +1098,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

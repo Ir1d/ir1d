@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="A02:马走日  dfs的时候别忘了起点也要标记为vis  A04:鸣人的影分身  整数划分，允许分出来0 1234567g(i, 1, 20) dp[0][i] = 1;g(i, 1, 20) &amp;#123;  g(j, 1, 20) &amp;#123;    if (i &amp;gt;= j) dp[i][j] = dp[i][j - 1] + dp[i -j][j];    else dp[i][j]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T16:46:41.455Z">
+<meta property="og:updated_time" content="2018-06-28T16:04:45.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程设期末上机汇总">
 <meta name="twitter:description" content="A02:马走日  dfs的时候别忘了起点也要标记为vis  A04:鸣人的影分身  整数划分，允许分出来0 1234567g(i, 1, 20) dp[0][i] = 1;g(i, 1, 20) &amp;#123;  g(j, 1, 20) &amp;#123;    if (i &amp;gt;= j) dp[i][j] = dp[i][j - 1] + dp[i -j][j];    else dp[i][j]">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-27 00:46:41" itemprop="dateModified" datetime="2018-06-27T00:46:41+08:00">2018-06-27</time>
+                <time title="Modified: 2018-06-29 00:04:45" itemprop="dateModified" datetime="2018-06-29T00:04:45+08:00">2018-06-29</time>
               
             
           </span>
@@ -493,6 +493,11 @@
 <p>整数划分，允许分出来0</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">g(i, <span class="number">1</span>, <span class="number">20</span>) dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, <span class="number">20</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= j) dp[i][j] = dp[i][j - <span class="number">1</span>] + dp[i -j][j];</span><br><span class="line">    <span class="keyword">else</span> dp[i][j] = dp[i][i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
+<p>A09:Stupid cat &amp; Doge</p>
+</blockquote>
+<p>永远的痛</p>
+<p><a href="https://blog.csdn.net/sssSSSay/article/details/52097617" target="_blank" rel="noopener">https://blog.csdn.net/sssSSSay/article/details/52097617</a></p>
+<blockquote>
 <p>B04:猴子摘桃</p>
 </blockquote>
 <p>可以尺取</p>
@@ -514,12 +519,77 @@
 <p>枚举天数，二维代价dp</p>
 <p>ref: <a href="https://blog.csdn.net/niwatori1217/article/details/51869474" target="_blank" rel="noopener">https://blog.csdn.net/niwatori1217/article/details/51869474</a></p>
 <blockquote>
+<p>C01:浮点数求高精度幂</p>
+</blockquote>
+<p>输出的时候好难受，其实分开写就好了</p>
+<p>先输出小数点前的，判一下是不是需要小数点</p>
+<p>再看小数点后面的</p>
+<blockquote>
+<p>C05:生理周期</p>
+</blockquote>
+<p>扩展欧几里得是<code>y -= a / b * x</code> 数据水</p>
+<blockquote>
+<p>C08:恼人的青蛙</p>
+</blockquote>
+<p>最核心的剪枝是判断第一个点不合法的那个</p>
+<p>就是先排序了嘛，然后当前的第二个点步长过大，之后的点不会更好，所以就得出是第一个点的问题</p>
+<p>怎么判断步长是不是过大呢？就看跳当前答案次还到没到头</p>
+<p>从小到大枚举可以让答案很快就变得足够大，方便剪枝</p>
+<p>还有一个坑点是，枚举的是第一个点和第二个点，那么前一个位置（回退回去）不能在田里</p>
+<blockquote>
+<p>C09:放苹果</p>
+</blockquote>
+<p>盘子相同，允许空</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt;= j) dp[i][j] = dp[i][j - <span class="number">1</span>] + dp[i - j][j];</span><br><span class="line"><span class="keyword">else</span> dp[i][j] = dp[i][i];</span><br></pre></td></tr></table></figure>
+<p>边界：<code>dp[0][i] = 1</code></p>
+<blockquote>
+<p>E05:抓住那头牛</p>
+</blockquote>
+<p>开始以为是贪心啥的，后来发现bfs就可以啦</p>
+<p><code># 论搜索的时候要判断起点是不是就是重点了</code></p>
+<blockquote>
+<p>E06:宠物小精灵之收服</p>
+</blockquote>
+<p>二维代价的01背包</p>
+<p><code>dp[i][j][k]</code> 是前i个精灵，最多用j个精灵球，伤害最多为k，能捉到的最大个数</p>
+<p>第一维可以省去</p>
+<p>然后求最小伤害就是找<code>dp[n][i] == dp[n][V]</code>的最小的i</p>
+<blockquote>
 <p>E09:棋盘问题</p>
 </blockquote>
 <p>莫名其妙写了好久</p>
 <p>其实可以按顺序一格一格搜，放或者不放</p>
 <p>也可以一行一行来</p>
 <p>莫名其妙WA</p>
+<blockquote>
+<p>D02:要变多少次</p>
+</blockquote>
+<p>可以求个LIS</p>
+<p>也可以先求一下前缀有多少个1，枚举在哪分割</p>
+<p>char不能当int用= =</p>
+<blockquote>
+<p>D05:表达式的期望值</p>
+</blockquote>
+<p>想了一天</p>
+<p>其实就是<code>dp[i][j]</code>表示前i个操作，结果是j的概率</p>
+<p>然后这个题我直接拆开每位单独考虑了，也不知道合在一块能不能过</p>
+<p>code：<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/ftall/d5.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/ftall/d5.cpp</a></p>
+<p>ref: <a href="https://blog.sengxian.com/algorithms/probability-and-expected-value-dynamic-programming" target="_blank" rel="noopener">https://blog.sengxian.com/algorithms/probability-and-expected-value-dynamic-programming</a></p>
+<blockquote>
+<p>D07:忍者道具</p>
+</blockquote>
+<p>状压dp，掌握了数组元素直接用PII的姿势</p>
+<p>而且这东西可以直接用min来更新，省掉了显式用if判一下的步骤</p>
+<p><code>dp[S]</code>是一个<code>pair&lt;int, int&gt;</code>，first是放了多少包了，second是最后一包放了多大空间了</p>
+<p>然后枚举S和最后一个放的i，要么放最后一个，要么新开了一个包</p>
+<blockquote>
+<p>D10:ACM/ICPC 2018</p>
+</blockquote>
+<p>HDU 5445</p>
+<p>做两遍多重背包</p>
+<p>第一遍对点心，求出总能量不小于<code>p</code>的最小体积<code>minv</code>，第二遍对卡车，求出总容积不小于<code>minv</code>的最小花费<code>minc</code></p>
+<p>找不到容积足够大的则输出<code>FAIL</code></p>
+<p>“甜点可以切分，但是运过去的必须是整个甜点”，这里其实就在暗示，选甜点和装车是独立的两个过程</p>
 
       
     </div>
@@ -658,7 +728,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -670,8 +740,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
                     
                       
                     

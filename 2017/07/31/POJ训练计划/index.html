@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T04:51:40.331Z">
+<meta property="og:updated_time" content="2018-06-29T03:50:06.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ训练计划">
 <meta name="twitter:description" content="3299：公式转换题，需要读题，不能只看样例 2159：判断同构，按频率排序 1083：区间加+单点最值 2739：预处理素数表+尺取法 2262：暴力 1503：高精度加法 3006：暴力 2255：dfs的过程中把两个序列中同一个子树给对应上就好了 3094：模拟  初期基本算法1753：暴力 2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-23 12:51:40" itemprop="dateModified" datetime="2018-06-23T12:51:40+08:00">2018-06-23</time>
+                <time title="Modified: 2018-06-29 11:50:06" itemprop="dateModified" datetime="2018-06-29T11:50:06+08:00">2018-06-29</time>
               
             
           </span>
@@ -495,7 +495,7 @@
 <hr>
 <h1 id="初期"><a href="#初期" class="headerlink" title="初期"></a>初期</h1><h2 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h2><p>1753：暴力</p>
 <p>2965：发现如果’+’位置对应的行和列上每一个位置都进行一次操作,则整个图只有这一’+’位置的符号改变,其余都不会改变.</p>
-<p><a href="https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers&#39;-refrigerator/" target="_blank" rel="noopener">https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers&#39;-refrigerator/</a></p>
+<p><a href="https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers-refrigerator/" target="_blank" rel="noopener">https://xuanwo.org/2014/07/23/POJ-2965-The-Pilots-Brothers-refrigerator/</a></p>
 <p>1328：贪心策略依然是从左往右，尽量让每颗雷达覆盖最大岛屿数。</p>
 <p>将每个海岛转化为能覆盖它的雷达坐标的区间</p>
 <p>2109：<a href="http://blog.csdn.net/code_pang/article/details/8263971" target="_blank" rel="noopener">http://blog.csdn.net/code_pang/article/details/8263971</a></p>
@@ -567,8 +567,9 @@
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>1837：<code>dp[i][c[k] * d[i] + j] += dp[i - 1][j];</code> 第二维是两侧重量差（体积）。因为有负的所以平移一波。</p>
 <p>1276：01背包和多重背包的混合。考虑每一个多重背包，如果<code>num[i] * c[i]</code>大于体积，那么可以对这个物体看作是完全背包，否则拆成log个，然后当成01背包来做</p>
 <p>3267：给一堆词，问一个字符串最少删掉多少字符后可以由这些单词中的某几个（可重复）顺序连接而成。</p>
-<p><code>dp[i] = min(dp[i + 1] + 1, dp[i + match] + (match - len[j]))</code> 其中 <code>match</code> 表示从当前位置开始需要延伸 <code>match</code> 长度来包含 <code>len[j]</code> ，这样 <code>len[j] - match</code> 就是需要删掉的那部分了 <code>dp[i]</code>的含义是从第 <code>i</code> 个位置开始的答案</p>
-<p>1836：给一个序列，问最少要删掉多少个，使得每一个元素都有一个性质：向左<strong>或</strong>向右看不会有<code>&gt;=</code>自己的元素。方法是求两个方向的 LIS，然后求前缀和后缀 max。最后 <code>res = max(l[i] + r[i + 1])</code> 。注意从 discuss 拿到的这组数据： <code>8 3 4 5 1 2 5 4 3</code> 答案是 <code>2</code><br>1260：给出每种品质的价格和需求，没多买一种品质需要多加钱，低品质可以用高品质代替。问最少花多少钱。 <code>dp[i]</code> 表示 前 <code>i</code> 种品质最少要花多少钱，转移的时候要么自己买，要么枚举一段相邻的品质用当前品质的价格来买。为什么是连续的呢？因为保证了价格递增，如果不是连续的，那么分成两段可以更便宜。</p>
+<p><code>dp[i] = min(dp[i + 1] + 1, dp[i + match] + (match - len[j]))</code> 其中 <code>match</code> 表示从当前位置开始需要延伸 <code>match</code> 长度来包含 <code>len[j]</code> ，这样 <code>match - len[j]</code> 就是需要删掉的那部分了 <code>dp[i]</code>的含义是从第 <code>i</code> 个位置开始的答案</p>
+<p>1836：给一个序列，问最少要删掉多少个，使得每一个元素都有一个性质：向左<strong>或</strong>向右看不会有<code>&gt;=</code>自己的元素。方法是求两个方向的 LIS，然后求前缀和后缀 max。最后 <code>res = max(l[i] + r[i + 1])</code> 。注意从 discuss 拿到的这组数据： <code>8 3 4 5 1 2 5 4 3</code> 答案是 <code>2</code>。换言之允许中间一段是相等的，解决办法可以对<code>l[i]</code>求前缀max，<code>r[i]</code>求后缀max，再去求res</p>
+<p>1260：给出每种品质的价格和需求，每多买一种品质需要多加钱，低品质可以用高品质代替。问最少花多少钱。 <code>dp[i]</code> 表示 前 <code>i</code> 种品质最少要花多少钱，转移的时候要么自己买，要么枚举一段相邻的品质用当前品质的价格来买。为什么是连续的呢？因为保证了价格递增，如果不是连续的，那么分成两段可以更便宜。</p>
 
       
     </div>

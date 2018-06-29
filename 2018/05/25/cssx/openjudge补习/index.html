@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="8758 2的幂次方表示 印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分 12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper 问A和B两个串 能否交叉组合成C，要求AB">
+  <meta name="description" content="8758 2的幂次方表示    印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分    12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper    问A和B两个串 能否交叉">
 <meta name="keywords" content="openjudge">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openjudge补习">
 <meta property="og:url" content="http://ir1d.cf/2018/05/25/cssx/openjudge补习/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="8758 2的幂次方表示 印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分 12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper 问A和B两个串 能否交叉组合成C，要求AB">
+<meta property="og:description" content="8758 2的幂次方表示    印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分    12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper    问A和B两个串 能否交叉">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T04:51:31.883Z">
+<meta property="og:updated_time" content="2018-06-29T03:53:33.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openjudge补习">
-<meta name="twitter:description" content="8758 2的幂次方表示 印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分 12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper 问A和B两个串 能否交叉组合成C，要求AB">
+<meta name="twitter:description" content="8758 2的幂次方表示    印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了  整数划分    12345dp[0][0] = 1;g(i, 1, n) &amp;#123;  g(j, 1, i) dp[i][j] = dp[i - 1][j - 1] + dp[i - j][j];&amp;#125;// dp[i][j] 是i分成j份的方案数  zipper    问A和B两个串 能否交叉">
 
 
 
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-23 12:51:31" itemprop="dateModified" datetime="2018-06-23T12:51:31+08:00">2018-06-23</time>
+                <time title="Modified: 2018-06-29 11:53:33" itemprop="dateModified" datetime="2018-06-29T11:53:33+08:00">2018-06-29</time>
               
             
           </span>
@@ -483,21 +483,22 @@
       
 
       
-        <ul>
-<li><p>8758 2的幂次方表示</p>
-<p>印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了</p>
-</li>
-<li><p>整数划分</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, i) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + dp[i - j][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// dp[i][j] 是i分成j份的方案数</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>zipper</p>
-<p>问A和B两个串 能否交叉组合成C，要求AB内部相对顺序不变</p>
-<p><code>dp[i][j]</code> 表示<code>A[1..i]</code>和<code>B[1..j]</code> 能否拼成<code>C[1..i+j]</code> 转移就判一下最后一个字符是否匹配</p>
-</li>
-</ul>
-<ul>
-<li><strong>复杂的整数划分问题</strong></li>
-</ul>
+        <blockquote>
+<p>8758 2的幂次方表示</p>
+</blockquote>
+<p>  印象中什么时候好像调了好久的样子，其实就是直接递归的做就好了</p>
+<blockquote>
+<p>整数划分</p>
+</blockquote>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">g(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">  g(j, <span class="number">1</span>, i) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + dp[i - j][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// dp[i][j] 是i分成j份的方案数</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>zipper</p>
+</blockquote>
+<p>  问A和B两个串 能否交叉组合成C，要求AB内部相对顺序不变</p>
+<p>  <code>dp[i][j]</code> 表示<code>A[1..i]</code>和<code>B[1..j]</code> 能否拼成<code>C[1..i+j]</code> 转移就判一下最后一个字符是否匹配</p>
+<blockquote>
+<p><strong>复杂的整数划分问题</strong></p>
+</blockquote>
 <p>第一行: N划分成K个正整数之和的划分数目<br>第二行: N划分成若干个不同正整数之和的划分数目<br>第三行: N划分成若干个奇正整数之和的划分数目</p>
 <p>ref: <a href="https://blog.csdn.net/tp7309/article/details/54880495" target="_blank" rel="noopener">https://blog.csdn.net/tp7309/article/details/54880495</a></p>
 <blockquote>

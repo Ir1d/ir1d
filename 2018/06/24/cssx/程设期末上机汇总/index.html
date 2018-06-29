@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="A02:马走日  dfs的时候别忘了起点也要标记为vis  A04:鸣人的影分身  整数划分，允许分出来0 1234567g(i, 1, 20) dp[0][i] = 1;g(i, 1, 20) &amp;#123;  g(j, 1, 20) &amp;#123;    if (i &amp;gt;= j) dp[i][j] = dp[i][j - 1] + dp[i -j][j];    else dp[i][j]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-28T16:04:45.416Z">
+<meta property="og:updated_time" content="2018-06-29T03:04:54.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程设期末上机汇总">
 <meta name="twitter:description" content="A02:马走日  dfs的时候别忘了起点也要标记为vis  A04:鸣人的影分身  整数划分，允许分出来0 1234567g(i, 1, 20) dp[0][i] = 1;g(i, 1, 20) &amp;#123;  g(j, 1, 20) &amp;#123;    if (i &amp;gt;= j) dp[i][j] = dp[i][j - 1] + dp[i -j][j];    else dp[i][j]">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-29 00:04:45" itemprop="dateModified" datetime="2018-06-29T00:04:45+08:00">2018-06-29</time>
+                <time title="Modified: 2018-06-29 11:04:54" itemprop="dateModified" datetime="2018-06-29T11:04:54+08:00">2018-06-29</time>
               
             
           </span>
@@ -590,6 +590,11 @@
 <p>第一遍对点心，求出总能量不小于<code>p</code>的最小体积<code>minv</code>，第二遍对卡车，求出总容积不小于<code>minv</code>的最小花费<code>minc</code></p>
 <p>找不到容积足够大的则输出<code>FAIL</code></p>
 <p>“甜点可以切分，但是运过去的必须是整个甜点”，这里其实就在暗示，选甜点和装车是独立的两个过程</p>
+<blockquote>
+<p>D11:机智的弗兰克</p>
+</blockquote>
+<p>把障碍物移到远端（右上角）</p>
+<p>在左下角枚举矩形，求个最大</p>
 
       
     </div>

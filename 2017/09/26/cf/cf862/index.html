@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Codeforces Round #435 (Div. 2) 100场div1指日可待【">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-23T17:56:53.720Z">
+<meta property="og:updated_time" content="2018-06-29T02:18:11.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round 435 (Div. 2)">
 <meta name="twitter:description" content="Codeforces Round #435 (Div. 2) 100场div1指日可待【">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-24 01:56:53" itemprop="dateModified" datetime="2018-06-24T01:56:53+08:00">2018-06-24</time>
+                <time title="Modified: 2018-06-29 10:18:11" itemprop="dateModified" datetime="2018-06-29T10:18:11+08:00">2018-06-29</time>
               
             
           </span>
@@ -495,13 +495,13 @@
 <p>注意到树本身是二分图，加边必然是在两个点集之间，而这些边最多有$l * r$条，已经有了$n - 1$条，所以答案显然</p>
 <p>注意建树要加双向边，以及爆int的问题别忘了开long long</p>
 <h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>要求构造一个大小为n的集合使得集合里的数xor和为x 且集合里的数不超过1e6</p>
-<p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^17$可以用来区分（不会重复而且不会超出）</p>
+<p>注意到n是1e5而数是1e6这个限制条件，就是暗示$2^{17}$可以用来区分（不会重复而且不会超出）</p>
 <p>然后就可以先放$1, 2, 3, \cdots, n - 3$ 记它们的xor和是s</p>
-<p>那么此时后三个数的xor和是$s xor x$</p>
-<p>就可以放$0， 2^17， 2^17 xor s xor x$</p>
+<p>那么此时后三个数的xor和是$s\ xor\ x$</p>
+<p>就可以放$0， 2^{17}， 2^{17}\ xor\ s\ xor\ x$</p>
 <p>注意题中要求所有数不能相同，所以如果s和x是相等的，后两个数就相等了就不合题意了</p>
-<p>所以此时放$2^17, 2^18, 2^17 xor 2^18$</p>
-<p>至于为什么选择$2^17$和$2^18$，是为了$2^17 xor 2^18$和$2^17 xor  x xor s$的值始终大于1e5</p>
+<p>所以此时放$2^{17}, 2^{18}, 2^{17}\ xor\ 2^{18}$</p>
+<p>至于为什么选择$2^17$和$2^18$，是为了$2^17\ xor\ 2^18$和$2^17\ xor\ x\ xor\ s$的值始终大于1e5</p>
 <p>就是那个$2^17$的最高位是1然后它和别的数那一位是0的数xor之后答案那位是1就保证了比1e5大</p>
 <h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>交互题</p>
 <p>每次可以查询一个01串和某个给定的01串的hamming distance（编辑距离）</p>
@@ -513,6 +513,7 @@
 <p>酱紫之后发现可以再查询$011111…$然后就得到第一个数是0还是1了</p>
 <p>之后找另一个数的位置，不难发现可以二分最左侧的那个，即只要不是连续的那么就有一个要找的数出现了</p>
 <h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>给a和b两个数列定义f函数并求值</p>
+<p>// 公式莫名其妙炸了</p>
 <p>$f(j) = |\sum<em>{i=1}^n(-1)^{(i-1)}*(a_i-b</em>{i+j})|$</p>
 <p>每次区间加一个数 然后 查询所有f(j)的最小值</p>
 <p>注意到可以把f(f)的式子拆开变成$|\sum<em>{i=1}^n{i-1}*a_i+\sum</em>{i=1}^n(-1)^i*b_{i+j}|$</p>

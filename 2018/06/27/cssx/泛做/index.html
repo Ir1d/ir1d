@@ -111,14 +111,14 @@
   <meta name="description" content="Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)">
 <meta name="keywords" content="程设">
 <meta property="og:type" content="article">
-<meta property="og:title" content="范做">
+<meta property="og:title" content="泛做">
 <meta property="og:url" content="http://ir1d.cf/2018/06/27/cssx/泛做/index.html">
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-28T14:46:47.235Z">
+<meta property="og:updated_time" content="2018-06-28T17:13:47.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="范做">
+<meta name="twitter:title" content="泛做">
 <meta name="twitter:description" content="Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)">
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>范做 | Neverland</title>
+  <title>泛做 | Neverland</title>
   
 
 
@@ -378,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">范做
+          <h1 class="post-title" itemprop="name headline">泛做
               
             
           </h1>
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-28 22:46:47" itemprop="dateModified" datetime="2018-06-28T22:46:47+08:00">2018-06-28</time>
+                <time title="Modified: 2018-06-29 01:13:47" itemprop="dateModified" datetime="2018-06-29T01:13:47+08:00">2018-06-29</time>
               
             
           </span>
@@ -556,6 +556,14 @@
 <p>注意第二种方案不是和左边一起直接消了，而应该递归进入子问题</p>
 <p>所以<code>dp[i][j]</code>并不够用，要加一维，用<code>dp[i][j][len]</code>，表示把<code>[i .. j]</code>这段，和与<code>a[j]</code>相等且长度为<code>len</code>的一块合并的最大得分</p>
 <p>左边的同色大块可能有很多个，到底和哪个合并最好，不知道，只能枚举</p>
+<blockquote>
+<p>HDU 1423 LCIS</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/Howe-Young/p/5082611.html" target="_blank" rel="noopener">https://www.cnblogs.com/Howe-Young/p/5082611.html</a></p>
+<p>用<code>dp[i][j]</code>表示str1和str2分别以i和j结尾的LCIS，第一维空间可以省掉</p>
+<p>如果<code>s1[i] == s2[j]</code>更新一下答案，用什么更新呢？</p>
+<p>就是先预处理出来<code>s1[i]</code>对应的，<code>s2[j] &lt; s1[i]</code>且让<code>dp[j]</code>最大的<code>j</code></p>
+<p>由于<code>i</code>在外层固定，所以循环的时候按顺序记一下这个<code>j</code>就好了</p>
 
       
     </div>
@@ -577,7 +585,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://ir1d.cf/2018/06/27/cssx/泛做/" title="范做">http://ir1d.cf/2018/06/27/cssx/泛做/</a>
+    <a href="http://ir1d.cf/2018/06/27/cssx/泛做/" title="泛做">http://ir1d.cf/2018/06/27/cssx/泛做/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -984,7 +992,7 @@
       var disqus_config = function () {
         this.page.url = 'http://ir1d.cf/2018/06/27/cssx/泛做/';
         this.page.identifier = '2018/06/27/cssx/泛做/';
-        this.page.title = '范做';
+        this.page.title = '泛做';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

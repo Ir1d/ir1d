@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-28T17:13:47.347Z">
+<meta property="og:updated_time" content="2018-06-30T01:58:09.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛做">
 <meta name="twitter:description" content="Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-29 01:13:47" itemprop="dateModified" datetime="2018-06-29T01:13:47+08:00">2018-06-29</time>
+                <time title="Modified: 2018-06-30 09:58:09" itemprop="dateModified" datetime="2018-06-30T09:58:09+08:00">2018-06-30</time>
               
             
           </span>
@@ -556,6 +556,7 @@
 <p>注意第二种方案不是和左边一起直接消了，而应该递归进入子问题</p>
 <p>所以<code>dp[i][j]</code>并不够用，要加一维，用<code>dp[i][j][len]</code>，表示把<code>[i .. j]</code>这段，和与<code>a[j]</code>相等且长度为<code>len</code>的一块合并的最大得分</p>
 <p>左边的同色大块可能有很多个，到底和哪个合并最好，不知道，只能枚举</p>
+<p>upd: 细节是要先游程编码，然后对编码之后的序列搜能方便一些。程设2018考了个类似的，死活没调出来</p>
 <blockquote>
 <p>HDU 1423 LCIS</p>
 </blockquote>
@@ -620,6 +621,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/02/2018上半场/" rel="prev" title="扎心的2018年上半场小结">
+                扎心的2018年上半场小结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -698,7 +703,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -721,7 +726,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -800,7 +807,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

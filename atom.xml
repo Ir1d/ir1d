@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ir1d.cf/"/>
-  <updated>2018-06-28T17:13:47.347Z</updated>
+  <updated>2018-07-10T06:19:13.331Z</updated>
   <id>http://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,180 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>dailynotes</title>
+    <link href="http://ir1d.cf/2018/07/10/dailynotes-4/"/>
+    <id>http://ir1d.cf/2018/07/10/dailynotes-4/</id>
+    <published>2018-07-09T16:43:38.000Z</published>
+    <updated>2018-07-10T06:19:13.331Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Imagenet classification with deep convolutional neural networks</li></ul><a id="more"></a><h2 id="Imagenet-classification-with-deep-convolutional-neural-networks"><a href="#Imagenet-classification-with-deep-convolutional-neural-networks" class="headerlink" title="Imagenet classification with deep convolutional neural networks"></a>Imagenet classification with deep convolutional neural networks</h2><p>本文提出的 AlexNet，突破性地在 ImageNet 数据集上取得了极好的效果。作者特别自信地表示如果更快的 GPU 和更大的数据集出现，他们可以得到更好地结果。</p><p>我注意到一点很有趣的事情，他们处理数据的时候是直接把短边变成 256，然后直接裁中间的那部分。感觉这样很有可能导致最后的输入图像里只有部分信息，不知道是不是都这么做的。（感觉也没有别的办法了？总不能先跑一遍 detection？）另外，他们把图像的像素减去了数据集像素的平均值。</p><p>网络总共有8层，其中有5个卷积层和3个全连接层。</p><p>文中提出使用 ReLU 是不饱和的非线性函数，在梯度下降的时候训练速度要快。像$f(x)=tanh(x)$ 和 $f(x)=(1+e^{-x})^{-1}$是饱和的非线性函数（从图像可以看出）。</p><p>由于网络结构太大显存放不下，本文作者在两个 GPU 上面并行地跑。其中本文要求 GPU 只在特定的层才相互交换信息，来控制信息交换的代价在整个计算过程中的占比。</p><p>Local Response Normalization，翻译过来是局部响应归一化。首先又夸了 ReLU 的好处是不需要对输入数据做归一化因为它不饱和 —— 只要给 ReLU 的输入是正的，它的梯度就不为0。然后作者表示发现 local normalization 操作一下之后可以让网络有更好的泛化效果。注意$a_{x,y}^{i}$表示的是在$(x, y)$这个位置操作第i个卷积核的结果。局部归一化就是对每一个a，用相邻的n个卷积核结果来归一化。</p><script type="math/tex; mode=display">b_{x, y}^{i} = a_{x, y}^{i} / {\left( k + \alpha \sum_{j=max(0, i-n/2)}^{min(N-1, i+n/2)}(a_{x, y}^{j})^2 \right)}^ \beta</script><p>其中 $k,n,\alpha, \beta$ 是超参数，在 validation set 上面决定的。这里作者并没有给数据减去它们的平均值。这个操作放在一部分 ReLU 层之后。好像说是 LRN 效果并不明显，在日后新网络结构中使用很少</p><p>作者表示发现如果允许池化层池化的部分又重叠，可以让网络不那么容易就过拟合、并减少错误率。</p><p>网络目标是最大化一个多项式的 logistic 回归，相当于是最大化数据输出的正确类别的可能性的平均值</p><p>文中使用的数据增强方法只需要很少的计算，这样增强之后多出来的数据不需要提前放到硬盘上。实现中用 CPU 来增强数据， GPU 同时训练上一批数据，所以对计算资源没有影响。第一种增强的方法是从<code>256 x 256</code>的图片中随机的取<code>224 x 224</code>的块，然后也加入水平翻转后的结果，这样就把数据集扩大为原来的2048倍。测试的时候也是取出来四个角落和中心的<code>224 x 224</code>的块以及他们的水平翻转，把这十张图的结果求平均当做是原图的测试结果。</p><p>第二种数据增强的方法是改变输入数据 RGB 通道亮度。文中对每张图片都做 PCA，$p_1, p_2, p_3$是特征向量，$\lambda_1, \lambda_2, \lambda_3$是特征值。每次图像被用来训练的时候，都重新生成三个$\alpha_i$，然后把原图上的每个像素加上$[p_1, p_2, p_3][\alpha_1 \lambda_1, \alpha_2 \lambda_2, \alpha_3 \lambda_3]^T$。这里面的$\alpha_i$是从一个均值为0，标准差为0.1的高斯随机数发生器产生，注意这里对于同一张图在同一次训练过程中使用同一组$\alpha_i$。作者表示这样操作可以使得学到的物体特征不受亮度和光照颜色的影响，captures an important property of natural images。文中表示实验结果证明可以减少错误率。</p><p>同时还使用了 dropout，就是让前两个全连接层的神经元有一定概率（文中0.5）不参与前向和反向传播。这样每次数据输入进来的时候，神经网络都给出一个不一样的结构，但是这些结构是共享权重的。这种操作可以减少神经元之间的依赖，因为如此下来神经元不能依赖于某个其他神经元的存在来处理信息，也就迫使神经元尝试学习到更加强大的可以和其他神经元的随机子集共同工作的特征。</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>Toeplitz matrix</p></blockquote><p>a.k.a diagonal-constant matrix.</p><p>主对角线上的元素相等，$A<em>{i,j} = A</em>{i+1,j+1}$</p><p>不一定是个方阵</p><blockquote><p>Factorial Distribution</p></blockquote><p>要求一组变量中变量之间没有相互作用</p><p>$P(x|y) = P(x)$</p><blockquote><p>non-saturating neurons</p></blockquote><p>不饱和神经元，就是说梯度不接近0，还可以有效地调整权重</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Imagenet classification with deep convolutional neural networks&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="summer2018" scheme="http://ir1d.cf/categories/summer2018/"/>
+    
+    
+      <category term="paperReading" scheme="http://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu防止打字误触触摸板</title>
+    <link href="http://ir1d.cf/2018/07/09/ubuntu%E9%98%B2%E6%AD%A2%E6%89%93%E5%AD%97%E8%AF%AF%E8%A7%A6%E8%A7%A6%E6%91%B8%E6%9D%BF/"/>
+    <id>http://ir1d.cf/2018/07/09/ubuntu防止打字误触触摸板/</id>
+    <published>2018-07-09T06:05:33.000Z</published>
+    <updated>2018-07-09T06:06:36.009Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:atareao/atareao</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install touchpad-indicator</span><br></pre></td></tr></table></figure><p>ref: <a href="http://ubuntuhandbook.org/index.php/2018/04/install-touchpad-indicator-ubuntu-18-04-lts/" target="_blank" rel="noopener">http://ubuntuhandbook.org/index.php/2018/04/install-touchpad-indicator-ubuntu-18-04-lts/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="ubuntu" scheme="http://ir1d.cf/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dailynotes</title>
+    <link href="http://ir1d.cf/2018/07/09/dailynotes-3/"/>
+    <id>http://ir1d.cf/2018/07/09/dailynotes-3/</id>
+    <published>2018-07-09T00:07:32.000Z</published>
+    <updated>2018-07-09T08:54:48.815Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Image De-raining Using a Conditional Generative Adversarial Network</li><li>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</li><li>Image-to-Image Translation with Conditional Adversarial Networks</li></ul><a id="more"></a><h2 id="Image-De-raining-Using-a-Conditional-Generative-Adversarial-Network"><a href="#Image-De-raining-Using-a-Conditional-Generative-Adversarial-Network" class="headerlink" title="Image De-raining Using a Conditional Generative Adversarial Network"></a>Image De-raining Using a Conditional Generative Adversarial Network</h2><p>本文提出了用conditional-GAN来生成无雨背景的方法</p><p><img src="https://i.loli.net/2018/07/09/5b42bd0d27da8.png" alt="ID-GAN的网络结构"></p><p>生成器从雨图中学习生成无雨背景，然后判别器来判断是真实背景还是生成的</p><p>然后提出损失函数中不应只有 perceptual loss，还应当加入 per-pixel 的 loss 和 adversarial loss 一起，不过文中并没有提到三个loss的权重是怎么学出来的</p><p>最后提到缺点是不能处理图像上的白块，猜测可能是数据集中没有出现类似情况导致的，以及指出数据集难以包含整个 rain streak 的可能情况</p><h2 id="Unsupervised-Representation-Learning-with-Deep-Convolutional-Generative-Adversarial-Networks"><a href="#Unsupervised-Representation-Learning-with-Deep-Convolutional-Generative-Adversarial-Networks" class="headerlink" title="Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"></a>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</h2><p>本文介绍了从大量无标签数据集中学习可重复使用的特征表示的一些结果</p><p>文中也展示在图像数据集上用无监督的方法也可以得到很有趣的层次信息</p><p>文中总结了优化GAN的一些方法：</p><ul><li>在判别器用 strided convolution, 在生成器用 fractional convolution 来代替所有的 pooling 层</li><li>在判别器和生成器中用 batch normalization</li><li>用更深的结构来替换掉全连接的隐藏层</li><li>生成器里除了最后一层都用 ReLU 来做 activation，最后一层用 Tanh</li><li>判别器里所有层都用 LeakyReLU 做 activation （激活函数）</li></ul><h2 id="Image-to-Image-Translation-with-Conditional-Adversarial-Networks"><a href="#Image-to-Image-Translation-with-Conditional-Adversarial-Networks" class="headerlink" title="Image-to-Image Translation with Conditional Adversarial Networks"></a>Image-to-Image Translation with Conditional Adversarial Networks</h2><p>很多视觉的 task 可以看作是在把输入图像翻译成输出图像，本文提出的 cGAN 技术可以学到这种翻译的对应关系，也学到一个对应的 loss function 来训练这个对应关系。最为著名的应用是 pix2pix。</p><p>conditional GAN 学习一个 structured loss，惩罚网络的输出在结构上的不同。</p><p>这里的 conditional 的最大区别在于，输入的 edge map 也要喂给判别器。同时文中提出，使用 L1 距离代替 L2 距离来要求生成器的输出和 groud truth 更近，可以鼓励减少模糊。</p><p><code>U-net</code>看起来就是加上了 skip connection 的 encoder-decoder network 。比如给图片上色的时候，突出的边缘的位置信息是输入和输出共享的，如果直接把它们从输入层传到输出层（避免经过 bottle neck），情况会好很多。具体来说，<code>U-net</code>形式里面把第 i 层和第 n-i 层里所有的通道都通过 skip connection 直接连接起来</p><p>PatchGAN，就是每次对结构的惩罚是在一个 patch 的层级来操作的。就是对整个图而言，是每次考虑一个 <code>n * n</code> 的 patch 是真的还是假的。实验证明，甚至 n 和整个图的大小相比可以很小。这样下来判别器相当于把图片看作是一个 Markov random field，其中假设了距离超过一个 patch 的直径的像素点之间是独立的。这样的 PatchGAN 可以看作是一种 材质/风格 的 loss</p><p>文中还提到了一些优化，比如生成器要最大化$log\ D(x, G(x, z))$而不是最小化$log\ (1 - D(x, G(x, z)))$；另外在训练判别器的时候，把目标函数除以 2，用来减小 D 相对于 G 学习的速度，然后每次 D 下降一步，G 也下降一步。</p><p>文中还有个很神奇的地方，作者表示在 inference time，生成网络和训练的时候是完全一样使用的，就是说这里面的 dropout 部分在测试的时候也没有移除。</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>image patch</p></blockquote><p>图像块的意思= =</p><blockquote><p>Leaky ReLUs</p></blockquote><p>leaky ReLU 的特点是在 $x \leq 0$ （inactive）的时候允许有一个小的正梯度（0.01）</p><p>而 Parametric ReLU 在这里更进一步，让那个正梯度变成一个参数，在神经网络反向传播的时候可以得到更新</p><p>注意在$a \leq 1$的时候，PReLU 相当于 $max(x, ax)$，这个形式和 maxout 网络有一定关联</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Image De-raining Using a Conditional Generative Adversarial Network&lt;/li&gt;
+&lt;li&gt;Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks&lt;/li&gt;
+&lt;li&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="summer2018" scheme="http://ir1d.cf/categories/summer2018/"/>
+    
+    
+      <category term="paperReading" scheme="http://ir1d.cf/tags/paperReading/"/>
+    
+      <category term="GAN" scheme="http://ir1d.cf/tags/GAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dailynotes</title>
+    <link href="http://ir1d.cf/2018/07/08/dailynotes-2/"/>
+    <id>http://ir1d.cf/2018/07/08/dailynotes-2/</id>
+    <published>2018-07-07T23:40:44.000Z</published>
+    <updated>2018-07-09T08:48:43.860Z</updated>
+    
+    <content type="html"><![CDATA[<p>什么也没读，沉迷标数据不能自拔</p><a id="more"></a><p>作息过于糟糕，下午回去看数分结果很快就睡着了，还是闹钟免疫的那种。。。。</p><h2 id="Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal"><a href="#Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal" class="headerlink" title="Joint Bi-layer Optimization for Single-image Rain Streak Removal"></a>Joint Bi-layer Optimization for Single-image Rain Streak Removal</h2><p>本文做的是去除单张照片上雨纹的工作，具体来说是尝试把一张照片分成有雨和无雨的两层。整个最优化过程是同时把雨纹的细节从无雨层去掉，和把无雨的信息从雨纹层去掉.</p><p>拿到一张图，文中方法首先尝试确定 rain-dominated 的区域，然后利用这部分区域来确定雨的方向，并提取出 rain-patch，之后用 joint bi-layer optimization 方法来迭代地得到两层。</p><p>我怎么有个问题。。感觉一张图里的 rain streak 完全有可能角度差得很大啊？ 比如前景和后景完全可以反向</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>Frobenius norm</p></blockquote><p>a.k.a Euclidean norm, $\left\lVert A \right\rVert = \sqrt{\sum<em>{i=1}^m{\sum</em>{j=1}^n{|a_{ij}|^2}}}$</p><blockquote><p>fidelity term</p></blockquote><p>保真项</p><blockquote><p>Jensen’s inequality</p></blockquote><p>The mean value of a convex function is never lower than the value of the convex function applied to the mean. </p><script type="math/tex; mode=display">\begin{align}- \log p(x) &= - \log \int p(x,y) dy \\&= - \log \int q(y\vert x) \frac{p(y,x)}{q(y\vert x)}dy \\&\leq - \int q(y\vert x) \log \frac{p(y,x)}{q(y\vert x)} dy\end{align}</script><blockquote><p>L0 regularization</p></blockquote><p>l0 norm 是统计数组中的非零元素</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;什么也没读，沉迷标数据不能自拔&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="summer2018" scheme="http://ir1d.cf/categories/summer2018/"/>
+    
+    
+      <category term="paperReading" scheme="http://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Daily Notes 7.7</title>
+    <link href="http://ir1d.cf/2018/07/07/dailynotes-1/"/>
+    <id>http://ir1d.cf/2018/07/07/dailynotes-1/</id>
+    <published>2018-07-06T16:41:13.000Z</published>
+    <updated>2018-07-09T08:48:02.888Z</updated>
+    
+    <content type="html"><![CDATA[<p>学数学 + 下午睡过头了</p><a id="more"></a><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p> Checkerboard Artifacts </p></blockquote><p>Checkerboard Pattern 是黑白格交替的图案</p><p>神经网络生成的图像在细节处往往会出现像素点颜色交替的现象</p><p>ref: <a href="https://distill.pub/2016/deconv-checkerboard/" target="_blank" rel="noopener">https://distill.pub/2016/deconv-checkerboard/</a></p><p>transposed-conv 时出现 overlap 会导致这种现象</p><blockquote><p>Sobel operator</p></blockquote><p>用于 edge detection</p><p><a href="https://en.wikipedia.org/wiki/Sobel_operator" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sobel_operator</a></p><blockquote><p>skip connection</p></blockquote><p>用在 resnet 里面</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学数学 + 下午睡过头了&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="summer2018" scheme="http://ir1d.cf/categories/summer2018/"/>
+    
+    
+      <category term="paperReading" scheme="http://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Daily Notes 7.6</title>
+    <link href="http://ir1d.cf/2018/07/06/dailynotes/"/>
+    <id>http://ir1d.cf/2018/07/06/dailynotes/</id>
+    <published>2018-07-06T11:22:15.000Z</published>
+    <updated>2018-07-09T08:48:27.020Z</updated>
+    
+    <content type="html"><![CDATA[<p><del>经久不衰</del>的 Daily Notes 系列又来了！</p><p>今天读的这篇：Perceptual Losses for Real-Time Style Transfer and Super-Resolution</p><!-- nore --><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><p>记录一些今天关注的内容</p><blockquote><p>Transposed - conv</p></blockquote><p>就是把卷积层反过来的感觉，</p><p>可视化效果：<a href="https://github.com/vdumoulin/conv_arithmetic" target="_blank" rel="noopener">https://github.com/vdumoulin/conv_arithmetic</a></p><blockquote><p>stride</p></blockquote><p>cs231n 的课程页面上写得很清楚，就是步长</p><blockquote><p>GAN basics</p></blockquote><p>略</p><blockquote><p>Dilated Convolutions</p></blockquote><p>ref: <a href="https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/" target="_blank" rel="noopener">Dilated Convolutions and Kronecker Factored Convolutions</a></p><p>它的一大优点是可以指数级地扩大感受域（receptive field），而参数是对数级的。这带来一个问题，需要加条件才能保证可以参数共享。</p><p>上文中表示需要卷积操作相当于<code>Kronecker product</code>才行</p><blockquote><p>CNN channel </p></blockquote><p><a href="https://blog.csdn.net/sscc_learning/article/details/79814146" target="_blank" rel="noopener">【CNN】理解卷积神经网络中的通道 channel - CSDN博客</a></p><blockquote><p>置信区间</p></blockquote><p>展现的是，这个总体参数的真实值有一定概率落在与该测量结果有关的某对应区间</p><blockquote><p>SSIM — Structural SIMilarity</p></blockquote><p>衡量两幅图像相似度，其值越大越好，最大为1</p><p>ref: <a href="https://blog.csdn.net/edogawachia/article/details/78756680" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/78756680</a></p><blockquote><p>PSNR — Peak signal-to-noise ratio</p></blockquote><p>峰值信噪比,是一种评价图像的客观标准</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def cal_psnr(im1, im2):</span><br><span class="line">    mse = (np.abs(im1 - im2) ** 2).mean()</span><br><span class="line">    psnr = 10 * np.log10(255 * 255 / mse)</span><br><span class="line">    return psnr</span><br></pre></td></tr></table></figure><blockquote><p>Fractionally-strided convolution</p></blockquote><p>ref: <a href="https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d" target="_blank" rel="noopener">https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d</a></p><p>就是之前提到的反卷积，这东西别名太多</p><p>为什么叫分数步长呢？</p><p>我们通过在原矩阵中间补0来使得正向的卷积结果相当于是反向的卷积，这是在原矩阵中的步长就可能是分数了</p><h2 id="Perceptual-Loss-—-《Perceptual-Losses-for-Real-Time-Style-Transfer-and-Super-Resolution》"><a href="#Perceptual-Loss-—-《Perceptual-Losses-for-Real-Time-Style-Transfer-and-Super-Resolution》" class="headerlink" title="Perceptual Loss — 《Perceptual Losses for Real-Time Style Transfer and Super-Resolution》"></a>Perceptual Loss — 《Perceptual Losses for Real-Time Style Transfer and Super-Resolution》</h2><p>很多工作都可以看作是对图像进行转换操作 —— 输入一张图，输出转换后的一张图</p><p>按像素比较的loss function 不能捕捉全局的（？perceptual）信息</p><p>perceptual loss function 不比较对应位置像素的信息，而是比较high-level的信息，比如预先训练好的卷积神经网络中的特征表示（feature representations）</p><p>本文的工作是训练了一个用perceptual loss训练一个单向的（feed forward）网络，又快又好</p><p>本文主要关注图片风格转换和单张图的超分辨率重建（四倍和八倍）</p><p><code>Feed-forward image transformation</code> 翻译过来是前馈神经网络</p><p>高品质的风格转换要求对较大的区域进行一致的，而本文方法使得感受域变大。</p><p><code>Residual Connections</code> ，认为可以方便地让网络学到恒等变换，这对风格转换很重要，因为大多数地方输出和输入是相同的。</p><p><code>Loss Function</code>有两部分，一个是<code>Feature Reconstruction Loss</code>，另一个是<code>Style Reconstruction Loss</code>。</p><p>前者是feature representation的欧几里得距离除以feature map的大小（$C <em> H </em> W$）。最小化第一个损失函数可以保留视觉内容和整体空间上的结构，但是颜色、纹理和具体的形状不一定保留。</p><p>后者在内容不同是进行惩罚，也惩罚风格上的不同。表达式是大小为$C * C$的Gram矩阵的L2距离。</p><p>注意到很有趣的一点，结果中人像比较清晰但是背景并不清晰。一种可能的解释是VGG-16的特征大多是在人像和动物上训练的，我们的风格转换网络是在学习保留VGG-16学到的特征，这样我们的网络学到的背景的信息比较少</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;del&gt;经久不衰&lt;/del&gt;的 Daily Notes 系列又来了！&lt;/p&gt;
+&lt;p&gt;今天读的这篇：Perceptual Losses for Real-Time Style Transfer and Super-Resolution&lt;/p&gt;
+&lt;!-- nore --&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="summer2018" scheme="http://ir1d.cf/categories/summer2018/"/>
+    
+    
+      <category term="paperReading" scheme="http://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扎心的2018年上半场小结</title>
+    <link href="http://ir1d.cf/2018/07/02/2018%E4%B8%8A%E5%8D%8A%E5%9C%BA/"/>
+    <id>http://ir1d.cf/2018/07/02/2018上半场/</id>
+    <published>2018-07-02T09:52:31.000Z</published>
+    <updated>2018-07-02T10:32:10.307Z</updated>
+    
+    <content type="html"><![CDATA[<p>迟到的总结…… hmmmmm</p><a id="more"></a><p>转过年是上学期的期末考试，扎心的三科考完就回家了。</p><p>寒假很长，做了个六重，装了很多次caffe，此外似乎也没干什么正经事</p><p>开学，选的课比较少，想要好好弄弄成绩</p><p>帮忙重构科协的网站</p><p>参与ICPC总决赛的工作</p><p>然后就是校赛</p><p>漫长的期中坚持了一个月</p><p>甚至如果算上史纲的学期论文可以认为期中和期末连着的</p><p>考试周的前几天完成了大部分课程，码了一周多的dp去考程设</p><hr><p>看起来很没有营养的上半场，收获大概是python技能增强，对Java的热情逐渐失去，Node.js的东西已经可以上手写了；另一方面是成绩更加扎心了，要更加努力才行。</p><p>蹭了不少pr进各种仓库，以后要避免莫名其妙就花了那么多时间的情况了</p><p>freecodecamp也刷了不少，感觉这个项目有点转型了，还是安心leetcode去吧XD</p><hr><p>接下来的日子，要很努力很努力才行</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;迟到的总结…… hmmmmm&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>泛做</title>
     <link href="http://ir1d.cf/2018/06/27/cssx/%E6%B3%9B%E5%81%9A/"/>
     <id>http://ir1d.cf/2018/06/27/cssx/泛做/</id>
     <published>2018-06-27T08:01:24.000Z</published>
-    <updated>2018-06-28T17:13:47.347Z</updated>
+    <updated>2018-06-30T01:58:09.021Z</updated>
     
-    <content type="html"><![CDATA[<p>Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)</p><a id="more"></a><blockquote><p>B. Micro-World</p></blockquote><p>给一列数</p><p>每个<code>a[i]</code>可以覆盖<code>[a[i] + 1 .. a[i] + k]</code> 这个区间</p><p>如果有<code>a[j]</code>在这个区间里，那么称<code>i</code>可以被<code>j</code>吃掉，问最后最少剩几个</p><p>这个区间描述的关系是被吃的指向吃的，所以应该反过来，用<code>a[j]</code>引出<code>[a[j] - k, a[j] - 1]</code>这个区间，这时的含义是<code>j</code>可以吃覆盖的区间里的。答案就是没有被覆盖的<code>a[i]</code>的个数</p><p>把每个区间起点打标记<code>+1</code>，终点后一个位置<code>-1</code>，求个前缀和。如果一个位置是<code>0</code>那么就是没被覆盖过的</p><blockquote><p>C. Bracket Sequences Concatenation Problem</p></blockquote><p>给一堆括号序列，问有多少二元组，拼起来之后算是合法的</p><p>核心在于如何求一个括号序列左侧需要补多少左括号和右侧需要补多少右括号才合法</p><p>尝试过程略去，说一下结论</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f(i, <span class="number">0</span>, n) <span class="keyword">if</span> (buf[i] == <span class="string">'('</span>) &#123;</span><br><span class="line">  ++r[idx];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (r[idx]) --r[idx];</span><br><span class="line">  <span class="comment">// 这里是需要不减成负的</span></span><br><span class="line">  <span class="comment">// 如果会变成负的，那多出来的右括号是留给左侧，左侧用左括号补上的</span></span><br><span class="line">  <span class="comment">// 就不需要右侧管了，所以要保证计数器不减成0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>POJ 1191 棋盘分割</p></blockquote><p>方差的式子可以拆开</p><script type="math/tex; mode=display">\sigma = \sqrt{\frac{\sum_{i=1}^n(x_i - \bar x)^2}{n}} \\\\ = \sqrt{\frac{S}{n}}</script><p>\begin{align}<br>S &amp; = \sum_{i=1}^n(x_i - \bar x)^2 \\<br>&amp; = \sum(x_i^2-2x_i\bar{x}+\bar{x}^2) \\<br>&amp; = \sum{x_i^2} - \sum{2x_i\bar{x}} + n{\bar{x}^2} \\<br>&amp; = \sum{x_i^2} - 2n\bar{X} + n\bar{x}^2 \\<br>&amp; = \sum{x_i^2} - n\bar{X}<br>\end{align}</p><p>用<code>dp[n][x1][y1][x2][y2]</code>表示这块区域切<code>n</code>刀</p><p>记忆化搜索，前缀和预处理</p><blockquote><p>张三丰的传人</p></blockquote><p>后三种剪枝其实是在说一件事，题目要求分组，但是组内不要求顺序。</p><p>但是dfs肯定是有设定了顺序的，所以剪枝方案说：第一个如果不行，换了也不行，直接减掉；最后一个如果不行，换了也不行；</p><p>当然我们从长到短枚举就人为给了数据一个顺序，这样的话就可以避免了重复枚举，不会在已知不可能的情况多次尝试、浪费时间</p><blockquote><p>康拓展开</p></blockquote><p>可以用来求排列的序号，比如问1..5的第16个排列是哪一个</p><p>也可以对给出的一组排列问它在所有的排列里排第几</p><p><a href="https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index.html" target="_blank" rel="noopener">https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index.html</a></p><p>$ans = \sum_{i=1}^{n}{(a[i]右侧比a[i]小的数的个数) * (n - i)!)}$</p><p>逆向就是每次除以一个阶乘，余数继续。每次的商就是会有多少个数比这一位的数要小。可选的数字集合每次在变</p><p>用线段树搞一下就是nlogn查询了吧 (没写)</p><p>思考：如果允许元素重复呢？ 换言之，并不是严格意义上的排列</p><p><a href="https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index_ii.html" target="_blank" rel="noopener">https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index_ii.html</a></p><p>后面乘的阶乘除以重复那部分 $\frac{(\sum{a_i})!}{\Pi{(a_i!)}}$ 这样的</p><blockquote><p>POJ 1037: A decorative fence</p></blockquote><p><code>c[i][k][0/1]</code> 是前i个木棒中以第k短的开头，然后这一个是 下降/上升 的方案数</p><p>边界：<code>c[1][1][0] = c[1][1][1] = 1</code></p><p>后面还要计算第C个方案是啥，类似于排列计数</p><p>依次假设第<code>x</code>短的木棒放在那，然后看此时的方案数是否<code>&gt;= c</code></p><p>如果否，就用第<code>x + 1</code>短的木棒</p><blockquote><p>LIS 计数 <a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1376" target="_blank" rel="noopener">http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1376</a></p></blockquote><p><a href="http://www.cnblogs.com/dirge/p/5958808.html" target="_blank" rel="noopener">http://www.cnblogs.com/dirge/p/5958808.html</a></p><p>考虑一个$O(n^2)$的算法</p><p>用<code>a[i]</code>表示原数组，<code>l[i]</code>表示以i结尾的LIS长度，<code>dp[i]</code>表示最长的这个的个数</p><p>我们每次处理<code>a[i]</code>如果它可以接在<code>a[j]</code>后面，那么<code>l[i] = max(l[j]) + 1</code></p><p>然后我们同时可以发现，如果<code>l[i] &gt; l[j] + 1</code>，那么，<code>dp[i] = dp[j]</code>，因为最长的长度更新了，要重新计数；<br>如果<code>l[i] == l[j] + 1</code>，那么更新进去，<code>dp[i] += dp[j]</code>.</p><p>用树状数组维护每一块的（用块里的数结尾的）LIS长度和对应个数</p><p>树上第i个位置代表的是以值i结尾的LIS的最长长度和对应个数</p><p>处理<code>a[i]</code>的时候，先看之前的用小于<code>a[i]</code>的数结尾的（这里是二维偏序）LIS的长度和对应个数</p><p>然后把长度更新</p><p>再插回树状数组里。</p><p><a href="https://github.com/Ir1d/Fantasy/blob/master/51NOD/1376.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/51NOD/1376.cpp</a></p><blockquote><p>POJ 1390 方盒游戏</p></blockquote><p>就是考虑最右侧的块，有两种选择，要么直接消了，要么把它左边消了，等着合并。</p><p>注意第二种方案不是和左边一起直接消了，而应该递归进入子问题</p><p>所以<code>dp[i][j]</code>并不够用，要加一维，用<code>dp[i][j][len]</code>，表示把<code>[i .. j]</code>这段，和与<code>a[j]</code>相等且长度为<code>len</code>的一块合并的最大得分</p><p>左边的同色大块可能有很多个，到底和哪个合并最好，不知道，只能枚举</p><blockquote><p>HDU 1423 LCIS</p></blockquote><p><a href="https://www.cnblogs.com/Howe-Young/p/5082611.html" target="_blank" rel="noopener">https://www.cnblogs.com/Howe-Young/p/5082611.html</a></p><p>用<code>dp[i][j]</code>表示str1和str2分别以i和j结尾的LCIS，第一维空间可以省掉</p><p>如果<code>s1[i] == s2[j]</code>更新一下答案，用什么更新呢？</p><p>就是先预处理出来<code>s1[i]</code>对应的，<code>s2[j] &lt; s1[i]</code>且让<code>dp[j]</code>最大的<code>j</code></p><p>由于<code>i</code>在外层固定，所以循环的时候按顺序记一下这个<code>j</code>就好了</p>]]></content>
+    <content type="html"><![CDATA[<p>Educational Codeforces Round 45 的 B 和 C 不错 (CF #996)</p><a id="more"></a><blockquote><p>B. Micro-World</p></blockquote><p>给一列数</p><p>每个<code>a[i]</code>可以覆盖<code>[a[i] + 1 .. a[i] + k]</code> 这个区间</p><p>如果有<code>a[j]</code>在这个区间里，那么称<code>i</code>可以被<code>j</code>吃掉，问最后最少剩几个</p><p>这个区间描述的关系是被吃的指向吃的，所以应该反过来，用<code>a[j]</code>引出<code>[a[j] - k, a[j] - 1]</code>这个区间，这时的含义是<code>j</code>可以吃覆盖的区间里的。答案就是没有被覆盖的<code>a[i]</code>的个数</p><p>把每个区间起点打标记<code>+1</code>，终点后一个位置<code>-1</code>，求个前缀和。如果一个位置是<code>0</code>那么就是没被覆盖过的</p><blockquote><p>C. Bracket Sequences Concatenation Problem</p></blockquote><p>给一堆括号序列，问有多少二元组，拼起来之后算是合法的</p><p>核心在于如何求一个括号序列左侧需要补多少左括号和右侧需要补多少右括号才合法</p><p>尝试过程略去，说一下结论</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f(i, <span class="number">0</span>, n) <span class="keyword">if</span> (buf[i] == <span class="string">'('</span>) &#123;</span><br><span class="line">  ++r[idx];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (r[idx]) --r[idx];</span><br><span class="line">  <span class="comment">// 这里是需要不减成负的</span></span><br><span class="line">  <span class="comment">// 如果会变成负的，那多出来的右括号是留给左侧，左侧用左括号补上的</span></span><br><span class="line">  <span class="comment">// 就不需要右侧管了，所以要保证计数器不减成0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>POJ 1191 棋盘分割</p></blockquote><p>方差的式子可以拆开</p><script type="math/tex; mode=display">\sigma = \sqrt{\frac{\sum_{i=1}^n(x_i - \bar x)^2}{n}} \\\\ = \sqrt{\frac{S}{n}}</script><p>\begin{align}<br>S &amp; = \sum_{i=1}^n(x_i - \bar x)^2 \\<br>&amp; = \sum(x_i^2-2x_i\bar{x}+\bar{x}^2) \\<br>&amp; = \sum{x_i^2} - \sum{2x_i\bar{x}} + n{\bar{x}^2} \\<br>&amp; = \sum{x_i^2} - 2n\bar{X} + n\bar{x}^2 \\<br>&amp; = \sum{x_i^2} - n\bar{X}<br>\end{align}</p><p>用<code>dp[n][x1][y1][x2][y2]</code>表示这块区域切<code>n</code>刀</p><p>记忆化搜索，前缀和预处理</p><blockquote><p>张三丰的传人</p></blockquote><p>后三种剪枝其实是在说一件事，题目要求分组，但是组内不要求顺序。</p><p>但是dfs肯定是有设定了顺序的，所以剪枝方案说：第一个如果不行，换了也不行，直接减掉；最后一个如果不行，换了也不行；</p><p>当然我们从长到短枚举就人为给了数据一个顺序，这样的话就可以避免了重复枚举，不会在已知不可能的情况多次尝试、浪费时间</p><blockquote><p>康拓展开</p></blockquote><p>可以用来求排列的序号，比如问1..5的第16个排列是哪一个</p><p>也可以对给出的一组排列问它在所有的排列里排第几</p><p><a href="https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index.html" target="_blank" rel="noopener">https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index.html</a></p><p>$ans = \sum_{i=1}^{n}{(a[i]右侧比a[i]小的数的个数) * (n - i)!)}$</p><p>逆向就是每次除以一个阶乘，余数继续。每次的商就是会有多少个数比这一位的数要小。可选的数字集合每次在变</p><p>用线段树搞一下就是nlogn查询了吧 (没写)</p><p>思考：如果允许元素重复呢？ 换言之，并不是严格意义上的排列</p><p><a href="https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index_ii.html" target="_blank" rel="noopener">https://algorithm.yuanbin.me/zh-hans/exhaustive_search/permutation_index_ii.html</a></p><p>后面乘的阶乘除以重复那部分 $\frac{(\sum{a_i})!}{\Pi{(a_i!)}}$ 这样的</p><blockquote><p>POJ 1037: A decorative fence</p></blockquote><p><code>c[i][k][0/1]</code> 是前i个木棒中以第k短的开头，然后这一个是 下降/上升 的方案数</p><p>边界：<code>c[1][1][0] = c[1][1][1] = 1</code></p><p>后面还要计算第C个方案是啥，类似于排列计数</p><p>依次假设第<code>x</code>短的木棒放在那，然后看此时的方案数是否<code>&gt;= c</code></p><p>如果否，就用第<code>x + 1</code>短的木棒</p><blockquote><p>LIS 计数 <a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1376" target="_blank" rel="noopener">http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1376</a></p></blockquote><p><a href="http://www.cnblogs.com/dirge/p/5958808.html" target="_blank" rel="noopener">http://www.cnblogs.com/dirge/p/5958808.html</a></p><p>考虑一个$O(n^2)$的算法</p><p>用<code>a[i]</code>表示原数组，<code>l[i]</code>表示以i结尾的LIS长度，<code>dp[i]</code>表示最长的这个的个数</p><p>我们每次处理<code>a[i]</code>如果它可以接在<code>a[j]</code>后面，那么<code>l[i] = max(l[j]) + 1</code></p><p>然后我们同时可以发现，如果<code>l[i] &gt; l[j] + 1</code>，那么，<code>dp[i] = dp[j]</code>，因为最长的长度更新了，要重新计数；<br>如果<code>l[i] == l[j] + 1</code>，那么更新进去，<code>dp[i] += dp[j]</code>.</p><p>用树状数组维护每一块的（用块里的数结尾的）LIS长度和对应个数</p><p>树上第i个位置代表的是以值i结尾的LIS的最长长度和对应个数</p><p>处理<code>a[i]</code>的时候，先看之前的用小于<code>a[i]</code>的数结尾的（这里是二维偏序）LIS的长度和对应个数</p><p>然后把长度更新</p><p>再插回树状数组里。</p><p><a href="https://github.com/Ir1d/Fantasy/blob/master/51NOD/1376.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/51NOD/1376.cpp</a></p><blockquote><p>POJ 1390 方盒游戏</p></blockquote><p>就是考虑最右侧的块，有两种选择，要么直接消了，要么把它左边消了，等着合并。</p><p>注意第二种方案不是和左边一起直接消了，而应该递归进入子问题</p><p>所以<code>dp[i][j]</code>并不够用，要加一维，用<code>dp[i][j][len]</code>，表示把<code>[i .. j]</code>这段，和与<code>a[j]</code>相等且长度为<code>len</code>的一块合并的最大得分</p><p>左边的同色大块可能有很多个，到底和哪个合并最好，不知道，只能枚举</p><p>upd: 细节是要先游程编码，然后对编码之后的序列搜能方便一些。程设2018考了个类似的，死活没调出来</p><blockquote><p>HDU 1423 LCIS</p></blockquote><p><a href="https://www.cnblogs.com/Howe-Young/p/5082611.html" target="_blank" rel="noopener">https://www.cnblogs.com/Howe-Young/p/5082611.html</a></p><p>用<code>dp[i][j]</code>表示str1和str2分别以i和j结尾的LCIS，第一维空间可以省掉</p><p>如果<code>s1[i] == s2[j]</code>更新一下答案，用什么更新呢？</p><p>就是先预处理出来<code>s1[i]</code>对应的，<code>s2[j] &lt; s1[i]</code>且让<code>dp[j]</code>最大的<code>j</code></p><p>由于<code>i</code>在外层固定，所以循环的时候按顺序记一下这个<code>j</code>就好了</p>]]></content>
     
     <summary type="html">
     
@@ -43,9 +210,9 @@
     <link href="http://ir1d.cf/2018/06/25/%E7%AE%97%E5%AF%BCdp%E7%AC%94%E8%AE%B0/"/>
     <id>http://ir1d.cf/2018/06/25/算导dp笔记/</id>
     <published>2018-06-25T14:59:18.000Z</published>
-    <updated>2018-06-27T00:33:16.360Z</updated>
+    <updated>2018-06-27T13:15:07.505Z</updated>
     
-    <content type="html"><![CDATA[<p>动态规划应用于子问题重叠的情况</p><a id="more"></a><ol><li>要去刻画最优解的结构特征</li><li>尝试递归地定义最优解的值（就是我们常说的考虑从<code>i - 1</code>转移到<code>i</code>）</li><li>计算最优解</li><li>利用计算出的信息构造一个最优解</li></ol><h1 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h1><p>给定一段钢条，和不同长度的价格，问如何切割使得总价格最大</p><p>为了求解规模为<code>n</code>的原问题，我们先求解形式完全一样，但规模更小的子问题。<br>即当完成首次切割后，我们将两段钢条看成两个独立的钢条切割问题实例。<br>我们通过组合相关子问题的最优解，并在所有可能的两段切割方案中选取组合收益最大者，构成原问题的最优解。</p><blockquote><p>最优子结构：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解</p></blockquote><p>动态规划的两种实现方法</p><ul><li>带备忘的自顶向下法 （记忆化搜索）</li><li>自底向上法 （将子问题按规模排序，类似于递推）</li></ul><p>算导用子问题图上按照逆拓扑序求解问题，引出记忆化搜索。</p><p>重构解（输出方案）：转移的时候记录最优子结构的位置</p><h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><p>给出n个矩阵的序列，希望计算他们的乘积，问最少需要多少次乘法运算</p><p>（认为$p <em> q$的矩阵与$q</em>r$的矩阵相乘代价是$p<em>q</em>r$）</p><p>完全括号化方案是指要给出谁先和谁乘</p><h1 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h1><p>两个要素：</p><h2 id="1-最优子结构"><a href="#1-最优子结构" class="headerlink" title="1. 最优子结构"></a>1. 最优子结构</h2><p>具有最优子结构也可能是适合用贪心的方法求解</p><p>注意要确保我们考察了最优解中用到的所有子问题</p><ol><li>证明问题最优解的第一个组成部分是做出一个选择</li><li>对于一个给定问题，在其可能的第一步选择中，你界定已经知道哪种选择才会得到最优解。你现在并不关心这种选择具体是如何得到的，只是假定已经知道了这种选择。</li><li>给定可获得的最优解的选择后，确定这次选择会产生哪些子问题，以及如何最好地刻画子问题空间</li><li>证明作为构成原问题最优解的组成部分，每个子问题的解就是它本身的最优解。方法是反证法，考虑加入某个子问题的解不是其自身的最优解，那么就可以从原问题的解中用该子问题的最优解替换掉当前的非最优解，从而得到原问题的一个更优的解，从而与原问题最优解的假设矛盾。</li></ol><p>要保持子问题空间尽量简单，只在必要时扩展</p><p>最优子结构的不同体现在两个方面：</p><ol><li>原问题的最优解中涉及多少个子问题</li><li>确定最优解使用哪些子问题时，需要考察多少种选择</li></ol><p>子问题图中每个定点对应一个子问题，而需要考察的选择对应关联至子问题顶点的边</p><h3 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h3><blockquote><p>无权最短路径</p></blockquote><p>具有最优子结构性质</p><blockquote><p>无权最长（简单）路径</p></blockquote><p>此问题不具有，是NP完全的</p><p>区别在于，要保证子问题无关：同一个原问题的一个子问题的解不影响另一个子问题的解。</p><p>相关 —— 求解一个子问题时用到了某些资源，导致这些资源在求解其他子问题时不可用</p><h2 id="2-子问题重叠"><a href="#2-子问题重叠" class="headerlink" title="2. 子问题重叠"></a>2. 子问题重叠</h2><p>子问题空间要足够小，即问题的递归算法会反复地求解相同的子问题，而不是一直生成新的子问题。</p><h2 id="重构最优解"><a href="#重构最优解" class="headerlink" title="重构最优解"></a>重构最优解</h2><p>存表记录最优分割的位置，就不用重新按照代价来重构</p><h1 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h1><p>子序列允许不连续</p><p>每个<code>c[i][j]</code>只依赖于<code>c[i - 1][j]</code>、<code>c[i][j - 1]</code>和<code>c[i - 1][j - 1]</code></p><p>记录最优方案的时候可以不需要额外建表（优化空间），因为重新选择一遍（转移过程）也是$O(1)$的</p><h1 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h1><p>给二叉搜索树的每个节点定义一个权值，问如何安排使得权值和深度的乘积最小</p><p>考虑当一棵子树成为了一个节点的子树时，答案（期望搜索代价）有何变化？</p><p>由于每个节点的深度都增加了1，这棵子树的期望搜索代价的增加值应为所有概率之和</p><blockquote><p>tD / eD 动态规划：<br>状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p></blockquote><h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2><p>$dp[i] = max(dp[j] + 1), ((j, i) \in E)$</p><h2 id="最长回文子序列"><a href="#最长回文子序列" class="headerlink" title="最长回文子序列"></a>最长回文子序列</h2><script type="math/tex; mode=display">dp[i][i + len] =\begin{cases}dp[i + 1][i + len - 1] + 2,  & \text{if $s[i] == s[i + len]$} \\[2ex]max(dp[i + 1][i + len], dp[i][i + len - 1]), & \text{else}\end{cases}</script><p>边界：$dp[i][i] = 1$</p><p>注意：$dp[i][j]$ 表示的是闭区间</p><p>也可以转化为LCS问题，只需要把a串反转当做b，对a和b求lcs即可</p><p>证明在： <a href="https://www.zhihu.com/question/34580085/answer/59539708" target="_blank" rel="noopener">https://www.zhihu.com/question/34580085/answer/59539708</a></p><p>注意区分子串（要求连续）的问题</p><h2 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h2><p>$O(n^2)$：$dp[i] = max(dp[j] + 1), s(j + 1 .. i) 是回文$</p><p>$(O(n))$： Manacher</p><blockquote><p>Manacher</p></blockquote><p>$p[i]$ 表示从<code>i</code>向两侧延伸（当然要保证两侧对应位置相等）的最大长度</p><p>为了处理方便，我们把原串每两个字符之间加一个（不包含在原串中的）<code>#</code>，开头加一个<code>$</code></p><p>这样得到的回文串长度就保证是奇数了</p><p>考虑如果按顺序得到了$p[1 .. i - 1]$，如何计算$p[i]$的值</p><p>如果之前有一个位置比如说是<code>id</code>，有<code>p[id] + id &gt; i</code> 那么<code>i</code>这个位置是被覆盖了的，根据<code>id</code>处的对称性，我们找<code>p[id * 2 - i]</code>延伸的部分被<code>p[id]</code>延伸的部分所覆盖的那段，显然这段对称回去之后是可以从<code>i</code>处延伸出去的长度。</p><p>如果找不到呢？就先让<code>p[i] = 1</code>吧。</p><p>之后再暴力延伸一下。</p><p>可以证明是$O(n)$的</p><p>至于如何找是否有这么一个<code>id</code>呢？递推的时候存一个<code>max</code>就好了</p><p>代码在：<a href="https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp</a></p><h2 id="双调欧几里得旅行商问题"><a href="#双调欧几里得旅行商问题" class="headerlink" title="双调欧几里得旅行商问题"></a>双调欧几里得旅行商问题</h2><p>好像出成了某一年程设期末</p><p>upd：其实是<a href="/2018/06/23/cssx/程设期末推荐练习/">推荐练习</a>里面的</p><p>off-topic：惊了，原来 hexo 内链是可以这么写的：<code><a href="/2018/06/23/cssx/程设期末推荐练习/" title="程设期末推荐练习">程设期末推荐练习</a></code></p><!-- upd：其实是 <a href="/2018/06/23/cssx/程设期末推荐练习/" title="程设期末推荐练习">程设期末推荐练习</a> 里面的 --><p>书上的提示是：从左到右扫描，对巡游路线的两个部分分别维护可能的最优解</p><p>说的就是把回路给拆开吧</p><h3 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h3><p>$dp[i][j] 表示\ 1..i\ 和\ 1..j\ 两条路径$</p><p>我们可以人为要求 $1..i$ 是更快的那一条路径</p><p>这样考虑第<code>i</code>个点分给谁</p><p>如果是分给快的那条：</p><p>$dp[i][j] = min(dp[i - 1][j] + dis[i - 1][i]),\ j = 1..i$</p><p>如果是慢的，原来是慢的那条就变成了快的，所以另一条是到<code>i - 1</code>那个点：</p><p>$dp[i][j] = min(dp[i - 1][j] + dis[j][i]),\ j = 1..i$</p><p>答案是$min(dp[n][i] + dis[n][i])$<br>（从一开始编号，终点是<code>n</code>）</p><p>代码：<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/2018rec/11.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/2018rec/11.cpp</a></p><h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>把$dp[i][j]$定义反过来，不是$1..i$和$1..j$</p><p>改成是$i..n$和$j..n$，不要求哪个更快</p><p>这样的转移更好写</p><p>我们记<code>k = max(i, j) + 1</code></p><p><code>k</code>这个点肯定在两条路中的一个上，$dp[i][j]$取两种情况的最小值即可</p><p>$dp[i][j] = min(dp[i][k] + dis[k][j], dp[k][j] + dis[i][k])$</p><p>边界是：$dp[i][n] = dp[n][i] = dis[n][i]$</p><p>答案是$dp[1][1]$</p><h2 id="整齐打印"><a href="#整齐打印" class="headerlink" title="整齐打印"></a>整齐打印</h2><p>希望最小化所有行的额外空格数的立方之和</p><p>注意到实际问题要求单词不能打乱顺序，所以就好做了起来</p><p><code># 论不要把题目看复杂</code></p><p>$dp[i] = min(dp[j] + cost[j][i])$</p><hr><p>不知道这样可不可做= =</p><p>有n个单词，可以不按顺序打印，问怎么安排，使得把他们打印成m行之后，每行的空格之和最小</p><hr><h2 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h2><p>变换操作有6种，复制、替换、删除、插入、旋转、终止（结束转换过程）</p><h3 id="最优对齐问题"><a href="#最优对齐问题" class="headerlink" title="　最优对齐问题"></a>　最优对齐问题</h3><p>把空格符插入到字符串里，使得相似度最大</p><p>定义了按字符比较的相似度</p><p>然后发现最优对齐问题可以转换为编辑距离问题</p><p>相当于仅有三个操作的带权编辑距离</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">copy    :  1</span><br><span class="line">replace : -1</span><br><span class="line">insert  : -2</span><br></pre></td></tr></table></figure><h2 id="公司聚会计划"><a href="#公司聚会计划" class="headerlink" title="公司聚会计划"></a>公司聚会计划</h2><p>没有上司的舞会</p><p><code>dp[x][0]</code>是没去</p><p><code>dp[x][1]</code>是去了</p><p>$dp[u][0] = max(dp[v][0], dp[v][1]), v \in son(u)$</p><p>$dp[u][1] = w[u] + dp[v][0], v \in son(u)$</p><h2 id="译码算法"><a href="#译码算法" class="headerlink" title="译码算法"></a>译码算法</h2><p><a href="https://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">Viterbi algorithm</a><br>之前写词性标注的时候有用到，好像用在输入法里面也是类似的。</p><p>本题中用来实现语音识别，其实就是找一条对应的概率最大的路径</p><p>ref：<a href="https://segmentfault.com/a/1190000008720143" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008720143</a></p><h2 id="基于接缝裁剪的图像压缩"><a href="#基于接缝裁剪的图像压缩" class="headerlink" title="基于接缝裁剪的图像压缩"></a>基于接缝裁剪的图像压缩</h2><p>玩过 opencv 的应该有印象，seam carving 就是在做 dp</p><p>题中要求每一行删除一个像，每个像素都有代价，要求总代价最小</p><p>限制：要求相邻两行中删除的像素必须位于同一列或相邻列</p><p>$dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - 1]， dp[i - 1][j + 1]) + cost[i][j]$</p><p>边界：$dp[1][i] = cost[1][i]$</p><h2 id="字符串拆分"><a href="#字符串拆分" class="headerlink" title="字符串拆分"></a>字符串拆分</h2><p>相当于问怎么按顺序拼起来使得总代价最小</p><p>等价于之前那个最优二叉搜索树</p><p>$dp[i][j] = min(dp[i][k] + dp[k][j]) + l[j] - l[i] + 1,\ k = i + 1\ ..\ j - 1$</p><p>注意<code>l[i]</code>表示的是第i个切分点的位置</p><p>边界：$dp[i][i] = 0$</p><p>就按照区间 dp 的姿势来写就好了</p><h2 id="投资策略规划"><a href="#投资策略规划" class="headerlink" title="投资策略规划"></a>投资策略规划</h2><blockquote><p>可以证明存在最优投资策略，每年都将所有钱投入到单一投资中</p></blockquote><p>这是个很有趣的结论，dp 问题中很常见</p><p><a href="https://fogsail.github.io/2017/05/08/20170508/" target="_blank" rel="noopener">https://fogsail.github.io/2017/05/08/20170508/</a></p><p>剩下的就是个二维 dp，想成从$(1, i)$走到$(n, m)$的路径的问题，然后收益和代价就是边权，网格图只能往右下方走。</p><h2 id="库存规划"><a href="#库存规划" class="headerlink" title="库存规划"></a>库存规划</h2><p>生产多了少了都有额外的成本，问怎么安排生产策略使得额外的成本尽可能地少</p><p>$cost[i][j]$ 表示剩下i个月，开始的时候有j台库存的最小成本</p><p><a href="https://walkccc.github.io/CLRS/Chap15/Problems/15-11/" target="_blank" rel="noopener">https://walkccc.github.io/CLRS/Chap15/Problems/15-11/</a></p><h2 id="签约棒球自由球员"><a href="#签约棒球自由球员" class="headerlink" title="签约棒球自由球员"></a>签约棒球自由球员</h2><p>$v[i][j]$ 是考虑i之后的位置，总费用为x，的最大收益</p><p><a href="https://walkccc.github.io/CLRS/Chap15/Problems/15-12/" target="_blank" rel="noopener">https://walkccc.github.io/CLRS/Chap15/Problems/15-12/</a></p><p>类似于背包问题</p>]]></content>
+    <content type="html"><![CDATA[<p>动态规划应用于子问题重叠的情况</p><a id="more"></a><ol><li>要去刻画最优解的结构特征</li><li>尝试递归地定义最优解的值（就是我们常说的考虑从<code>i - 1</code>转移到<code>i</code>）</li><li>计算最优解</li><li>利用计算出的信息构造一个最优解</li></ol><h1 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h1><p>给定一段钢条，和不同长度的价格，问如何切割使得总价格最大</p><p>为了求解规模为<code>n</code>的原问题，我们先求解形式完全一样，但规模更小的子问题。<br>即当完成首次切割后，我们将两段钢条看成两个独立的钢条切割问题实例。<br>我们通过组合相关子问题的最优解，并在所有可能的两段切割方案中选取组合收益最大者，构成原问题的最优解。</p><blockquote><p>最优子结构：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解</p></blockquote><p>动态规划的两种实现方法</p><ul><li>带备忘的自顶向下法 （记忆化搜索）</li><li>自底向上法 （将子问题按规模排序，类似于递推）</li></ul><p>算导用子问题图上按照逆拓扑序求解问题，引出记忆化搜索。</p><p>重构解（输出方案）：转移的时候记录最优子结构的位置</p><h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><p>给出n个矩阵的序列，希望计算他们的乘积，问最少需要多少次乘法运算</p><p>（认为$p <em> q$的矩阵与$q</em>r$的矩阵相乘代价是$p<em>q</em>r$）</p><p>完全括号化方案是指要给出谁先和谁乘</p><h1 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h1><p>两个要素：</p><h2 id="1-最优子结构"><a href="#1-最优子结构" class="headerlink" title="1. 最优子结构"></a>1. 最优子结构</h2><p>具有最优子结构也可能是适合用贪心的方法求解</p><p>注意要确保我们考察了最优解中用到的所有子问题</p><ol><li>证明问题最优解的第一个组成部分是做出一个选择</li><li>对于一个给定问题，在其可能的第一步选择中，你界定已经知道哪种选择才会得到最优解。你现在并不关心这种选择具体是如何得到的，只是假定已经知道了这种选择。</li><li>给定可获得的最优解的选择后，确定这次选择会产生哪些子问题，以及如何最好地刻画子问题空间</li><li>证明作为构成原问题最优解的组成部分，每个子问题的解就是它本身的最优解。方法是反证法，考虑加入某个子问题的解不是其自身的最优解，那么就可以从原问题的解中用该子问题的最优解替换掉当前的非最优解，从而得到原问题的一个更优的解，从而与原问题最优解的假设矛盾。</li></ol><p>要保持子问题空间尽量简单，只在必要时扩展</p><p>最优子结构的不同体现在两个方面：</p><ol><li>原问题的最优解中涉及多少个子问题</li><li>确定最优解使用哪些子问题时，需要考察多少种选择</li></ol><p>子问题图中每个定点对应一个子问题，而需要考察的选择对应关联至子问题顶点的边</p><h3 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h3><blockquote><p>无权最短路径</p></blockquote><p>具有最优子结构性质</p><blockquote><p>无权最长（简单）路径</p></blockquote><p>此问题不具有，是NP完全的</p><p>区别在于，要保证子问题无关：同一个原问题的一个子问题的解不影响另一个子问题的解。</p><p>相关 —— 求解一个子问题时用到了某些资源，导致这些资源在求解其他子问题时不可用</p><h2 id="2-子问题重叠"><a href="#2-子问题重叠" class="headerlink" title="2. 子问题重叠"></a>2. 子问题重叠</h2><p>子问题空间要足够小，即问题的递归算法会反复地求解相同的子问题，而不是一直生成新的子问题。</p><h2 id="重构最优解"><a href="#重构最优解" class="headerlink" title="重构最优解"></a>重构最优解</h2><p>存表记录最优分割的位置，就不用重新按照代价来重构</p><h1 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h1><p>子序列允许不连续</p><p>每个<code>c[i][j]</code>只依赖于<code>c[i - 1][j]</code>、<code>c[i][j - 1]</code>和<code>c[i - 1][j - 1]</code></p><p>记录最优方案的时候可以不需要额外建表（优化空间），因为重新选择一遍（转移过程）也是$O(1)$的</p><h1 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h1><p>给二叉搜索树的每个节点定义一个权值，问如何安排使得权值和深度的乘积最小</p><p>考虑当一棵子树成为了一个节点的子树时，答案（期望搜索代价）有何变化？</p><p>由于每个节点的深度都增加了1，这棵子树的期望搜索代价的增加值应为所有概率之和</p><blockquote><p>tD / eD 动态规划：<br>状态空间是$O(n^t)$的，每一项依赖其他$O(n^e)$项</p></blockquote><h1 id="经典问题（来自习题）"><a href="#经典问题（来自习题）" class="headerlink" title="经典问题（来自习题）"></a>经典问题（来自习题）</h1><h2 id="DAG-中的最长简单路径"><a href="#DAG-中的最长简单路径" class="headerlink" title="DAG 中的最长简单路径"></a>DAG 中的最长简单路径</h2><p>$dp[i] = max(dp[j] + 1), ((j, i) \in E)$</p><h2 id="最长回文子序列"><a href="#最长回文子序列" class="headerlink" title="最长回文子序列"></a>最长回文子序列</h2><script type="math/tex; mode=display">dp[i][i + len] =\begin{cases}dp[i + 1][i + len - 1] + 2,  & \text{if $s[i] == s[i + len]$} \\[2ex]max(dp[i + 1][i + len], dp[i][i + len - 1]), & \text{else}\end{cases}</script><p>边界：$dp[i][i] = 1$</p><p>注意：$dp[i][j]$ 表示的是闭区间</p><p>也可以转化为LCS问题，只需要把a串反转当做b，对a和b求lcs即可</p><p>证明在： <a href="https://www.zhihu.com/question/34580085/answer/59539708" target="_blank" rel="noopener">https://www.zhihu.com/question/34580085/answer/59539708</a></p><p>注意区分子串（要求连续）的问题</p><h2 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h2><p>$O(n^2)$：$dp[i] = max(dp[j] + 1), s(j + 1 .. i) 是回文$</p><p>$(O(n))$： Manacher</p><blockquote><p>Manacher</p></blockquote><p>$p[i]$ 表示从<code>i</code>向两侧延伸（当然要保证两侧对应位置相等）的最大长度</p><p>为了处理方便，我们把原串每两个字符之间加一个（不包含在原串中的）<code>#</code>，开头加一个<code>$</code></p><p>这样得到的回文串长度就保证是奇数了</p><p>考虑如果按顺序得到了$p[1 .. i - 1]$，如何计算$p[i]$的值</p><p>如果之前有一个位置比如说是<code>id</code>，有<code>p[id] + id &gt; i</code> 那么<code>i</code>这个位置是被覆盖了的，根据<code>id</code>处的对称性，我们找<code>p[id * 2 - i]</code>延伸的部分被<code>p[id]</code>延伸的部分所覆盖的那段，显然这段对称回去之后是可以从<code>i</code>处延伸出去的长度。</p><p>如果找不到呢？就先让<code>p[i] = 1</code>吧。</p><p>之后再暴力延伸一下。</p><p>可以证明是$O(n)$的</p><p>至于如何找是否有这么一个<code>id</code>呢？递推的时候存一个<code>max</code>就好了</p><p>代码在：<a href="https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/HDU/3068.cpp</a></p><h2 id="双调欧几里得旅行商问题"><a href="#双调欧几里得旅行商问题" class="headerlink" title="双调欧几里得旅行商问题"></a>双调欧几里得旅行商问题</h2><p>好像出成了某一年程设期末</p><p>upd：其实是<a href="/2018/06/23/cssx/程设期末推荐练习/">推荐练习</a>里面的</p><p>off-topic：惊了，原来 hexo 内链是可以这么写的：<code><a href="/2018/06/23/cssx/程设期末推荐练习/" title="程设期末推荐练习">程设期末推荐练习</a></code></p><!-- upd：其实是 <a href="/2018/06/23/cssx/程设期末推荐练习/" title="程设期末推荐练习">程设期末推荐练习</a> 里面的 --><p>书上的提示是：从左到右扫描，对巡游路线的两个部分分别维护可能的最优解</p><p>说的就是把回路给拆开吧</p><h3 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h3><p>$dp[i][j] 表示\ 1..i\ 和\ 1..j\ 两条路径$</p><p>我们可以人为要求 $1..i$ 是更快的那一条路径</p><p>这样考虑第<code>i</code>个点分给谁</p><p>如果是分给快的那条：</p><p>$dp[i][j] = min(dp[i - 1][j] + dis[i - 1][i]),\ j = 1..i$</p><p>如果是慢的，原来是慢的那条就变成了快的，所以另一条是到<code>i - 1</code>那个点：</p><p>$dp[i][j] = min(dp[i - 1][j] + dis[j][i]),\ j = 1..i$</p><p>答案是$min(dp[n][i] + dis[n][i])$<br>（从一开始编号，终点是<code>n</code>）</p><p>代码：<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/2018rec/11.cpp" target="_blank" rel="noopener">https://github.com/Ir1d/Fantasy/blob/master/openjudge/cssx/2018rec/11.cpp</a></p><h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>把$dp[i][j]$定义反过来，不是$1..i$和$1..j$</p><p>改成是$i..n$和$j..n$，不要求哪个更快</p><p>这样的转移更好写</p><p>我们记<code>k = max(i, j) + 1</code></p><p><code>k</code>这个点肯定在两条路中的一个上，$dp[i][j]$取两种情况的最小值即可</p><p>$dp[i][j] = min(dp[i][k] + dis[k][j], dp[k][j] + dis[i][k])$</p><p>边界是：$dp[i][n] = dp[n][i] = dis[n][i]$</p><p>答案是$dp[1][1]$</p><h2 id="整齐打印"><a href="#整齐打印" class="headerlink" title="整齐打印"></a>整齐打印</h2><p>希望最小化所有行的额外空格数的立方之和</p><p>注意到实际问题要求单词不能打乱顺序，所以就好做了起来</p><p><code># 论不要把题目看复杂</code></p><p>$dp[i] = min(dp[j] + cost[j][i])$</p><hr><p>不知道这样可不可做= =</p><p>有n个单词，可以不按顺序打印，问怎么安排，使得把他们打印成m行之后，每行的空格之和最小</p><hr><h2 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h2><p>变换操作有6种，复制、替换、删除、插入、旋转、终止（结束转换过程）</p><h3 id="最优对齐问题"><a href="#最优对齐问题" class="headerlink" title="　最优对齐问题"></a>　最优对齐问题</h3><p>把空格符插入到字符串里，使得相似度最大</p><p>定义了按字符比较的相似度</p><p>然后发现最优对齐问题可以转换为编辑距离问题</p><p>相当于仅有三个操作的带权编辑距离</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">copy    :  1</span><br><span class="line">replace : -1</span><br><span class="line">insert  : -2</span><br></pre></td></tr></table></figure><h2 id="公司聚会计划"><a href="#公司聚会计划" class="headerlink" title="公司聚会计划"></a>公司聚会计划</h2><p>没有上司的舞会</p><p><code>dp[x][0]</code>是没去</p><p><code>dp[x][1]</code>是去了</p><p>$dp[u][0] = max(dp[v][0], dp[v][1]), v \in son(u)$</p><p>$dp[u][1] = w[u] + dp[v][0], v \in son(u)$</p><h2 id="译码算法"><a href="#译码算法" class="headerlink" title="译码算法"></a>译码算法</h2><p><a href="https://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">Viterbi algorithm</a><br>之前写词性标注的时候有用到，好像用在输入法里面也是类似的。</p><p>本题中用来实现语音识别，其实就是找一条对应的概率最大的路径</p><p>ref：<a href="https://segmentfault.com/a/1190000008720143" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008720143</a></p><h2 id="基于接缝裁剪的图像压缩"><a href="#基于接缝裁剪的图像压缩" class="headerlink" title="基于接缝裁剪的图像压缩"></a>基于接缝裁剪的图像压缩</h2><p>玩过 opencv 的应该有印象，seam carving 就是在做 dp</p><p>题中要求每一行删除一个像，每个像素都有代价，要求总代价最小</p><p>限制：要求相邻两行中删除的像素必须位于同一列或相邻列</p><p>$dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - 1]， dp[i - 1][j + 1]) + cost[i][j]$</p><p>边界：$dp[1][i] = cost[1][i]$</p><h2 id="字符串拆分"><a href="#字符串拆分" class="headerlink" title="字符串拆分"></a>字符串拆分</h2><p>相当于问怎么按顺序拼起来使得总代价最小</p><p>等价于之前那个最优二叉搜索树</p><p>$dp[i][j] = min(dp[i][k] + dp[k][j]) + l[j] - l[i] + 1,\ k = i + 1\ ..\ j - 1$</p><p>注意<code>l[i]</code>表示的是第i个切分点的位置</p><p>边界：$dp[i][i] = 0$</p><p>就按照区间 dp 的姿势来写就好了</p><h2 id="投资策略规划"><a href="#投资策略规划" class="headerlink" title="投资策略规划"></a>投资策略规划</h2><blockquote><p>可以证明存在最优投资策略，每年都将所有钱投入到单一投资中</p></blockquote><p>这是个很有趣的结论，dp 问题中很常见</p><p><a href="https://fogsail.github.io/2017/05/08/20170508/" target="_blank" rel="noopener">https://fogsail.github.io/2017/05/08/20170508/</a></p><p>剩下的就是个二维 dp，想成从$(1, i)$走到$(n, m)$的路径的问题，然后收益和代价就是边权，网格图只能往右下方走。</p><h2 id="库存规划"><a href="#库存规划" class="headerlink" title="库存规划"></a>库存规划</h2><p>生产多了少了都有额外的成本，问怎么安排生产策略使得额外的成本尽可能地少</p><p>$cost[i][j]$ 表示剩下i个月，开始的时候有j台库存的最小成本</p><p><a href="https://walkccc.github.io/CLRS/Chap15/Problems/15-11/" target="_blank" rel="noopener">https://walkccc.github.io/CLRS/Chap15/Problems/15-11/</a></p><h2 id="签约棒球自由球员"><a href="#签约棒球自由球员" class="headerlink" title="签约棒球自由球员"></a>签约棒球自由球员</h2><p>$v[i][j]$ 是考虑i之后的位置，总费用为x，的最大收益</p><p><a href="https://walkccc.github.io/CLRS/Chap15/Problems/15-12/" target="_blank" rel="noopener">https://walkccc.github.io/CLRS/Chap15/Problems/15-12/</a></p><p>类似于背包问题</p><hr><p>当选取的状态难以进行递推时（分解出的子问题和原问题形式不一样），考虑将问题状态分类细化，增加维度</p>]]></content>
     
     <summary type="html">
     
@@ -366,187 +533,6 @@
     
     
       <category term="wxPython" scheme="http://ir1d.cf/tags/wxPython/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>telegram-bots</title>
-    <link href="http://ir1d.cf/2018/02/24/telegram-bots/"/>
-    <id>http://ir1d.cf/2018/02/24/telegram-bots/</id>
-    <published>2018-02-24T03:49:44.000Z</published>
-    <updated>2018-06-23T04:46:57.857Z</updated>
-    
-    <content type="html"><![CDATA[<p>写 Telegram bot 的时候遇到了问题，一直在纠结为什么我的 bot 需要 <code>/asdf@bot</code> 而不是 <code>/asdf</code> 就行= =</p><p>最后发现问题在这里：<a href="https://core.telegram.org/bots#privacy-mode" target="_blank" rel="noopener">https://core.telegram.org/bots#privacy-mode</a></p><p>官方API：<a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener">https://core.telegram.org/bots/api</a></p><p>一些现成的整理：<a href="https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets" target="_blank" rel="noopener">https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets</a></p><p>以及 TG bot 传文件大小是50M= = 图片是10M</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;写 Telegram bot 的时候遇到了问题，一直在纠结为什么我的 bot 需要 &lt;code&gt;/asdf@bot&lt;/code&gt; 而不是 &lt;code&gt;/asdf&lt;/code&gt; 就行= =&lt;/p&gt;
-&lt;p&gt;最后发现问题在这里：&lt;a href=&quot;https://core.tele
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="http://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="telegram" scheme="http://ir1d.cf/tags/telegram/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习记录</title>
-    <link href="http://ir1d.cf/2018/02/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://ir1d.cf/2018/02/09/机器学习记录/</id>
-    <published>2018-02-09T08:03:20.000Z</published>
-    <updated>2018-06-23T04:47:43.635Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>[done] Andrew NG coursera 机器学习</li><li>cs229 <a href="https://see.stanford.edu/course/cs229" target="_blank" rel="noopener">https://see.stanford.edu/course/cs229</a></li><li><a href="http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial" target="_blank" rel="noopener">UFLDL</a><br><a href="http://ufldl.stanford.edu/tutorial/" target="_blank" rel="noopener">UFLDL2</a><br>西瓜书《机器学习》 机器学习实战</li><li>机器学习基石（林轩田）<br>机器学习技法<blockquote><p>李宏毅</p></blockquote></li></ol><p>配合着台湾林轩田的《机器学习基石+技法》把李航的《统计学习方法》这本书走一遍</p><p><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses.html" target="_blank" rel="noopener">http://speech.ee.ntu.edu.tw/~tlkagk/courses.html</a><br><a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists" target="_blank" rel="noopener">https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists</a></p><p>花书</p><ol><li>Neural Network for Machine Learning-coursera-多伦多大学</li><li>cs224n</li><li>cs231n</li><li>Neural Networks for NLP</li><li><a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank" rel="noopener">http://neuralnetworksanddeeplearning.com/chap1.html</a></li><li>deeplearning <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses.html" target="_blank" rel="noopener">http://speech.ee.ntu.edu.tw/~tlkagk/courses.html</a><br><a href="http://blog.csdn.net/zouxy09/article/details/8775360" target="_blank" rel="noopener">http://blog.csdn.net/zouxy09/article/details/8775360</a><br><a href="https://www.cs.ox.ac.uk/people/nando.defreitas/machinelearning/" target="_blank" rel="noopener">https://www.cs.ox.ac.uk/people/nando.defreitas/machinelearning/</a></li><li>drl CS 294</li><li>MIT 6.S191 (bilibili未搬运) <a href="https://www.youtube.com/watch?v=JN6H4rQvwgY&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=JN6H4rQvwgY&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI</a></li><li>David Silver</li><li><a href="https://www.coursera.org/specializations/machine-learning" target="_blank" rel="noopener">https://www.coursera.org/specializations/machine-learning</a></li><li>deeplearning.ai coursera</li><li><a href="http://gameaibook.org" target="_blank" rel="noopener">http://gameaibook.org</a></li><li>《Patten Recognition and Machine Learning》，《Elements of Statistical Learning》<br>Machine Learning A Probabilistic Perspective Learning</li><li><a href="http://deeplearning.net/reading-list/" target="_blank" rel="noopener">http://deeplearning.net/reading-list/</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;[done] Andrew NG coursera 机器学习&lt;/li&gt;
-&lt;li&gt;cs229 &lt;a href=&quot;https://see.stanford.edu/course/cs229&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https:
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="机器学习" scheme="http://ir1d.cf/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2017小结</title>
-    <link href="http://ir1d.cf/2018/02/08/notes/2017%E5%B0%8F%E7%BB%93/"/>
-    <id>http://ir1d.cf/2018/02/08/notes/2017小结/</id>
-    <published>2018-02-08T04:11:09.000Z</published>
-    <updated>2018-06-23T04:49:37.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天小年<br>偶然看到学妹发的WC2018的节目，发现时间原来过得好快<br>这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD<br>本来以为都忘记了的事，突然发现原来记得清清楚楚<br>翻了翻知乎上几个OI相关的问题，pyc问的时候我还是个上台拿衣服的孩子吧= =<br>转眼间，大半的答主都不认识了<br>高三一年下来，不那么跳了，写了很久的很长的东西，却还是完全没有剖析清楚内心<br>出了些意外，不过还好无大碍<br>高考还算可以，靠着pkusc的运气还是混进了园子<br>还是很喜欢你<br>可能每次写回忆录写得都是一篇流水 也并没有什么特别值得叙说的事<br>就当是结局圆满吧<br>2018 愿安 希望可以变得自信点<br>愿大家诸事顺遂，永远行走在光明向上的路上。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;今天小年&lt;br&gt;偶然看到学妹发的WC2018的节目，发现时间原来过得好快&lt;br&gt;这三年WC上24OI都有节目，也算是很妙的一件事吧 好在一届更比一届强，并非不务正业XD&lt;br&gt;本来以为都忘记了的事，突然发现原来记得清清楚楚&lt;br&gt;翻了翻知乎上几个OI相关的问题，pyc问的时
-      
-    
-    </summary>
-    
-      <category term="回忆录" scheme="http://ir1d.cf/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>20180206comments</title>
-    <link href="http://ir1d.cf/2018/02/06/notes/20180206comments/"/>
-    <id>http://ir1d.cf/2018/02/06/notes/20180206comments/</id>
-    <published>2018-02-06T14:24:42.000Z</published>
-    <updated>2018-06-23T04:49:42.947Z</updated>
-    
-    <content type="html"><![CDATA[<p>高中同学聚会，见到大家其实很开心</p><p>有人喝酒 听到了不少劲爆的消息</p><p>有个老哥还喝醉了</p><p>喝醉的老哥感觉很爱面子 一直反复在说高考</p><p>是梦魔吧……sigh</p><p>愿安</p><p>很容易就想起你了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;高中同学聚会，见到大家其实很开心&lt;/p&gt;
-&lt;p&gt;有人喝酒 听到了不少劲爆的消息&lt;/p&gt;
-&lt;p&gt;有个老哥还喝醉了&lt;/p&gt;
-&lt;p&gt;喝醉的老哥感觉很爱面子 一直反复在说高考&lt;/p&gt;
-&lt;p&gt;是梦魔吧……sigh&lt;/p&gt;
-&lt;p&gt;愿安&lt;/p&gt;
-&lt;p&gt;很容易就想起你了&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="回忆录" scheme="http://ir1d.cf/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>cprimerplus</title>
-    <link href="http://ir1d.cf/2018/02/05/cprimerplus/"/>
-    <id>http://ir1d.cf/2018/02/05/cprimerplus/</id>
-    <published>2018-02-05T14:10:39.000Z</published>
-    <updated>2018-06-23T04:50:36.553Z</updated>
-    
-    <content type="html"><![CDATA[<p>八进制 023 <code>%o</code> <code>%lo</code></p><p>十六进制0xdbf <code>%x</code> <code>%lx</code></p><p><code>&#39;\007&#39;, &#39;\07&#39;, &#39;\7&#39;</code>都是八进制表示</p><p><code>3.4l</code>表示使数字成为long double类型，默认是double</p><p>c只保证float有6位精度</p><p>当缓冲区满、遇到换行符、需要输入的时候刷新缓冲区</p><p>或者使用<code>fflush()</code>函数</p><p><code>%p</code>输出指针 <code>%%</code> 百分号</p><p><code>%5.2f</code>是字符宽度为5，小数点后2位的浮点数</p><p><code>%10d</code>是右对齐 <code>%-10d</code>是左对齐</p><p>printf返回值是输出成功的个数<br>printf的float和double都是<code>%f</code>而scanf的float是<code>%f</code>double是<code>%lf</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;八进制 023 &lt;code&gt;%o&lt;/code&gt; &lt;code&gt;%lo&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;十六进制0xdbf &lt;code&gt;%x&lt;/code&gt; &lt;code&gt;%lx&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;#39;\007&amp;#39;, &amp;#39;\07&amp;#39;, &amp;#
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="http://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="C" scheme="http://ir1d.cf/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bsgs</title>
-    <link href="http://ir1d.cf/2018/01/28/bsgs/"/>
-    <id>http://ir1d.cf/2018/01/28/bsgs/</id>
-    <published>2018-01-28T04:06:16.000Z</published>
-    <updated>2018-06-23T04:49:58.592Z</updated>
-    
-    <content type="html"><![CDATA[<p>BSGS 可以用来求离散对数</p><p><a href="http://kzoacn.is-programmer.com/posts/97193.html" target="_blank" rel="noopener">http://kzoacn.is-programmer.com/posts/97193.html</a></p><p><a href="http://blog.csdn.net/FromATP/article/details/56013530" target="_blank" rel="noopener">http://blog.csdn.net/FromATP/article/details/56013530</a></p><p>注意朴素的 BSGS 要求 a 和 c 互质</p><p>POJ 2471 用 map 很容易 TLE ，手动开 <code>-O2</code> 过的</p><p><code>#pragma GCC optimize(&quot;O2&quot;)</code>交<code>G++</code></p><p>扩展BSGS是不断提取a和c的公因子直到互质</p><p><a href="http://blog.csdn.net/clove_unique/article/details/51227328" target="_blank" rel="noopener">http://blog.csdn.net/clove_unique/article/details/51227328</a></p><p>简易hash= =<br>把冲突的往后一个位置堆直到不冲突= =</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;BSGS 可以用来求离散对数&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://kzoacn.is-programmer.com/posts/97193.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://kzoacn.is-programm
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="BSGS" scheme="http://ir1d.cf/tags/BSGS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>矩阵乘法小优化</title>
-    <link href="http://ir1d.cf/2018/01/28/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%B0%8F%E4%BC%98%E5%8C%96/"/>
-    <id>http://ir1d.cf/2018/01/28/矩阵乘法小优化/</id>
-    <published>2018-01-27T23:56:59.000Z</published>
-    <updated>2018-06-25T15:00:01.811Z</updated>
-    
-    <content type="html"><![CDATA[<p>看叉姐的repo翻到矩阵相关的板子</p><a id="more"></a><p>然后发现里面有这样一句话</p><p>乘法的时候将$B$数组转置一下然后$C[i][j] = \sum{A[i][k]\times B[j][k]}$会有奇效。</p><p>然后操作了一番发现的确是这么回事 Qrz%%%</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) a[i][j] = rand(), b[i][j] = rand();</span><br><span class="line"><span class="keyword">double</span> st = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * b[k][j];</span><br><span class="line"><span class="keyword">double</span> ed = clock();</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) &#123;</span><br><span class="line">  d[i][j] = b[j][i]; c[i][j] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">f(i, <span class="number">0</span>, <span class="number">233</span>) f(j, <span class="number">0</span>, <span class="number">233</span>) f(k, <span class="number">0</span>, <span class="number">233</span>)</span><br><span class="line">  c[i][j] += a[i][k] * d[j][k];</span><br><span class="line"><span class="keyword">double</span> e2 = clock();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, ((e2 - ed) - (ed - st)) / CLOCKS_PER_SEC);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, CLOCKS_PER_SEC);</span><br></pre></td></tr></table></figure><p>本机大概能差<code>0.02s</code></p><p>以及惊讶地发现<code>CLOCKS_PER_SEC</code>在新电脑上是<code>1e6</code>了</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;看叉姐的repo翻到矩阵相关的板子&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="矩阵乘法" scheme="http://ir1d.cf/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
   </entry>
   

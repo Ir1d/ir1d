@@ -98,13 +98,16 @@
     <link href="https://ir1d.cf/2018/07/08/dailynotes-2/"/>
     <id>https://ir1d.cf/2018/07/08/dailynotes-2/</id>
     <published>2018-07-07T23:40:44.000Z</published>
-    <updated>2018-07-10T12:39:52.373Z</updated>
+    <updated>2018-07-10T12:47:53.326Z</updated>
     
-    <content type="html"><![CDATA[<p>什么也没读，沉迷标数据不能自拔</p><a id="more"></a><p>作息过于糟糕，下午回去看数分结果很快就睡着了，还是闹钟免疫的那种。。。。</p><h2 id="Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal"><a href="#Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal" class="headerlink" title="Joint Bi-layer Optimization for Single-image Rain Streak Removal"></a>Joint Bi-layer Optimization for Single-image Rain Streak Removal</h2><p>本文做的是去除单张照片上雨纹的工作，具体来说是尝试把一张照片分成有雨和无雨的两层。整个最优化过程是同时把雨纹的细节从无雨层去掉，和把无雨的信息从雨纹层去掉.</p><p>拿到一张图，文中方法首先尝试确定 rain-dominated 的区域，然后利用这部分区域来确定雨的方向，并提取出 rain-patch，之后用 joint bi-layer optimization 方法来迭代地得到两层。</p><p>我怎么有个问题。。感觉一张图里的 rain streak 完全有可能角度差得很大啊？ 比如前景和后景完全可以反向</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>Frobenius norm</p></blockquote><p>a.k.a Euclidean norm, $\left\lVert A \right\rVert = \sqrt{\sum<em>{i=1}^m{\sum</em>{j=1}^n{|a_{ij}|^2}}}$</p><blockquote><p>fidelity term</p></blockquote><p>保真项</p><blockquote><p>Jensen’s inequality</p></blockquote><p>The mean value of a convex function is never lower than the value of the convex function applied to the mean. </p><script type="math/tex; mode=display">\begin{align}- \log p(x) &= - \log \int p(x,y) dy \\&= - \log \int q(y\vert x) \frac{p(y,x)}{q(y\vert x)}dy \\&\leq - \int q(y\vert x) \log \frac{p(y,x)}{q(y\vert x)} dy\end{align}</script><blockquote><p>L0 regularization</p></blockquote><p>l0 norm 是统计数组中的非零元素</p>]]></content>
+    <content type="html"><![CDATA[<p>什么也没读，沉迷标数据不能自拔</p><ul><li>Joint Bi-layer Optimization for Single-image Rain Streak Removal</li></ul><a id="more"></a><p>作息过于糟糕，下午回去看数分结果很快就睡着了，还是闹钟免疫的那种。。。。</p><h2 id="Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal"><a href="#Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal" class="headerlink" title="Joint Bi-layer Optimization for Single-image Rain Streak Removal"></a>Joint Bi-layer Optimization for Single-image Rain Streak Removal</h2><p>本文做的是去除单张照片上雨纹的工作，具体来说是尝试把一张照片分成有雨和无雨的两层。整个最优化过程是同时把雨纹的细节从无雨层去掉，和把无雨的信息从雨纹层去掉.</p><p>拿到一张图，文中方法首先尝试确定 rain-dominated 的区域，然后利用这部分区域来确定雨的方向，并提取出 rain-patch，之后用 joint bi-layer optimization 方法来迭代地得到两层。</p><p>我怎么有个问题。。感觉一张图里的 rain streak 完全有可能角度差得很大啊？ 比如前景和后景完全可以反向</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>Frobenius norm</p></blockquote><p>a.k.a Euclidean norm, $\left\lVert A \right\rVert = \sqrt{\sum<em>{i=1}^m{\sum</em>{j=1}^n{|a_{ij}|^2}}}$</p><blockquote><p>fidelity term</p></blockquote><p>保真项</p><blockquote><p>Jensen’s inequality</p></blockquote><p>The mean value of a convex function is never lower than the value of the convex function applied to the mean. </p><script type="math/tex; mode=display">\begin{align}- \log p(x) &= - \log \int p(x,y) dy \\&= - \log \int q(y\vert x) \frac{p(y,x)}{q(y\vert x)}dy \\&\leq - \int q(y\vert x) \log \frac{p(y,x)}{q(y\vert x)} dy\end{align}</script><blockquote><p>L0 regularization</p></blockquote><p>l0 norm 是统计数组中的非零元素</p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;什么也没读，沉迷标数据不能自拔&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Joint Bi-layer Optimization for Single-image Rain Streak Removal&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -120,7 +123,7 @@
     <link href="https://ir1d.cf/2018/07/07/dailynotes-1/"/>
     <id>https://ir1d.cf/2018/07/07/dailynotes-1/</id>
     <published>2018-07-06T16:41:13.000Z</published>
-    <updated>2018-07-09T08:48:02.888Z</updated>
+    <updated>2018-07-10T12:43:41.579Z</updated>
     
     <content type="html"><![CDATA[<p>学数学 + 下午睡过头了</p><a id="more"></a><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p> Checkerboard Artifacts </p></blockquote><p>Checkerboard Pattern 是黑白格交替的图案</p><p>神经网络生成的图像在细节处往往会出现像素点颜色交替的现象</p><p>ref: <a href="https://distill.pub/2016/deconv-checkerboard/" target="_blank" rel="noopener">https://distill.pub/2016/deconv-checkerboard/</a></p><p>transposed-conv 时出现 overlap 会导致这种现象</p><blockquote><p>Sobel operator</p></blockquote><p>用于 edge detection</p><p><a href="https://en.wikipedia.org/wiki/Sobel_operator" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sobel_operator</a></p><blockquote><p>skip connection</p></blockquote><p>用在 resnet 里面</p>]]></content>
     
@@ -132,8 +135,6 @@
     
       <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
     
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
   </entry>
   

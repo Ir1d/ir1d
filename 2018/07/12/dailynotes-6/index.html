@@ -111,14 +111,14 @@
   <meta name="description" content="Network In Network Going deeper with convolutions">
 <meta name="keywords" content="paperReading">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dailynotes">
+<meta property="og:title" content="Daily Notes 7.12">
 <meta property="og:url" content="https://ir1d.cf/2018/07/12/dailynotes-6/index.html">
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Network In Network Going deeper with convolutions">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-13T02:24:07.812Z">
+<meta property="og:updated_time" content="2018-07-14T16:48:00.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dailynotes">
+<meta name="twitter:title" content="Daily Notes 7.12">
 <meta name="twitter:description" content="Network In Network Going deeper with convolutions">
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>dailynotes | Neverland</title>
+  <title>Daily Notes 7.12 | Neverland</title>
   
 
 
@@ -378,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">dailynotes
+          <h1 class="post-title" itemprop="name headline">Daily Notes 7.12
               
             
           </h1>
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-13 10:24:07" itemprop="dateModified" datetime="2018-07-13T10:24:07+08:00">2018-07-13</time>
+                <time title="Modified: 2018-07-15 00:48:00" itemprop="dateModified" datetime="2018-07-15T00:48:00+08:00">2018-07-15</time>
               
             
           </span>
@@ -507,6 +507,8 @@
 <p>文中表示神经网络努力变深变宽带来一个问题是参数变多，另一个问题是会导致在 filter 数量上升的时候，深层网络的计算成本是指数级增长的。文中提出了解决办法，可以引入 sparsity。但是稀疏的数据会在计算过程中产生额外的成本。</p>
 <p>文中提出了 Inception 结构，主要是考虑如何用现有的组件来近似卷积网络，同时降低成本。文中引入<code>1 x 1</code>的卷积来实现降维，把降维后的信息在传给代价昂贵的<code>3 x 3</code>和<code>5 x 5</code>。多引入的卷积层还附带了非线性激活函数，增强模型的非线性性。最后还使用了 max-pooling 层来把网络的大小减半。作者表示，实验发现目前结构仍然不是很理想，适合在更高的层使用而让低层结构使用传统的卷积神经网络结构。</p>
 <p>这个结构的优点之一是使得每一阶段增加节点数不会导致之后阶段的总计算复杂度 “uncontrolled blow-up”。作者认为这一设计和传统直觉是一致的，处理图像信息的时候从不同尺度来捕捉。</p>
+<p>网络中在一层里包含多个卷积核，这样每一层都能学到稀疏和不稀疏的特征。另外文中引入了 DepthConcat 来对的一层里的信息整合，代替了常见的 ReLU 之类的非线性激活函数。</p>
+<p>ref: <a href="https://stats.stackexchange.com/questions/184823/how-does-the-depthconcat-operation-in-going-deeper-with-convolutions-work" target="_blank" rel="noopener">https://stats.stackexchange.com/questions/184823/how-does-the-depthconcat-operation-in-going-deeper-with-convolutions-work</a></p>
 <p>然后作者表示之前 Alexnet 使用的 cropping approach 看起来很不错，我们也用了，虽然优点不是很大。就是测试的时候把图片按照（256\，288，329，352 四种大小）切出来的四个角落和中间部分喂给网络输入。</p>
 
       
@@ -529,7 +531,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://ir1d.cf/2018/07/12/dailynotes-6/" title="dailynotes">https://ir1d.cf/2018/07/12/dailynotes-6/</a>
+    <a href="https://ir1d.cf/2018/07/12/dailynotes-6/" title="Daily Notes 7.12">https://ir1d.cf/2018/07/12/dailynotes-6/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -555,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/11/dailynotes-5/" rel="next" title="dailynotes">
-                <i class="fa fa-chevron-left"></i> dailynotes
+              <a href="/2018/07/11/dailynotes-5/" rel="next" title="Daily Notes 7.11">
+                <i class="fa fa-chevron-left"></i> Daily Notes 7.11
               </a>
             
           </div>
@@ -565,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/13/dailynotes-7/" rel="prev" title="dailynotes">
-                dailynotes <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/13/dailynotes-7/" rel="prev" title="Daily Notes 7.13">
+                Daily Notes 7.13 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">67</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -971,7 +973,7 @@
       var disqus_config = function () {
         this.page.url = 'https://ir1d.cf/2018/07/12/dailynotes-6/';
         this.page.identifier = '2018/07/12/dailynotes-6/';
-        this.page.title = 'dailynotes';
+        this.page.title = 'Daily Notes 7.12';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

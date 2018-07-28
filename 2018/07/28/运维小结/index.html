@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Mongodb莫名其妙挂掉= = 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vim 打开，结果生成了 1G 的 .swp = = 在自动补全都不好使的情况下努力给删掉了 = = 发现还是跑不起来 查看 logsystemctl s">
-<meta name="keywords" content="运维">
+  <meta name="description" content="MongoDB莫名其妙挂掉= = 讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 service mongod restart 就是没反应，而且 log 里面也没写，非常懵逼。 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vi">
+<meta name="keywords" content="运维,MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维小结">
 <meta property="og:url" content="https://ir1d.cf/2018/07/28/运维小结/index.html">
 <meta property="og:site_name" content="Neverland">
-<meta property="og:description" content="Mongodb莫名其妙挂掉= = 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vim 打开，结果生成了 1G 的 .swp = = 在自动补全都不好使的情况下努力给删掉了 = = 发现还是跑不起来 查看 logsystemctl s">
+<meta property="og:description" content="MongoDB莫名其妙挂掉= = 讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 service mongod restart 就是没反应，而且 log 里面也没写，非常懵逼。 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-28T16:05:09.192Z">
+<meta property="og:updated_time" content="2018-07-28T16:06:28.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维小结">
-<meta name="twitter:description" content="Mongodb莫名其妙挂掉= = 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vim 打开，结果生成了 1G 的 .swp = = 在自动补全都不好使的情况下努力给删掉了 = = 发现还是跑不起来 查看 logsystemctl s">
+<meta name="twitter:description" content="MongoDB莫名其妙挂掉= = 讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 service mongod restart 就是没反应，而且 log 里面也没写，非常懵逼。 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vi">
 
 
 
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-29 00:05:09" itemprop="dateModified" datetime="2018-07-29T00:05:09+08:00">2018-07-29</time>
+                <time title="Modified: 2018-07-29 00:06:28" itemprop="dateModified" datetime="2018-07-29T00:06:28+08:00">2018-07-29</time>
               
             
           </span>
@@ -483,7 +483,8 @@
       
 
       
-        <h2 id="Mongodb"><a href="#Mongodb" class="headerlink" title="Mongodb"></a>Mongodb</h2><p>莫名其妙挂掉= =</p>
+        <h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>莫名其妙挂掉= =</p>
+<p>讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 <code>service mongod restart</code> 就是没反应，而且 log 里面也没写，非常懵逼。</p>
 <h3 id="查看磁盘空间"><a href="#查看磁盘空间" class="headerlink" title="查看磁盘空间"></a>查看磁盘空间</h3><p><code>df -hl</code> 看各个磁盘</p>
 <p><code>du -sh [目录名]</code> 返回该目录的大小</p>
 <p>然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= =</p>
@@ -497,7 +498,7 @@
 <p>后来变成 1 了，然后就好了。</p>
 <h3 id="MongoDB-数据备份"><a href="#MongoDB-数据备份" class="headerlink" title="MongoDB 数据备份"></a>MongoDB 数据备份</h3><p><a href="http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html</a></p>
 <p>用 <code>&gt;mongodump -h dbhost -d dbname -o dbdirectory</code></p>
-<h3 id="Mongod-相关"><a href="#Mongod-相关" class="headerlink" title="Mongod 相关"></a>Mongod 相关</h3><p>log 位置 <code>/var/log/mongod/mongod.log</code></p>
+<h3 id="MongoDB-相关"><a href="#MongoDB-相关" class="headerlink" title="MongoDB 相关"></a>MongoDB 相关</h3><p>log 位置 <code>/var/log/mongod/mongod.log</code></p>
 <p>数据库位置 <code>/var/lib/mongod/</code> 注意这里面要 chown 给 mongodb 这个用户</p>
 <p><strong>不要用 root 开</strong></p>
 <h2 id="Judge-Duck"><a href="#Judge-Duck" class="headerlink" title="Judge Duck"></a>Judge Duck</h2><p>= =</p>
@@ -539,6 +540,8 @@
           
             <a href="/tags/运维/" rel="tag"># 运维</a>
           
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
         </div>
       
 
@@ -559,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/29/为网页上选中部分设置高亮/" rel="prev" title="为网页上选中部分设置高亮">
+                为网页上选中部分设置高亮 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -646,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -756,7 +763,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -801,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mongodb"><span class="nav-number">1.</span> <span class="nav-text">Mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看磁盘空间"><span class="nav-number">1.1.</span> <span class="nav-text">查看磁盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-log"><span class="nav-number">1.2.</span> <span class="nav-text">查看 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-数据备份"><span class="nav-number">1.3.</span> <span class="nav-text">MongoDB 数据备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongod-相关"><span class="nav-number">1.4.</span> <span class="nav-text">Mongod 相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Judge-Duck"><span class="nav-number">2.</span> <span class="nav-text">Judge Duck</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">1.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看磁盘空间"><span class="nav-number">1.1.</span> <span class="nav-text">查看磁盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-log"><span class="nav-number">1.2.</span> <span class="nav-text">查看 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-数据备份"><span class="nav-number">1.3.</span> <span class="nav-text">MongoDB 数据备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-相关"><span class="nav-number">1.4.</span> <span class="nav-text">MongoDB 相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Judge-Duck"><span class="nav-number">2.</span> <span class="nav-text">Judge Duck</span></a></li></ol></div>
             
 
           </div>

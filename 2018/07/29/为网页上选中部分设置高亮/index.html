@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="喜欢 vijos 可以在题面上做标注的那个功能好久了…… 今天决定动手写一下 搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。 后来学习了一下 vijos 的 源码，发现可以用 HiliteColor 这个东西。搜了下，就发现了一些方法。 https://stackoverflow.com/questions/27">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-28T16:10:54.257Z">
+<meta property="og:updated_time" content="2018-07-29T02:51:23.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为网页上选中部分设置高亮">
 <meta name="twitter:description" content="喜欢 vijos 可以在题面上做标注的那个功能好久了…… 今天决定动手写一下 搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。 后来学习了一下 vijos 的 源码，发现可以用 HiliteColor 这个东西。搜了下，就发现了一些方法。 https://stackoverflow.com/questions/27">
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2018-07-29 00:07:34 / Modified: 00:10:54" itemprop="dateCreated datePublished" datetime="2018-07-29T00:07:34+08:00">2018-07-29</time>
+              <time title="Created: 2018-07-29 00:07:34 / Modified: 10:51:23" itemprop="dateCreated datePublished" datetime="2018-07-29T00:07:34+08:00">2018-07-29</time>
             
 
             
@@ -478,6 +478,13 @@
 <p><a href="https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element" target="_blank" rel="noopener">https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element</a></p>
 <p>至于怎么做悬浮工具栏还没有想好，目前用的 <a href="https://stackoverflow.com/a/48422455/4597306" target="_blank" rel="noopener">这个</a>，自己的配色也很丑，功能和 vijos 比差远了= =</p>
 <p>不过写出来了还是好赞啊 XD</p>
+<hr>
+<p>遇到了一个问题，因为全局监听的是 <code>mouseup</code>，然后触发 <code>popup-tag</code> 的 <code>click</code> 就会冲突。</p>
+<p>搜到应该用一个 <code>event.stopPropagation();</code></p>
+<p>还有一个坑是发现莫名奇妙 <code>click</code> 的时候 selection 变成空的了。</p>
+<p>第一个想法是 selecti 的时候就存下当前的 range，结果发现竟然每 select 一次都会存下来，然后 click 的时候会把所有存下来的 range 都触发= =</p>
+<p>解决办法是把 <code>popup-tag</code> 的 <code>click</code> 换成了 <code>mousedown</code></p>
+<p>哎…… vijos 是真的厉害</p>
 
       
     </div>

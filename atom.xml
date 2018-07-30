@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-07-29T02:51:23.110Z</updated>
+  <updated>2018-07-30T02:45:43.111Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python-opencv</title>
+    <link href="https://ir1d.cf/2018/07/30/python-opencv/"/>
+    <id>https://ir1d.cf/2018/07/30/python-opencv/</id>
+    <published>2018-07-30T02:36:08.000Z</published>
+    <updated>2018-07-30T02:45:43.111Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="打开多张图片后内存不足的问题"><a href="#打开多张图片后内存不足的问题" class="headerlink" title="打开多张图片后内存不足的问题"></a>打开多张图片后内存不足的问题</h2><p><a href="https://stackoverflow.com/questions/19414289/python-and-memory-consumption-when-opening-tiff-images" target="_blank" rel="noopener">https://stackoverflow.com/questions/19414289/python-and-memory-consumption-when-opening-tiff-images</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gc</span><br><span class="line">gc.collect()</span><br></pre></td></tr></table></figure><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><p><code>conda clean --all</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;打开多张图片后内存不足的问题&quot;&gt;&lt;a href=&quot;#打开多张图片后内存不足的问题&quot; class=&quot;headerlink&quot; title=&quot;打开多张图片后内存不足的问题&quot;&gt;&lt;/a&gt;打开多张图片后内存不足的问题&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://stack
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="opencv" scheme="https://ir1d.cf/tags/opencv/"/>
+    
+      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ss在局域网共享</title>
+    <link href="https://ir1d.cf/2018/07/30/ss%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/"/>
+    <id>https://ir1d.cf/2018/07/30/ss在局域网共享/</id>
+    <published>2018-07-30T00:48:19.000Z</published>
+    <updated>2018-07-30T00:49:44.491Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc</a></p><p>看这里有一个 <code>-b &lt;local_address&gt;</code></p><p>在 <code>ss-local</code> 的命令后面加上 <code>-b 0.0.0.0</code> 就好了= =</p><p>如果是用配置文件，写法是 <a href="https://github.com/shadowsocks/shadowsocks-libev/issues/1441#issuecomment-293134272" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-libev/issues/1441#issuecomment-293134272</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://githu
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="shadowsocks" scheme="https://ir1d.cf/tags/shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
     <title>为网页上选中部分设置高亮</title>
     <link href="https://ir1d.cf/2018/07/29/%E4%B8%BA%E7%BD%91%E9%A1%B5%E4%B8%8A%E9%80%89%E4%B8%AD%E9%83%A8%E5%88%86%E8%AE%BE%E7%BD%AE%E9%AB%98%E4%BA%AE/"/>
     <id>https://ir1d.cf/2018/07/29/为网页上选中部分设置高亮/</id>
     <published>2018-07-28T16:07:34.000Z</published>
-    <updated>2018-07-29T02:51:23.110Z</updated>
+    <updated>2018-07-29T08:11:05.096Z</updated>
     
-    <content type="html"><![CDATA[<p>喜欢 vijos 可以在题面上做标注的那个功能好久了……</p><p>今天决定动手写一下</p><p>搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。</p><p>后来学习了一下 vijos 的 <a href="https://github.com/vijos/vj4/blob/master/vj4/ui/components/marker/Marker.js" target="_blank" rel="noopener">源码</a>，发现可以用 <code>HiliteColor</code> 这个东西。搜了下，就发现了一些方法。</p><p><a href="https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element" target="_blank" rel="noopener">https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element</a></p><p>至于怎么做悬浮工具栏还没有想好，目前用的 <a href="https://stackoverflow.com/a/48422455/4597306" target="_blank" rel="noopener">这个</a>，自己的配色也很丑，功能和 vijos 比差远了= =</p><p>不过写出来了还是好赞啊 XD</p><hr><p>遇到了一个问题，因为全局监听的是 <code>mouseup</code>，然后触发 <code>popup-tag</code> 的 <code>click</code> 就会冲突。</p><p>搜到应该用一个 <code>event.stopPropagation();</code></p><p>还有一个坑是发现莫名奇妙 <code>click</code> 的时候 selection 变成空的了。</p><p>第一个想法是 selecti 的时候就存下当前的 range，结果发现竟然每 select 一次都会存下来，然后 click 的时候会把所有存下来的 range 都触发= =</p><p>解决办法是把 <code>popup-tag</code> 的 <code>click</code> 换成了 <code>mousedown</code></p><p>哎…… vijos 是真的厉害</p>]]></content>
+    <content type="html"><![CDATA[<p>喜欢 vijos 可以在题面上做标注的那个功能好久了……</p><p>今天决定动手写一下</p><p>搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。</p><p>后来学习了一下 vijos 的 <a href="https://github.com/vijos/vj4/blob/master/vj4/ui/components/marker/Marker.js" target="_blank" rel="noopener">源码</a>，发现可以用 <code>HiliteColor</code> 这个东西。搜了下，就发现了一些方法。</p><p><a href="https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element" target="_blank" rel="noopener">https://stackoverflow.com/questions/2756931/highlight-the-text-of-the-dom-range-element</a></p><p>至于怎么做悬浮工具栏还没有想好，目前用的 <a href="https://stackoverflow.com/a/48422455/4597306" target="_blank" rel="noopener">这个</a>，自己的配色也很丑，功能和 vijos 比差远了= =</p><p>不过写出来了还是好赞啊 XD</p><hr><p>遇到了一个问题，因为全局监听的是 <code>mouseup</code>，然后触发 <code>popup-tag</code> 的 <code>click</code> 就会冲突。</p><p>搜到应该用一个 <code>event.stopPropagation();</code></p><p>还有一个坑是发现莫名奇妙 <code>click</code> 的时候 selection 变成空的了。</p><p>第一个想法是 select 的时候就存下当前的 range，结果发现竟然每 select 一次都会存下来，然后 click 的时候会把所有存下来的 range 都触发= =</p><p>解决办法是把 <code>popup-tag</code> 的 <code>click</code> 换成了 <code>mousedown</code></p><p>哎…… vijos 是真的厉害</p>]]></content>
     
     <summary type="html">
     
@@ -51,9 +103,9 @@
     <link href="https://ir1d.cf/2018/07/28/%E8%BF%90%E7%BB%B4%E5%B0%8F%E7%BB%93/"/>
     <id>https://ir1d.cf/2018/07/28/运维小结/</id>
     <published>2018-07-28T15:51:16.000Z</published>
-    <updated>2018-07-28T16:06:28.863Z</updated>
+    <updated>2018-07-29T03:02:15.683Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>莫名其妙挂掉= =</p><p>讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 <code>service mongod restart</code> 就是没反应，而且 log 里面也没写，非常懵逼。</p><h3 id="查看磁盘空间"><a href="#查看磁盘空间" class="headerlink" title="查看磁盘空间"></a>查看磁盘空间</h3><p><code>df -hl</code> 看各个磁盘</p><p><code>du -sh [目录名]</code> 返回该目录的大小</p><p>然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= =</p><p>作死用 vim 打开，结果生成了 1G 的 .swp = =</p><p>在自动补全都不好使的情况下努力给删掉了 = =</p><p>发现还是跑不起来</p><h3 id="查看-log"><a href="#查看-log" class="headerlink" title="查看 log"></a>查看 log</h3><p><code>systemctl status mongod.service</code></p><p><code>journalctl -xe</code></p><p>我开始的时候是 <code>exit-code 100</code> 找到 <code>/var/lib/mongod</code> 下的 <code>mongod.lock</code> 删掉就好了= =</p><p>之前看到一堆人说要删掉，结果自己没发现自己文件夹有这东西</p><p>后来变成 1 了，然后就好了。</p><h3 id="MongoDB-数据备份"><a href="#MongoDB-数据备份" class="headerlink" title="MongoDB 数据备份"></a>MongoDB 数据备份</h3><p><a href="http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html</a></p><p>用 <code>&gt;mongodump -h dbhost -d dbname -o dbdirectory</code></p><h3 id="MongoDB-相关"><a href="#MongoDB-相关" class="headerlink" title="MongoDB 相关"></a>MongoDB 相关</h3><p>log 位置 <code>/var/log/mongod/mongod.log</code></p><p>数据库位置 <code>/var/lib/mongod/</code> 注意这里面要 chown 给 mongodb 这个用户</p><p><strong>不要用 root 开</strong></p><h2 id="Judge-Duck"><a href="#Judge-Duck" class="headerlink" title="Judge Duck"></a>Judge Duck</h2><p>= =</p><p>掌握了 Django 技能，尝试了多种前端框架</p><p>论这活真难= =</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>莫名其妙挂掉= =</p><p>讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 <code>service mongod restart</code> 就是没反应，而且 log 里面也没写，非常懵逼。</p><h3 id="查看磁盘空间"><a href="#查看磁盘空间" class="headerlink" title="查看磁盘空间"></a>查看磁盘空间</h3><p><code>df -hl</code> 看各个磁盘</p><p><code>du -sh [目录名]</code> 返回该目录的大小</p><p>然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= =</p><p>作死用 vim 打开，结果生成了 1G 的 .swp = =</p><p>在自动补全都不好使的情况下努力给删掉了 = =</p><p>发现还是跑不起来</p><h3 id="查看-log"><a href="#查看-log" class="headerlink" title="查看 log"></a>查看 log</h3><p><code>systemctl status mongod.service</code></p><p><code>journalctl -xe</code></p><p>我开始的时候是 <code>exit-code 100</code> 找到 <code>/var/lib/mongod</code> 下的 <code>mongod.lock</code> 删掉就好了= =</p><p>之前看到一堆人说要删掉，结果自己没发现自己文件夹有这东西</p><p>后来变成 1 了，然后就好了。</p><h3 id="MongoDB-数据备份"><a href="#MongoDB-数据备份" class="headerlink" title="MongoDB 数据备份"></a>MongoDB 数据备份</h3><p><a href="http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html</a></p><p>用 <code>&gt;mongodump -h dbhost -d dbname -o dbdirectory</code></p><h3 id="MongoDB-相关"><a href="#MongoDB-相关" class="headerlink" title="MongoDB 相关"></a>MongoDB 相关</h3><p>log 位置 <code>/var/log/mongod/mongod.log</code></p><p>删了 log 之后要 touch 一个，以及要改 log 的 chown</p><p>数据库位置 <code>/var/lib/mongod/</code> 注意这里面要 chown 给 mongodb 这个用户</p><p><strong>不要用 root 开</strong></p><h2 id="Judge-Duck"><a href="#Judge-Duck" class="headerlink" title="Judge Duck"></a>Judge Duck</h2><p>= =</p><p>掌握了 Django 技能，尝试了多种前端框架</p><p>论这活真难= =</p>]]></content>
     
     <summary type="html">
     
@@ -104,7 +156,7 @@
     <link href="https://ir1d.cf/2018/07/15/python%E5%AF%B9%E6%AF%94%E4%B8%A4%E4%B8%AA%E5%9B%BE%E7%89%87%E7%9A%84%E5%B7%AE%E5%BC%82%E5%B9%B6%E8%AE%B0%E5%BD%95/"/>
     <id>https://ir1d.cf/2018/07/15/python对比两个图片的差异并记录/</id>
     <published>2018-07-14T16:48:40.000Z</published>
-    <updated>2018-07-15T00:29:38.929Z</updated>
+    <updated>2018-07-30T00:49:37.215Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image, ImageChops, ImageStat</span><br><span class="line">im1 = Image.open(&quot;a.jpg&quot;)</span><br><span class="line">im2 = Image.open(&quot;b.jpg&quot;)</span><br><span class="line">diff = ImageChops.difference(im1, im2)</span><br><span class="line">diff.show()</span><br><span class="line">diff.save(&quot;c.jpg&quot;)</span><br><span class="line">stat = ImageStat.Stat(diff)</span><br><span class="line">sum_channel_values = sum(stat.mean)</span><br><span class="line">max_all_channels = len(stat.mean) * 100</span><br><span class="line">diff_ratio = sum_channel_values/max_all_channels</span><br><span class="line">print(diff_ratio)</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -116,6 +168,8 @@
       
     
     </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
     
     
       <category term="python" scheme="https://ir1d.cf/tags/python/"/>
@@ -453,55 +507,6 @@
 &lt;/blockquote&gt;
 &lt;p&gt;整数划分，允许分出来0&lt;/p&gt;
 &lt;figure
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="程设" scheme="https://ir1d.cf/tags/%E7%A8%8B%E8%AE%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Codeforces Round 491 (Div.2)</title>
-    <link href="https://ir1d.cf/2018/06/24/cf/cf991/"/>
-    <id>https://ir1d.cf/2018/06/24/cf/cf991/</id>
-    <published>2018-06-23T17:46:29.000Z</published>
-    <updated>2018-06-25T14:16:17.826Z</updated>
-    
-    <content type="html"><![CDATA[<p>好久没打了，根本不在状态，深夜掉分场</p><a id="more"></a><blockquote><p>A. If at first you don’t succeed…</p></blockquote><p>坑点在判断数据是否合法，忘了加上$a &lt; c$，$a &lt; n$之类的，WA了一发</p><blockquote><p>B. Getting an A</p></blockquote><p>问最少修改多少个数满足条件</p><p>统计个数然后判一判，WA</p><p>于是排个序暴力做</p><p>double 转 int 竟然是 直接截断 // 埋下伏笔</p><blockquote><p>C. Candies</p></blockquote><p>交了九发= =</p><p>题意是一个人每天吃k个，另一个人每天吃$10%$，问最少的k，使得第一个人吃的至少为总共的一半</p><p>这题不能用 <code>* 0.1</code> 应该用 <code>/ 10</code></p><ul><li>qls: 整数题怎么有人写 double 的</li></ul><p>题面写的是“第一个人吃的至少为总共的一半”，如果总数是奇数，是上取整，换言之，要求第一个人吃的比第二个人多</p><p>又WA又T一时爽</p><blockquote><p>D. Bishwock</p></blockquote><p>给一个 $2 * n$ 的棋盘，问最多能放多少个L型的块</p><p>贪心放就好了，WA了一发少考虑了几种情况</p><p>upd: fst…. 少判了几种情况</p><blockquote><p>E. Bus Number</p></blockquote><p>给一个$1e18$范围的数，问选择里面的一部分数字（要求每种都得出现），重排之后能排出来多少种不同的数</p><p>当时就写了个爆搜上去 TLE</p><p>最后五分钟想起来加个记忆化</p><p>最后半分钟发现 hash 函数返回值竟然没写 导致一直过不去样例</p><p>加上<code>return s</code>就交，最后一秒钟返回pp</p><p>upd: fst…. sb了</p><p>hmmm 发现又枚举各个数字的个数过了的</p><p>题解：<a href="http://codeforces.com/blog/entry/60181" target="_blank" rel="noopener">http://codeforces.com/blog/entry/60181</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;好久没打了，根本不在状态，深夜掉分场&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="https://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="codeforces" scheme="https://ir1d.cf/tags/codeforces/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程设期末推荐练习</title>
-    <link href="https://ir1d.cf/2018/06/23/cssx/%E7%A8%8B%E8%AE%BE%E6%9C%9F%E6%9C%AB%E6%8E%A8%E8%8D%90%E7%BB%83%E4%B9%A0/"/>
-    <id>https://ir1d.cf/2018/06/23/cssx/程设期末推荐练习/</id>
-    <published>2018-06-23T03:13:56.000Z</published>
-    <updated>2018-06-26T07:16:06.902Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/04/" target="_blank" rel="noopener">04:What a Ridiculous Election</a></p></blockquote><p>注意搜的时候到同一个点有不同的状态，判断的时候不是判断是否vis，<br>而是要看当前的step和上一次的比较<br><code>dp[s][i][j]</code>表示到达s状态用了<code>i</code>次操作一和<code>j</code>次操作二的结果<br>然后注意输出答案的时候要在终点枚举所有的<code>i</code>和<code>j</code></p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/05/" target="_blank" rel="noopener">05:42点</a></p></blockquote><p>写的时候想得复杂了，其实注意到可以交换顺序，所以这个东西其实只需要每次找两个数操作一下，然后放回去就好了。这样甚至考虑到了括号嵌套的问题</p><p>减法和除法是有顺序的，所以要<a href="https://github.com/Ir1d/Fantasy/blob/master/openjudge/oop/2018rec/05.cpp#L47" target="_blank" rel="noopener">两种都做一下</a></p><p>ref <a href="https://blog.csdn.net/V5ZSQ/article/details/76039608" target="_blank" rel="noopener">这个题</a> 这里面还要处理不能整除的情况，要用double = =</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/06/" target="_blank" rel="noopener">06:A Knight’s Journey</a></p></blockquote><p>深搜注意回退删除标记 = =<br>用时间戳表示<code>vis</code>数组的时候，不是每个 case 开始的时候都清空，需要保证全局唯一</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/07/" target="_blank" rel="noopener">07:Sudoku</a></p></blockquote><p>数独，多case要初始化，深搜回退要恢复状态= =</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/10/" target="_blank" rel="noopener">10:股票买卖</a></p></blockquote><p><code>ll[i]</code> 表示 i 左侧极差<br><code>rr[i]</code> 表示 i 右侧极差<br>这样答案就是 $max{ll[i], rr[i + 1]}$</p><p>先用 <code>ll[i]</code> 得到 i 左侧最小的数和<code>a[i]</code>的差，然后对<code>ll[i]</code>求个前缀 max 就好了</p><blockquote><p>12:开餐馆</p></blockquote><p><code>dp[i]</code> 最后一个在 i 开，最大的价值<br>答案是数组的最大值</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/11/" target="_blank" rel="noopener">11:Tour</a> POJ 2677</p></blockquote><p>想了好几天，把一来一回的路径拆开，考虑$dp[i][j] 表示 1..i 和 1..j 两条路径$，<br>然后考虑下一个点（i）是从谁接过来的</p><p><a href="https://blog.csdn.net/xiaoxiaoluo/article/details/7636592" target="_blank" rel="noopener">https://blog.csdn.net/xiaoxiaoluo/article/details/7636592</a> 这里人为要求 $i \geq j$</p><p><a href="https://blog.csdn.net/ECNU_LZJ/article/details/71211855" target="_blank" rel="noopener">https://blog.csdn.net/ECNU_LZJ/article/details/71211855</a> 这个更直观，把路径反向，<br>方便转移</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/14/" target="_blank" rel="noopener">14:DNA</a></p></blockquote><p>调了半天，甚至还换了种思路写，最后发现问题是在于求重叠部分的长度又写错了</p><p>首先没想到的是，如果一个串被另一个包含了，那么短的直接删掉就好了</p><p>思路一：长度很少，枚举全排列，拼起来</p><p>思路二：状压dp，$dp[st][i]$表示已经拼了<code>st</code>里面这些字符串<code>i</code>是最后一个的答案，记忆化搜之</p><p>求重叠部分的写法：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="built_in">std</span>::min(len[a], len[b]);</span><br><span class="line"><span class="keyword">while</span> (res) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">strstr</span>(s[b], s[a] + len[a] - res) == s[b]) <span class="keyword">break</span>;</span><br><span class="line">  --res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure><p>论善用<code>strstr</code>的重要性</p><blockquote><p><a href="http://cxsjsx.openjudge.cn/2018rec/13/" target="_blank" rel="noopener">13:上机</a></p></blockquote><p>按顺序考虑，前<code>i</code>个人的结果受前<code>i-1</code>个人的结果和第<code>i</code>与第<code>i-1</code>的顺序的影响</p><p>设计：$dp[i][l][r]$表示处理到第i个人，左侧 / 右侧有没有人</p><p>转移：<code>dp[i][k][t] = std::max(dp[i][k][t], dp[i - 1][j][k ^ 1] + a[i][k + t]);</code></p><p>注意带如果第<code>i</code>个人左侧的状态是<code>k</code>，那么对于第<code>i-1</code>个人而言，他右侧的状态就是<code>k ^ 1</code></p><p>注：用<code>k + t</code>简化，<code>a[i][0]</code>就是都没人，<code>a[i][1]</code>就是有一个,<code>a[i][2]</code>就是两侧都有人</p><p>这里的<code>j</code>是不造成影响的，转移的过程中要考虑每一个<code>j</code>（<code>0 / 1</code>）</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://cxsjsx.openjudge.cn/2018rec/04/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;04:What a Ridiculous Election&lt;/a&gt;&lt;/p&gt;
-&lt;/bloc
       
     
     </summary>

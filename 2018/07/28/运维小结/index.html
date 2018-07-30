@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="MongoDB莫名其妙挂掉= = 讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 service mongod restart 就是没反应，而且 log 里面也没写，非常懵逼。 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-28T16:06:28.863Z">
+<meta property="og:updated_time" content="2018-07-29T03:02:15.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维小结">
 <meta name="twitter:description" content="MongoDB莫名其妙挂掉= = 讲道理之前要么内存不够要么磁盘满了，这回都没事，结果 service mongod restart 就是没反应，而且 log 里面也没写，非常懵逼。 查看磁盘空间df -hl 看各个磁盘 du -sh [目录名] 返回该目录的大小 然后发现 pm2 的 log 占了 4G。原来是 mongod 挂掉期间执行了一次 schedule，然后不停循环= = 作死用 vi">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-29 00:06:28" itemprop="dateModified" datetime="2018-07-29T00:06:28+08:00">2018-07-29</time>
+                <time title="Modified: 2018-07-29 11:02:15" itemprop="dateModified" datetime="2018-07-29T11:02:15+08:00">2018-07-29</time>
               
             
           </span>
@@ -499,6 +499,7 @@
 <h3 id="MongoDB-数据备份"><a href="#MongoDB-数据备份" class="headerlink" title="MongoDB 数据备份"></a>MongoDB 数据备份</h3><p><a href="http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html</a></p>
 <p>用 <code>&gt;mongodump -h dbhost -d dbname -o dbdirectory</code></p>
 <h3 id="MongoDB-相关"><a href="#MongoDB-相关" class="headerlink" title="MongoDB 相关"></a>MongoDB 相关</h3><p>log 位置 <code>/var/log/mongod/mongod.log</code></p>
+<p>删了 log 之后要 touch 一个，以及要改 log 的 chown</p>
 <p>数据库位置 <code>/var/lib/mongod/</code> 注意这里面要 chown 给 mongodb 这个用户</p>
 <p><strong>不要用 root 开</strong></p>
 <h2 id="Judge-Duck"><a href="#Judge-Duck" class="headerlink" title="Judge Duck"></a>Judge Duck</h2><p>= =</p>
@@ -653,7 +654,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">72</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -769,7 +770,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

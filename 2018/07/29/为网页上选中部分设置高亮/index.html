@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="喜欢 vijos 可以在题面上做标注的那个功能好久了…… 今天决定动手写一下 搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。 后来学习了一下 vijos 的 源码，发现可以用 HiliteColor 这个东西。搜了下，就发现了一些方法。 https://stackoverflow.com/questions/27">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-29T02:51:23.110Z">
+<meta property="og:updated_time" content="2018-07-29T08:11:05.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为网页上选中部分设置高亮">
 <meta name="twitter:description" content="喜欢 vijos 可以在题面上做标注的那个功能好久了…… 今天决定动手写一下 搜了好久搜不出来什么方法，发现可以获取 selection 的 range 然后操作一下，懵逼。不知道如果选中的是两个标签内的咋整。 后来学习了一下 vijos 的 源码，发现可以用 HiliteColor 这个东西。搜了下，就发现了一些方法。 https://stackoverflow.com/questions/27">
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2018-07-29 00:07:34 / Modified: 10:51:23" itemprop="dateCreated datePublished" datetime="2018-07-29T00:07:34+08:00">2018-07-29</time>
+              <time title="Created: 2018-07-29 00:07:34 / Modified: 16:11:05" itemprop="dateCreated datePublished" datetime="2018-07-29T00:07:34+08:00">2018-07-29</time>
             
 
             
@@ -482,7 +482,7 @@
 <p>遇到了一个问题，因为全局监听的是 <code>mouseup</code>，然后触发 <code>popup-tag</code> 的 <code>click</code> 就会冲突。</p>
 <p>搜到应该用一个 <code>event.stopPropagation();</code></p>
 <p>还有一个坑是发现莫名奇妙 <code>click</code> 的时候 selection 变成空的了。</p>
-<p>第一个想法是 selecti 的时候就存下当前的 range，结果发现竟然每 select 一次都会存下来，然后 click 的时候会把所有存下来的 range 都触发= =</p>
+<p>第一个想法是 select 的时候就存下当前的 range，结果发现竟然每 select 一次都会存下来，然后 click 的时候会把所有存下来的 range 都触发= =</p>
 <p>解决办法是把 <code>popup-tag</code> 的 <code>click</code> 换成了 <code>mousedown</code></p>
 <p>哎…… vijos 是真的厉害</p>
 
@@ -543,6 +543,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/30/ss在局域网共享/" rel="prev" title="ss在局域网共享">
+                ss在局域网共享 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -621,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">72</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -737,7 +741,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

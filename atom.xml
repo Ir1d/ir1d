@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-07-31T16:36:29.325Z</updated>
+  <updated>2018-08-02T08:58:30.608Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>conda重置environment状态</title>
+    <link href="https://ir1d.cf/2018/08/02/conda%E9%87%8D%E7%BD%AEenvironment%E7%8A%B6%E6%80%81/"/>
+    <id>https://ir1d.cf/2018/08/02/conda重置environment状态/</id>
+    <published>2018-08-02T08:56:27.000Z</published>
+    <updated>2018-08-02T08:58:30.608Z</updated>
+    
+    <content type="html"><![CDATA[<p>看到一个 comment 是说 conda 应该 base 留空，然后各种包开新的 environment 实验。</p><p>可是我已经装了一堆东西，又不想重装 conda = =</p><p>搜了下发现还是有这个 feature 的。</p><p><a href="https://stackoverflow.com/questions/41914139/how-to-reset-anaconda-root-environment" target="_blank" rel="noopener">https://stackoverflow.com/questions/41914139/how-to-reset-anaconda-root-environment</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda list --revisions</span><br><span class="line">conda install --rev 1</span><br></pre></td></tr></table></figure><p>1 就是要回退到哪个版本</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;看到一个 comment 是说 conda 应该 base 留空，然后各种包开新的 environment 实验。&lt;/p&gt;
+&lt;p&gt;可是我已经装了一堆东西，又不想重装 conda = =&lt;/p&gt;
+&lt;p&gt;搜了下发现还是有这个 feature 的。&lt;/p&gt;
+&lt;p&gt;&lt;a href=
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
+    
+      <category term="conda" scheme="https://ir1d.cf/tags/conda/"/>
+    
+  </entry>
   
   <entry>
     <title>pix2pix踩坑</title>
@@ -38,9 +68,9 @@
       <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
     
     
-      <category term="pix2pix" scheme="https://ir1d.cf/tags/pix2pix/"/>
-    
       <category term="python" scheme="https://ir1d.cf/tags/python/"/>
+    
+      <category term="pix2pix" scheme="https://ir1d.cf/tags/pix2pix/"/>
     
   </entry>
   
@@ -488,28 +518,6 @@
       <category term="矩阵乘法" scheme="https://ir1d.cf/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
       <category term="算法导论" scheme="https://ir1d.cf/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Codeforces Round 492 (Div. 2) [Thanks, uDebug!]</title>
-    <link href="https://ir1d.cf/2018/06/25/cf/cf996/"/>
-    <id>https://ir1d.cf/2018/06/25/cf/cf996/</id>
-    <published>2018-06-25T12:45:31.000Z</published>
-    <updated>2018-06-25T14:14:53.425Z</updated>
-    
-    <content type="html"><![CDATA[<p>花式过 pp ，专业 fst 选手大显身手</p><a id="more"></a><blockquote><p>A. Hit the Lottery</p></blockquote><p>dp肯定是对的，至于为什么可以贪心呢？</p><blockquote><p>B. World Cup</p></blockquote><p>模拟</p><blockquote><p>C. Tesla</p></blockquote><p>半个小时过去没人过的那种…… 写了半天还是WA</p><p>题意是一个两排车道，要求把车停到路边（道牙子上），求方案</p><p>题解：先把能放的放进去。把双排道看成一个环，如果有空位能转动就一定有解</p><p>这种题坐标一定要按照题目要求来，不能题里是<code>1</code>开头你自己用<code>0</code>开头读入</p><blockquote><p>D. Suit and Tie</p></blockquote><p>数据是成对的，但是被打乱了，问最少要操作多少次可以恢复</p><p>注意到最开头的那个数没必要动，于是它对应的那个数必须换过来。以此类推，搞定</p><blockquote><p>E. Leaving the Bar</p></blockquote><p>输入一堆向量，问如何给他们定向(<code>1 / -1</code>)，使得他们的和的模长符合条件。</p><p>现场写的贪心的，竟然过了pp</p><p>然后发现有dalao加了个如果不符合条件就random shuffle之后重新贪心</p><p>哎……　咋就没想到呢　<a href="http://codeforces.com/contest/995/submission/39644972" target="_blank" rel="noopener">http://codeforces.com/contest/995/submission/39644972</a></p><p>woq…… stm 发现了一个从后往前贪心过了的= =</p><p>题解里证明说每三个模长合格的里面总是能找到两个组成一个模长合格的，这样最后直到只剩两个，顶多是$\sqrt{2} r$ </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;花式过 pp ，专业 fst 选手大显身手&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="https://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="codeforces" scheme="https://ir1d.cf/tags/codeforces/"/>
     
   </entry>
   

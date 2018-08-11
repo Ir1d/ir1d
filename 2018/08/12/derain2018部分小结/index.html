@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      appId: 'MFOAFRM2TL',
+      apiKey: 'cd77d6af2d9d1fecb8c392250ed56bb3',
+      indexName: 'ir1d-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="直接粘过来好了，和大家分享一下 xUnit Spatial Activation instead of perpixel activation —&amp;gt; learn use fewer layers to match the performance (also fewer param) use less training example 一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。">
+<meta name="keywords" content="GAN,derain">
+<meta property="og:type" content="article">
+<meta property="og:title" content="derain2018部分小结">
+<meta property="og:url" content="https://ir1d.cf/2018/08/12/derain2018部分小结/index.html">
+<meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="直接粘过来好了，和大家分享一下 xUnit Spatial Activation instead of perpixel activation —&amp;gt; learn use fewer layers to match the performance (also fewer param) use less training example 一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-11T16:43:43.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="derain2018部分小结">
+<meta name="twitter:description" content="直接粘过来好了，和大家分享一下 xUnit Spatial Activation instead of perpixel activation —&amp;gt; learn use fewer layers to match the performance (also fewer param) use less training example 一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://ir1d.cf/2018/08/12/derain2018部分小结/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>derain2018部分小结 | Neverland</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955771-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100955771-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neverland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">你是我不愿醒来的梦啊<br>真是柔情一场</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+    <a href="/friends/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-star"></i> <br />Friends</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ir1d.cf/2018/08/12/derain2018部分小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">derain2018部分小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-12 00:42:43 / Modified: 00:43:43" itemprop="dateCreated datePublished" datetime="2018-08-12T00:42:43+08:00">2018-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/12/derain2018部分小结/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/12/derain2018部分小结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>直接粘过来好了，和大家分享一下</p>
+<h2 id="xUnit"><a href="#xUnit" class="headerlink" title="xUnit"></a>xUnit</h2><ul>
+<li>Spatial Activation instead of perpixel activation —&gt; learn</li>
+<li>use fewer layers to match the performance (also fewer param)</li>
+<li>use less training example</li>
+<li>一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。 考虑改成乘 $e^{-d_k^2}$</li>
+<li>xUnit 的结构既有 nonlineariry(ReLU)，又有spatial processing (depth-wise convolution)</li>
+<li>可视化结果发现很多 xnet activation和1（白色）接近，说明更多的channel 参与了 denoising</li>
+<li>它把denoising 的 network 直接用来去雨，得到很不错的结果</li>
+</ul>
+<h2 id="DID-MDN"><a href="#DID-MDN" class="headerlink" title="DID-MDN"></a>DID-MDN</h2><ul>
+<li>一个网络可能不能很好处理不同密集程度的雨线</li>
+<li>文中把去雨过程分成两部分，先对雨线密集程度进行分类，然后再进行去雨</li>
+<li>分类的过程是用和后面去雨那部分一样的网络结构，相当于是两个 branch，后一个branch另外加上了雨线密集程度的信息。</li>
+<li>为什么不直接用 vgg fine-tune 呢？因为 vgg tend to pay more attention to localize the discriminative objects，雨线相对较小，难以在 high-level feature 中 很好地 localize.</li>
+<li>training detail</li>
+<li>classfier 的 训练是two stage，刚开始单独训练 resudual feature extraction network，来估计 residual part，然后再用 estimation 结果当做输入带训练 classification sub-network。最后再 joint optimize</li>
+<li>multi scale 是考虑雨线的大小不一样，用不同的 receptive field 来捕捉这方面信息。</li>
+<li>表格信息（NLEDN 里面好像没有这篇里面自己效果这么好）</li>
+</ul>
+<h2 id="Removing-rain-based-on-a-cycle-generative-adversarial-network"><a href="#Removing-rain-based-on-a-cycle-generative-adversarial-network" class="headerlink" title="Removing rain based on a cycle generative adversarial network"></a>Removing rain based on a cycle generative adversarial network</h2><p>CycleGAN-based</p>
+<ul>
+<li>Industrial Electronics and Applications (ICIEA)</li>
+<li>深研院的</li>
+<li>Loss functions</li>
+<li>Cycle loss: strengthen the generator ability to distinguish between rain line and background</li>
+<li>Color loss: to solve the problem of color shift in deraining images.</li>
+<li>Texturue loss (transform into grayscale)</li>
+<li>Dark channel loss</li>
+<li>TV Loss : obtain a smooth result</li>
+</ul>
+<h2 id="DualCNN"><a href="#DualCNN" class="headerlink" title="DualCNN"></a>DualCNN</h2><ul>
+<li>DualCNN。将structure与details分别训练</li>
+<li>loss 是 l2 loss</li>
+<li>detail + structure</li>
+<li>ignore detail_loss in derain</li>
+<li>Our goal is to learn the filtered image which does not contain rich details. —&gt; $\gamma = 0$</li>
+<li>用在 derain 的时候，structure 部分是用的 clean image</li>
+</ul>
+<h2 id="Residual-Guide-Network"><a href="#Residual-Guide-Network" class="headerlink" title="Residual-Guide Network"></a>Residual-Guide Network</h2><ul>
+<li>把 Basline block 简单串联起来效果并不好，需要利用中间信息来引导后面的 block 提取新的信息。</li>
+<li>每一个大 block 里面是不断循环的（相当于是用同样的卷积层） （kernel reuse）</li>
+<li>后面的每一个小块都加上最开头的那个小块（propagate all information forward from output of the first layer within each block）</li>
+<li>最后面用 1x1 卷积 来 merge 所有的中间结果得到最终结果</li>
+<li>ResGuideNet_5 是有 5 个 大block 且 没有进行 merge的</li>
+</ul>
+<h2 id="Semi-supervised-CNN-for-Single-Image-Rain-Removal"><a href="#Semi-supervised-CNN-for-Single-Image-Rain-Removal" class="headerlink" title="Semi-supervised CNN for Single Image Rain Removal"></a>Semi-supervised CNN for Single Image Rain Removal</h2><ul>
+<li>the short-of-training-sample and bias-to-supervised-sample issues can be evidently alleviated</li>
+<li>use the network to  formulate the residual between an input and its expected clear image (as a mixture of gaussian distribution)</li>
+<li>objective function is the combination of supervised data loss (least square loss) and unsupervised data loss</li>
+<li>optimized by least square residuals on supervised samples</li>
+<li><p>&amp; patch-wised MoG (P-MoG) loss on unsupervised ones</p>
+</li>
+<li><p>网络的输出是 negative residual (opposite of the rain layer)</p>
+</li>
+<li>非监督部分：最小化 negative 雨线分布的 log-likelihood</li>
+</ul>
+<h2 id="NLEDN"><a href="#NLEDN" class="headerlink" title="NLEDN"></a>NLEDN</h2><ul>
+<li>non-locally enhanced encoder-decoder network</li>
+<li>fully exploit hierarchical features &amp; capture the long-distance dependencies and structural information</li>
+<li>multi-scale non-local enhancement (原图分成8x8块)</li>
+<li>dense block 和 resguide 一样</li>
+</ul>
+<h2 id="Joint-Bi-Layer-Optimize"><a href="#Joint-Bi-Layer-Optimize" class="headerlink" title="Joint Bi-Layer Optimize"></a>Joint Bi-Layer Optimize</h2><ul>
+<li>locate rain-dominated regions &amp; estimate dominant direction</li>
+<li><p>extract rain patches from regions to model the rain pattern</p>
+</li>
+<li><p>保真项</p>
+</li>
+<li>三个 prior</li>
+<li>Sparsity prior: CSR: centralized sparse representation</li>
+<li>Rain direction prior: 假设不和雨线方向垂直的 gradients 不太可能是属于雨线</li>
+<li>Rain layer prior：在B上 regularize 可能会 smooth out 一些 背景信息，这个项的作用是 用 weighted laplacian term</li>
+<li><p>优化方法</p>
+<ul>
+<li>先更新B<ul>
+<li>交替地更新 $\alpha$ 和 B</li>
+</ul>
+</li>
+<li>后更新R<h2 id="Simulated-Unsupervised-S-U-learning"><a href="#Simulated-Unsupervised-S-U-learning" class="headerlink" title="Simulated+Unsupervised (S+U) learning"></a>Simulated+Unsupervised (S+U) learning</h2></li>
+</ul>
+</li>
+<li><p>uses unlabeled real data to refine the synthetic images</p>
+</li>
+<li>refiner network</li>
+<li>l_real指的是refine之后的合成图片(x_i’)和真实图片Y之间的loss。l_reg是原始合成图片x_i和被refine之后的合成图片的x_i’之间的loss。lambda是一个高参</li>
+<li>Refiner的目标就是尽可能的糊弄判别器D，让判别器没有办法区分一个图片是real还是合成的。判别器D的目标正好相反，是尽可能的能够区分出来</li>
+<li>self-regularization loss 就是让refine之后的图片像素点和原始的图片的像素点之间的差不要太大</li>
+<li>用refined的历史图片作为一个buffer而不单单是当前的mini-batch来更新分类器</li>
+<li>在每一轮分类器的训练中，我们先从当前的batch中采样b/2张图片，然后从大小为B的buffer中采样b/2张图片，合在一起来更新判别器的参数。然后这一轮之后，用新生成的b/2张图片来替换掉B中的b/2张图片</li>
+<li>instead of global discriminator, out discriminator classifies all local image patches separately. 好处是输入更小，感受野更小，而且会对每张原图得到更多让判别器学习的指标</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Ir1d</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://ir1d.cf/2018/08/12/derain2018部分小结/" title="derain2018部分小结">https://ir1d.cf/2018/08/12/derain2018部分小结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GAN/" rel="tag"># GAN</a>
+          
+            <a href="/tags/derain/" rel="tag"># derain</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/12/给mkdocs用上gitment/" rel="next" title="给mkdocs用上gitment">
+                <i class="fa fa-chevron-left"></i> 给mkdocs用上gitment
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ir1d" />
+            
+              <p class="site-author-name" itemprop="name">Ir1d</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ir1d" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xUnit"><span class="nav-number">1.</span> <span class="nav-text">xUnit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DID-MDN"><span class="nav-number">2.</span> <span class="nav-text">DID-MDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Removing-rain-based-on-a-cycle-generative-adversarial-network"><span class="nav-number">3.</span> <span class="nav-text">Removing rain based on a cycle generative adversarial network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DualCNN"><span class="nav-number">4.</span> <span class="nav-text">DualCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Residual-Guide-Network"><span class="nav-number">5.</span> <span class="nav-text">Residual-Guide Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semi-supervised-CNN-for-Single-Image-Rain-Removal"><span class="nav-number">6.</span> <span class="nav-text">Semi-supervised CNN for Single Image Rain Removal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NLEDN"><span class="nav-number">7.</span> <span class="nav-text">NLEDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Joint-Bi-Layer-Optimize"><span class="nav-number">8.</span> <span class="nav-text">Joint Bi-Layer Optimize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simulated-Unsupervised-S-U-learning"><span class="nav-number">9.</span> <span class="nav-text">Simulated+Unsupervised (S+U) learning</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ir1d</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://ir1d.cf/2018/08/12/derain2018部分小结/';
+        this.page.identifier = '2018/08/12/derain2018部分小结/';
+        this.page.title = 'derain2018部分小结';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-08-11T16:43:43.810Z</updated>
+  <updated>2018-08-11T16:51:38.645Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OI Wiki 征稿与招募启事</title>
+    <link href="https://ir1d.cf/2018/08/12/%E5%BE%81%E7%A8%BF%E4%B8%8E%E6%8B%9B%E5%8B%9F%E5%90%AF%E4%BA%8B/"/>
+    <id>https://ir1d.cf/2018/08/12/征稿与招募启事/</id>
+    <published>2018-08-11T16:49:17.000Z</published>
+    <updated>2018-08-11T16:51:38.645Z</updated>
+    
+    <content type="html"><![CDATA[<p>（本文得到了很多朋友的指点，十分感谢！）</p><p>文章于 11 日下午发于 <a href="https://zhuanlan.zhihu.com/p/41747466" target="_blank" rel="noopener">知乎</a>，以及 LOJ、 UOJ、 Judge Duck 的讨论区。</p><h1 id="OI-Wiki-征稿与招募启事"><a href="#OI-Wiki-征稿与招募启事" class="headerlink" title="OI Wiki 征稿与招募启事"></a>OI Wiki 征稿与招募启事</h1><p>咦？ <strong>OI Wiki</strong> 是个啥？其实是某大型游戏线上攻略啦，围观地址：<a href="https://oi-wiki.cf" target="_blank" rel="noopener">Getting Started - <strong>OI Wiki</strong></a></p><hr><p>亲爱的 <strong>OIer</strong> 同学们：</p><p><strong>OI Wiki</strong> 致力于成为一个免费开放且持续更新的知识整合站点，大家可以在这里学习到关于 <strong>OI</strong> 竞赛有趣又实用的知识。我们为大家准备了 <strong>OI</strong> 竞赛中的基础知识、常见题型、解题思路以及常用工具等内容，帮助大家更快速深入地学习 <strong>OI</strong> 竞赛。</p><p>目前，<strong>OI Wiki</strong> 正在完善各大方向的基础知识，以便于初学者更好地学习。<br>当然，<strong>OI Wiki</strong> 基于 <strong>OI</strong>，却不会局限于 <strong>OI</strong>。<strong>OI Wiki</strong> 也会努力完善以下内容：</p><ul><li><p>应用在 ACM-ICPC 竞赛中的进阶知识</p></li><li><p>算法竞赛中的优质题目</p></li></ul><p>与此同时， <strong>OI Wiki</strong> 源于社区，提倡知识自由，在未来也绝不会商业化，将始终保持独立自由的性质。</p><p>在过去的一个月中，<strong>OI Wiki</strong> 见证了 199 次更新，十余位热心同学参与了条目的编写与完善，项目也得到了很多朋友的大力支持。目前，我们已经完成了原计划中 28 % 的内容，工作仍然还处于初期阶段，在此诚挚向诸君征稿：</p><p>我们欢迎各种形式的 <strong>OI</strong> 相关的内容，不论是知识点、题目、赛制介绍，还是可能会使用到的工具软件，只要你觉得可以对别人有帮助，我们都热诚欢迎。</p><p>联系方式：<br>Telegram 群组： <a href="https://t.me/OIwiki" target="_blank" rel="noopener">@OIwiki</a> ；QQ 群：<a href="https://jq.qq.com/?_wv=1027&amp;k=5EfkM6K" target="_blank" rel="noopener">588793226</a>。<br>欢迎各位加入～</p><hr><h3 id="F-A-Q"><a href="#F-A-Q" class="headerlink" title="F.A.Q."></a><strong>F.A.Q.</strong></h3><p>Q：你们是为什么想要做这个 Wiki 的呢？</p><p>A：不知道你在学 <strong>OI</strong> 的时候，面对庞大的知识体系，有没有感到过迷茫无助的时候？<strong>OI Wiki</strong> 想要做的事情可能类似于“让更多竞赛资源不充裕的同学能方便地接触到训练资源”。当然这么表述也不完全，做 Wiki 的动机可能也很纯粹，只是简单地想要对 <strong>OI</strong> 的发展做出一点点微小的贡献吧。XD</p><p>Q：我很感兴趣，怎么参与呢？</p><p>A：<strong>OI Wiki</strong> 现在托管在 <a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">Github</a> 上，你可以直接访问这个 <a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">repo</a> 来查看最新进展。参与的途径包括在 <a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">Github</a> 上面开 Issue、Pull Request，或者在交流群中分享你的想法、直接向管理员投稿。目前，我们使用的框架是 <a href="https://mkdocs.readthedocs.io" target="_blank" rel="noopener">mkdocs</a>，支持 Markdown 格式（当然也支持插入数学公式）。</p><p>Q：可是我比较弱…… 不知道我能做点什么？</p><p>A：一切源于热爱。你可以协助其他人审核修改稿件，帮助我们宣传 <strong>OI Wiki</strong> ，为社区营造良好学习交流氛围！</p><p>Q：现在主要是谁在做这件事啊？感觉这是个大坑，真的能做好吗？</p><p>A：现在主要是一些退役老年选手在做这件事，靠的都是信仰。这种“用爱发电”的事情，困难重重，我们也不知道能不能做好。但是如果这件事能够推动 <strong>OI</strong> 的发展，也是蛮有意义的呢。我们希望在这里打的这个广告，可以帮助这个团队遇见更多志同道合的人。</p><p>Q：听说过 nocow 吧，<strong>OI Wiki</strong> 怎么保证我们添加的内容不会像 nocow 那样突然间就不见了呢？</p><p>A：我们把内容托管在 <a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">Github</a> 上面，即使我们的服务器翻车了，内容也不会丢失。另外，我们也会定期备份大家的心血，即使有一天 <a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">Github</a> 倒闭了（？），我们的内容也不会丢失。</p><p>Q：<strong>OI Wiki</strong> 好像现在大部分内容都是空的啊？</p><p>A：是的，目前进度只完成了 28%，还远远称不上是一个合格的 Wiki。在过去的一个月里，主要添加的内容也比较基础。所以在这里进行征稿和招募，希望可以遇到有同样想法的朋友，我们一起把 <strong>OI Wiki</strong> 完善起来。</p><hr><p>感谢你看到了最后，我们现在急需的，就是你的帮助。</p><p><strong>OI Wiki</strong> Team</p><p>2018.8</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;（本文得到了很多朋友的指点，十分感谢！）&lt;/p&gt;
+&lt;p&gt;文章于 11 日下午发于 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/41747466&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;知乎&lt;/a&gt;，以及 LOJ、 UO
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="OIWiki" scheme="https://ir1d.cf/tags/OIWiki/"/>
+    
+  </entry>
   
   <entry>
     <title>derain2018部分小结</title>
@@ -511,34 +537,6 @@
     
       <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Daily Notes 7.6</title>
-    <link href="https://ir1d.cf/2018/07/06/dailynotes/"/>
-    <id>https://ir1d.cf/2018/07/06/dailynotes/</id>
-    <published>2018-07-06T11:22:15.000Z</published>
-    <updated>2018-07-09T08:48:27.020Z</updated>
-    
-    <content type="html"><![CDATA[<p><del>经久不衰</del>的 Daily Notes 系列又来了！</p><p>今天读的这篇：Perceptual Losses for Real-Time Style Transfer and Super-Resolution</p><!-- nore --><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><p>记录一些今天关注的内容</p><blockquote><p>Transposed - conv</p></blockquote><p>就是把卷积层反过来的感觉，</p><p>可视化效果：<a href="https://github.com/vdumoulin/conv_arithmetic" target="_blank" rel="noopener">https://github.com/vdumoulin/conv_arithmetic</a></p><blockquote><p>stride</p></blockquote><p>cs231n 的课程页面上写得很清楚，就是步长</p><blockquote><p>GAN basics</p></blockquote><p>略</p><blockquote><p>Dilated Convolutions</p></blockquote><p>ref: <a href="https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/" target="_blank" rel="noopener">Dilated Convolutions and Kronecker Factored Convolutions</a></p><p>它的一大优点是可以指数级地扩大感受域（receptive field），而参数是对数级的。这带来一个问题，需要加条件才能保证可以参数共享。</p><p>上文中表示需要卷积操作相当于<code>Kronecker product</code>才行</p><blockquote><p>CNN channel </p></blockquote><p><a href="https://blog.csdn.net/sscc_learning/article/details/79814146" target="_blank" rel="noopener">【CNN】理解卷积神经网络中的通道 channel - CSDN博客</a></p><blockquote><p>置信区间</p></blockquote><p>展现的是，这个总体参数的真实值有一定概率落在与该测量结果有关的某对应区间</p><blockquote><p>SSIM — Structural SIMilarity</p></blockquote><p>衡量两幅图像相似度，其值越大越好，最大为1</p><p>ref: <a href="https://blog.csdn.net/edogawachia/article/details/78756680" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/78756680</a></p><blockquote><p>PSNR — Peak signal-to-noise ratio</p></blockquote><p>峰值信噪比,是一种评价图像的客观标准</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def cal_psnr(im1, im2):</span><br><span class="line">    mse = (np.abs(im1 - im2) ** 2).mean()</span><br><span class="line">    psnr = 10 * np.log10(255 * 255 / mse)</span><br><span class="line">    return psnr</span><br></pre></td></tr></table></figure><blockquote><p>Fractionally-strided convolution</p></blockquote><p>ref: <a href="https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d" target="_blank" rel="noopener">https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d</a></p><p>就是之前提到的反卷积，这东西别名太多</p><p>为什么叫分数步长呢？</p><p>我们通过在原矩阵中间补0来使得正向的卷积结果相当于是反向的卷积，这是在原矩阵中的步长就可能是分数了</p><h2 id="Perceptual-Loss-—-《Perceptual-Losses-for-Real-Time-Style-Transfer-and-Super-Resolution》"><a href="#Perceptual-Loss-—-《Perceptual-Losses-for-Real-Time-Style-Transfer-and-Super-Resolution》" class="headerlink" title="Perceptual Loss — 《Perceptual Losses for Real-Time Style Transfer and Super-Resolution》"></a>Perceptual Loss — 《Perceptual Losses for Real-Time Style Transfer and Super-Resolution》</h2><p>很多工作都可以看作是对图像进行转换操作 —— 输入一张图，输出转换后的一张图</p><p>按像素比较的loss function 不能捕捉全局的（？perceptual）信息</p><p>perceptual loss function 不比较对应位置像素的信息，而是比较high-level的信息，比如预先训练好的卷积神经网络中的特征表示（feature representations）</p><p>本文的工作是训练了一个用perceptual loss训练一个单向的（feed forward）网络，又快又好</p><p>本文主要关注图片风格转换和单张图的超分辨率重建（四倍和八倍）</p><p><code>Feed-forward image transformation</code> 翻译过来是前馈神经网络</p><p>高品质的风格转换要求对较大的区域进行一致的，而本文方法使得感受域变大。</p><p><code>Residual Connections</code> ，认为可以方便地让网络学到恒等变换，这对风格转换很重要，因为大多数地方输出和输入是相同的。</p><p><code>Loss Function</code>有两部分，一个是<code>Feature Reconstruction Loss</code>，另一个是<code>Style Reconstruction Loss</code>。</p><p>前者是feature representation的欧几里得距离除以feature map的大小（$C <em> H </em> W$）。最小化第一个损失函数可以保留视觉内容和整体空间上的结构，但是颜色、纹理和具体的形状不一定保留。</p><p>后者在内容不同是进行惩罚，也惩罚风格上的不同。表达式是大小为$C * C$的Gram矩阵的L2距离。</p><p>注意到很有趣的一点，结果中人像比较清晰但是背景并不清晰。一种可能的解释是VGG-16的特征大多是在人像和动物上训练的，我们的风格转换网络是在学习保留VGG-16学到的特征，这样我们的网络学到的背景的信息比较少</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;del&gt;经久不衰&lt;/del&gt;的 Daily Notes 系列又来了！&lt;/p&gt;
-&lt;p&gt;今天读的这篇：Perceptual Losses for Real-Time Style Transfer and Super-Resolution&lt;/p&gt;
-&lt;!-- nore --&gt;
-&lt;
-      
-    
-    </summary>
-    
-      <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
   </entry>
   

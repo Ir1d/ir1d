@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-08-11T16:51:38.645Z</updated>
+  <updated>2018-08-22T07:43:10.972Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gitment-配置</title>
+    <link href="https://ir1d.cf/2018/08/22/gitment-%E9%85%8D%E7%BD%AE/"/>
+    <id>https://ir1d.cf/2018/08/22/gitment-配置/</id>
+    <published>2018-08-22T07:04:07.000Z</published>
+    <updated>2018-08-22T07:43:10.972Z</updated>
+    
+    <content type="html"><![CDATA[<p>Gitment 原版的貌似没有在维护，后来改用了 Gitmint （加了统计和翻译），然而发现 gitment 的评论区是一个裸的 textarea，外面没有包上 form，然后 mkdocs-material 是判断不在 form 里来触发搜索功能的关键字的…… <a href="https://github.com/Ir1d/gitment/issues/20" target="_blank" rel="noopener">https://github.com/Ir1d/gitment/issues/20</a> （鸣谢褚老板发现这个坑）</p><p>然后为了修这个给 mkdocs-material 开 pr，人家表示正常的 textarea 都在 form 里面，你这种完全可以通过自定义 gitment 来搞定。</p><p>搜了下发现需要改 gitment 里面 render 的过程：<a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L13-L26" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L13-L26</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">const myTheme = &#123;</span><br><span class="line">  render(state, instance) &#123;</span><br><span class="line">    const container = document.createElement(&apos;div&apos;)</span><br><span class="line">    container.lang = &quot;zh-CN&quot;</span><br><span class="line">    container.className = &apos;gitment-container gitment-root-container&apos;</span><br><span class="line">    const divv = document.createElement(&apos;form&apos;)</span><br><span class="line">    // container.appendChild(instance.renderSomething(state, instan)</span><br><span class="line">    container.appendChild(instance.renderHeader(state, instance))</span><br><span class="line">    divv.appendChild(instance.renderEditor(state, instance))</span><br><span class="line">    container.appendChild(divv)</span><br><span class="line">    container.appendChild(instance.renderComments(state, instance))</span><br><span class="line">    container.appendChild(instance.renderFooter(state, instance))</span><br><span class="line">    return container</span><br><span class="line">  &#125;,</span><br><span class="line">  renderSomething(state, instance) &#123;</span><br><span class="line">    const container = document.createElement(&apos;div&apos;)</span><br><span class="line">    container.lang = &quot;zh-CN&quot;</span><br><span class="line">    if (state.user.login) &#123;</span><br><span class="line">      container.innerText = `Hello, $&#123;state.user.login&#125;, 来说点什么吧？`</span><br><span class="line">    &#125;</span><br><span class="line">    return container</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const gitment = new Gitment(&#123;</span><br><span class="line">  id: &apos;&#123;&#123; page.title | default(&quot;404&quot;, true)  &#125;&#125;&apos;,</span><br><span class="line">  theme: myTheme,</span><br><span class="line">  owner: &apos;Ir1d&apos;,</span><br><span class="line">  repo: &apos;gitment&apos;,</span><br><span class="line">  oauth: &#123;</span><br><span class="line">    client_id: &apos;d6a911c8fba0194626d4&apos;,</span><br><span class="line">    client_secret: &apos;867ec7e13cc99b420bd147cbb62d5cfec271ba81&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line">gitment.render(&apos;gitment_container&apos;)</span><br></pre></td></tr></table></figure><p>然后直接推上生产（昨晚 Travis CI 和 Github 的通讯 bug 了，CI 过了但是 Github 上还是 pending = =）</p><p>然后发现点预览的时候会刷新整个页面= =，然后之前评论框里还没有提交的东西就丢了= =</p><p>搜了下发现 form 里面的 button 需要加上个 <code>type=&#39;button&#39;</code> 才可以不跳转。</p><p>这个就必须要改 renderEditor 里面的东西了，索性把整个 gitment.js 都给换掉好了……</p><p>在 gitment 的 issue 里搜了下，发现 <a href="https://www.kymjs.com" target="_blank" rel="noopener">https://www.kymjs.com</a> 的这位大佬搞了个翻译好的，就稍微改下，拿过来用了。</p><p>修改在：<a href="https://github.com/24OI/24oi.github.io/blob/master/gitment.js#L3063" target="_blank" rel="noopener">https://github.com/24OI/24oi.github.io/blob/master/gitment.js#L3063</a></p><p>其他的修改都是细节上魔改，与整体配置无关（x</p><p>所以就让 mkdocs 用上 gitment 啦！</p><p>完整配置在：<a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/static/disqus.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Gitment 原版的貌似没有在维护，后来改用了 Gitmint （加了统计和翻译），然而发现 gitment 的评论区是一个裸的 textarea，外面没有包上 form，然后 mkdocs-material 是判断不在 form 里来触发搜索功能的关键字的…… &lt;a h
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="gitment" scheme="https://ir1d.cf/tags/gitment/"/>
+    
+      <category term="github" scheme="https://ir1d.cf/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx-HTTPS-配置</title>
+    <link href="https://ir1d.cf/2018/08/22/nginx-HTTPS-%E9%85%8D%E7%BD%AE/"/>
+    <id>https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/</id>
+    <published>2018-08-22T06:50:44.000Z</published>
+    <updated>2018-08-22T07:03:57.354Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a href="https://bjornjohansen.no/optimizing-https-nginx" target="_blank" rel="noopener">https://bjornjohansen.no/optimizing-https-nginx</a></p><p>这一套文都很厉害，包含了 nginx 以及 openssl 的安装、配置、优化。</p><p>以及真的佩服这位 dalao 给每篇文章都配上插图。</p><h2 id="两个生成配置用的工具"><a href="#两个生成配置用的工具" class="headerlink" title="两个生成配置用的工具"></a>两个生成配置用的工具</h2><p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">https://mozilla.github.io/server-side-tls/ssl-config-generator/</a></p><p><a href="https://wiki.mozilla.org/Security/Server_Side_TLS" target="_blank" rel="noopener">https://wiki.mozilla.org/Security/Server_Side_TLS</a></p><h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><p><a href="https://myssl.com/" target="_blank" rel="noopener">https://myssl.com/</a></p><p><a href="https://www.ssllabs.com" target="_blank" rel="noopener">https://www.ssllabs.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;教程&quot;&gt;&lt;a href=&quot;#教程&quot; class=&quot;headerlink&quot; title=&quot;教程&quot;&gt;&lt;/a&gt;教程&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://bjornjohansen.no/optimizing-https-nginx&quot; target=&quot;_bla
+      
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="nginx" scheme="https://ir1d.cf/tags/nginx/"/>
+    
+      <category term="https" scheme="https://ir1d.cf/tags/https/"/>
+    
+  </entry>
   
   <entry>
     <title>OI Wiki 征稿与招募启事</title>
@@ -47,18 +101,15 @@
     <link href="https://ir1d.cf/2018/08/12/derain2018%E9%83%A8%E5%88%86%E5%B0%8F%E7%BB%93/"/>
     <id>https://ir1d.cf/2018/08/12/derain2018部分小结/</id>
     <published>2018-08-11T16:42:43.000Z</published>
-    <updated>2018-08-11T16:43:43.810Z</updated>
+    <updated>2018-08-11T17:03:24.954Z</updated>
     
-    <content type="html"><![CDATA[<p>直接粘过来好了，和大家分享一下</p><h2 id="xUnit"><a href="#xUnit" class="headerlink" title="xUnit"></a>xUnit</h2><ul><li>Spatial Activation instead of perpixel activation —&gt; learn</li><li>use fewer layers to match the performance (also fewer param)</li><li>use less training example</li><li>一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。 考虑改成乘 $e^{-d_k^2}$</li><li>xUnit 的结构既有 nonlineariry(ReLU)，又有spatial processing (depth-wise convolution)</li><li>可视化结果发现很多 xnet activation和1（白色）接近，说明更多的channel 参与了 denoising</li><li>它把denoising 的 network 直接用来去雨，得到很不错的结果</li></ul><h2 id="DID-MDN"><a href="#DID-MDN" class="headerlink" title="DID-MDN"></a>DID-MDN</h2><ul><li>一个网络可能不能很好处理不同密集程度的雨线</li><li>文中把去雨过程分成两部分，先对雨线密集程度进行分类，然后再进行去雨</li><li>分类的过程是用和后面去雨那部分一样的网络结构，相当于是两个 branch，后一个branch另外加上了雨线密集程度的信息。</li><li>为什么不直接用 vgg fine-tune 呢？因为 vgg tend to pay more attention to localize the discriminative objects，雨线相对较小，难以在 high-level feature 中 很好地 localize.</li><li>training detail</li><li>classfier 的 训练是two stage，刚开始单独训练 resudual feature extraction network，来估计 residual part，然后再用 estimation 结果当做输入带训练 classification sub-network。最后再 joint optimize</li><li>multi scale 是考虑雨线的大小不一样，用不同的 receptive field 来捕捉这方面信息。</li><li>表格信息（NLEDN 里面好像没有这篇里面自己效果这么好）</li></ul><h2 id="Removing-rain-based-on-a-cycle-generative-adversarial-network"><a href="#Removing-rain-based-on-a-cycle-generative-adversarial-network" class="headerlink" title="Removing rain based on a cycle generative adversarial network"></a>Removing rain based on a cycle generative adversarial network</h2><p>CycleGAN-based</p><ul><li>Industrial Electronics and Applications (ICIEA)</li><li>深研院的</li><li>Loss functions</li><li>Cycle loss: strengthen the generator ability to distinguish between rain line and background</li><li>Color loss: to solve the problem of color shift in deraining images.</li><li>Texturue loss (transform into grayscale)</li><li>Dark channel loss</li><li>TV Loss : obtain a smooth result</li></ul><h2 id="DualCNN"><a href="#DualCNN" class="headerlink" title="DualCNN"></a>DualCNN</h2><ul><li>DualCNN。将structure与details分别训练</li><li>loss 是 l2 loss</li><li>detail + structure</li><li>ignore detail_loss in derain</li><li>Our goal is to learn the filtered image which does not contain rich details. —&gt; $\gamma = 0$</li><li>用在 derain 的时候，structure 部分是用的 clean image</li></ul><h2 id="Residual-Guide-Network"><a href="#Residual-Guide-Network" class="headerlink" title="Residual-Guide Network"></a>Residual-Guide Network</h2><ul><li>把 Basline block 简单串联起来效果并不好，需要利用中间信息来引导后面的 block 提取新的信息。</li><li>每一个大 block 里面是不断循环的（相当于是用同样的卷积层） （kernel reuse）</li><li>后面的每一个小块都加上最开头的那个小块（propagate all information forward from output of the first layer within each block）</li><li>最后面用 1x1 卷积 来 merge 所有的中间结果得到最终结果</li><li>ResGuideNet_5 是有 5 个 大block 且 没有进行 merge的</li></ul><h2 id="Semi-supervised-CNN-for-Single-Image-Rain-Removal"><a href="#Semi-supervised-CNN-for-Single-Image-Rain-Removal" class="headerlink" title="Semi-supervised CNN for Single Image Rain Removal"></a>Semi-supervised CNN for Single Image Rain Removal</h2><ul><li>the short-of-training-sample and bias-to-supervised-sample issues can be evidently alleviated</li><li>use the network to  formulate the residual between an input and its expected clear image (as a mixture of gaussian distribution)</li><li>objective function is the combination of supervised data loss (least square loss) and unsupervised data loss</li><li>optimized by least square residuals on supervised samples</li><li><p>&amp; patch-wised MoG (P-MoG) loss on unsupervised ones</p></li><li><p>网络的输出是 negative residual (opposite of the rain layer)</p></li><li>非监督部分：最小化 negative 雨线分布的 log-likelihood</li></ul><h2 id="NLEDN"><a href="#NLEDN" class="headerlink" title="NLEDN"></a>NLEDN</h2><ul><li>non-locally enhanced encoder-decoder network</li><li>fully exploit hierarchical features &amp; capture the long-distance dependencies and structural information</li><li>multi-scale non-local enhancement (原图分成8x8块)</li><li>dense block 和 resguide 一样</li></ul><h2 id="Joint-Bi-Layer-Optimize"><a href="#Joint-Bi-Layer-Optimize" class="headerlink" title="Joint Bi-Layer Optimize"></a>Joint Bi-Layer Optimize</h2><ul><li>locate rain-dominated regions &amp; estimate dominant direction</li><li><p>extract rain patches from regions to model the rain pattern</p></li><li><p>保真项</p></li><li>三个 prior</li><li>Sparsity prior: CSR: centralized sparse representation</li><li>Rain direction prior: 假设不和雨线方向垂直的 gradients 不太可能是属于雨线</li><li>Rain layer prior：在B上 regularize 可能会 smooth out 一些 背景信息，这个项的作用是 用 weighted laplacian term</li><li><p>优化方法</p><ul><li>先更新B<ul><li>交替地更新 $\alpha$ 和 B</li></ul></li><li>后更新R<h2 id="Simulated-Unsupervised-S-U-learning"><a href="#Simulated-Unsupervised-S-U-learning" class="headerlink" title="Simulated+Unsupervised (S+U) learning"></a>Simulated+Unsupervised (S+U) learning</h2></li></ul></li><li><p>uses unlabeled real data to refine the synthetic images</p></li><li>refiner network</li><li>l_real指的是refine之后的合成图片(x_i’)和真实图片Y之间的loss。l_reg是原始合成图片x_i和被refine之后的合成图片的x_i’之间的loss。lambda是一个高参</li><li>Refiner的目标就是尽可能的糊弄判别器D，让判别器没有办法区分一个图片是real还是合成的。判别器D的目标正好相反，是尽可能的能够区分出来</li><li>self-regularization loss 就是让refine之后的图片像素点和原始的图片的像素点之间的差不要太大</li><li>用refined的历史图片作为一个buffer而不单单是当前的mini-batch来更新分类器</li><li>在每一轮分类器的训练中，我们先从当前的batch中采样b/2张图片，然后从大小为B的buffer中采样b/2张图片，合在一起来更新判别器的参数。然后这一轮之后，用新生成的b/2张图片来替换掉B中的b/2张图片</li><li>instead of global discriminator, out discriminator classifies all local image patches separately. 好处是输入更小，感受野更小，而且会对每张原图得到更多让判别器学习的指标</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>直接粘过来好了，和大家分享一下</p><p>内容是 9 篇 single image deraining 的工作，是不完全整理。</p><p>paper list 参见：<a href="https://github.com/flyywh/Rain-Removal" target="_blank" rel="noopener">https://github.com/flyywh/Rain-Removal</a></p><a id="more"></a><h2 id="xUnit"><a href="#xUnit" class="headerlink" title="xUnit"></a>xUnit</h2><ul><li>Spatial Activation instead of perpixel activation —&gt; learn</li><li>use fewer layers to match the performance (also fewer param)</li><li>use less training example</li><li>一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。 考虑改成乘 $e^{-d_k^2}$</li><li>xUnit 的结构既有 nonlineariry(ReLU)，又有spatial processing (depth-wise convolution)</li><li>可视化结果发现很多 xnet activation和1（白色）接近，说明更多的channel 参与了 denoising</li><li>它把denoising 的 network 直接用来去雨，得到很不错的结果</li></ul><h2 id="DID-MDN"><a href="#DID-MDN" class="headerlink" title="DID-MDN"></a>DID-MDN</h2><ul><li>一个网络可能不能很好处理不同密集程度的雨线</li><li>文中把去雨过程分成两部分，先对雨线密集程度进行分类，然后再进行去雨</li><li>分类的过程是用和后面去雨那部分一样的网络结构，相当于是两个 branch，后一个branch另外加上了雨线密集程度的信息。</li><li>为什么不直接用 vgg fine-tune 呢？因为 vgg tend to pay more attention to localize the discriminative objects，雨线相对较小，难以在 high-level feature 中 很好地 localize.</li><li>training detail</li><li>classfier 的 训练是two stage，刚开始单独训练 resudual feature extraction network，来估计 residual part，然后再用 estimation 结果当做输入带训练 classification sub-network。最后再 joint optimize</li><li>multi scale 是考虑雨线的大小不一样，用不同的 receptive field 来捕捉这方面信息。</li><li>表格信息（NLEDN 里面好像没有这篇里面自己效果这么好）</li></ul><h2 id="Removing-rain-based-on-a-cycle-generative-adversarial-network"><a href="#Removing-rain-based-on-a-cycle-generative-adversarial-network" class="headerlink" title="Removing rain based on a cycle generative adversarial network"></a>Removing rain based on a cycle generative adversarial network</h2><p>CycleGAN-based</p><ul><li>Industrial Electronics and Applications (ICIEA)</li><li>深研院的</li><li>Loss functions</li><li>Cycle loss: strengthen the generator ability to distinguish between rain line and background</li><li>Color loss: to solve the problem of color shift in deraining images.</li><li>Texturue loss (transform into grayscale)</li><li>Dark channel loss</li><li>TV Loss : obtain a smooth result</li></ul><h2 id="DualCNN"><a href="#DualCNN" class="headerlink" title="DualCNN"></a>DualCNN</h2><ul><li>DualCNN。将structure与details分别训练</li><li>loss 是 l2 loss</li><li>detail + structure</li><li>ignore detail_loss in derain</li><li>Our goal is to learn the filtered image which does not contain rich details. —&gt; $\gamma = 0$</li><li>用在 derain 的时候，structure 部分是用的 clean image</li></ul><h2 id="Residual-Guide-Network"><a href="#Residual-Guide-Network" class="headerlink" title="Residual-Guide Network"></a>Residual-Guide Network</h2><ul><li>把 Basline block 简单串联起来效果并不好，需要利用中间信息来引导后面的 block 提取新的信息。</li><li>每一个大 block 里面是不断循环的（相当于是用同样的卷积层） （kernel reuse）</li><li>后面的每一个小块都加上最开头的那个小块（propagate all information forward from output of the first layer within each block）</li><li>最后面用 1x1 卷积 来 merge 所有的中间结果得到最终结果</li><li>ResGuideNet_5 是有 5 个 大block 且 没有进行 merge的</li></ul><h2 id="Semi-supervised-CNN-for-Single-Image-Rain-Removal"><a href="#Semi-supervised-CNN-for-Single-Image-Rain-Removal" class="headerlink" title="Semi-supervised CNN for Single Image Rain Removal"></a>Semi-supervised CNN for Single Image Rain Removal</h2><ul><li>the short-of-training-sample and bias-to-supervised-sample issues can be evidently alleviated</li><li>use the network to  formulate the residual between an input and its expected clear image (as a mixture of gaussian distribution)</li><li>objective function is the combination of supervised data loss (least square loss) and unsupervised data loss</li><li>optimized by least square residuals on supervised samples</li><li><p>&amp; patch-wised MoG (P-MoG) loss on unsupervised ones</p></li><li><p>网络的输出是 negative residual (opposite of the rain layer)</p></li><li>非监督部分：最小化 negative 雨线分布的 log-likelihood</li></ul><h2 id="NLEDN"><a href="#NLEDN" class="headerlink" title="NLEDN"></a>NLEDN</h2><ul><li>non-locally enhanced encoder-decoder network</li><li>fully exploit hierarchical features &amp; capture the long-distance dependencies and structural information</li><li>multi-scale non-local enhancement (原图分成8x8块)</li><li>dense block 和 resguide 一样</li></ul><h2 id="Joint-Bi-Layer-Optimize"><a href="#Joint-Bi-Layer-Optimize" class="headerlink" title="Joint Bi-Layer Optimize"></a>Joint Bi-Layer Optimize</h2><ul><li>locate rain-dominated regions &amp; estimate dominant direction</li><li><p>extract rain patches from regions to model the rain pattern</p></li><li><p>保真项</p></li><li>三个 prior</li><li>Sparsity prior: CSR: centralized sparse representation</li><li>Rain direction prior: 假设不和雨线方向垂直的 gradients 不太可能是属于雨线</li><li>Rain layer prior：在B上 regularize 可能会 smooth out 一些 背景信息，这个项的作用是 用 weighted laplacian term</li><li><p>优化方法</p><ul><li>先更新B<ul><li>交替地更新 $\alpha$ 和 B</li></ul></li><li>后更新R<h2 id="Simulated-Unsupervised-S-U-learning"><a href="#Simulated-Unsupervised-S-U-learning" class="headerlink" title="Simulated+Unsupervised (S+U) learning"></a>Simulated+Unsupervised (S+U) learning</h2></li></ul></li><li><p>uses unlabeled real data to refine the synthetic images</p></li><li>refiner network</li><li>l_real指的是refine之后的合成图片(x_i’)和真实图片Y之间的loss。l_reg是原始合成图片x_i和被refine之后的合成图片的x_i’之间的loss。lambda是一个高参</li><li>Refiner的目标就是尽可能的糊弄判别器D，让判别器没有办法区分一个图片是real还是合成的。判别器D的目标正好相反，是尽可能的能够区分出来</li><li>self-regularization loss 就是让refine之后的图片像素点和原始的图片的像素点之间的差不要太大</li><li>用refined的历史图片作为一个buffer而不单单是当前的mini-batch来更新分类器</li><li>在每一轮分类器的训练中，我们先从当前的batch中采样b/2张图片，然后从大小为B的buffer中采样b/2张图片，合在一起来更新判别器的参数。然后这一轮之后，用新生成的b/2张图片来替换掉B中的b/2张图片</li><li>instead of global discriminator, out discriminator classifies all local image patches separately. 好处是输入更小，感受野更小，而且会对每张原图得到更多让判别器学习的指标</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;直接粘过来好了，和大家分享一下&lt;/p&gt;
-&lt;h2 id=&quot;xUnit&quot;&gt;&lt;a href=&quot;#xUnit&quot; class=&quot;headerlink&quot; title=&quot;xUnit&quot;&gt;&lt;/a&gt;xUnit&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Spatial Activation instead of
-      
+      &lt;p&gt;直接粘过来好了，和大家分享一下&lt;/p&gt;
+&lt;p&gt;内容是 9 篇 single image deraining 的工作，是不完全整理。&lt;/p&gt;
+&lt;p&gt;paper list 参见：&lt;a href=&quot;https://github.com/flyywh/Rain-Removal&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/flyywh/Rain-Removal&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -93,9 +144,9 @@
       <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
     
     
-      <category term="mkdocs" scheme="https://ir1d.cf/tags/mkdocs/"/>
-    
       <category term="gitment" scheme="https://ir1d.cf/tags/gitment/"/>
+    
+      <category term="mkdocs" scheme="https://ir1d.cf/tags/mkdocs/"/>
     
   </entry>
   
@@ -492,51 +543,6 @@
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
       <category term="GAN" scheme="https://ir1d.cf/tags/GAN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Daily Notes 7.8</title>
-    <link href="https://ir1d.cf/2018/07/08/dailynotes-2/"/>
-    <id>https://ir1d.cf/2018/07/08/dailynotes-2/</id>
-    <published>2018-07-07T23:40:44.000Z</published>
-    <updated>2018-07-10T12:47:53.326Z</updated>
-    
-    <content type="html"><![CDATA[<p>什么也没读，沉迷标数据不能自拔</p><ul><li>Joint Bi-layer Optimization for Single-image Rain Streak Removal</li></ul><a id="more"></a><p>作息过于糟糕，下午回去看数分结果很快就睡着了，还是闹钟免疫的那种。。。。</p><h2 id="Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal"><a href="#Joint-Bi-layer-Optimization-for-Single-image-Rain-Streak-Removal" class="headerlink" title="Joint Bi-layer Optimization for Single-image Rain Streak Removal"></a>Joint Bi-layer Optimization for Single-image Rain Streak Removal</h2><p>本文做的是去除单张照片上雨纹的工作，具体来说是尝试把一张照片分成有雨和无雨的两层。整个最优化过程是同时把雨纹的细节从无雨层去掉，和把无雨的信息从雨纹层去掉.</p><p>拿到一张图，文中方法首先尝试确定 rain-dominated 的区域，然后利用这部分区域来确定雨的方向，并提取出 rain-patch，之后用 joint bi-layer optimization 方法来迭代地得到两层。</p><p>我怎么有个问题。。感觉一张图里的 rain streak 完全有可能角度差得很大啊？ 比如前景和后景完全可以反向</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>Frobenius norm</p></blockquote><p>a.k.a Euclidean norm, $\left\lVert A \right\rVert = \sqrt{\sum<em>{i=1}^m{\sum</em>{j=1}^n{|a_{ij}|^2}}}$</p><blockquote><p>fidelity term</p></blockquote><p>保真项</p><blockquote><p>Jensen’s inequality</p></blockquote><p>The mean value of a convex function is never lower than the value of the convex function applied to the mean. </p><script type="math/tex; mode=display">\begin{align}- \log p(x) &= - \log \int p(x,y) dy \\&= - \log \int q(y\vert x) \frac{p(y,x)}{q(y\vert x)}dy \\&\leq - \int q(y\vert x) \log \frac{p(y,x)}{q(y\vert x)} dy\end{align}</script><blockquote><p>L0 regularization</p></blockquote><p>l0 norm 是统计数组中的非零元素</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;什么也没读，沉迷标数据不能自拔&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Joint Bi-layer Optimization for Single-image Rain Streak Removal&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Daily Notes 7.7</title>
-    <link href="https://ir1d.cf/2018/07/07/dailynotes-1/"/>
-    <id>https://ir1d.cf/2018/07/07/dailynotes-1/</id>
-    <published>2018-07-06T16:41:13.000Z</published>
-    <updated>2018-07-10T12:43:41.579Z</updated>
-    
-    <content type="html"><![CDATA[<p>学数学 + 下午睡过头了</p><a id="more"></a><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p> Checkerboard Artifacts </p></blockquote><p>Checkerboard Pattern 是黑白格交替的图案</p><p>神经网络生成的图像在细节处往往会出现像素点颜色交替的现象</p><p>ref: <a href="https://distill.pub/2016/deconv-checkerboard/" target="_blank" rel="noopener">https://distill.pub/2016/deconv-checkerboard/</a></p><p>transposed-conv 时出现 overlap 会导致这种现象</p><blockquote><p>Sobel operator</p></blockquote><p>用于 edge detection</p><p><a href="https://en.wikipedia.org/wiki/Sobel_operator" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sobel_operator</a></p><blockquote><p>skip connection</p></blockquote><p>用在 resnet 里面</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学数学 + 下午睡过头了&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
-    
     
   </entry>
   

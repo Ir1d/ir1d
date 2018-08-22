@@ -111,14 +111,14 @@
   <meta name="description" content="教程https://bjornjohansen.no/optimizing-https-nginx 这一套文都很厉害，包含了 nginx 以及 openssl 的安装、配置、优化。 以及真的佩服这位 dalao 给每篇文章都配上插图。 两个生成配置用的工具https://mozilla.github.io/server-side-tls/ssl-config-generator/ https://">
 <meta name="keywords" content="nginx,https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx-HTTPS-配置">
+<meta property="og:title" content="Nginx HTTPS 配置">
 <meta property="og:url" content="https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/index.html">
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="教程https://bjornjohansen.no/optimizing-https-nginx 这一套文都很厉害，包含了 nginx 以及 openssl 的安装、配置、优化。 以及真的佩服这位 dalao 给每篇文章都配上插图。 两个生成配置用的工具https://mozilla.github.io/server-side-tls/ssl-config-generator/ https://">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-22T07:03:57.354Z">
+<meta property="og:updated_time" content="2018-08-22T07:49:01.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx-HTTPS-配置">
+<meta name="twitter:title" content="Nginx HTTPS 配置">
 <meta name="twitter:description" content="教程https://bjornjohansen.no/optimizing-https-nginx 这一套文都很厉害，包含了 nginx 以及 openssl 的安装、配置、优化。 以及真的佩服这位 dalao 给每篇文章都配上插图。 两个生成配置用的工具https://mozilla.github.io/server-side-tls/ssl-config-generator/ https://">
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>nginx-HTTPS-配置 | Neverland</title>
+  <title>Nginx HTTPS 配置 | Neverland</title>
   
 
 
@@ -378,7 +378,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx-HTTPS-配置
+          <h1 class="post-title" itemprop="name headline">Nginx HTTPS 配置
               
             
           </h1>
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2018-08-22 14:50:44 / Modified: 15:03:57" itemprop="dateCreated datePublished" datetime="2018-08-22T14:50:44+08:00">2018-08-22</time>
+              <time title="Created: 2018-08-22 14:50:44 / Modified: 15:49:01" itemprop="dateCreated datePublished" datetime="2018-08-22T14:50:44+08:00">2018-08-22</time>
             
 
             
@@ -478,6 +478,13 @@
 <p><a href="https://wiki.mozilla.org/Security/Server_Side_TLS" target="_blank" rel="noopener">https://wiki.mozilla.org/Security/Server_Side_TLS</a></p>
 <h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><p><a href="https://myssl.com/" target="_blank" rel="noopener">https://myssl.com/</a></p>
 <p><a href="https://www.ssllabs.com" target="_blank" rel="noopener">https://www.ssllabs.com</a></p>
+<h2 id="acme-sh"><a href="#acme-sh" class="headerlink" title="acme.sh"></a>acme.sh</h2><p><a href="https://github.com/Neilpang/acme.sh/wiki/How-to-issue-a-cert" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh/wiki/How-to-issue-a-cert</a></p>
+<p>wiki 里面没有说多个域名怎么配，其实就是直接把单个域名的合到一起就好了。就比如我</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --issue  -d oi-wiki.org -d *.oi-wiki.org -d oi-wiki.cf -d *.oi-wiki.cf --dns dns_dp</span><br></pre></td></tr></table></figure>
+<p>这里 dns_dp 是指 dnspod，第一个 -d 后面的域名是会显示在证书上（比如说访问 <a href="https://oi-wiki.cf" target="_blank" rel="noopener">https://oi-wiki.cf</a> ，会显示证书是给 <a href="https://oi-wiki.org" target="_blank" rel="noopener">https://oi-wiki.org</a> 的）。</p>
+<p>用 dns 来验证真的方便，因为配了旧域名到新域名的跳转，nginx 验证总是不过。</p>
+<p>改成 dns 之后就一波带走…… </p>
+<p><a href="https://github.com/Neilpang/acme.sh/tree/master/dnsapi" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh/tree/master/dnsapi</a></p>
 
       
     </div>
@@ -499,7 +506,7 @@
     <strong>Post author:  </strong>Ir1d</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/" title="nginx-HTTPS-配置">https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/</a>
+    <a href="https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/" title="Nginx HTTPS 配置">https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -537,8 +544,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/22/gitment-配置/" rel="prev" title="gitment-配置">
-                gitment-配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/22/gitment-配置/" rel="prev" title="Gitment 配置">
+                Gitment 配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -810,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个生成配置用的工具"><span class="nav-number">2.</span> <span class="nav-text">两个生成配置用的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">3.</span> <span class="nav-text">测试工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个生成配置用的工具"><span class="nav-number">2.</span> <span class="nav-text">两个生成配置用的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">3.</span> <span class="nav-text">测试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#acme-sh"><span class="nav-number">4.</span> <span class="nav-text">acme.sh</span></a></li></ol></div>
             
 
           </div>
@@ -973,7 +980,7 @@
       var disqus_config = function () {
         this.page.url = 'https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/';
         this.page.identifier = '2018/08/22/nginx-HTTPS-配置/';
-        this.page.title = 'nginx-HTTPS-配置';
+        this.page.title = 'Nginx HTTPS 配置';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

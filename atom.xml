@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-08-22T07:45:06.460Z</updated>
+  <updated>2018-09-01T11:51:55.622Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RESCAN 踩坑</title>
+    <link href="https://ir1d.cf/2018/09/01/RESCAN-%E8%B8%A9%E5%9D%91/"/>
+    <id>https://ir1d.cf/2018/09/01/RESCAN-踩坑/</id>
+    <published>2018-09-01T11:20:12.000Z</published>
+    <updated>2018-09-01T11:51:55.622Z</updated>
+    
+    <content type="html"><![CDATA[<p>Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining</p><a id="more"></a><p>用 Rain 800 中的 700 张当训练集，100张当验证集，用 rain100H 中取出来的 100 张当测试集。</p><p>release 的 data 里面 test_syn 其实是 val，training 其实是 train，testset 就自己去从 rain100H 里找 100 张吧。（我也不知道，我随便说的</p><ul><li>关于 DataLoader 就挂掉的问题：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    batch_t = next(dt_train)</span><br><span class="line"><span class="keyword">except</span> StopIteration:</span><br><span class="line">    dt_train = sess.get_dataloader(<span class="string">'train'</span>)</span><br><span class="line">    batch_t = next(dt_train)</span><br></pre></td></tr></table></figure><ul><li>关于 conda 怎么也装不上 pytorch 0.4</li></ul><p>上午怎么搞都只能装上 pytorch 0.12，可能是因为 cudnn 装不上更高版本吧……</p><p>然而人家 pip 直接就上了 0.4</p><ul><li>测试用 code 运行不起来</li></ul><p>因为 dataloader 和 train 的时候的不一样……</p><p>手写一下就吼了</p><p>对于这种 combine 到一起的图，掌握了 <code>np.hsplit(a, 切分个数)</code> 的新技能= =</p><p>以及还出现了多次把 ground truth 传进去测试的情况…… 不过发现一个很有意思的事情，ground truth 传进去之后输出也会丢失细节。</p><p>以及 <code>B, O = np.hsplit(img_pair, 2)</code> 被我写成了 <code>O, B = np.hsplit(img_pair, 2)</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Manipulating Attributes of Natural Scenes via Hallucination</title>
+    <link href="https://ir1d.cf/2018/09/01/Manipulating-Attributes-of-Natural-Scenes-via-Hallucination/"/>
+    <id>https://ir1d.cf/2018/09/01/Manipulating-Attributes-of-Natural-Scenes-via-Hallucination/</id>
+    <published>2018-09-01T01:43:21.000Z</published>
+    <updated>2018-09-01T12:33:06.915Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Manipulating Attributes of Natural Scenes via Hallucination</li><li>Everybody Dance Now</li></ul><a id="more"></a><h2 id="Manipulating-Attributes-of-Natural-Scenes-via-Hallucination"><a href="#Manipulating-Attributes-of-Natural-Scenes-via-Hallucination" class="headerlink" title="Manipulating Attributes of Natural Scenes via Hallucination"></a>Manipulating Attributes of Natural Scenes via Hallucination</h2><p><img src="https://i.loli.net/2018/09/01/5b8a81c289931.png" alt=""></p><p>本文提出的方法可以让人们直接操作自然场景中的 high-level 信息，从而转换场景。</p><p><img src="https://i.loli.net/2018/09/01/5b8a81c256db7.png" alt=""></p><p><img src="https://i.loli.net/2018/09/01/5b8a81c38c335.png" alt=""></p><h2 id="Everybody-Dance-Now"><a href="#Everybody-Dance-Now" class="headerlink" title="Everybody Dance Now"></a>Everybody Dance Now</h2><p><img src="https://i.loli.net/2018/09/01/5b8a86f0737c3.png" alt=""></p><p><img src="https://i.loli.net/2018/09/01/5b8a86f031a06.png" alt=""></p><p><img src="https://i.loli.net/2018/09/01/5b8a86f008017.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Manipulating Attributes of Natural Scenes via Hallucination&lt;/li&gt;
+&lt;li&gt;Everybody Dance Now&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>Gitment 配置</title>
@@ -490,59 +535,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu防止打字误触触摸板</title>
-    <link href="https://ir1d.cf/2018/07/09/ubuntu%E9%98%B2%E6%AD%A2%E6%89%93%E5%AD%97%E8%AF%AF%E8%A7%A6%E8%A7%A6%E6%91%B8%E6%9D%BF/"/>
-    <id>https://ir1d.cf/2018/07/09/ubuntu防止打字误触触摸板/</id>
-    <published>2018-07-09T06:05:33.000Z</published>
-    <updated>2018-07-09T06:06:36.009Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:atareao/atareao</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install touchpad-indicator</span><br></pre></td></tr></table></figure><p>ref: <a href="http://ubuntuhandbook.org/index.php/2018/04/install-touchpad-indicator-ubuntu-18-04-lts/" target="_blank" rel="noopener">http://ubuntuhandbook.org/index.php/2018/04/install-touchpad-indicator-ubuntu-18-04-lts/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="ubuntu" scheme="https://ir1d.cf/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Daily Notes 7.9</title>
-    <link href="https://ir1d.cf/2018/07/09/dailynotes-3/"/>
-    <id>https://ir1d.cf/2018/07/09/dailynotes-3/</id>
-    <published>2018-07-09T00:07:32.000Z</published>
-    <updated>2018-07-10T12:39:56.525Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>Image De-raining Using a Conditional Generative Adversarial Network</li><li>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</li><li>Image-to-Image Translation with Conditional Adversarial Networks</li></ul><a id="more"></a><h2 id="Image-De-raining-Using-a-Conditional-Generative-Adversarial-Network"><a href="#Image-De-raining-Using-a-Conditional-Generative-Adversarial-Network" class="headerlink" title="Image De-raining Using a Conditional Generative Adversarial Network"></a>Image De-raining Using a Conditional Generative Adversarial Network</h2><p>本文提出了用conditional-GAN来生成无雨背景的方法</p><p><img src="https://i.loli.net/2018/07/09/5b42bd0d27da8.png" alt="ID-GAN的网络结构"></p><p>生成器从雨图中学习生成无雨背景，然后判别器来判断是真实背景还是生成的</p><p>然后提出损失函数中不应只有 perceptual loss，还应当加入 per-pixel 的 loss 和 adversarial loss 一起，不过文中并没有提到三个loss的权重是怎么学出来的</p><p>最后提到缺点是不能处理图像上的白块，猜测可能是数据集中没有出现类似情况导致的，以及指出数据集难以包含整个 rain streak 的可能情况</p><h2 id="Unsupervised-Representation-Learning-with-Deep-Convolutional-Generative-Adversarial-Networks"><a href="#Unsupervised-Representation-Learning-with-Deep-Convolutional-Generative-Adversarial-Networks" class="headerlink" title="Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"></a>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</h2><p>本文介绍了从大量无标签数据集中学习可重复使用的特征表示的一些结果</p><p>文中也展示在图像数据集上用无监督的方法也可以得到很有趣的层次信息</p><p>文中总结了优化GAN的一些方法：</p><ul><li>在判别器用 strided convolution, 在生成器用 fractional convolution 来代替所有的 pooling 层</li><li>在判别器和生成器中用 batch normalization</li><li>用更深的结构来替换掉全连接的隐藏层</li><li>生成器里除了最后一层都用 ReLU 来做 activation，最后一层用 Tanh</li><li>判别器里所有层都用 LeakyReLU 做 activation （激活函数）</li></ul><h2 id="Image-to-Image-Translation-with-Conditional-Adversarial-Networks"><a href="#Image-to-Image-Translation-with-Conditional-Adversarial-Networks" class="headerlink" title="Image-to-Image Translation with Conditional Adversarial Networks"></a>Image-to-Image Translation with Conditional Adversarial Networks</h2><p>很多视觉的 task 可以看作是在把输入图像翻译成输出图像，本文提出的 cGAN 技术可以学到这种翻译的对应关系，也学到一个对应的 loss function 来训练这个对应关系。最为著名的应用是 pix2pix。</p><p>conditional GAN 学习一个 structured loss，惩罚网络的输出在结构上的不同。</p><p>这里的 conditional 的最大区别在于，输入的 edge map 也要喂给判别器。同时文中提出，使用 L1 距离代替 L2 距离来要求生成器的输出和 groud truth 更近，可以鼓励减少模糊。</p><p><code>U-net</code>看起来就是加上了 skip connection 的 encoder-decoder network 。比如给图片上色的时候，突出的边缘的位置信息是输入和输出共享的，如果直接把它们从输入层传到输出层（避免经过 bottle neck），情况会好很多。具体来说，<code>U-net</code>形式里面把第 i 层和第 n-i 层里所有的通道都通过 skip connection 直接连接起来</p><p>PatchGAN，就是每次对结构的惩罚是在一个 patch 的层级来操作的。就是对整个图而言，是每次考虑一个 <code>n * n</code> 的 patch 是真的还是假的。实验证明，甚至 n 和整个图的大小相比可以很小。这样下来判别器相当于把图片看作是一个 Markov random field，其中假设了距离超过一个 patch 的直径的像素点之间是独立的。这样的 PatchGAN 可以看作是一种 材质/风格 的 loss</p><p>文中还提到了一些优化，比如生成器要最大化$log\ D(x, G(x, z))$而不是最小化$log\ (1 - D(x, G(x, z)))$；另外在训练判别器的时候，把目标函数除以 2，用来减小 D 相对于 G 学习的速度，然后每次 D 下降一步，G 也下降一步。</p><p>文中还有个很神奇的地方，作者表示在 inference time，生成网络和训练的时候是完全一样使用的，就是说这里面的 dropout 部分在测试的时候也没有移除。</p><h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><blockquote><p>image patch</p></blockquote><p>图像块的意思= =</p><blockquote><p>Leaky ReLUs</p></blockquote><p>leaky ReLU 的特点是在 $x \leq 0$ （inactive）的时候允许有一个小的正梯度（0.01）</p><p>而 Parametric ReLU 在这里更进一步，让那个正梯度变成一个参数，在神经网络反向传播的时候可以得到更新</p><p>注意在$a \leq 1$的时候，PReLU 相当于 $max(x, ax)$，这个形式和 maxout 网络有一定关联</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;Image De-raining Using a Conditional Generative Adversarial Network&lt;/li&gt;
-&lt;li&gt;Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks&lt;/li&gt;
-&lt;li&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="summer2018" scheme="https://ir1d.cf/categories/summer2018/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-      <category term="GAN" scheme="https://ir1d.cf/tags/GAN/"/>
     
   </entry>
   

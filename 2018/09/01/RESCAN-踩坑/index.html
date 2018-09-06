@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-01T11:51:55.622Z">
+<meta property="og:updated_time" content="2018-09-06T14:19:10.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RESCAN 踩坑">
 <meta name="twitter:description" content="Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining">
@@ -403,16 +403,46 @@
                 
               
 
-              <time title="Created: 2018-09-01 19:20:12 / Modified: 19:51:55" itemprop="dateCreated datePublished" datetime="2018-09-01T19:20:12+08:00">2018-09-01</time>
+              <time title="Created: 2018-09-01 19:20:12" itemprop="dateCreated datePublished" datetime="2018-09-01T19:20:12+08:00">2018-09-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-06 22:19:10" itemprop="dateModified" datetime="2018-09-06T22:19:10+08:00">2018-09-06</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -474,6 +504,29 @@
 <p>对于这种 combine 到一起的图，掌握了 <code>np.hsplit(a, 切分个数)</code> 的新技能= =</p>
 <p>以及还出现了多次把 ground truth 传进去测试的情况…… 不过发现一个很有意思的事情，ground truth 传进去之后输出也会丢失细节。</p>
 <p>以及 <code>B, O = np.hsplit(img_pair, 2)</code> 被我写成了 <code>O, B = np.hsplit(img_pair, 2)</code></p>
+<p>测出来比它文章里高很多啊QAQ ，原来是这不同的代码测起来还可以结果不一样的。</p>
+<ul>
+<li>test 的时候 batch_size 改成 1</li>
+</ul>
+<p>刚开始直接用的训练的时候的 64， 发现不能对齐，就把数据都给转成一样大小的了</p>
+<ul>
+<li><p>np.rot90 到底是不是无损的</p>
+</li>
+<li><p>莫名其妙测出来的 ssim 0.98 最后还是因为搞错了数据集</p>
+</li>
+</ul>
+<p>后来又测出来一次 0.98，仔细检查了很久过程上没有出问题…… 最后发现果然= =，大家都这么厉害了……</p>
+<ul>
+<li>cv2.imwrite() 和 img.imsave() 的输出效果好像不太一样，混用导致了色偏</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// import matplotlib.image as img</span><br></pre></td></tr></table></figure>
+<p>我一起写到这里吧……</p>
+<p>eigen13 的 code 测出来会有一圈边框…… 导致直接测的话 psnr 很低 = =，删掉边框会正常一些。</p>
+<p>测 Rain100L 上面 psnr 现在大家做到快 40 了，真的可怕= =</p>
+<p>话说昨天跑 DetailNet 发现它是一个一个图读进来的 hmmm</p>
+<p>然后发现 DetailNet 只能测 RGB 的图，单通道的 model 喂不进去…… 然而 RESCAN 就可以的啧</p>
+<p>DetailNet 训出来 Loss 很低，但是也有之前跑 SRGAN 的时候遇到的纯蓝色色块之类的现象= =</p>
+<p>很迷，不知道为啥</p>
 
       
     </div>
@@ -532,6 +585,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/03/Rain-Streak-Removal-for-Single-Image-via-Kernel-Guided-CNN/" rel="prev" title="Rain Streak Removal for Single Image via Kernel Guided CNN">
+                Rain Streak Removal for Single Image via Kernel Guided CNN <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -610,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -748,7 +805,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

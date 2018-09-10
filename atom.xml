@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-09-10T13:55:20.434Z</updated>
+  <updated>2018-09-10T14:25:39.190Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DailyNotes 9.10</title>
+    <link href="https://ir1d.cf/2018/09/10/DailyNotes-9-10/"/>
+    <id>https://ir1d.cf/2018/09/10/DailyNotes-9-10/</id>
+    <published>2018-09-10T14:22:48.000Z</published>
+    <updated>2018-09-10T14:25:39.190Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实今天没有读什么文章，不过昨天配了 reddit 的订阅，感觉很厉害。</p><p>用上 hexoeditor 以及 hexo new 学会加引号之后，感觉操作上顺畅了很多。</p><a id="more"></a><h2 id="Are-result-images-in-research-papers-on-GANs-and-image-attribution-hand-picked-or-random"><a href="#Are-result-images-in-research-papers-on-GANs-and-image-attribution-hand-picked-or-random" class="headerlink" title="Are result images in research papers on GANs and image attribution hand-picked or random"></a>Are result images in research papers on GANs and image attribution hand-picked or random</h2><p>很有趣的一个问题，文章中的效果图是随机的吗，还是精心挑选的？</p><p>显然这是挑出来的吧（<br>肯定要选效果最好的啊<br>甚至还有这样的评论</p><blockquote><p>In a presentation by Goodfellow he says that he copy pasted the original images as the gan quality wasnt very good.</p></blockquote><p>“我没有撒谎，我只是没有说出全部真相”<br>感觉大家都是在挑对自己有利的事实来说话……</p><h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实今天没有读什么文章，不过昨天配了 reddit 的订阅，感觉很厉害。&lt;/p&gt;
+&lt;p&gt;用上 hexoeditor 以及 hexo new 学会加引号之后，感觉操作上顺畅了很多。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
     <title>summer2018 总结</title>
     <link href="https://ir1d.cf/2018/09/10/summer2018-%E6%80%BB%E7%BB%93/"/>
     <id>https://ir1d.cf/2018/09/10/summer2018-总结/</id>
     <published>2018-09-10T08:08:11.000Z</published>
-    <updated>2018-09-10T13:55:20.434Z</updated>
+    <updated>2018-09-10T16:19:30.248Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>summer2018</li></ul><a id="more"></a><p>为什么今天来写呢…… 因为今天自作主张给自己放了一天假，整理一下XD</p><p>期末考之后自信满满，觉得肯定成绩特别好，然而后来发现完全翻车，比上学期还惨烈。<br>对于这种事情我觉得还是完全是自己的原因，比如期中的时候就说期末一定要考这块内容，然后期末的时候忙着忙着就忘记了…… 然而期中的时候我这块没有错，期末的时候记混了然后就翻车了。<br>期中的时候就有遇到细节上翻车，期末的时候又因为哪里少了什么什么结果扣了一堆分……<br>完全是在造孽啊，你想大一干了这么多事情，有什么可以写进 cv 的？最后不还是 GPA 写了进去= =</p><p>运气好的是，刘老师收留了我，虽然感觉自己可能很快就被自己劝退了，但是感觉接触到这个崭新的世界也是一件蛮有意思的事情呢（啧，感觉自己最近很喜欢说“一件蛮有意思的事情呢”）。<br>这个夏天主要在学一些很基础的事情，开始写周报，读了一些论文，python 水平有了很大提升，也认识到了一些局限，不过也认识到了很 nice 的新朋友们，也有了一些希望。</p><p>后来去搞 OI Wiki，也下了很大功夫，最大的决心来自于程设考试前立了个 flag，说考完试我肯定要把这些东西好好总结总结…… 然后考完试就忘记了…… 有天夜里突然想起来，到 ExOJ 群里问了下 “你们觉得怎样”，然后趁机拉了个群。开始的时候其实完全是自己在写，后来跟高中的几个小伙伴交流了一下，得到了一些支持，再后来松给了我一份资料Qrz…… 然后就很努力地在宣传，非常感谢各方朋友们的支持，遇到了一些志同道合的小伙伴，感觉还是很有希望的呢。<br>关于 2016-2018，在 footer 里这么写，是因为用了一些 2016 年的和褚老板郑老板一起搞的那个项目里的东西啦～<br>至于为什么想要做这个 wiki，那就说来话长暂且不表……<br>这个暑假搞这个项目让我明白了很多人和很多事，感觉如果没有这段经历，可能不会有这么多思考吧 XD<br>折腾的过程中也涨了很多姿势，虽然不知道以后能不能用得上，但是还是蛮有成就感的呢</p><p>开学之后瀚哥就不留在北京了，不知何时才能再相见…… 十分感激这段时间的帮助，感谢对我的种种 naive 的包容，这段经历对我改变很大，谢谢！<br>woc hexo 竟然不需要空行就能分段…… 学到了</p><p>军训…… 太扎心了，暂且不表。三院的大夫也非常 nice，他不和你说治不好了，他说是终身疾病…………</p><p>下学期课一定要好好学习…… 别去搞什么乱七八糟的了。很久以前就看过“时间规划是王道”，然而还是把自己搞得一团糟。写个人陈述的时候找到了很有趣的一段话，“I will prioritize my interests”，感觉是这样……</p><p>要好好的</p><p>昨天起八听说 shaonv 去了头条，<br>我们都有光明的未来</p>]]></content>
+    <content type="html"><![CDATA[<ul><li>summer2018</li></ul><a id="more"></a><p>为什么今天来写呢…… 因为今天自作主张给自己放了一天假，整理一下XD</p><p>期末考之后自信满满，觉得肯定成绩特别好，然而后来发现完全翻车，比上学期还惨烈。<br>对于这种事情我觉得还是完全是自己的原因，比如期中的时候就说期末一定要考这块内容，然后期末的时候忙着忙着就忘记了…… 然而期中的时候我这块没有错，期末的时候记混了然后就翻车了。<br>期中的时候就有遇到细节上翻车，期末的时候又因为哪里少了什么什么结果扣了一堆分……<br>完全是在造孽啊，你想大一干了这么多事情，有什么可以写进 cv 的？最后不还是 GPA 写了进去= =</p><p>运气好的是，刘老师收留了我，虽然感觉自己可能很快就被自己劝退了，但是感觉接触到这个崭新的世界也是一件蛮有意思的事情呢（啧，感觉自己最近很喜欢说“一件蛮有意思的事情呢”）。<br>这个夏天主要在学一些很基础的事情，开始写周报，读了一些论文，python 水平有了很大提升，也认识到了一些局限，不过也认识到了很 nice 的新朋友们，也有了一些希望。万分感激！</p><p>后来去搞 OI Wiki，也下了很大功夫，最大的决心来自于程设考试前立了个 flag，说考完试我肯定要把这些东西好好总结总结…… 然后考完试就忘记了…… 有天夜里突然想起来，到 ExOJ 群里问了下 “你们觉得怎样”，然后趁机拉了个群。开始的时候其实完全是自己在写，后来跟高中的几个小伙伴交流了一下，得到了一些支持，再后来松给了我一份资料Qrz…… 然后就很努力地在宣传，非常感谢各方朋友们的支持，遇到了一些志同道合的小伙伴，感觉还是很有希望的呢。<br>关于 2016-2018，在 footer 里这么写，是因为用了一些 2016 年的和褚老板郑老板一起搞的那个项目里的东西啦～<br>至于为什么想要做这个 wiki，那就说来话长暂且不表……<br>这个暑假搞这个项目让我明白了很多人和很多事，感觉如果没有这段经历，可能不会有这么多思考吧 XD<br>折腾的过程中也涨了很多姿势，虽然不知道以后能不能用得上，但是还是蛮有成就感的呢</p><p>开学之后瀚哥就不留在北京了，不知何时才能再相见…… 十分感激这段时间的帮助，感谢对我的种种 naive 的包容，这段经历对我改变很大，谢谢！<br>woc hexo 竟然不需要空行就能分段…… 学到了</p><p>军训…… 太扎心了，暂且不表。三院的大夫也非常 nice，他不和你说治不好了，他说是终身疾病…………</p><p>下学期课一定要好好学习…… 别去搞什么乱七八糟的了。很久以前就看过“时间规划是王道”，然而还是把自己搞得一团糟。写个人陈述的时候找到了很有趣的一段话，“I will prioritize my interests”，感觉是这样……</p><p>要好好的</p><p>昨天起八听说 shaonv 去了头条，<br>我们都有光明的未来，<br>嗯</p>]]></content>
     
     <summary type="html">
     
@@ -512,31 +535,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python对比两个图片的差异并记录</title>
-    <link href="https://ir1d.cf/2018/07/15/python%E5%AF%B9%E6%AF%94%E4%B8%A4%E4%B8%AA%E5%9B%BE%E7%89%87%E7%9A%84%E5%B7%AE%E5%BC%82%E5%B9%B6%E8%AE%B0%E5%BD%95/"/>
-    <id>https://ir1d.cf/2018/07/15/python对比两个图片的差异并记录/</id>
-    <published>2018-07-14T16:48:40.000Z</published>
-    <updated>2018-07-30T00:49:37.215Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image, ImageChops, ImageStat</span><br><span class="line">im1 = Image.open(&quot;a.jpg&quot;)</span><br><span class="line">im2 = Image.open(&quot;b.jpg&quot;)</span><br><span class="line">diff = ImageChops.difference(im1, im2)</span><br><span class="line">diff.show()</span><br><span class="line">diff.save(&quot;c.jpg&quot;)</span><br><span class="line">stat = ImageStat.Stat(diff)</span><br><span class="line">sum_channel_values = sum(stat.mean)</span><br><span class="line">max_all_channels = len(stat.mean) * 100</span><br><span class="line">diff_ratio = sum_channel_values/max_all_channels</span><br><span class="line">print(diff_ratio)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
     
   </entry>
   

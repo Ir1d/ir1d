@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-06T14:19:10.225Z">
+<meta property="og:updated_time" content="2018-09-12T14:24:47.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RESCAN 踩坑">
 <meta name="twitter:description" content="Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-09-06 22:19:10" itemprop="dateModified" datetime="2018-09-06T22:19:10+08:00">2018-09-06</time>
+                <time title="Modified: 2018-09-12 22:24:47" itemprop="dateModified" datetime="2018-09-12T22:24:47+08:00">2018-09-12</time>
               
             
           </span>
@@ -512,6 +512,8 @@
 <ul>
 <li><p>np.rot90 到底是不是无损的</p>
 </li>
+<li><p>np.narrow 是对闭区间操作的 [l, l + len]</p>
+</li>
 <li><p>莫名其妙测出来的 ssim 0.98 最后还是因为搞错了数据集</p>
 </li>
 </ul>
@@ -527,6 +529,17 @@
 <p>然后发现 DetailNet 只能测 RGB 的图，单通道的 model 喂不进去…… 然而 RESCAN 就可以的啧</p>
 <p>DetailNet 训出来 Loss 很低，但是也有之前跑 SRGAN 的时候遇到的纯蓝色色块之类的现象= =</p>
 <p>很迷，不知道为啥</p>
+<hr>
+<ul>
+<li><p>cv2.imwrite() 和 matplotlib 里面的img.imsave() 不能混用</p>
+</li>
+<li><p>test 的时候 batch_size 要改成 1，因为两个代码都是把结果 concat 起来，可能原paper的数据集图片都是一样大的</p>
+</li>
+<li><p>不同的层要分开定义，否则实际上相当于 share weight 了</p>
+</li>
+<li><p>pytorch_total_params = sum(p.numel() for p in model.parameters())，这个会把model里定义的东西都算进去，求出来的不一定是实际上使用的 parameter 个数。</p>
+</li>
+</ul>
 
       
     </div>
@@ -667,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -813,7 +826,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">54</span>
+                      
+                    
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -48,7 +48,7 @@
     <link href="https://ir1d.cf/2018/09/17/DailyNotes-18-9-17/"/>
     <id>https://ir1d.cf/2018/09/17/DailyNotes-18-9-17/</id>
     <published>2018-09-17T15:21:57.000Z</published>
-    <updated>2018-09-17T16:03:10.387Z</updated>
+    <updated>2018-09-18T10:54:56.311Z</updated>
     
     <content type="html"><![CDATA[<ul><li>ics</li><li>数算实习</li></ul><a id="more"></a><p>今日体验了 ics…… 感觉看日程表即将炸裂 QAQ</p><p>数算实习讲了一节课并查集…… 惊了它竟然在算导上单独占一章</p><hr><p>nan 平方 $\geq 0$</p><p>ics 课上讨论是不是浮点数平方大于等于 0 一直成立……</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">1</span>/<span class="number">0.</span>;</span><br><span class="line"><span class="keyword">if</span> (x * x &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"= ="</span>);</span><br></pre></td></tr></table></figure><hr><p>平均复杂度 &amp; 平摊</p><p>说一下我的理解<br>前者是指输入满足某种概率分布，然后考虑输入的平均情况进行分析。<br>后者应该是把总代价平均到一个周期内来承担。</p>]]></content>
     

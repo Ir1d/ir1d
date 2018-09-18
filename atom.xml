@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-09-17T16:03:10.387Z</updated>
+  <updated>2018-09-18T10:54:09.822Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算导并查集笔记</title>
+    <link href="https://ir1d.cf/2018/09/18/%E7%AE%97%E5%AF%BC%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ir1d.cf/2018/09/18/算导并查集笔记/</id>
+    <published>2018-09-18T08:33:00.000Z</published>
+    <updated>2018-09-18T10:54:09.822Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>算法导论并查集部分笔记</li></ul><p>CLRS 上面称它为“用于不相交集合的数据结构”。（第 21 章）</p><a id="more"></a><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>我们要找一个 disjoint-set data structure 维护一个不相交动态集的集合。每个集合有一个代表元。在很多应用中，我们不关心哪个成员被用来代表，只关心动态集合的代表不应当在动态集合没有修改的时候发生变化。</p><p>当然，这个代表元并非随便选取，可能有时会有某种规则（比如选取最小的元素）</p><p>我们希望支持以下三中操作：</p><p><code>MAKE-SET(x)</code>：建立一个新的集合。<br><code>UNION(x, y)</code>：合并包含 x 和 y 的两个动态集合。<br><code>FIND-SET(x)</code>：返回一个指针，指向包含 x 的集合的代表。</p><p>不难发现，这样的数据结构可以用来快速维护一个无向图的连通分量。</p><h2 id="链表表示"><a href="#链表表示" class="headerlink" title="链表表示"></a>链表表示</h2><p>每个集合的对象包含 head 属性和 tail 属性， head 属性指向表的第一个对象， tail 属性指向最后一个对象。链表中的每个对象都包含一个集合成员。</p><p>在这种表示法中，UNION 操作的耗时最多，对于每个对象，我们必须更新指向集合对象的指针，这与所在链表长度呈线性关系。</p><p>事实上，一个 UNION 操作的摊还时间为 $\Theta(n)$</p><p><strong>加权合并启发式策略</strong>：如果两个集合都有 $\Omega(n)$ 个成员</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;算法导论并查集部分笔记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CLRS 上面称它为“用于不相交集合的数据结构”。（第 21 章）&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="算法导论" scheme="https://ir1d.cf/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+      <category term="并查集" scheme="https://ir1d.cf/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+  </entry>
   
   <entry>
     <title>DailyNotes 18/9/17</title>
@@ -504,31 +531,6 @@
       <category term="opencv" scheme="https://ir1d.cf/tags/opencv/"/>
     
       <category term="python" scheme="https://ir1d.cf/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ss在局域网共享</title>
-    <link href="https://ir1d.cf/2018/07/30/ss%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/"/>
-    <id>https://ir1d.cf/2018/07/30/ss在局域网共享/</id>
-    <published>2018-07-30T00:48:19.000Z</published>
-    <updated>2018-07-30T00:49:44.491Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc</a></p><p>看这里有一个 <code>-b &lt;local_address&gt;</code></p><p>在 <code>ss-local</code> 的命令后面加上 <code>-b 0.0.0.0</code> 就好了= =</p><p>如果是用配置文件，写法是 <a href="https://github.com/shadowsocks/shadowsocks-libev/issues/1441#issuecomment-293134272" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-libev/issues/1441#issuecomment-293134272</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks-libev/blob/master/doc/ss-local.asciidoc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://githu
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="shadowsocks" scheme="https://ir1d.cf/tags/shadowsocks/"/>
     
   </entry>
   

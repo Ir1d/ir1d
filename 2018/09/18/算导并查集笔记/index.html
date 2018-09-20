@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="算法导论并查集部分笔记  CLRS 上面称它为“用于不相交集合的数据结构”。（第 21 章）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-18T10:54:09.822Z">
+<meta property="og:updated_time" content="2018-09-18T13:41:44.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算导并查集笔记">
 <meta name="twitter:description" content="算法导论并查集部分笔记  CLRS 上面称它为“用于不相交集合的数据结构”。（第 21 章）">
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2018-09-18 16:33:00 / Modified: 18:54:09" itemprop="dateCreated datePublished" datetime="2018-09-18T16:33:00+08:00">2018-09-18</time>
+              <time title="Created: 2018-09-18 16:33:00 / Modified: 21:41:44" itemprop="dateCreated datePublished" datetime="2018-09-18T16:33:00+08:00">2018-09-18</time>
             
 
             
@@ -476,7 +476,7 @@
 </ul>
 <p>CLRS 上面称它为“用于不相交集合的数据结构”。（第 21 章）</p>
 <a id="more"></a>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>我们要找一个 disjoint-set data structure 维护一个不相交动态集的集合。每个集合有一个代表元。在很多应用中，我们不关心哪个成员被用来代表，只关心动态集合的代表不应当在动态集合没有修改的时候发生变化。</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>我们要找一个 disjoint-set data structure 维护一个不相交动态集的集合。每个集合有一个代表元。在很多应用中，我们不关心哪个成员被用来代表，只关心动态集合的代表不应当在动态集合没有修改的时候发生变化。</p>
 <p>当然，这个代表元并非随便选取，可能有时会有某种规则（比如选取最小的元素）</p>
 <p>我们希望支持以下三中操作：</p>
 <p><code>MAKE-SET(x)</code>：建立一个新的集合。<br><code>UNION(x, y)</code>：合并包含 x 和 y 的两个动态集合。<br><code>FIND-SET(x)</code>：返回一个指针，指向包含 x 的集合的代表。</p>
@@ -484,7 +484,14 @@
 <h2 id="链表表示"><a href="#链表表示" class="headerlink" title="链表表示"></a>链表表示</h2><p>每个集合的对象包含 head 属性和 tail 属性， head 属性指向表的第一个对象， tail 属性指向最后一个对象。链表中的每个对象都包含一个集合成员。</p>
 <p>在这种表示法中，UNION 操作的耗时最多，对于每个对象，我们必须更新指向集合对象的指针，这与所在链表长度呈线性关系。</p>
 <p>事实上，一个 UNION 操作的摊还时间为 $\Theta(n)$</p>
-<p><strong>加权合并启发式策略</strong>：如果两个集合都有 $\Omega(n)$ 个成员</p>
+<p><strong>加权合并启发式策略</strong>：如果两个集合都有 $\Omega(n)$ 个成员，则单个的 UNION 操作仍需要 $\Omega(n)$ 时间。而一个具有 m 个操作（三种一共）的操作序列，使用启发式合并，需要的时间为 $O(m + nlogn)$。</p>
+<p>由于每个 UNION 操作合并两个不相交集，因此至多执行 $n-1$ 次 UNION 操作。我们知道对于任意的 $k \leq n$，在 x 的指针被更新 $\lceil logk \rceil$ 次之后，结果集合一定至少有 k 个成员。因为最大集合至多包含 n 个成员，故每个对象的指针在所有的 UNION 操作中最多被更新 $\lceil logn \rceil$ 次。因此在所有的 UNION 操作中被更新的对象的指针总数为 $O(nlogn)$。</p>
+<h2 id="不相交集合森林"><a href="#不相交集合森林" class="headerlink" title="不相交集合森林"></a>不相交集合森林</h2><p>考虑更快的实现。我们用有根树来表示集合，树中每个结点包含一个成员，每棵树代表一个集合，在一个不相交集合森林中，每个成员仅指向父结点。每棵树的根包含集合的代表，且其为自己的父结点。<br>在之前的实现中，一个包含 $n-1$ 个 UNION 操作的序列可以构造出一个恰好有 n 个结点的线性链的树。我们需要使用下面两个 trick 来得到一个渐进最优的不相交集合数据结构。<br>这两种做法都是能改进运行时间的启发式策略。</p>
+<h3 id="按秩合并"><a href="#按秩合并" class="headerlink" title="按秩合并"></a>按秩合并</h3><p>类似上面链表中的加权合并启发式策略，每次使具有较少结点的树的根指向具有较多节点的树的根。算导中表示并不需要显式地记录每个结点为根的子树的大小，而是采用一种“易于分析”的方法。对于每个结点，维护一个<strong>秩</strong>，它表示该结点高度的一个上界。在使用按秩合并的时候，我们让具有较小秩的根指向具有较大秩的根。</p>
+<h3 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h3><p>在 FIND-SET 的时候，让查找路径的每个结点直接指向根。路径压缩并不改变任何结点的秩。</p>
+<h3 id="启发式策略对运行时间的影响"><a href="#启发式策略对运行时间的影响" class="headerlink" title="启发式策略对运行时间的影响"></a>启发式策略对运行时间的影响</h3><p>如果单独使用按秩合并或者路径压缩，他们每一个都能改善不相交集合森林上操作的运行时间。<br>单独按秩合并：$O(mlogn)$，且上界是紧的。<br>单独路径压缩：$\Omega(n+f \times (1+log_{2+f/n}n))$<br>然而只有<strong>一起使用</strong>的时候最坏情况运行时间为 $O(m\alpha(n))$，这里 $\alpha(n)$ 是阿克曼函数的反函数。</p>
+<h2 id="按秩合并-路径压缩的分析"><a href="#按秩合并-路径压缩的分析" class="headerlink" title="按秩合并+路径压缩的分析"></a>按秩合并+路径压缩的分析</h2><p>证明太硬核了…… 我要跳过它</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="脱机最小值"><a href="#脱机最小值" class="headerlink" title="脱机最小值"></a>脱机最小值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">OFF-LINE-MINIMUM(m, n)</span><br><span class="line">    for i = 1 to n</span><br><span class="line">        determine j such that i in K[j]</span><br><span class="line">        if j != m + 1</span><br><span class="line">            extracted[j] = i</span><br><span class="line">            let l be the smallest value greater than j for which set K[l] exists</span><br><span class="line">            K[l] = K[j] ∪ K[l], destroying K[j]</span><br><span class="line">    return extracted</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -543,6 +550,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/20/DailyNotes-18-9-20/" rel="prev" title="DailyNotes 18/9/20">
+                DailyNotes 18/9/20 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -630,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">91</span>
+                    <span class="site-state-item-count">92</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -825,7 +836,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">1.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表表示"><span class="nav-number">2.</span> <span class="nav-text">链表表示</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表表示"><span class="nav-number">2.</span> <span class="nav-text">链表表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不相交集合森林"><span class="nav-number">3.</span> <span class="nav-text">不相交集合森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按秩合并"><span class="nav-number">3.1.</span> <span class="nav-text">按秩合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径压缩"><span class="nav-number">3.2.</span> <span class="nav-text">路径压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启发式策略对运行时间的影响"><span class="nav-number">3.3.</span> <span class="nav-text">启发式策略对运行时间的影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按秩合并-路径压缩的分析"><span class="nav-number">4.</span> <span class="nav-text">按秩合并+路径压缩的分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考题"><span class="nav-number">5.</span> <span class="nav-text">思考题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脱机最小值"><span class="nav-number">5.1.</span> <span class="nav-text">脱机最小值</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1056,6 +1067,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

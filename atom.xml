@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-09-30T17:08:05.374Z</updated>
+  <updated>2018-10-02T06:56:29.190Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode-cli</title>
+    <link href="https://ir1d.cf/2018/10/02/leetcode-cli/"/>
+    <id>https://ir1d.cf/2018/10/02/leetcode-cli/</id>
+    <published>2018-10-02T06:54:39.000Z</published>
+    <updated>2018-10-02T06:56:29.190Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>LeetCode-cli</li></ul><a id="more"></a><p>一直想写一个 cli 工具来简化提交到 OJ 的过程= =</p><p>鸽了多年的 TerminalOJ 终于可以瞑目了吧……</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g leetcode-cli</span><br></pre></td></tr></table></figure><p><a href="https://skygragon.github.io/leetcode-cli/commands" target="_blank" rel="noopener">https://skygragon.github.io/leetcode-cli/commands</a></p><p>功能也蛮强大的说实话，要是能自带 alias 就好了 XD</p><p>我现在加上这两个，更方便一些</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> Leetcode=<span class="string">'leetcode'</span></span><br><span class="line"><span class="built_in">alias</span> Another=<span class="string">'leetcode show -q eDL -t algorithms -gxe'</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;LeetCode-cli&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="leetcode" scheme="https://ir1d.cf/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数算MOOC 3.4 思考题</title>
+    <link href="https://ir1d.cf/2018/10/01/%E6%95%B0%E7%AE%97MOOC-3-4-%E6%80%9D%E8%80%83%E9%A2%98/"/>
+    <id>https://ir1d.cf/2018/10/01/数算MOOC-3-4-思考题/</id>
+    <published>2018-10-01T01:52:07.000Z</published>
+    <updated>2018-10-01T01:58:36.962Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><ul><li>只用 front, rear 两个变量，长度为 n 的队列，最多能容纳多少个元素？</li></ul><p>最多容纳 n-1 个元素。一个最多元素个数为 n-1 的队列，它有 n 个状态，需要用 front 和 rear 的距离来表示这种状态，所以需要一个空位置。</p><ul><li>如果不愿意浪费队列的存储单元，还可以怎么办？</li></ul><p>可以把这个存储单元拿出来，单独开一个变量表示队列元素个数或者表示队列是否为空。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;只用 front, rear 两个变量，长度为 n 的队列，最多能容纳多少个元素？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最多容纳 n-1 个元素。一个最多元素个数为 n-1 的队列，它有 n 个状态，需要用 front 和 rear 
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
+    
+      <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么 pop() 返回值是 void</title>
@@ -471,60 +526,6 @@
     
     
       <category term="OIWiki" scheme="https://ir1d.cf/tags/OIWiki/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>derain2018部分小结</title>
-    <link href="https://ir1d.cf/2018/08/12/derain2018%E9%83%A8%E5%88%86%E5%B0%8F%E7%BB%93/"/>
-    <id>https://ir1d.cf/2018/08/12/derain2018部分小结/</id>
-    <published>2018-08-11T16:42:43.000Z</published>
-    <updated>2018-08-11T17:03:24.954Z</updated>
-    
-    <content type="html"><![CDATA[<p>直接粘过来好了，和大家分享一下</p><p>内容是 9 篇 single image deraining 的工作，是不完全整理。</p><p>paper list 参见：<a href="https://github.com/flyywh/Rain-Removal" target="_blank" rel="noopener">https://github.com/flyywh/Rain-Removal</a></p><a id="more"></a><h2 id="xUnit"><a href="#xUnit" class="headerlink" title="xUnit"></a>xUnit</h2><ul><li>Spatial Activation instead of perpixel activation —&gt; learn</li><li>use fewer layers to match the performance (also fewer param)</li><li>use less training example</li><li>一个位置的信息通过 ReLU 的时候要么乘上0 要么乘1。 考虑改成乘 $e^{-d_k^2}$</li><li>xUnit 的结构既有 nonlineariry(ReLU)，又有spatial processing (depth-wise convolution)</li><li>可视化结果发现很多 xnet activation和1（白色）接近，说明更多的channel 参与了 denoising</li><li>它把denoising 的 network 直接用来去雨，得到很不错的结果</li></ul><h2 id="DID-MDN"><a href="#DID-MDN" class="headerlink" title="DID-MDN"></a>DID-MDN</h2><ul><li>一个网络可能不能很好处理不同密集程度的雨线</li><li>文中把去雨过程分成两部分，先对雨线密集程度进行分类，然后再进行去雨</li><li>分类的过程是用和后面去雨那部分一样的网络结构，相当于是两个 branch，后一个branch另外加上了雨线密集程度的信息。</li><li>为什么不直接用 vgg fine-tune 呢？因为 vgg tend to pay more attention to localize the discriminative objects，雨线相对较小，难以在 high-level feature 中 很好地 localize.</li><li>training detail</li><li>classfier 的 训练是two stage，刚开始单独训练 resudual feature extraction network，来估计 residual part，然后再用 estimation 结果当做输入带训练 classification sub-network。最后再 joint optimize</li><li>multi scale 是考虑雨线的大小不一样，用不同的 receptive field 来捕捉这方面信息。</li><li>表格信息（NLEDN 里面好像没有这篇里面自己效果这么好）</li></ul><h2 id="Removing-rain-based-on-a-cycle-generative-adversarial-network"><a href="#Removing-rain-based-on-a-cycle-generative-adversarial-network" class="headerlink" title="Removing rain based on a cycle generative adversarial network"></a>Removing rain based on a cycle generative adversarial network</h2><p>CycleGAN-based</p><ul><li>Industrial Electronics and Applications (ICIEA)</li><li>深研院的</li><li>Loss functions</li><li>Cycle loss: strengthen the generator ability to distinguish between rain line and background</li><li>Color loss: to solve the problem of color shift in deraining images.</li><li>Texturue loss (transform into grayscale)</li><li>Dark channel loss</li><li>TV Loss : obtain a smooth result</li></ul><h2 id="DualCNN"><a href="#DualCNN" class="headerlink" title="DualCNN"></a>DualCNN</h2><ul><li>DualCNN。将structure与details分别训练</li><li>loss 是 l2 loss</li><li>detail + structure</li><li>ignore detail_loss in derain</li><li>Our goal is to learn the filtered image which does not contain rich details. —&gt; $\gamma = 0$</li><li>用在 derain 的时候，structure 部分是用的 clean image</li></ul><h2 id="Residual-Guide-Network"><a href="#Residual-Guide-Network" class="headerlink" title="Residual-Guide Network"></a>Residual-Guide Network</h2><ul><li>把 Basline block 简单串联起来效果并不好，需要利用中间信息来引导后面的 block 提取新的信息。</li><li>每一个大 block 里面是不断循环的（相当于是用同样的卷积层） （kernel reuse）</li><li>后面的每一个小块都加上最开头的那个小块（propagate all information forward from output of the first layer within each block）</li><li>最后面用 1x1 卷积 来 merge 所有的中间结果得到最终结果</li><li>ResGuideNet_5 是有 5 个 大block 且 没有进行 merge的</li></ul><h2 id="Semi-supervised-CNN-for-Single-Image-Rain-Removal"><a href="#Semi-supervised-CNN-for-Single-Image-Rain-Removal" class="headerlink" title="Semi-supervised CNN for Single Image Rain Removal"></a>Semi-supervised CNN for Single Image Rain Removal</h2><ul><li>the short-of-training-sample and bias-to-supervised-sample issues can be evidently alleviated</li><li>use the network to  formulate the residual between an input and its expected clear image (as a mixture of gaussian distribution)</li><li>objective function is the combination of supervised data loss (least square loss) and unsupervised data loss</li><li>optimized by least square residuals on supervised samples</li><li><p>&amp; patch-wised MoG (P-MoG) loss on unsupervised ones</p></li><li><p>网络的输出是 negative residual (opposite of the rain layer)</p></li><li>非监督部分：最小化 negative 雨线分布的 log-likelihood</li></ul><h2 id="NLEDN"><a href="#NLEDN" class="headerlink" title="NLEDN"></a>NLEDN</h2><ul><li>non-locally enhanced encoder-decoder network</li><li>fully exploit hierarchical features &amp; capture the long-distance dependencies and structural information</li><li>multi-scale non-local enhancement (原图分成8x8块)</li><li>dense block 和 resguide 一样</li></ul><h2 id="Joint-Bi-Layer-Optimize"><a href="#Joint-Bi-Layer-Optimize" class="headerlink" title="Joint Bi-Layer Optimize"></a>Joint Bi-Layer Optimize</h2><ul><li>locate rain-dominated regions &amp; estimate dominant direction</li><li><p>extract rain patches from regions to model the rain pattern</p></li><li><p>保真项</p></li><li>三个 prior</li><li>Sparsity prior: CSR: centralized sparse representation</li><li>Rain direction prior: 假设不和雨线方向垂直的 gradients 不太可能是属于雨线</li><li>Rain layer prior：在B上 regularize 可能会 smooth out 一些 背景信息，这个项的作用是 用 weighted laplacian term</li><li><p>优化方法</p><ul><li>先更新B<ul><li>交替地更新 $\alpha$ 和 B</li></ul></li><li>后更新R<h2 id="Simulated-Unsupervised-S-U-learning"><a href="#Simulated-Unsupervised-S-U-learning" class="headerlink" title="Simulated+Unsupervised (S+U) learning"></a>Simulated+Unsupervised (S+U) learning</h2></li></ul></li><li><p>uses unlabeled real data to refine the synthetic images</p></li><li>refiner network</li><li>l_real指的是refine之后的合成图片(x_i’)和真实图片Y之间的loss。l_reg是原始合成图片x_i和被refine之后的合成图片的x_i’之间的loss。lambda是一个高参</li><li>Refiner的目标就是尽可能的糊弄判别器D，让判别器没有办法区分一个图片是real还是合成的。判别器D的目标正好相反，是尽可能的能够区分出来</li><li>self-regularization loss 就是让refine之后的图片像素点和原始的图片的像素点之间的差不要太大</li><li>用refined的历史图片作为一个buffer而不单单是当前的mini-batch来更新分类器</li><li>在每一轮分类器的训练中，我们先从当前的batch中采样b/2张图片，然后从大小为B的buffer中采样b/2张图片，合在一起来更新判别器的参数。然后这一轮之后，用新生成的b/2张图片来替换掉B中的b/2张图片</li><li>instead of global discriminator, out discriminator classifies all local image patches separately. 好处是输入更小，感受野更小，而且会对每张原图得到更多让判别器学习的指标</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;直接粘过来好了，和大家分享一下&lt;/p&gt;
-&lt;p&gt;内容是 9 篇 single image deraining 的工作，是不完全整理。&lt;/p&gt;
-&lt;p&gt;paper list 参见：&lt;a href=&quot;https://github.com/flyywh/Rain-Removal&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/flyywh/Rain-Removal&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="GAN" scheme="https://ir1d.cf/tags/GAN/"/>
-    
-      <category term="derain" scheme="https://ir1d.cf/tags/derain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>给mkdocs用上gitment</title>
-    <link href="https://ir1d.cf/2018/08/12/%E7%BB%99mkdocs%E7%94%A8%E4%B8%8Agitment/"/>
-    <id>https://ir1d.cf/2018/08/12/给mkdocs用上gitment/</id>
-    <published>2018-08-11T16:35:51.000Z</published>
-    <updated>2018-08-11T16:47:15.492Z</updated>
-    
-    <content type="html"><![CDATA[<p>我用的是 mkdocs-material 这个主题，作者代码、文档写得都很清楚，在 Github 上面也很活跃，反馈也很快。</p><p>换一套好用的评论系统，困难是 disqus 和 livere 访问速度都不太行，livere 更过分的是还要去调用一个 Google Analytics 的 js = =</p><p>决定试一下 gitment，发现用在 wiki 里面可以很好地避免标题过长，超过 issue 限制的问题（相对于个人博客乱写的标题而言）。</p><p>具体方法是改那个 <a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html" target="_blank" rel="noopener">disqus.html</a></p><p>然后部署的时候 <a href="https://github.com/24OI/OI-wiki/blob/master/build.sh#L21：" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/build.sh#L21：</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./static/disqus.html mkdocs-material/material/partials/integrations/disqus.html</span><br></pre></td></tr></table></figure><p>改的时候不要忘记留着 <a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L7：" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L7：</a></p><p><code>&lt;h2 id=&quot;__comments&quot;&gt; foo &lt;/h2&gt;</code>，这个 id 是用来在右侧的目录里面加一个到 “评论区” 的跳转。</p><p>上面这顿操作实际上就是替换了 disqus 加载 js 的过程，由于偷懒，在设置（mkdocs.yml）里面还是要标记成正在使用 disqus。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我用的是 mkdocs-material 这个主题，作者代码、文档写得都很清楚，在 Github 上面也很活跃，反馈也很快。&lt;/p&gt;
-&lt;p&gt;换一套好用的评论系统，困难是 disqus 和 livere 访问速度都不太行，livere 更过分的是还要去调用一个 Google 
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="gitment" scheme="https://ir1d.cf/tags/gitment/"/>
-    
-      <category term="mkdocs" scheme="https://ir1d.cf/tags/mkdocs/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-10-05T08:28:26.619Z</updated>
+  <updated>2018-10-06T17:02:47.598Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</title>
+    <link href="https://ir1d.cf/2018/10/06/Image-Blind-Denoising-With-Generative-Adversarial-Network-Based-Noise-Modeling/"/>
+    <id>https://ir1d.cf/2018/10/06/Image-Blind-Denoising-With-Generative-Adversarial-Network-Based-Noise-Modeling/</id>
+    <published>2018-10-06T15:49:49.000Z</published>
+    <updated>2018-10-06T17:02:47.598Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</li></ul><a id="more"></a><p>好久没学术了…… 这回轮到我 paperReading ，才好好整理一篇文章。</p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这篇文章中了 CVPR 2018 的 poster，处理的问题是 blind denoising，就是不知道噪声水平下的去噪。作者来自中山大学和 CVTE，看 title 真的好厉害，可惜一作二作窝都没有搜到什么信息，仰慕不得……</p><p>文章的方法是把 DCGAN 和 DnCNN 的框架给整合到一起了，整个流程是给一堆 noisy images 和一堆 clean images，不需要是 paired，然后先用 GAN 对噪声进行建模并得到大量噪声块。用生成的噪声块和 clean images 配对喂给 CNN 进行去噪。</p><h2 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h2><p><img src="https://i.loli.net/2018/10/07/5bb8eab515899.png" alt=""></p><p>第一步是进行 Noise Modeling，首先要提取噪声块。</p><p>噪声块提取得比较迷……<br>为了减弱原图背景的影响，提取 noise block 的时候要选取 weak background 的部分。<br>文中定义了一个 smooth patch，用噪声图像减去 smooth patch 的均值得到噪声块。<br>注：基于一个假设 —— 噪声分布的期望是 0<br><img src="https://i.loli.net/2018/10/07/5bb8eab4f2d38.png" alt=""><br>怎么找这种 patch 呢？$p_i$在原图上按照固定步长走，$q_j^i$ 是在 $p_i$ 上按照固定步长走。</p><p>作者表示，在高清大图中，有充分多的 eligible smooth patch，比如 sky、walls 可以用来提取。</p><p>第二步是送给 GAN 了，用 GAN 来解决 Noise Modeling 的任务。</p><p>GAN 的特点是提供 more diversity，而且 model implicitly 也可以效果更好。</p><p>文中使用的是 WGAN-GP。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab530209.png" alt=""></p><p>其他部分其实就是 DCGAN 的结构。</p><p>第三步是送给 CNN 了。这里使用的是 DnCNN 的结构，也是预测残差。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab528e89.png" alt=""></p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>测试分为四部分：</p><ol><li>Gaussian blind denoising task</li><li>mixture noise</li><li>realistic noise</li><li>compare noise samples</li></ol><p>测试用的数据集是 BSD68，DND 和 NIGHT。CNN 使用的干净图片来自 CLEAN1 和 CLEAN2 集合，文中并没有详细说是哪来的。</p><h3 id="Gaussian"><a href="#Gaussian" class="headerlink" title="Gaussian"></a>Gaussian</h3><p>训练过程中不提供 noise info。</p><p>GCBD 和 DnCNN-B 结果差不多好，作者表示这说明 GAN 生成的结果已经足够优秀了。</p><h3 id="Mixture"><a href="#Mixture" class="headerlink" title="Mixture"></a>Mixture</h3><p>Mixture Noise = 10% uniform noise $[-s, s]$ + 20% Gaussian N(0, 1) + 70% Gaussian N(0, 0.01)</p><p>这时 DnCNN-B 效果没有那么好了，作者表示是因为这时没有了 paired dataset</p><h3 id="Realworld"><a href="#Realworld" class="headerlink" title="Realworld"></a>Realworld</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab50ab23.png" alt=""></p><h3 id="Noise-samples"><a href="#Noise-samples" class="headerlink" title="Noise samples"></a>Noise samples</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab5903ac.png" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后作者表示有一点 limitation，是这里处理的 noise 都假设了是 additive noise with zero mean。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Image Blind Denoising With Generative Adversarial Network Based Noise Modeling&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>Minecraft 1.13 挂机钓鱼脚本</title>
@@ -88,9 +112,9 @@
       <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
-    
       <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
+    
+      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
     
   </entry>
   
@@ -496,33 +520,6 @@
       <category term="gitment" scheme="https://ir1d.cf/tags/gitment/"/>
     
       <category term="github" scheme="https://ir1d.cf/tags/github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx HTTPS 配置</title>
-    <link href="https://ir1d.cf/2018/08/22/nginx-HTTPS-%E9%85%8D%E7%BD%AE/"/>
-    <id>https://ir1d.cf/2018/08/22/nginx-HTTPS-配置/</id>
-    <published>2018-08-22T06:50:44.000Z</published>
-    <updated>2018-09-30T04:20:06.519Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a href="https://bjornjohansen.no/optimizing-https-nginx" target="_blank" rel="noopener">https://bjornjohansen.no/optimizing-https-nginx</a></p><p>这一套文都很厉害，包含了 nginx 以及 openssl 的安装、配置、优化。</p><p>以及真的佩服这位 dalao 给每篇文章都配上插图。</p><h2 id="两个生成配置用的工具"><a href="#两个生成配置用的工具" class="headerlink" title="两个生成配置用的工具"></a>两个生成配置用的工具</h2><p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">https://mozilla.github.io/server-side-tls/ssl-config-generator/</a></p><p><a href="https://wiki.mozilla.org/Security/Server_Side_TLS" target="_blank" rel="noopener">https://wiki.mozilla.org/Security/Server_Side_TLS</a></p><h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><p><a href="https://myssl.com/" target="_blank" rel="noopener">https://myssl.com/</a></p><p><a href="https://www.ssllabs.com" target="_blank" rel="noopener">https://www.ssllabs.com</a></p><h2 id="acme-sh"><a href="#acme-sh" class="headerlink" title="acme.sh"></a>acme.sh</h2><p><a href="https://github.com/Neilpang/acme.sh/wiki/How-to-issue-a-cert" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh/wiki/How-to-issue-a-cert</a></p><p>wiki 里面没有说多个域名怎么配，其实就是直接把单个域名的合到一起就好了。就比如我</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --issue  -d oi-wiki.org -d *.oi-wiki.org -d oi-wiki.cf -d *.oi-wiki.cf --dns dns_dp</span><br></pre></td></tr></table></figure><p>这里 dns_dp 是指 dnspod，第一个 -d 后面的域名是会显示在证书上（比如说访问 <a href="https://oi-wiki.cf" target="_blank" rel="noopener">https://oi-wiki.cf</a> ，会显示证书是给 <a href="https://oi-wiki.org" target="_blank" rel="noopener">https://oi-wiki.org</a> 的）。</p><p>用 dns 来验证真的方便，因为配了旧域名到新域名的跳转，nginx 验证总是不过。</p><p>改成 dns 之后就一波带走…… </p><p><a href="https://github.com/Neilpang/acme.sh/tree/master/dnsapi" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh/tree/master/dnsapi</a></p><h2 id="brotli"><a href="#brotli" class="headerlink" title="brotli"></a>brotli</h2><p><a href="https://www.howtoing.com/how-to-install-nginx-with-brotli-compression-on-ubuntu-1804" target="_blank" rel="noopener">https://www.howtoing.com/how-to-install-nginx-with-brotli-compression-on-ubuntu-1804</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;教程&quot;&gt;&lt;a href=&quot;#教程&quot; class=&quot;headerlink&quot; title=&quot;教程&quot;&gt;&lt;/a&gt;教程&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://bjornjohansen.no/optimizing-https-nginx&quot; target=&quot;_bla
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="nginx" scheme="https://ir1d.cf/tags/nginx/"/>
-    
-      <category term="https" scheme="https://ir1d.cf/tags/https/"/>
     
   </entry>
   

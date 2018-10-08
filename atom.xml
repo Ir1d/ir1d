@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-10-06T17:02:47.598Z</updated>
+  <updated>2018-10-08T17:09:21.881Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode [594] Longest Harmonious Subsequence</title>
+    <link href="https://ir1d.cf/2018/10/09/LeetCode-594-Longest-Harmonious-Subsequence/"/>
+    <id>https://ir1d.cf/2018/10/09/LeetCode-594-Longest-Harmonious-Subsequence/</id>
+    <published>2018-10-08T17:06:41.000Z</published>
+    <updated>2018-10-08T17:09:21.881Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>求一个最长的子序列，使得它的最大值和最小值的差恰好为 1</li></ul><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * [594] Longest Harmonious Subsequence</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/longest-harmonious-subsequence/description/</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * algorithms</span></span><br><span class="line"><span class="comment"> * Easy (41.66%)</span></span><br><span class="line"><span class="comment"> * Total Accepted:    26.9K</span></span><br><span class="line"><span class="comment"> * Total Submissions: 64.5K</span></span><br><span class="line"><span class="comment"> * Testcase Example:  '[1,3,2,2,5,2,3,7]'</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * We define a harmonious array is an array where the difference between its</span></span><br><span class="line"><span class="comment"> * maximum value and its minimum value is exactly 1.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Now, given an integer array, you need to find the length of its longest</span></span><br><span class="line"><span class="comment"> * harmonious subsequence among all its possible subsequences.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Example 1:</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Input: [1,3,2,2,5,2,3,7]</span></span><br><span class="line"><span class="comment"> * Output: 5</span></span><br><span class="line"><span class="comment"> * Explanation: The longest harmonious subsequence is [3,2,2,2,3].</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Note:</span></span><br><span class="line"><span class="comment"> * The length of the input array will not exceed 20,000.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>犯了几个错误……</p><p>局部变量没有赋初值……</p><p>然后调用来太多次 map 的操作…… 感觉复杂度有点爆炸</p><p>事实上这件事情并不需要 map，用 unordered_map 就好了…… 然后这样的话就只需要顺序地扫一遍就可以啦= =</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;求一个最长的子序列，使得它的最大值和最小值的差恰好为 1&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://ir1d.cf/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="LeetCode" scheme="https://ir1d.cf/tags/LeetCode/"/>
+    
+      <category term="HashMap" scheme="https://ir1d.cf/tags/HashMap/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</title>
     <link href="https://ir1d.cf/2018/10/06/Image-Blind-Denoising-With-Generative-Adversarial-Network-Based-Noise-Modeling/"/>
     <id>https://ir1d.cf/2018/10/06/Image-Blind-Denoising-With-Generative-Adversarial-Network-Based-Noise-Modeling/</id>
     <published>2018-10-06T15:49:49.000Z</published>
-    <updated>2018-10-06T17:02:47.598Z</updated>
+    <updated>2018-10-06T17:06:49.621Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</li></ul><a id="more"></a><p>好久没学术了…… 这回轮到我 paperReading ，才好好整理一篇文章。</p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这篇文章中了 CVPR 2018 的 poster，处理的问题是 blind denoising，就是不知道噪声水平下的去噪。作者来自中山大学和 CVTE，看 title 真的好厉害，可惜一作二作窝都没有搜到什么信息，仰慕不得……</p><p>文章的方法是把 DCGAN 和 DnCNN 的框架给整合到一起了，整个流程是给一堆 noisy images 和一堆 clean images，不需要是 paired，然后先用 GAN 对噪声进行建模并得到大量噪声块。用生成的噪声块和 clean images 配对喂给 CNN 进行去噪。</p><h2 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h2><p><img src="https://i.loli.net/2018/10/07/5bb8eab515899.png" alt=""></p><p>第一步是进行 Noise Modeling，首先要提取噪声块。</p><p>噪声块提取得比较迷……<br>为了减弱原图背景的影响，提取 noise block 的时候要选取 weak background 的部分。<br>文中定义了一个 smooth patch，用噪声图像减去 smooth patch 的均值得到噪声块。<br>注：基于一个假设 —— 噪声分布的期望是 0<br><img src="https://i.loli.net/2018/10/07/5bb8eab4f2d38.png" alt=""><br>怎么找这种 patch 呢？$p_i$在原图上按照固定步长走，$q_j^i$ 是在 $p_i$ 上按照固定步长走。</p><p>作者表示，在高清大图中，有充分多的 eligible smooth patch，比如 sky、walls 可以用来提取。</p><p>第二步是送给 GAN 了，用 GAN 来解决 Noise Modeling 的任务。</p><p>GAN 的特点是提供 more diversity，而且 model implicitly 也可以效果更好。</p><p>文中使用的是 WGAN-GP。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab530209.png" alt=""></p><p>其他部分其实就是 DCGAN 的结构。</p><p>第三步是送给 CNN 了。这里使用的是 DnCNN 的结构，也是预测残差。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab528e89.png" alt=""></p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>测试分为四部分：</p><ol><li>Gaussian blind denoising task</li><li>mixture noise</li><li>realistic noise</li><li>compare noise samples</li></ol><p>测试用的数据集是 BSD68，DND 和 NIGHT。CNN 使用的干净图片来自 CLEAN1 和 CLEAN2 集合，文中并没有详细说是哪来的。</p><h3 id="Gaussian"><a href="#Gaussian" class="headerlink" title="Gaussian"></a>Gaussian</h3><p>训练过程中不提供 noise info。</p><p>GCBD 和 DnCNN-B 结果差不多好，作者表示这说明 GAN 生成的结果已经足够优秀了。</p><h3 id="Mixture"><a href="#Mixture" class="headerlink" title="Mixture"></a>Mixture</h3><p>Mixture Noise = 10% uniform noise $[-s, s]$ + 20% Gaussian N(0, 1) + 70% Gaussian N(0, 0.01)</p><p>这时 DnCNN-B 效果没有那么好了，作者表示是因为这时没有了 paired dataset</p><h3 id="Realworld"><a href="#Realworld" class="headerlink" title="Realworld"></a>Realworld</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab50ab23.png" alt=""></p><h3 id="Noise-samples"><a href="#Noise-samples" class="headerlink" title="Noise samples"></a>Noise samples</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab5903ac.png" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后作者表示有一点 limitation，是这里处理的 noise 都假设了是 additive noise with zero mean。</p>]]></content>
+    <content type="html"><![CDATA[<ul><li>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</li></ul><a id="more"></a><p>好久没学术了…… 这回轮到我 paperReading ，才好好整理一篇文章。</p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这篇文章中了 CVPR 2018 的 poster，处理的问题是 blind denoising，就是不知道噪声水平下的去噪。作者来自中山大学和 CVTE，看 title 真的好厉害，可惜一作二作窝都没有搜到什么信息，仰慕不得……</p><p>文章的方法是把 DCGAN 和 DnCNN 的框架给整合到一起了，整个流程是给一堆 noisy images 和一堆 clean images，不需要是 paired，然后先用 GAN 对噪声进行建模并得到大量噪声块。用生成的噪声块和 clean images 配对喂给 CNN 进行去噪。</p><h2 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h2><p><img src="https://i.loli.net/2018/10/07/5bb8eab515899.png" alt=""></p><p>第一步是进行 Noise Modeling，首先要提取噪声块。</p><p>噪声块提取得比较迷……<br>为了减弱原图背景的影响，提取 noise block 的时候要选取 weak background 的部分。<br>文中定义了一个 smooth patch，用噪声图像减去 smooth patch 的均值得到噪声块。<br>注：基于一个假设 —— 噪声分布的期望是 0<br><img src="https://i.loli.net/2018/10/07/5bb8eab4f2d38.png" alt=""><br>怎么找这种 patch 呢？$p_i$在原图上按照固定步长走，$q_j^i$ 是在 $p_i$ 上按照固定步长走。</p><p>作者表示，在高清大图中，有充分多的 eligible smooth patch，比如 sky、walls 可以用来提取。</p><p>第二步是送给 GAN 了，用 GAN 来解决 Noise Modeling 的任务。</p><p>GAN 的特点是提供 more diversity，而且 model implicitly 也可以效果更好。</p><p>文中使用的是 WGAN-GP。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab530209.png" alt=""></p><p>其他部分其实就是 DCGAN 的结构。</p><p>第三步是送给 CNN 了。这里使用的是 DnCNN 的结构，也是预测残差。</p><p><img src="https://i.loli.net/2018/10/07/5bb8eab528e89.png" alt=""></p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>测试分为四部分：</p><ol><li>Gaussian blind denoising task</li><li>mixture noise</li><li>realistic noise</li><li>compare noise samples</li></ol><p>测试用的数据集是 BSD68，DND 和 NIGHT。CNN 使用的干净图片来自 CLEAN1 和 CLEAN2 集合，文中并没有详细说是哪来的。</p><h3 id="Gaussian"><a href="#Gaussian" class="headerlink" title="Gaussian"></a>Gaussian</h3><p>训练过程中不提供 noise info。</p><p>GCBD 和 DnCNN-B 结果差不多好，作者表示这说明 GAN 生成的结果已经足够优秀了。</p><h3 id="Mixture"><a href="#Mixture" class="headerlink" title="Mixture"></a>Mixture</h3><p>Mixture Noise = 10% uniform noise $[-s, s]$ + 20% Gaussian N(0, 1) + 70% Gaussian N(0, 0.01)</p><p>这时 DnCNN-B 效果没有那么好了，作者表示是因为这时没有了 paired dataset</p><h3 id="Realworld"><a href="#Realworld" class="headerlink" title="Realworld"></a>Realworld</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab50ab23.png" alt=""></p><h3 id="Noise-samples"><a href="#Noise-samples" class="headerlink" title="Noise samples"></a>Noise samples</h3><p><img src="https://i.loli.net/2018/10/07/5bb8eab5903ac.png" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后作者表示有一点 limitation，是这里处理的 noise 都假设了是 additive noise with zero mean。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/9b134f0e57f5" target="_blank" rel="noopener">https://www.jianshu.com/p/9b134f0e57f5</a><br><a href="https://mp.weixin.qq.com/s/Vb0sIXC7s0yMRfhZFeC-wg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Vb0sIXC7s0yMRfhZFeC-wg</a></p>]]></content>
     
     <summary type="html">
     
@@ -112,9 +138,9 @@
       <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
-    
       <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
+    
+      <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
     
   </entry>
   
@@ -493,33 +519,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitment 配置</title>
-    <link href="https://ir1d.cf/2018/08/22/gitment-%E9%85%8D%E7%BD%AE/"/>
-    <id>https://ir1d.cf/2018/08/22/gitment-配置/</id>
-    <published>2018-08-22T07:04:07.000Z</published>
-    <updated>2018-08-22T07:45:06.460Z</updated>
-    
-    <content type="html"><![CDATA[<p>Gitment 原版的貌似没有在维护，后来改用了 Gitmint （加了统计和翻译），然而发现 gitment 的评论区是一个裸的 textarea，外面没有包上 form，然后 mkdocs-material 是判断不在 form 里来触发搜索功能的关键字的…… <a href="https://github.com/Ir1d/gitment/issues/20" target="_blank" rel="noopener">https://github.com/Ir1d/gitment/issues/20</a> （鸣谢褚老板发现这个坑）</p><p>然后为了修这个给 mkdocs-material 开 pr，人家表示正常的 textarea 都在 form 里面，你这种完全可以通过自定义 gitment 来搞定。</p><p>搜了下发现需要改 gitment 里面 render 的过程：<a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L13-L26" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/static/disqus.html#L13-L26</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">const myTheme = &#123;</span><br><span class="line">  render(state, instance) &#123;</span><br><span class="line">    const container = document.createElement(&apos;div&apos;)</span><br><span class="line">    container.lang = &quot;zh-CN&quot;</span><br><span class="line">    container.className = &apos;gitment-container gitment-root-container&apos;</span><br><span class="line">    const divv = document.createElement(&apos;form&apos;)</span><br><span class="line">    // container.appendChild(instance.renderSomething(state, instan)</span><br><span class="line">    container.appendChild(instance.renderHeader(state, instance))</span><br><span class="line">    divv.appendChild(instance.renderEditor(state, instance))</span><br><span class="line">    container.appendChild(divv)</span><br><span class="line">    container.appendChild(instance.renderComments(state, instance))</span><br><span class="line">    container.appendChild(instance.renderFooter(state, instance))</span><br><span class="line">    return container</span><br><span class="line">  &#125;,</span><br><span class="line">  renderSomething(state, instance) &#123;</span><br><span class="line">    const container = document.createElement(&apos;div&apos;)</span><br><span class="line">    container.lang = &quot;zh-CN&quot;</span><br><span class="line">    if (state.user.login) &#123;</span><br><span class="line">      container.innerText = `Hello, $&#123;state.user.login&#125;, 来说点什么吧？`</span><br><span class="line">    &#125;</span><br><span class="line">    return container</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const gitment = new Gitment(&#123;</span><br><span class="line">  id: &apos;&#123;&#123; page.title | default(&quot;404&quot;, true)  &#125;&#125;&apos;,</span><br><span class="line">  theme: myTheme,</span><br><span class="line">  owner: &apos;Ir1d&apos;,</span><br><span class="line">  repo: &apos;gitment&apos;,</span><br><span class="line">  oauth: &#123;</span><br><span class="line">    client_id: &apos;d6a911c8fba0194626d4&apos;,</span><br><span class="line">    client_secret: &apos;867ec7e13cc99b420bd147cbb62d5cfec271ba81&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line">gitment.render(&apos;gitment_container&apos;)</span><br></pre></td></tr></table></figure><p>然后直接推上生产（昨晚 Travis CI 和 Github 的通讯 bug 了，CI 过了但是 Github 上还是 pending = =）</p><p>然后发现点预览的时候会刷新整个页面= =，然后之前评论框里还没有提交的东西就丢了= =</p><p>搜了下发现 form 里面的 button 需要加上个 <code>type=&#39;button&#39;</code> 才可以不跳转。</p><p>这个就必须要改 renderEditor 里面的东西了，索性把整个 gitment.js 都给换掉好了……</p><p>在 gitment 的 issue 里搜了下，发现 <a href="https://www.kymjs.com" target="_blank" rel="noopener">https://www.kymjs.com</a> 的这位大佬搞了个翻译好的，就稍微改下，拿过来用了。</p><p>修改在：<a href="https://github.com/24OI/24oi.github.io/blob/master/gitment.js#L3063" target="_blank" rel="noopener">https://github.com/24OI/24oi.github.io/blob/master/gitment.js#L3063</a></p><p>其他的修改都是细节上魔改，与整体配置无关（x</p><p>所以就让 mkdocs 用上 gitment 啦！</p><p>完整配置在：<a href="https://github.com/24OI/OI-wiki/blob/master/static/disqus.html" target="_blank" rel="noopener">https://github.com/24OI/OI-wiki/blob/master/static/disqus.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Gitment 原版的貌似没有在维护，后来改用了 Gitmint （加了统计和翻译），然而发现 gitment 的评论区是一个裸的 textarea，外面没有包上 form，然后 mkdocs-material 是判断不在 form 里来触发搜索功能的关键字的…… &lt;a h
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="gitment" scheme="https://ir1d.cf/tags/gitment/"/>
-    
-      <category term="github" scheme="https://ir1d.cf/tags/github/"/>
     
   </entry>
   

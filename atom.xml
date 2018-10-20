@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-10-09T13:58:05.069Z</updated>
+  <updated>2018-10-20T15:22:26.972Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Comparative Study on Generative Adversarial Networks</title>
+    <link href="https://ir1d.cf/2018/10/20/Comparative-Study-on-Generative-Adversarial-Networks/"/>
+    <id>https://ir1d.cf/2018/10/20/Comparative-Study-on-Generative-Adversarial-Networks/</id>
+    <published>2018-10-20T13:21:14.000Z</published>
+    <updated>2018-10-20T15:22:26.972Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Comparative Study on Generative Adversarial Networks</li></ul><a id="more"></a><h2 id="Comparative-Study-on-Generative-Adversarial-Networks"><a href="#Comparative-Study-on-Generative-Adversarial-Networks" class="headerlink" title="Comparative Study on Generative Adversarial Networks"></a>Comparative Study on Generative Adversarial Networks</h2><p>这篇 comparative study 师徒比较原版和各种不同修改版的 GAN 的异同之处。</p><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020093657769.png" alt=""><br><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020093719096.png" alt=""></p><p>$D(x)$ 是 x 来自原始数据而不是 $p_g$ 的概率。D 要最大化 $logD(x)$，而 G 要最小化 $log(1-D(G(z)))$。但是这样做的话 G 的梯度不适合用来训练，就把 objective function 修改一下，变成让D最大化 $logD(G(z))$</p><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020101011683.png" alt=""></p><h3 id="CGAN"><a href="#CGAN" class="headerlink" title="CGAN"></a>CGAN</h3><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020101039990.png" alt=""><br>Conditional Generative Adversarial Network，简称 CGAN，这里把噪声 z 和条件 y 同时送进 G。<br><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020101121946.png" alt=""></p><h3 id="LAPGAN"><a href="#LAPGAN" class="headerlink" title="LAPGAN"></a>LAPGAN</h3><p>Laplacian Pyramid of Adversarial Networks，简称 LAPGAN，这里构建了一个拉普拉斯金字塔，金字塔的每一层是一个 CGAN</p><h3 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h3><p>Deep Convolutional Generative Adversarial Networks，主要特点是：去掉了全连接和 pooling 层，全部使用卷积层；在 G 和 D 中都使用了 BN；在 G 中，除了最后一层，每一层之后都跟了 ReLU，而在 D 中，每一层后面跟了 LeakyReLU。</p><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020104002426.png" alt=""></p><h3 id="Adversarial-Autoencoder"><a href="#Adversarial-Autoencoder" class="headerlink" title="Adversarial Autoencoder"></a>Adversarial Autoencoder</h3><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020103730779.png" alt=""></p><h3 id="GRAN"><a href="#GRAN" class="headerlink" title="GRAN"></a>GRAN</h3><h3 id="InfoGAN"><a href="#InfoGAN" class="headerlink" title="InfoGAN"></a>InfoGAN</h3><p>INformation maximizing GANs。</p><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020110948505.png" alt=""></p><p>InfoGAN 把输入的 noise vector 分成两部分，一个是看做噪声z，一个是当做 latent code（c），然后把 z 和 c 同时输入给 G。在判别器的输出部分也进行了调整，同时输出一个 $c’$。</p><p>Q 网络用于判别结果对应的类别（c），实现上和 D 的结构相同，最后接一个全连接层输出</p><h3 id="BiGAN"><a href="#BiGAN" class="headerlink" title="BiGAN"></a>BiGAN</h3><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020111414793.png" alt=""><br>Bidirectional Generative Adversarial Networks。</p><p><img src="/Comparative-Study-on-Generative-Adversarial-Networks/20181020111355087.png" alt=""></p><p>它有个特点是可以保证得到全局最小值。</p><p>BiGAN 引入了一个 E 网络，把输入图转换成 latent vector，然后把图片和 vector 一起送给 D 进行分类。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Comparative Study on Generative Adversarial Networks&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>CSAPP 2.21 为什么 INT_MIN=-INT_MAX-1</title>
@@ -162,9 +186,9 @@
       <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
-    
       <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
+    
+      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
     
   </entry>
   
@@ -493,30 +517,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RESCAN 踩坑</title>
-    <link href="https://ir1d.cf/2018/09/01/RESCAN-%E8%B8%A9%E5%9D%91/"/>
-    <id>https://ir1d.cf/2018/09/01/RESCAN-踩坑/</id>
-    <published>2018-09-01T11:20:12.000Z</published>
-    <updated>2018-09-12T14:24:47.264Z</updated>
-    
-    <content type="html"><![CDATA[<p>Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining</p><a id="more"></a><p>用 Rain 800 中的 700 张当训练集，100张当验证集，用 rain100H 中取出来的 100 张当测试集。</p><p>release 的 data 里面 test_syn 其实是 val，training 其实是 train，testset 就自己去从 rain100H 里找 100 张吧。（我也不知道，我随便说的</p><ul><li>关于 DataLoader 就挂掉的问题：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    batch_t = next(dt_train)</span><br><span class="line"><span class="keyword">except</span> StopIteration:</span><br><span class="line">    dt_train = sess.get_dataloader(<span class="string">'train'</span>)</span><br><span class="line">    batch_t = next(dt_train)</span><br></pre></td></tr></table></figure><ul><li>关于 conda 怎么也装不上 pytorch 0.4</li></ul><p>上午怎么搞都只能装上 pytorch 0.12，可能是因为 cudnn 装不上更高版本吧……</p><p>然而人家 pip 直接就上了 0.4</p><ul><li>测试用 code 运行不起来</li></ul><p>因为 dataloader 和 train 的时候的不一样……</p><p>手写一下就吼了</p><p>对于这种 combine 到一起的图，掌握了 <code>np.hsplit(a, 切分个数)</code> 的新技能= =</p><p>以及还出现了多次把 ground truth 传进去测试的情况…… 不过发现一个很有意思的事情，ground truth 传进去之后输出也会丢失细节。</p><p>以及 <code>B, O = np.hsplit(img_pair, 2)</code> 被我写成了 <code>O, B = np.hsplit(img_pair, 2)</code></p><p>测出来比它文章里高很多啊QAQ ，原来是这不同的代码测起来还可以结果不一样的。</p><ul><li>test 的时候 batch_size 改成 1</li></ul><p>刚开始直接用的训练的时候的 64， 发现不能对齐，就把数据都给转成一样大小的了</p><ul><li><p>np.rot90 到底是不是无损的</p></li><li><p>np.narrow 是对闭区间操作的 [l, l + len]</p></li><li><p>莫名其妙测出来的 ssim 0.98 最后还是因为搞错了数据集</p></li></ul><p>后来又测出来一次 0.98，仔细检查了很久过程上没有出问题…… 最后发现果然= =，大家都这么厉害了……</p><ul><li>cv2.imwrite() 和 img.imsave() 的输出效果好像不太一样，混用导致了色偏</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// import matplotlib.image as img</span><br></pre></td></tr></table></figure><p>我一起写到这里吧……</p><p>eigen13 的 code 测出来会有一圈边框…… 导致直接测的话 psnr 很低 = =，删掉边框会正常一些。</p><p>测 Rain100L 上面 psnr 现在大家做到快 40 了，真的可怕= =</p><p>话说昨天跑 DetailNet 发现它是一个一个图读进来的 hmmm</p><p>然后发现 DetailNet 只能测 RGB 的图，单通道的 model 喂不进去…… 然而 RESCAN 就可以的啧</p><p>DetailNet 训出来 Loss 很低，但是也有之前跑 SRGAN 的时候遇到的纯蓝色色块之类的现象= =</p><p>很迷，不知道为啥</p><hr><ul><li><p>cv2.imwrite() 和 matplotlib 里面的img.imsave() 不能混用</p></li><li><p>test 的时候 batch_size 要改成 1，因为两个代码都是把结果 concat 起来，可能原paper的数据集图片都是一样大的</p></li><li><p>不同的层要分开定义，否则实际上相当于 share weight 了</p></li><li><p>pytorch_total_params = sum(p.numel() for p in model.parameters())，这个会把model里定义的东西都算进去，求出来的不一定是实际上使用的 parameter 个数。</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
     
   </entry>
   

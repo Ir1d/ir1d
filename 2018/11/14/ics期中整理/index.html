@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      appId: 'MFOAFRM2TL',
+      apiKey: 'cd77d6af2d9d1fecb8c392250ed56bb3',
+      indexName: 'ir1d-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="可以说是巧妙地避开了考点吧，觉得还是对大家有点帮助的（ 范围是 csapp 的 2-6 章。">
+<meta name="keywords" content="ics,csapp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ics期中整理">
+<meta property="og:url" content="https://ir1d.cf/2018/11/14/ics期中整理/index.html">
+<meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="可以说是巧妙地避开了考点吧，觉得还是对大家有点帮助的（ 范围是 csapp 的 2-6 章。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48384428-48716f80-e725-11e8-97f5-74e0ad470460.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48301101-01b42780-e523-11e8-9b78-706ef72b86c9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48301231-75efca80-e525-11e8-96fc-e0af015bfd48.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48303065-8fead680-e540-11e8-93bb-389679fccc29.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48303175-fb817380-e541-11e8-9eef-21abb4597fbe.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48312488-4ce53d80-e5ea-11e8-928d-7a0db84f0cae.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48312544-2e337680-e5eb-11e8-9af8-95b82f391d76.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48312556-8e2a1d00-e5eb-11e8-98ea-3f819ef8aaf0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48349544-76bc6400-e6bf-11e8-80b5-a475021c371d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48357545-d4f34200-e6d3-11e8-8b72-86ff6be7dabc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48360102-7204a980-e6d9-11e8-9355-7a296ec49959.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48360114-76c95d80-e6d9-11e8-865f-6c4b74fe4be6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48364664-f5c39380-e6e3-11e8-9c27-ccbdb713bc6d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48365499-0d9c1700-e6e6-11e8-94db-70a19bb24200.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48365524-2278aa80-e6e6-11e8-9c78-c10c5ea590bb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/48426375-9d52cb80-e7a1-11e8-8fd3-79bd33c97822.png">
+<meta property="og:updated_time" content="2018-11-14T04:02:20.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ics期中整理">
+<meta name="twitter:description" content="可以说是巧妙地避开了考点吧，觉得还是对大家有点帮助的（ 范围是 csapp 的 2-6 章。">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/10709657/48384428-48716f80-e725-11e8-97f5-74e0ad470460.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://ir1d.cf/2018/11/14/ics期中整理/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ics期中整理 | Neverland</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955771-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100955771-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neverland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">你是我不愿醒来的梦啊<br>真是柔情一场</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+    <a href="/friends/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-star"></i> <br />Friends</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ir1d.cf/2018/11/14/ics期中整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ics期中整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-14 11:59:59 / Modified: 12:02:20" itemprop="dateCreated datePublished" datetime="2018-11-14T11:59:59+08:00">2018-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/14/ics期中整理/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/11/14/ics期中整理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>可以说是巧妙地避开了考点吧，觉得还是对大家有点帮助的（</p>
+<p>范围是 csapp 的 2-6 章。</p>
+<a id="more"></a>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>0：<br><img src="https://user-images.githubusercontent.com/10709657/48384428-48716f80-e725-11e8-97f5-74e0ad470460.png" alt="image"></p>
+<p>补码：最高有效位是 -2^{w-1}<br>反码：最高有效位是 -(2^{w-1}-1)<br>原码：最高有效位是符号位，决定其余位的正负</p>
+<p>short -&gt; unsigned 先改变大小，再完成有符号数到无符号数 —&gt; (unsigned)sx == (unsigned)(int)sx</p>
+<p>算术右移补最高位，逻辑右移补 0</p>
+<p>检测无符号数加法的溢出 P62</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uok</span> <span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">unsigned</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> sum = x + y;</span><br><span class="line">  <span class="keyword">return</span> sum &gt;= x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有符号数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tok</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = x + y;</span><br><span class="line">  <span class="keyword">int</span> neg_over = x &lt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span> &amp;&amp; sum &gt;= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos_over = x &gt;= <span class="number">0</span> &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; sum &lt; <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> !neg_over &amp;&amp; !pos_over;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>补码加法构成阿贝尔群，可交换可结合</p>
+<p>减法溢出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意测试 TMIN</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tsub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    (y == INT_MIN) &amp;&amp; (res = <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// if (y == INT_MIN) res = 0;</span></span><br><span class="line">    <span class="keyword">int</span> sub = x - y;</span><br><span class="line">    <span class="keyword">int</span> pos_over = x &gt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span> &amp;&amp; sub &lt; <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> neg_over = x &lt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span> &amp;&amp; sub &gt; <span class="number">0</span>;</span><br><span class="line">    res = res &amp;&amp; !(pos_over || neg_over);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>-x == ~x+1</code> 对任意整数值一样</p>
+<p>无符号和补码乘法，虽然完整的乘积的位级表示可能会不同，但是截断后乘积的位级表示是相同的</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48301101-01b42780-e523-11e8-9b78-706ef72b86c9.png" alt="image"></p>
+<p>无论无符号还是补码、是否溢出，<code>(x &lt;&lt; 4) - (x &lt;&lt; 1)</code> 都和 <code>(x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)</code>相等</p>
+<p>补码除法 <code>x &gt;&gt; k</code> 产生 下取整 <code>x/2^k</code><br>正常除法应该对负数上取整</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48301231-75efca80-e525-11e8-96fc-e0af015bfd48.png" alt="image"></p>
+<p>符号、尾数、阶码<br>1 8 23 （float）<br>1 11 52 （double）<br><img src="https://user-images.githubusercontent.com/10709657/48303065-8fead680-e540-11e8-93bb-389679fccc29.png" alt="image"></p>
+<p>规格化<br>(1+f)<em>2^{exp-127}<br>非规格化<br>f</em>2^(-126)<br>正无穷：s = 0, exp=1111111, f = 0;<br>负无穷：s = 1, exp=1111111, f = 0;</p>
+<p>可表示数越靠近原点约稠密</p>
+<p><strong>P80</strong><br>最小的非规格化数 exp = 0, f = 1;<br>最大的非规格化数 exp = 0, f = 1111;<br>最小的规格化数 exp = 1, f = 0;<br>最大的规格化数 exp = 1110, f = 111;<br>无穷大 0 exp = 1111, f = 0;</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48303175-fb817380-e541-11e8-9eef-21abb4597fbe.png" alt="image"></p>
+<p>P83 - 2.49<br>P84 - 2.52<br>P87 - 2.54</p>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><p>P118 ATT与 intel汇编代码格式<br>float 4 double 8<br>P121 操作数格式<br>传送指令的两个操作数不能都指向内存位置<br>movz 把目的中的剩余字节填充为0，movs则是符号扩展<br>任何为寄存器生成32位值的指令都会把该寄存器的高位部分设为0，比如 movl，而其他时候只会更新目的操作数指定的那些寄存器字节或内存位置。<br>cltq: 把 eax 符号扩展到 rax 编码更紧凑<br>movabsq 传送绝对的四字<br>指示地址寄存器必须是 r开头，不能 <code>movb $1, (%eax)</code><br>movsbl 符号扩展<br>movzbl 0扩展<br>char -&gt; int: movsbl<br>int -&gt; char: movb<br>栈向下增长，栈顶元素地址最低<br>leaq直接操作 x，而movq操作地址 x 处的值<br>移位量可以是一个立即数，或者放在单字节寄存器 <code>%cl</code>中:sarq算术移位（填符号位），shrq逻辑移位（填0）<br>对应的 salq<br>移位操作的目的操作数可以使寄存器/内存地址<br>cqto<br><img src="https://user-images.githubusercontent.com/10709657/48312488-4ce53d80-e5ea-11e8-928d-7a0db84f0cae.png" alt="image"><br>一个参数存在 rax，另一个作为操作数给出，然后乘积：高64位在rdx，低64位在rax。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;inttypes.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> __int128 <span class="keyword">uint128_t</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upord</span><span class="params">(uint128 *dest, <span class="keyword">uint64_t</span> x, <span class="keyword">uint64_t</span> y)</span> </span>&#123;</span><br><span class="line">  *dest = x * (<span class="keyword">uint128_t</span>) y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cqto,把 rax的符号扩展到rdx的所有位</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48312544-2e337680-e5eb-11e8-9af8-95b82f391d76.png" alt="image"><br>leaq 不改变条件吗，inc和deq会设置溢出和零标志，但不改变进位。移位操作的仅为标志设置为最后一个被移除的位，溢出标志设为 0</p>
+<p><code>cmp s1, s2 ==&gt; s2 - s1</code><br><code>test s1, s2 ==&gt; s1 &amp; s2</code><br>这两个只设置条件吗，不改变任何其他寄存器</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48312556-8e2a1d00-e5eb-11e8-98ea-3f819ef8aaf0.png" alt="image"></p>
+<p>条件跳转只能是直接跳转</p>
+<p>直接跳转？？间接？？</p>
+<p>T_ran = T_ok + 0.5T_MP（MP是预测错误）</p>
+<p>cmove 条件传送</p>
+<p>continue 会跳到当前循环迭代的结尾</p>
+<p><code>&amp;&amp;</code> 创建一个指向代码为止的指针</p>
+<p>函数调用时，通过寄存器，过程可以传递最多6个整数值<br>P调用Q时，把返回地址当做是 P的栈帧的一部分，因为它存放的是与P相关的状态<br>char 1字节 8位 short 2字节 16位 int 4字节 32位<br>switch ……<br>long至少要和int一样大，书上似乎认为 long 是8<br>用 leaq 生成到某个位置的指针<br>%rbx, %rbp, %r12-%r15为被调用者保存寄存器，当P调用Q时，Q必须保存这些寄存器的值<br>其他寄存器除了 %rsp，都是调用者保存寄存器，意味着任何函数都能修改他们，P调用Q的时候Q可以随意修改这个寄存器<br>返回数组值：操作类型为int，涉及四字节操作;movl和%eax<br>返回指针：操作类型为<code>int*</code>，涉及八字节：leaq，%rax<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> r3[<span class="number">3</span>];</span><br><span class="line">r3 a[<span class="number">5</span>];</span><br></pre></td></tr></table></figure></p>
+<p>二维数组<br>$&amp;d[i][j] = x_d + L(Ci+j)$</p>
+<p>sal 算术右移（填符号位），shl 逻辑右移（填0）<br>数据对齐：要求k字节类型对象的地址必须是k的倍数</p>
+<p>malloc 返回一个通用指针 <code>void*</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> *p)</span></span>;</span><br><span class="line"><span class="keyword">int</span> (*fp)(<span class="keyword">int</span>, <span class="keyword">int</span>*); <span class="comment">// 函数指针。</span></span><br></pre></td></tr></table></figure></p>
+<p>rsp不能放第二个位置<br><code>(xxx, %rsp) 不合法</code></p>
+<p>指针的差结果是两个地址之差除以该数据类型的大小</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><p>程序员可见的状态：<br><img src="https://user-images.githubusercontent.com/10709657/48349544-76bc6400-e6bf-11e8-80b5-a475021c371d.png" alt="image"><br><code>pushq %rsp</code>放的是原值<br><code>popq %rsp</code>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addq $8, %rsp</span><br><span class="line">mrmovq 8(%rsp), %rsp</span><br><span class="line">//如果后加的话就把 rsp的值又改了</span><br></pre></td></tr></table></figure></p>
+<p><code>pushq %rsp</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movq REG, -8(%rsp)</span><br><span class="line">subq $8, %rsp</span><br><span class="line">// 先减的话就不能把正确的值塞到栈里</span><br></pre></td></tr></table></figure></p>
+<p>向寄存器的写入受时钟信号控制<br>寄存器文件有内部存储</p>
+<p>valP在取指阶段得到<br>执行阶段设置条件码。写回阶段最多可以写两个结果到寄存器文件</p>
+<p>程序寄存器的新值取自：vapP,下一条指令的地址，valC，调用指令或跳转指令指定的目标地址，valM，从内存读取的返回地址<br>组合逻辑不需要任何时序或控制，只要输入变化了，值就通过逻辑门网络传播<br>每个时钟周期，程序计数器都会装载新的指令地址。只有在执行整数运算指令时，才会装载条件码寄存器。只有在执行rmmovq，pushq，call时，才会写数据内存。<br>只有 popq 会用到寄存器文件的两个写端口，为了把值放到 %esp，M端口优先级高于E<br>alu的输出是valE的信号<br>从头到尾执行一条指令所需时间为延迟，吞吐量为倒数<br>流水线的延迟是最大的一部分的延迟加上流水线寄存器的延迟<br>SEQ的延迟是各阶段之和加上流水线寄存器的延迟<br>转发：5个源：e_valE,m_valM,M_valE,W_valM,W_valE；2个转发目的：valA, valB<br>由流水线中最深的指令引起的异常，优先级最高<br>访存/写回阶段的指令异常时，流水线控制逻辑禁止更新条件码寄存器或是数据内存<br>出现异常时，信息只是简单地存放在流水线寄存器的状态字段中，异常事件不会对流水线中的指令流有任何影响。在写回阶段，流水线控制逻辑发现出现了异常，并停止执行。<br>只有 call 和跳转指令需要 valp 而这些指令不需要valA<br><img src="https://user-images.githubusercontent.com/10709657/48357545-d4f34200-e6d3-11e8-8b72-86ff6be7dabc.png" alt="image"><br>处于最早流水线阶段中的转发源具有较高的优先级，因为它保持着程序序列中设置该寄存器的最近的指令<br>只有 <code>popq %rsp</code> 关心访存和写回的转发优先级，因为只有他同时写两个寄存器</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48360102-7204a980-e6d9-11e8-9355-7a296ec49959.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48360114-76c95d80-e6d9-11e8-865f-6c4b74fe4be6.png" alt="image"><br>CPI是流水线平均吞吐量的倒数，单位是时钟周期，不是微微秒</p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><p>关键路径是在循环的反复执行过程中形成的数据相关链<br>CPE 镁元素的周期数<br>编译器回家社函数有副作用，程序员需要显示完成代码移动<br>减少过程调用<br>消除不必要的内存引用<br>延迟界限：下一条指令开始前，这条必须结束 — 数据相关<br>吞吐量界限：处理器功能单元的原始计算能力<br>循环寄存器之间的操作链决定了限制性能的数据相关<br>比较和分支操作不直接影响程序中的数据流<br>练习题5.6 n次乘法，n次加法，<code>i--</code>不在关键路径上<br>循环展开<br>使用多个累计变量 —- 多路并行<br>重新结合变换，增加了可以并行执行的操作数量<br>大多数编译器不会尝试的对浮点运算做重新结合，因为这些运算不保证是可结合的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 慢</span><br><span class="line">acc = (acc OP data[i]) OP data[i + 1];</span><br><span class="line">// 快</span><br><span class="line">acc = acc OP (data[i] OP data[i + 1]);</span><br></pre></td></tr></table></figure></p>
+<p>练习题 5.8 最快的是 A3A4<br>寄存器溢出<br>分支预测和预测错误出发<br>不要过分关心可预测的分支<br>书写适合用条件传送实现的代码<br>消除连续的函数调用，将计算移到循环外<br>消除不必要的内存引用，引入临时变量来保存中间结果<br>低级优化，结构化代码以利用硬件功能</p>
+<ul>
+<li>展开循环</li>
+<li>使用多个累计变量、重新结合，提高指令级并行</li>
+<li>用功能性的风格重写条件操作，使得编译采用条件数据传送</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/10709657/48364664-f5c39380-e6e3-11e8-9c27-ccbdb713bc6d.png" alt="image"></p>
+<p>B不对是因为可能A和B指向的是同一块内存区域</p>
+<h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p>寻道时间和旋转延迟 4ms，传送时间 <code>0.02ms（1/RPM/（每磁道平均扇区数）*60）</code><br>读SSD比写要快，随机读写的性能差别由底层闪存基本属性决定<br>数据以页为单位读写，只有在一页所属的块整个被擦除之后，才能写这一页。一个快在 100000 次重复写之后会磨损坏。<br>SRAM比DRAM快，DRAM比磁盘快，SRAM比DRAM贵，DRAM比磁盘贵，SSD位于DRAM和磁盘之间<br>循环有很好地时间（循环体会被执行多次）和空间局部性<br>数组有空间局部性<br>数据以块为大小在第k层和k+1层之间来回复制的<br>随机替换策略、LRU策略（最近最少被使用）</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/48365499-0d9c1700-e6e6-11e8-94db-70a19bb24200.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48365524-2278aa80-e6e6-11e8-9c78-c10c5ea590bb.png" alt="image"><br>E=1 — 直接映射高速缓存</p>
+<h2 id="补"><a href="#补" class="headerlink" title="补"></a>补</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmp *%rax #目标为寄存器中的值</span><br><span class="line">jmp *(%rax) #以寄存器中的值作为读地址，从内存中读出跳转目标</span><br></pre></td></tr></table></figure>
+<p>CISC指令数量较多，有些指令的执行周期很长 ，<br>编码是可变长度的，支持复杂的寻址方式，栈密<br>集的过程链接，代码长度一般较短，取址部件更复杂。<br>RISC指令较少，没有执行周期很长的指令，编码固定长度，<br>只有简单的寻址方式，寄存器密集的过程链接，代码长度<br>较长，没有条件码<br><img src="https://user-images.githubusercontent.com/10709657/48426375-9d52cb80-e7a1-11e8-8fd3-79bd33c97822.png" alt="image"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Ir1d</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://ir1d.cf/2018/11/14/ics期中整理/" title="ics期中整理">https://ir1d.cf/2018/11/14/ics期中整理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ics/" rel="tag"># ics</a>
+          
+            <a href="/tags/csapp/" rel="tag"># csapp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/14/数算期中整理/" rel="next" title="数算期中整理">
+                <i class="fa fa-chevron-left"></i> 数算期中整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ir1d" />
+            
+              <p class="site-author-name" itemprop="name">Ir1d</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">104</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ir1d" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章"><span class="nav-number">1.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章"><span class="nav-number">2.</span> <span class="nav-text">第三章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章"><span class="nav-number">3.</span> <span class="nav-text">第四章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章"><span class="nav-number">4.</span> <span class="nav-text">第五章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章"><span class="nav-number">5.</span> <span class="nav-text">第六章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补"><span class="nav-number">6.</span> <span class="nav-text">补</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ir1d</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://ir1d.cf/2018/11/14/ics期中整理/';
+        this.page.identifier = '2018/11/14/ics期中整理/';
+        this.page.title = 'ics期中整理';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+
+</body>
+</html>

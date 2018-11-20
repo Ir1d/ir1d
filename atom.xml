@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-11-17T06:51:05.229Z</updated>
+  <updated>2018-11-20T07:35:42.217Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集合论…</title>
+    <link href="https://ir1d.cf/2018/11/20/%E9%9B%86%E5%90%88%E8%AE%BA%E2%80%A6/"/>
+    <id>https://ir1d.cf/2018/11/20/集合论…/</id>
+    <published>2018-11-20T07:32:15.000Z</published>
+    <updated>2018-11-20T07:35:42.217Z</updated>
+    
+    <content type="html"><![CDATA[<p>集图期中…… 范围是集合论</p><p>巧妙避开考点</p><p>时间比较紧，也没有整理多少出来，基本上直接在书上画了 = =</p><p>本文基本没有参考价值</p><p>嗯…… peano 系统…… F是单射！！</p><p>说起来还有件值得思考的事情，为什么可以在期中速成一门课的内容，而没有开学的时候就速成一波呢？</p><a id="more"></a><p><img src="https://user-images.githubusercontent.com/10709657/48658198-a6c98580-ea78-11e8-914a-659008b4ec9c.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48658199-af21c080-ea78-11e8-9d38-35ecd851235c.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48658228-1475b180-ea79-11e8-8246-5b91b5b2bd53.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48658329-e2fde580-ea7a-11e8-93e6-f2e5ea2bbbb9.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48658337-0032b400-ea7b-11e8-99b0-d4983e1133f8.png" alt="image"></p><p>第二类 stirling 计算<br>哈斯图要求 y 覆盖 x 的时候才连边，覆盖的意思是x &lt; y但是中间不存在z</p><p>n元集，多少个偏序关系：1, 1, 3, 19, 219(n=0,1,2,3,4)</p><p>传递集那一套理论<br>康托定理</p><p><img src="https://user-images.githubusercontent.com/10709657/48716632-b7cdee80-ec52-11e8-85ea-5eedb18f1c3f.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48716875-4478ac80-ec53-11e8-9fd3-1651eef6e7eb.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/48717187-d8e30f00-ec53-11e8-9381-273bf6d0e89d.png" alt="image"></p><p>对称闭包会破坏传递性</p><p><img src="https://user-images.githubusercontent.com/10709657/48718497-7b9c8d00-ec56-11e8-9269-400cc42e0dd0.png" alt="image"></p><p>自然映射: f:A→A/R, f(a)=[a]R, R为A上等价关系</p><p><a href="https://zhidao.baidu.com/question/49517936.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/49517936.html</a></p><p>NxN -&gt; N 的映射<br><img src="https://user-images.githubusercontent.com/10709657/48718938-4ba1b980-ec57-11e8-875c-37bbd0ecda82.png" alt="image"></p><p>Cantor编码</p><p><img src="https://user-images.githubusercontent.com/10709657/48722516-29ac3500-ec5f-11e8-98f8-7ff5694bb70a.png" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;集图期中…… 范围是集合论&lt;/p&gt;
+&lt;p&gt;巧妙避开考点&lt;/p&gt;
+&lt;p&gt;时间比较紧，也没有整理多少出来，基本上直接在书上画了 = =&lt;/p&gt;
+&lt;p&gt;本文基本没有参考价值&lt;/p&gt;
+&lt;p&gt;嗯…… peano 系统…… F是单射！！&lt;/p&gt;
+&lt;p&gt;说起来还有件值得思考的事情，为什么可以在期中速成一门课的内容，而没有开学的时候就速成一波呢？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="集合论与图论" scheme="https://ir1d.cf/tags/%E9%9B%86%E5%90%88%E8%AE%BA%E4%B8%8E%E5%9B%BE%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>ics期中整理</title>
@@ -236,9 +263,9 @@
       <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
-    
       <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
+    
+      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
     
   </entry>
   
@@ -493,34 +520,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Github Bot 踩坑</title>
-    <link href="https://ir1d.cf/2018/09/10/Github-Bot-%E8%B8%A9%E5%9D%91/"/>
-    <id>https://ir1d.cf/2018/09/10/Github-Bot-踩坑/</id>
-    <published>2018-09-10T07:22:01.000Z</published>
-    <updated>2018-09-10T08:07:57.585Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><a href="https://github.com/24OI/linter" target="_blank" rel="noopener">https://github.com/24OI/linter</a></li></ul><a id="more"></a><p>主要在搞如何跑一个自动格式化 markdown 代码的 bot，尝试了 probot，直接 octokit，最后发现实在是还不如自己写个 .sh 来搞= =</p><p>是这样的，probot 的问题是 app 安装在主仓库里，权限限制在主仓库里，如果想要给 pr 里面 push 更新，就需要 fork 里面也安装了这个 app，然而这个体验实在是太糟糕了……</p><p>至于 octokit，实际上 probot 调用的也是这个接口，就想要不直接用它？然而发现它的 api 是调用的 updateFile，一直报错。得知这东西会对每个修改的文件建一个 commit，感觉即使调出来了也是要爆炸= =</p><p>干脆直接上 .sh 来搞这个 lint 的过程好了，octokit 仅用来操作 webhook。</p><p>介绍一下一些坑吧…… 开始写这种总结发现搞到最后其实很难记得都遇到过哪些问题，真的佩服那些把教程写得清清楚楚的大佬们</p><p>nodejs 的 exec 如果运行一个 .sh 的话，它的环境变量是空的，source 或者指定 uid 好像都不好用，要手动声明一下才行。</p><p>抄 travis 的 log 学到了高超的 git 技巧，可惜后来没用上。</p><p>哦还有 probot 需要那个 installation_id，如果直接 redeliver payload 可能会爆出各种错。 </p><p>slack 里面维护者回复很及时…… 真的厉害。后来还看到原来 probot 在 gsoc 里面…… QAQ</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/24OI/linter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/24OI/linter&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="Github" scheme="https://ir1d.cf/tags/Github/"/>
-    
-      <category term="probot" scheme="https://ir1d.cf/tags/probot/"/>
-    
-      <category term="Node.js" scheme="https://ir1d.cf/tags/Node-js/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-11-25T14:47:49.786Z</updated>
+  <updated>2018-12-07T10:16:55.776Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>POJ 2002</title>
+    <link href="https://ir1d.cf/2018/12/07/POJ-2002/"/>
+    <id>https://ir1d.cf/2018/12/07/POJ-2002/</id>
+    <published>2018-12-07T10:15:40.000Z</published>
+    <updated>2018-12-07T10:16:55.776Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>POJ 2002</li></ul><a id="more"></a><p>平面上一堆点，数能组成多少个正方形</p><p>枚举一条边（而不是枚举对角线</p><p>现在有了坐标怎么判断是否是正方形呢？</p><p>先看 4 边长相等，再看两个对角线相等。</p><p>数算这题写了好久。。好难过</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;POJ 2002&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="POJ" scheme="https://ir1d.cf/tags/POJ/"/>
+    
+  </entry>
   
   <entry>
     <title>g++ -Og 作用</title>
@@ -494,29 +518,6 @@
         &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot; title=&quot;名词解释&quot;&gt;&lt;/a&gt;名词解释&lt;/h2&gt;&lt;p&gt;Zero-shot learning 指的是我们之前没有这个类别的训练样本。但是我们可以
       
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DailyNotes 9.10</title>
-    <link href="https://ir1d.cf/2018/09/10/DailyNotes-9-10/"/>
-    <id>https://ir1d.cf/2018/09/10/DailyNotes-9-10/</id>
-    <published>2018-09-10T14:22:48.000Z</published>
-    <updated>2018-09-10T18:33:59.986Z</updated>
-    
-    <content type="html"><![CDATA[<p>其实今天没有读什么文章，不过昨天配了 reddit 的订阅，感觉很厉害。</p><p>用上 hexoeditor 以及 hexo new 学会加引号之后，感觉操作上顺畅了很多。</p><a id="more"></a><h2 id="Are-result-images-in-research-papers-on-GANs-and-image-attribution-hand-picked-or-random"><a href="#Are-result-images-in-research-papers-on-GANs-and-image-attribution-hand-picked-or-random" class="headerlink" title="Are result images in research papers on GANs and image attribution hand-picked or random"></a>Are result images in research papers on GANs and image attribution hand-picked or random</h2><p>很有趣的一个问题，文章中的效果图是随机的吗，还是精心挑选的？</p><p>显然这是挑出来的吧（<br>肯定要选效果最好的啊<br>甚至还有这样的评论</p><blockquote><p>In a presentation by Goodfellow he says that he copy pasted the original images as the gan quality wasnt very good.</p></blockquote><p>“我没有撒谎，我只是没有说出全部真相”<br>感觉大家都是在挑对自己有利的事实来说话……</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;其实今天没有读什么文章，不过昨天配了 reddit 的订阅，感觉很厉害。&lt;/p&gt;
-&lt;p&gt;用上 hexoeditor 以及 hexo new 学会加引号之后，感觉操作上顺畅了很多。&lt;/p&gt;
     
     </summary>
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2018-12-07T11:54:33.082Z</updated>
+  <updated>2019-01-10T15:12:21.849Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Photoshop 脚本</title>
+    <link href="https://ir1d.cf/2019/01/10/Photoshop-%E8%84%9A%E6%9C%AC/"/>
+    <id>https://ir1d.cf/2019/01/10/Photoshop-脚本/</id>
+    <published>2019-01-10T15:07:06.000Z</published>
+    <updated>2019-01-10T15:12:21.849Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>11 月末写了个 ps 脚本来整理图片…… 一直没来得及记录</li></ul><a id="more"></a><p>需求是给每组图片对齐，拍的时候误差不是很大，对齐就用自动对齐就行。可惜图片数量太多，大概 4k 张，一组 5-7 张，手动来怕是要难受死。</p><p>用 ps 来操作的话，大概就是打开文件到图层，对齐，然后导出各图层至文件。开始的时候还试用现成的那个导入文件到堆栈，可惜和后面的操作接不上= = 不过那个导出图片的还是好用的 XD</p><p>对齐之后遇到了个问题，会对齐出来白边，然而我需要从这组图中找到一个尽量大的有色矩形。。。折腾了好久也没弄明白，最后搜到刚好前几天有人发布了一个解决方案。爽爆：<a href="https://developer71240.github.io/crop-to-opaque/" target="_blank" rel="noopener">https://developer71240.github.io/crop-to-opaque/</a></p><p>（不过人家禁止再分发，所以我的 gist 里面删掉了那部分，把人家的那段粘进 crop 函数就好啦）</p><p>Gist：<a href="https://gist.github.com/Ir1d/14af313f15d3fc91b23e70897daa2ca4" target="_blank" rel="noopener">https://gist.github.com/Ir1d/14af313f15d3fc91b23e70897daa2ca4</a></p><p>总体来说 Ps 的脚本体验及其糟糕…… 文档奇差，不过海星吧，印象中它是扩展了某种 jsx，然后直接去看那种 jsx 的 api 就星。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;11 月末写了个 ps 脚本来整理图片…… 一直没来得及记录&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Photoshop" scheme="https://ir1d.cf/tags/Photoshop/"/>
+    
+      <category term="jsx" scheme="https://ir1d.cf/tags/jsx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 笔记</title>
+    <link href="https://ir1d.cf/2018/12/09/LeetCode-%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ir1d.cf/2018/12/09/LeetCode-笔记/</id>
+    <published>2018-12-09T06:00:55.000Z</published>
+    <updated>2018-12-09T10:46:23.130Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>LeetCode 笔记</li></ul><p>工具用的是 leetcode-cli，可惜这货在网站上登录之后本地 cli 存的 session 就掉了，又得重新登录</p><a id="more"></a><ul><li>342</li></ul><p>判断一个数是不是 4 的幂次。我们知道 2 的幂次的话是：<code>x &amp;&amp; (x &amp; (x - 1)) == 0</code>，4 的话只需要额外看一下二进制表示里所有的 1 都在最高位就行。</p><ul><li>405</li></ul><p>十进制转十六进制，想到可以 sprintf 一波，最简单</p><ul><li>665</li></ul><p>最长上升子序列：lower_bound<br>最长不下降子序列：upper_bound</p><ul><li>594</li></ul><p>求一个最长的子序列，使得它的最大值和最小值的差恰好为 1。</p><p>注意是子序列，所以就找相邻的两个数的出现次数之和的最大值咯</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;LeetCode 笔记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;工具用的是 leetcode-cli，可惜这货在网站上登录之后本地 cli 存的 session 就掉了，又得重新登录&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="LeetCode" scheme="https://ir1d.cf/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>CF950F Treeland Tour</title>
@@ -218,7 +269,7 @@
     <link href="https://ir1d.cf/2018/10/09/LeetCode-594-Longest-Harmonious-Subsequence/"/>
     <id>https://ir1d.cf/2018/10/09/LeetCode-594-Longest-Harmonious-Subsequence/</id>
     <published>2018-10-08T17:06:41.000Z</published>
-    <updated>2018-10-09T13:58:21.378Z</updated>
+    <updated>2018-12-09T06:05:42.562Z</updated>
     
     <content type="html"><![CDATA[<ul><li>求一个最长的子序列，使得它的最大值和最小值的差恰好为 1</li></ul><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * [594] Longest Harmonious Subsequence</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/longest-harmonious-subsequence/description/</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * algorithms</span></span><br><span class="line"><span class="comment"> * Easy (41.66%)</span></span><br><span class="line"><span class="comment"> * Total Accepted:    26.9K</span></span><br><span class="line"><span class="comment"> * Total Submissions: 64.5K</span></span><br><span class="line"><span class="comment"> * Testcase Example:  '[1,3,2,2,5,2,3,7]'</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * We define a harmonious array is an array where the difference between its</span></span><br><span class="line"><span class="comment"> * maximum value and its minimum value is exactly 1.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Now, given an integer array, you need to find the length of its longest</span></span><br><span class="line"><span class="comment"> * harmonious subsequence among all its possible subsequences.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Example 1:</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Input: [1,3,2,2,5,2,3,7]</span></span><br><span class="line"><span class="comment"> * Output: 5</span></span><br><span class="line"><span class="comment"> * Explanation: The longest harmonious subsequence is [3,2,2,2,3].</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Note:</span></span><br><span class="line"><span class="comment"> * The length of the input array will not exceed 20,000.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>犯了几个错误……</p><p>局部变量没有赋初值……</p><p>然后调用了太多次 map 的操作…… 感觉复杂度有点爆炸</p><p>事实上这件事情并不需要 map，用 unordered_map 就好了…… 然后这样的话就只需要顺序地扫一遍就可以啦= =</p>]]></content>
     
@@ -472,57 +523,6 @@
       <category term="算法导论" scheme="https://ir1d.cf/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
     
       <category term="并查集" scheme="https://ir1d.cf/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DailyNotes 18/9/17</title>
-    <link href="https://ir1d.cf/2018/09/17/DailyNotes-18-9-17/"/>
-    <id>https://ir1d.cf/2018/09/17/DailyNotes-18-9-17/</id>
-    <published>2018-09-17T15:21:57.000Z</published>
-    <updated>2018-09-18T10:54:56.311Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>ics</li><li>数算实习</li></ul><a id="more"></a><p>今日体验了 ics…… 感觉看日程表即将炸裂 QAQ</p><p>数算实习讲了一节课并查集…… 惊了它竟然在算导上单独占一章</p><hr><p>nan 平方 $\geq 0$</p><p>ics 课上讨论是不是浮点数平方大于等于 0 一直成立……</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">1</span>/<span class="number">0.</span>;</span><br><span class="line"><span class="keyword">if</span> (x * x &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"= ="</span>);</span><br></pre></td></tr></table></figure><hr><p>平均复杂度 &amp; 平摊</p><p>说一下我的理解<br>前者是指输入满足某种概率分布，然后考虑输入的平均情况进行分析。<br>后者应该是把总代价平均到一个周期内来承担。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;ics&lt;/li&gt;
-&lt;li&gt;数算实习&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="DailyNotes" scheme="https://ir1d.cf/tags/DailyNotes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DailyNotes 18/9/15</title>
-    <link href="https://ir1d.cf/2018/09/15/DailyNotes-18-9-15/"/>
-    <id>https://ir1d.cf/2018/09/15/DailyNotes-18-9-15/</id>
-    <published>2018-09-15T03:13:11.000Z</published>
-    <updated>2018-09-15T16:12:39.936Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h2 id="Transpose-Matrix"><a href="#Transpose-Matrix" class="headerlink" title="Transpose Matrix"></a>Transpose Matrix</h2><p>把一个矩阵转置</p><p>掌握了二维数组 reserve 的姿势</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res(A[<span class="number">0</span>].size(), <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(A.size()));</span><br></pre></td></tr></table></figure><p>输入一个指针一定要各种判是不是空的，比如给你的 root = =</p><h2 id="好像-cv2-resize-和-scipy-imresize-不一样啊？？"><a href="#好像-cv2-resize-和-scipy-imresize-不一样啊？？" class="headerlink" title="好像 cv2.resize 和 scipy.imresize 不一样啊？？"></a>好像 cv2.resize 和 scipy.imresize 不一样啊？？</h2><p>看 EDSR 的 issue 区里面有人说有 artifact，然后作者说你是不是没用 bicubic。人家说我用的啊，最后发现把 cv2 的换成 scipy 就好了…… 好神奇哎</p><p><a href="https://stackoverflow.com/questions/26823140/imresize-trying-to-understand-the-bicubic-interpolation/26823261#26823261" target="_blank" rel="noopener">https://stackoverflow.com/questions/26823140/imresize-trying-to-understand-the-bicubic-interpolation/26823261#26823261</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Transpose-Matrix&quot;&gt;&lt;a href=&quot;#Transpose-Matrix&quot; class=&quot;headerlink&quot; title=&quot;Transpose Matrix&quot;&gt;&lt;/a&gt;Transpose Matrix&lt;/h2
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
   </entry>
   

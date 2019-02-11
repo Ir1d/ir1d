@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-01-24T06:38:29.997Z</updated>
+  <updated>2019-02-11T14:07:55.923Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Face Detection Demo 评测</title>
+    <link href="https://ir1d.cf/2019/02/11/Face-Detection-Demo-%E8%AF%84%E6%B5%8B/"/>
+    <id>https://ir1d.cf/2019/02/11/Face-Detection-Demo-评测/</id>
+    <published>2019-02-11T13:00:24.000Z</published>
+    <updated>2019-02-11T14:07:55.923Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Face Detection 代码测试</li></ul><a id="more"></a><p>总体来说其实 doc 都蛮清楚，搞了这么久其实还是自己基本功不够扎实</p><p>Google 真好用.webp</p><h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><a href="https://github.com/mahyarnajibi/SSH" target="_blank" rel="noopener">https://github.com/mahyarnajibi/SSH</a></p><p>编译 <code>caffe-ssh</code> 之后要把 <code>caffe-ssh/python</code> 塞进 <code>PYTHONPATH</code>，方法是 <code>echo $PYTHONPATH=xxx</code></p><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2><p><a href="https://github.com/sciencefans/RSA-for-object-detection" target="_blank" rel="noopener">https://github.com/sciencefans/RSA-for-object-detection</a></p><p>需要 matlab。</p><p>跑的时候可能需要自己 <code>addpath</code>，一个是加那个 <code>caffemex</code> 下面的 <code>matlab</code> 文件夹（类似上面的 pycaffe），另一个是要加 <code>predict/utils/bin</code> 这个目录，因为底下有 <code>nms_mex</code> 这个东西……</p><p><code>caffemex</code> 编译的时候如果 <code>make test</code> 如果报错是正常的，好像是因为魔改版的 caffe 加了新层没有加上配套的测试用例</p><h2 id="face-py-faster-rcnn"><a href="#face-py-faster-rcnn" class="headerlink" title="face-py-faster-rcnn"></a>face-py-faster-rcnn</h2><p>这个比 Detectron 要扎心得多……</p><p><a href="https://github.com/playerkk/face-py-faster-rcnn" target="_blank" rel="noopener">https://github.com/playerkk/face-py-faster-rcnn</a></p><p>他那个远古的 caffe-faster-rcnn 有问题，搜索一波得知使用 <code>merge -X theirs</code> 这种方式把新的 caffe 合进来就行（caffe 那个仓库就行，不是非得要 pytorch 里的那个）</p><p>它 README 拉到最下面才是那个 face 上面训的 model，不然前面那堆 model 其实都是直接在 wider 上面训的（印象中）</p><p>然后那个 <code>tools/demo.py</code> 里面找 model 的时候可能有些不尽人意，用的时候就写死成本机绝对路径就好了</p><h2 id="HR-ER"><a href="#HR-ER" class="headerlink" title="HR_ER"></a>HR_ER</h2><p>需要 matlab 环境</p><p><a href="https://github.com/peiyunh/tiny" target="_blank" rel="noopener">https://github.com/peiyunh/tiny</a></p><p>编译 matconvnet 的时候请务必指定 cudaRoot 和 cudnnRoot，否则可能看起来很正常然而 <code>CUDNN_STATUS_BAD_PARAM</code> 或者 <img src="2019-02-11-22-06-52.png" alt=""></p><p>后面都海星，注意那个 <code>cd utils</code> 是指的是 tiny 下面的那个 utils = =</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Face Detection 代码测试&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OI Wiki 相关的技能点</title>
+    <link href="https://ir1d.cf/2019/02/09/OI-Wiki-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8A%80%E8%83%BD%E7%82%B9/"/>
+    <id>https://ir1d.cf/2019/02/09/OI-Wiki-相关的技能点/</id>
+    <published>2019-02-09T06:43:08.000Z</published>
+    <updated>2019-02-11T14:09:41.252Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>记录下吧，免得吹逼的时候忘记了（×</li></ul><ol><li>python-markdown + mkdocs 的方案（当时还不知道有 vuepress）</li><li>找到 remarkjs 来做 lint，而且搞了几个自用的插件，似乎和 pymdownx 还算是兼容</li><li>魔改 gitment，后换用 gitalk</li><li>大量修改 mkdocs-material 的主题（React）</li><li>搭建 elasticsearch 替换原有搜索（比 Algolia Docsearch 不知道高到哪里去了）</li><li>nginx 配置 brotil，gzip，用 acme.sh 签证书，配置 patch、一系列优化</li><li>用 mathjax-node 配置服务器端渲染 mathjax （mathjax-ssr 雾）</li><li>配置 gulp 来压缩构建产物等一系列操作（感谢 @Margatroid 大佬 carry）</li><li>配置 instantClick（感谢 @frank 大佬 carry）</li></ol><p><del>10. 这玩意肯定能凑出来十条的</del></p><ol><li>搞了个 lintbot，自动对 pr 做 lint</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;记录下吧，免得吹逼的时候忘记了（×&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;python-markdown + mkdocs 的方案（当时还不知道有 vuepress）&lt;/li&gt;
+&lt;li&gt;找到 remarkjs 来做 lint，而且搞了几个自用的插件，似乎和 p
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>mkdocs 配置 Elasticsearch</title>
@@ -469,59 +523,6 @@
       <category term="ics" scheme="https://ir1d.cf/tags/ics/"/>
     
       <category term="datalab" scheme="https://ir1d.cf/tags/datalab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>给canvas截图并保存</title>
-    <link href="https://ir1d.cf/2018/09/30/%E7%BB%99canvas%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98/"/>
-    <id>https://ir1d.cf/2018/09/30/给canvas截图并保存/</id>
-    <published>2018-09-30T04:13:45.000Z</published>
-    <updated>2018-09-30T04:37:12.260Z</updated>
-    
-    <content type="html"><![CDATA[<p>需求是把网页给截图并保存下来，搜了下有两个 js，一个是 html2canvas，另一个是 canvas2image。</p><p>刚开始用 canvas2image，遇到一堆问题，最后还是换了 html2canvas。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'canvas'</span>)[<span class="number">0</span>];</span><br><span class="line">  html2canvas(<span class="built_in">document</span>.body, &#123;</span><br><span class="line">    width: <span class="number">720</span>,</span><br><span class="line">    height: <span class="number">480</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">canvas</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"???"</span>)</span><br><span class="line">      <span class="keyword">var</span> image = canvas.toDataURL(<span class="string">"image/png"</span>).replace(<span class="string">"image/png"</span>, <span class="string">"image/octet-stream"</span>);  <span class="comment">// here is the most important part because if you dont replace you will get a DOM 18 exception.</span></span><br><span class="line">      <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">      a.href = image;</span><br><span class="line">      a.download = <span class="string">'860_rain.png'</span>;</span><br><span class="line">      a.click();</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line"><span class="comment">// Canvas2Image.saveAsPNG(canvasObj, 720, 480);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然而貌似打开图片之后是缩放了的…… 这个 <code>720x480</code> 其实是把原图裁了一部分……</p><p>还没搞清楚怎么让它不缩放我的图片……</p><p>貌似不能用 js 来 resize 一个 canvas，似乎只能在加载图片的时候就这么搞。</p><p>然后还顺便发现一个神奇的事情，如果不停地下载同一个文件名的文件…… 它至多能下 100 次。就是会有 download, download (1), 一直到 download (100)。然后就下不下来了……</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;需求是把网页给截图并保存下来，搜了下有两个 js，一个是 html2canvas，另一个是 canvas2image。&lt;/p&gt;
-&lt;p&gt;刚开始用 canvas2image，遇到一堆问题，最后还是换了 html2canvas。&lt;/p&gt;
-&lt;figure class=&quot;highli
-      
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="canvas" scheme="https://ir1d.cf/tags/canvas/"/>
-    
-      <category term="html2canvas" scheme="https://ir1d.cf/tags/html2canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DailyNotes 18/9/20</title>
-    <link href="https://ir1d.cf/2018/09/20/DailyNotes-18-9-20/"/>
-    <id>https://ir1d.cf/2018/09/20/DailyNotes-18-9-20/</id>
-    <published>2018-09-20T15:45:20.000Z</published>
-    <updated>2018-09-20T16:26:28.049Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>ics 小班课 XD</li></ul><a id="more"></a><p>余数的符号和被除数一样</p><p>负数右移和除法结果不一样</p><p><code>-1 &gt;&gt; 3 == -1</code></p><p>ssh-tunnel: <a href="https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html" target="_blank" rel="noopener">https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html</a></p><p>把一个数转换成二进制：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">bitset</span>&lt;16&gt; y(<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; y;</span><br></pre></td></tr></table></figure><p><code>(x|-x) &gt;&gt; 31</code> 除了在 0 那里，其他地方都是 -1</p><p><code>-2147483648</code> 满足 <code>x=-x</code></p><p><code>nan</code> 不满足 <code>x=x</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;ics 小班课 XD&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="DailyNotes" scheme="https://ir1d.cf/tags/DailyNotes/"/>
     
   </entry>
   

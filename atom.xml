@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-02-11T15:51:07.811Z</updated>
+  <updated>2019-02-27T10:46:55.416Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Precision-Recall 曲线</title>
+    <link href="https://ir1d.cf/2019/02/27/Precision-Recall-%E6%9B%B2%E7%BA%BF/"/>
+    <id>https://ir1d.cf/2019/02/27/Precision-Recall-曲线/</id>
+    <published>2019-02-27T10:39:14.000Z</published>
+    <updated>2019-02-27T10:46:55.416Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>绘制 Precision-Recall 曲线过程中的一些思考</li></ul><a id="more"></a><p>也不能说是思考吧… 菜爆了好吗…</p><p>现象是我在画一个 object detection 的算法的 pr 曲线,画出来之后发现他好像 recall ~ 0 的时候, precision 不到 1…然而一般在网上看到的那种 pr 曲线是过 (recall=0, precision=1) 这个点的…</p><p>这里面怎么回事呢?</p><p>思考 pr 曲线是怎么测的?</p><p>我们枚举一个 confidence 的 thresh, 就得到很多 (precision, recall) 的数对.</p><p>这个 confidence 什么时候接近 y 轴呢?换言之,什么时候 recall 很小呢?</p><p>一个例子是我预测的就很少,自然 recall 也小.</p><p>为什么 precision 一般是 1 呢? 因为预测少的时候 confidence 是枚举到了很大的位置,这时的预测基本上都是准的..</p><p>那我测的这个为什么不是 1 呢? 它 confidence 最高的那个 box 就是错的, 而因为我枚举的 thresh 是每次增 0.001,所以 0.999 这一档并不都是准的…</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;绘制 Precision-Recall 曲线过程中的一些思考&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="precision-recall" scheme="https://ir1d.cf/tags/precision-recall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Photoshop 脚本 again</title>
+    <link href="https://ir1d.cf/2019/02/27/Photoshop-%E8%84%9A%E6%9C%AC-again/"/>
+    <id>https://ir1d.cf/2019/02/27/Photoshop-脚本-again/</id>
+    <published>2019-02-27T10:36:26.000Z</published>
+    <updated>2019-02-27T10:47:07.588Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>搞了个脚本来把 arw 转成 png</li></ul><a id="more"></a><p>本来用 mogrify 然后 xargs 一下跑满 8 核超爽,然后突然发现这个好像 ubuntu 上面读 arw (RAW图片) 的那个工具读出来尺寸不对… 本来是 6000x4000 的图,它给读成 6024x4024,转了几天的都白转了…</p><p>于是开动 Photoshop</p><p>本来录了个动作,然后批处理一波</p><p>没想到这个批处理跑上几个小时之后自己就停了…</p><p>心态崩了,于是把上回的脚本拿来改改</p><p>(to be released)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;搞了个脚本来把 arw 转成 png&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="photoshop" scheme="https://ir1d.cf/tags/photoshop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Single Shot MultiBox Detector 笔记</title>
+    <link href="https://ir1d.cf/2019/02/15/Single-Shot-MultiBox-Detector-%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ir1d.cf/2019/02/15/Single-Shot-MultiBox-Detector-笔记/</id>
+    <published>2019-02-15T04:10:06.000Z</published>
+    <updated>2019-02-15T04:10:56.623Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>SSD - Single Shot MultiBox Detector</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>解决 bounding box proposal 太慢的问题，作者表示我们可以干掉这一阶段，同时准确性也差不多好</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h2 id="改进（？）"><a href="#改进（？）" class="headerlink" title="改进（？）"></a>改进（？）</h2><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;SSD - Single Shot MultiBox Detector&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Faster RCNN</title>
+    <link href="https://ir1d.cf/2019/02/14/Faster-RCNN/"/>
+    <id>https://ir1d.cf/2019/02/14/Faster-RCNN/</id>
+    <published>2019-02-14T13:58:34.000Z</published>
+    <updated>2019-02-14T16:32:24.743Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>来记一下 Faster RCNN 吧…… 免得没看多少又忘光了</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>目标检测之前都在用 selective search，实在是太慢了。</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>这篇工作搞了个 Region Proposal Network，把生成 proposal 的工作交给 GPU，可以加速</p><p><img src="https://i.loli.net/2019/02/14/5c6574ea53f7b.png" alt="20190214220216.png"></p><p>无处不在的 Attention……</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h3 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h3><p><img src="https://i.loli.net/2019/02/14/5c6585693b966.png" alt="20190214231238.png"></p><p>用一个 3x3 的滑动窗口去处理 feature，然后把它送进一个 box-regression 和一个 box-classification 网络（都是全连接的）。<br>cls 和 reg 网络实际上用的是 1x1 卷积。</p><p>在滑动的过程中，每一点上，造九个 box 出来（3种大小 x 3种尺寸）。</p><p>不能训练左右的 anchor，否则由于负样本过多可能模型对正样本不是那么敏感。</p><p>新的层用标准差为 0.01 的高斯分布初始化，之前的其它层用 imagenet 上的分类网络 pretrain</p><h3 id="训练方式"><a href="#训练方式" class="headerlink" title="训练方式"></a>训练方式</h3><p>想要共享 RPN 和 Fast RCNN 之间的 feature</p><p>Alternating：先 RPN，再用 proposal 去训练 Fast RCNN。得到的网络再去初始化 RPN。迭代地来</p><p>Approximate Joint：一起训练，每一轮 SGD 里，先得到proposal，然后假装它是固定的，来训练 Fast RCNN。</p><p>作者表示这种做法忽视了 RPN 网络生成的bounding box 的坐标的梯度（后面直接用了，梯度没有传播），因此只是近似的方法</p><p>Non-Approximate Joint：</p><p>需要一个 <code>RoI warping</code> 层来解决上面梯度的问题。。感觉意思是搞了个梯度不会丢失的 ROI pooling 层？</p><p>4-Step Alternating：</p><ol><li>先训 RPN（用 ImageNet 上 pretrain的 model，在一个 region proposal task 上面 fine-tune）</li><li>用 Fast RCNN 训练一个独立的 detection 网络（利用上一步得到的 proposal）。注：这个也是 ImageNet pretrain，这一步之后两个网络还没有共享卷积层。</li><li>用 detector network 来初始化 RPN 的训练，但是固定住共享的卷积层的权重，只 fine-tune RPN 中独立的层。（现在这两个网络有共享的卷积层了。</li><li>最后继续固定那几个层的权重，fine-tune 只在 Fast-RCNN 里的层。</li></ol><h3 id="nms"><a href="#nms" class="headerlink" title="nms"></a>nms</h3><p>non-maximum suppression，用来消灭重复的 porposal regions（根据 cls 分数来评定）。paper 里写的 IoU threshold 竟然是 0.7……</p><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h2 id="改进（？）"><a href="#改进（？）" class="headerlink" title="改进（？）"></a>改进（？）</h2><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2><p><a href="http://closure11.com/rcnn-fast-rcnn-faster-rcnn%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" target="_blank" rel="noopener">http://closure11.com/rcnn-fast-rcnn-faster-rcnn%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;来记一下 Faster RCNN 吧…… 免得没看多少又忘光了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>Face Detection Demo 评测</title>
@@ -408,115 +504,6 @@
     
     
       <category term="Minecraft" scheme="https://ir1d.cf/tags/Minecraft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-cli</title>
-    <link href="https://ir1d.cf/2018/10/02/leetcode-cli/"/>
-    <id>https://ir1d.cf/2018/10/02/leetcode-cli/</id>
-    <published>2018-10-02T06:54:39.000Z</published>
-    <updated>2018-10-02T06:56:29.190Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>LeetCode-cli</li></ul><a id="more"></a><p>一直想写一个 cli 工具来简化提交到 OJ 的过程= =</p><p>鸽了多年的 TerminalOJ 终于可以瞑目了吧……</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g leetcode-cli</span><br></pre></td></tr></table></figure><p><a href="https://skygragon.github.io/leetcode-cli/commands" target="_blank" rel="noopener">https://skygragon.github.io/leetcode-cli/commands</a></p><p>功能也蛮强大的说实话，要是能自带 alias 就好了 XD</p><p>我现在加上这两个，更方便一些</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> Leetcode=<span class="string">'leetcode'</span></span><br><span class="line"><span class="built_in">alias</span> Another=<span class="string">'leetcode show -q eDL -t algorithms -gxe'</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;LeetCode-cli&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="leetcode" scheme="https://ir1d.cf/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数算MOOC 3.4 思考题</title>
-    <link href="https://ir1d.cf/2018/10/01/%E6%95%B0%E7%AE%97MOOC-3-4-%E6%80%9D%E8%80%83%E9%A2%98/"/>
-    <id>https://ir1d.cf/2018/10/01/数算MOOC-3-4-思考题/</id>
-    <published>2018-10-01T01:52:07.000Z</published>
-    <updated>2018-10-01T01:58:36.962Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><ul><li>只用 front, rear 两个变量，长度为 n 的队列，最多能容纳多少个元素？</li></ul><p>最多容纳 n-1 个元素。一个最多元素个数为 n-1 的队列，它有 n 个状态，需要用 front 和 rear 的距离来表示这种状态，所以需要一个空位置。</p><ul><li>如果不愿意浪费队列的存储单元，还可以怎么办？</li></ul><p>可以把这个存储单元拿出来，单独开一个变量表示队列元素个数或者表示队列是否为空。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;只用 front, rear 两个变量，长度为 n 的队列，最多能容纳多少个元素？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;最多容纳 n-1 个元素。一个最多元素个数为 n-1 的队列，它有 n 个状态，需要用 front 和 rear 
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="数算" scheme="https://ir1d.cf/tags/%E6%95%B0%E7%AE%97/"/>
-    
-      <category term="MOOC" scheme="https://ir1d.cf/tags/MOOC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为什么 pop() 返回值是 void</title>
-    <link href="https://ir1d.cf/2018/09/30/%E4%B8%BA%E4%BB%80%E4%B9%88-pop-%E8%BF%94%E5%9B%9E%E5%80%BC%E6%98%AF-void/"/>
-    <id>https://ir1d.cf/2018/09/30/为什么-pop-返回值是-void/</id>
-    <published>2018-09-30T15:54:31.000Z</published>
-    <updated>2018-09-30T17:08:05.374Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>ref: <a href="http://cpptruths.blogspot.com/2005/10/why-does-stdstackpop-returns-void.html" target="_blank" rel="noopener">http://cpptruths.blogspot.com/2005/10/why-does-stdstackpop-returns-void.html</a></li></ul><a id="more"></a><p>数算 MOOC 的思考题：STL 为什么把 pop 和 top 分开？</p><ol><li>pop 如果有返回值的话，显然不能返回一个引用。如果是值的话，就不是很高效了——它会产生至少一次多余的构造函数调用。</li><li>如果 <code>std::stack&lt;T&gt;</code> 是一个模板类， pop 返回的结果需要调用复制构造函数。如果这个构造函数内部足够复杂，甚至出发了异常，那么这里面的 pop 的返回值就是一个 rvalue…… 在过程中就丢失了…… 并没有办法找回</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;ref: &lt;a href=&quot;http://cpptruths.blogspot.com/2005/10/why-does-stdstackpop-returns-void.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://cpptruths.blogspot.com/2005/10/why-does-stdstackpop-returns-void.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="c++" scheme="https://ir1d.cf/tags/c/"/>
-    
-      <category term="pop" scheme="https://ir1d.cf/tags/pop/"/>
-    
-      <category term="void" scheme="https://ir1d.cf/tags/void/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ics datalab 小结</title>
-    <link href="https://ir1d.cf/2018/09/30/ics-datalab-%E5%B0%8F%E7%BB%93/"/>
-    <id>https://ir1d.cf/2018/09/30/ics-datalab-小结/</id>
-    <published>2018-09-30T04:37:27.000Z</published>
-    <updated>2018-09-30T05:07:09.244Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>datalab</li></ul><a id="more"></a><h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul><li><a href="http://aggregate.org/MAGIC/" target="_blank" rel="noopener">http://aggregate.org/MAGIC/</a></li><li><a href="https://graphics.stanford.edu/~seander/bithacks.html" target="_blank" rel="noopener">https://graphics.stanford.edu/~seander/bithacks.html</a></li><li><a href="https://github.com/lmichalek/CodeSamples/blob/master/bit-manipulation/bits.c" target="_blank" rel="noopener">https://github.com/lmichalek/CodeSamples/blob/master/bit-manipulation/bits.c</a></li><li><a href="https://github.com/mrseaman/15213-datalab/blob/master/bits.c" target="_blank" rel="noopener">https://github.com/mrseaman/15213-datalab/blob/master/bits.c</a></li><li><a href="http://hackersdelight.org" target="_blank" rel="noopener">http://hackersdelight.org</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;datalab&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="ics" scheme="https://ir1d.cf/tags/ics/"/>
-    
-      <category term="datalab" scheme="https://ir1d.cf/tags/datalab/"/>
     
   </entry>
   

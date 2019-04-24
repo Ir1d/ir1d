@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-02-27T10:46:55.416Z</updated>
+  <updated>2019-04-24T07:53:04.382Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>概统期中笔记</title>
+    <link href="https://ir1d.cf/2019/04/24/%E6%A6%82%E7%BB%9F%E6%9C%9F%E4%B8%AD%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ir1d.cf/2019/04/24/概统期中笔记/</id>
+    <published>2019-04-24T07:48:40.000Z</published>
+    <updated>2019-04-24T07:53:04.382Z</updated>
+    
+    <content type="html"><![CDATA[<p>我发现上回整理了这个 post 的模板之后根本就没写过 post.. gg</p><p>概统这波.. 讲道理没什么难度的.. 是我送了</p><a id="more"></a><p><img src="https://i.loli.net/2019/04/24/5cc0152fa8789.png" alt="20190424155005.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0154722af5.png" alt="20190424155029.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0154e5352e.png" alt="20190424155037.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01553b4472.png" alt="20190424155042.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0155a035d9.png" alt="20190424155048.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0156b0dd4b.png" alt="20190424155106.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01570610a6.png" alt="20190424155111.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01576523c5.png" alt="20190424155117.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0157cb663e.png" alt="20190424155123.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc015810c873.png" alt="20190424155127.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01587600cb.png" alt="20190424155134.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我发现上回整理了这个 post 的模板之后根本就没写过 post.. gg&lt;/p&gt;
+&lt;p&gt;概统这波.. 讲道理没什么难度的.. 是我送了&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="概率统计" scheme="https://ir1d.cf/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Precision-Recall 曲线</title>
@@ -481,29 +504,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Minecraft 1.13 挂机钓鱼脚本</title>
-    <link href="https://ir1d.cf/2018/10/05/Minecraft-1-13-%E6%8C%82%E6%9C%BA%E9%92%93%E9%B1%BC%E8%84%9A%E6%9C%AC/"/>
-    <id>https://ir1d.cf/2018/10/05/Minecraft-1-13-挂机钓鱼脚本/</id>
-    <published>2018-10-05T08:17:27.000Z</published>
-    <updated>2018-10-05T08:28:26.619Z</updated>
-    
-    <content type="html"><![CDATA[<p>Minecraft 1.13 挂机钓鱼</p><p>（Ubuntu</p><a id="more"></a><p>启动器是 HMCL：<a href="https://github.com/huanghongxun/HMCL/" target="_blank" rel="noopener">https://github.com/huanghongxun/HMCL/</a></p><p>本文记录的操作来自：<a href="https://www.reddit.com/r/Minecraft/comments/6fb6cp/using_an_afk_fish_farm_in_the_background_with/" target="_blank" rel="noopener">https://www.reddit.com/r/Minecraft/comments/6fb6cp/using_an_afk_fish_farm_in_the_background_with/</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xwininfo -display :0</span><br><span class="line"><span class="comment"># 查看窗口的十六进制 id，然后改到下一个命令中去</span></span><br><span class="line">xdotool mousedown --window [MINECRAFT_WINDOW_ID] 3</span><br></pre></td></tr></table></figure><p>安装直接 <code>sudo apt install xdotool</code> 就好了</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Minecraft 1.13 挂机钓鱼&lt;/p&gt;
-&lt;p&gt;（Ubuntu&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="操作" scheme="https://ir1d.cf/categories/%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="Minecraft" scheme="https://ir1d.cf/tags/Minecraft/"/>
     
   </entry>
   

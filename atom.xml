@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-04-24T16:31:40.245Z</updated>
+  <updated>2019-05-04T16:28:53.308Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FastAI踩坑</title>
+    <link href="https://ir1d.cf/2019/05/05/FastAI%E8%B8%A9%E5%9D%91/"/>
+    <id>https://ir1d.cf/2019/05/05/FastAI踩坑/</id>
+    <published>2019-05-04T16:09:24.000Z</published>
+    <updated>2019-05-04T16:28:53.308Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>五一一直在调 Fast.AI</li></ul><a id="more"></a><p>训 SSD 的时候遇到了灵异事件，</p><p>遇到了个似乎问题差不多的老哥 <a href="https://stackoverflow.com/questions/48595240/map-decreasing-with-training-tensorflow-object-detection-ssd" target="_blank" rel="noopener">https://stackoverflow.com/questions/48595240/map-decreasing-with-training-tensorflow-object-detection-ssd</a> 但是我调了它说的这个参数，并没有什么效果。然后我发现同样的 model，用 pytorch 有这个问题，但是封进 fastai 的版本就没有这个毛病。</p><p>然后由于不满足与只 train 不 valid，然后加了 validation，然后就进入了 6h 一个 epoch 然后发现 valid 炸了的状态，后来发帖才知道可以 <code>learn.validate()</code> （然而这个函数对数据的 type 也有一些奇怪的隐含要求.. doc 写得不太清楚）</p><p>哦读入的时候也很坑，搞了好久那个 databunch，因为看它 doc 里写说什么如果用 pytorch 的 vanilla dataset，有些 fastai 的函数不滋兹（x然而后来也没用上）。用的那个 <code>ObjectItemList</code>，然后它 <code>get_label_from_func</code> 之后竟然会把 bounding box 的坐标给 norm 成 [-1,1] 之间的.. 然后我转成 [0..1] 的时候又翻车了一万次.. 因为我之前搞成一个 list 就可以，但是 fastai 它不爽，要用个 <code>bb_pad_collate</code> 给封成一个 torch tensor= =</p><p>然后有个坑是那个 ImageBBox 的坐标默认顺序是 <code>(top, left, bottom, right)</code>，和我之前的也不一样= =，然后就翻车了.. 倒也没炸掉，只是 loss 奇高，but really time consuming</p><p>现在能顺利 run 起来了，除了偶尔它莫名其妙 out of memory （也可能是服务器上别的 process 搞得，说不好）以外没啥毛病（#flag）</p><p>这几天在 forum 开了一万个帖子.. 感觉自己太 push 了（（</p><p>可是 fastai 的文档看着是真的不舒服.. 习惯了 pytorch 那种简明扼要 example 充足的..</p><p>fastai 的东西封装得很细，但是不会用就只能炸炸炸..</p><p>惨惨 QAQ</p><p>我记得好像还没有用 FastAI 写 Object Detection 的指南，如果有空可以整理一下 code（</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;五一一直在调 Fast.AI&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Fast.AI" scheme="https://ir1d.cf/tags/Fast-AI/"/>
+    
+      <category term="pytorch" scheme="https://ir1d.cf/tags/pytorch/"/>
+    
+  </entry>
   
   <entry>
     <title>groupsNotes-0424</title>
@@ -481,30 +507,6 @@
     
     
       <category term="数据结构与算法课程" scheme="https://ir1d.cf/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Comparative Study on Generative Adversarial Networks</title>
-    <link href="https://ir1d.cf/2018/10/20/Comparative-Study-on-Generative-Adversarial-Networks/"/>
-    <id>https://ir1d.cf/2018/10/20/Comparative-Study-on-Generative-Adversarial-Networks/</id>
-    <published>2018-10-20T13:21:14.000Z</published>
-    <updated>2018-10-20T15:26:03.673Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>Comparative Study on Generative Adversarial Networks</li></ul><a id="more"></a><h2 id="Comparative-Study-on-Generative-Adversarial-Networks"><a href="#Comparative-Study-on-Generative-Adversarial-Networks" class="headerlink" title="Comparative Study on Generative Adversarial Networks"></a>Comparative Study on Generative Adversarial Networks</h2><p>这篇 comparative study 试图比较原版和各种不同修改版的 GAN 的异同之处。</p><p><img src="https://i.loli.net/2018/10/20/5bcb4887b26c3.png" alt=""><br><img src="https://i.loli.net/2018/10/20/5bcb4887963a5.png" alt=""></p><p>$D(x)$ 是 x 来自原始数据而不是 $p_g$ 的概率。D 要最大化 $logD(x)$，而 G 要最小化 $log(1-D(G(z)))$。但是这样做的话 G 的梯度不适合用来训练，就把 objective function 修改一下，变成让D最大化 $logD(G(z))$</p><p><img src="https://i.loli.net/2018/10/20/5bcb4887a4bc9.png" alt=""></p><h3 id="CGAN"><a href="#CGAN" class="headerlink" title="CGAN"></a>CGAN</h3><p><img src="https://i.loli.net/2018/10/20/5bcb4887eabd6.png" alt=""><br>Conditional Generative Adversarial Network，简称 CGAN，这里把噪声 z 和条件 y 同时送进 G。<br><img src="https://i.loli.net/2018/10/20/5bcb488794302.png" alt=""></p><h3 id="LAPGAN"><a href="#LAPGAN" class="headerlink" title="LAPGAN"></a>LAPGAN</h3><p>Laplacian Pyramid of Adversarial Networks，简称 LAPGAN，这里构建了一个拉普拉斯金字塔，金字塔的每一层是一个 CGAN</p><h3 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h3><p>Deep Convolutional Generative Adversarial Networks，主要特点是：去掉了全连接和 pooling 层，全部使用卷积层；在 G 和 D 中都使用了 BN；在 G 中，除了最后一层，每一层之后都跟了 ReLU，而在 D 中，每一层后面跟了 LeakyReLU。</p><p><img src="https://i.loli.net/2018/10/20/5bcb48889218d.png" alt=""></p><h3 id="Adversarial-Autoencoder"><a href="#Adversarial-Autoencoder" class="headerlink" title="Adversarial Autoencoder"></a>Adversarial Autoencoder</h3><p><img src="https://i.loli.net/2018/10/20/5bcb48887eb9e.png" alt=""></p><h3 id="GRAN"><a href="#GRAN" class="headerlink" title="GRAN"></a>GRAN</h3><h3 id="InfoGAN"><a href="#InfoGAN" class="headerlink" title="InfoGAN"></a>InfoGAN</h3><p><img src="https://i.loli.net/2018/10/20/5bcb48885d134.png" alt=""></p><p>Imformation maximizing GANs，InfoGAN 把输入的 noise vector 分成两部分，一个是看做噪声z，一个是当做 latent code（c），然后把 z 和 c 同时输入给 G。在判别器的输出部分也进行了调整，同时输出一个 $c’$。</p><p>Q 网络用于判别结果对应的类别（c），实现上和 D 的结构相同，最后接一个全连接层输出</p><h3 id="BiGAN"><a href="#BiGAN" class="headerlink" title="BiGAN"></a>BiGAN</h3><p><img src="https://i.loli.net/2018/10/20/5bcb488896667.png" alt=""><br>Bidirectional Generative Adversarial Networks。</p><p><img src="https://i.loli.net/2018/10/20/5bcb4888b3219.png" alt=""></p><p>它有个特点是可以保证得到全局最小值。</p><p>BiGAN 引入了一个 E 网络，把输入图转换成 latent vector，然后把图片和 vector 一起送给 D 进行分类。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;Comparative Study on Generative Adversarial Networks&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
   </entry>
   

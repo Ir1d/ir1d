@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Neverland">
 <meta property="og:description" content="五一一直在调 Fast.AI">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-04T16:28:53.308Z">
+<meta property="og:updated_time" content="2019-05-04T16:32:59.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FastAI踩坑">
 <meta name="twitter:description" content="五一一直在调 Fast.AI">
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2019-05-05 00:09:24 / Modified: 00:28:53" itemprop="dateCreated datePublished" datetime="2019-05-05T00:09:24+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 00:09:24 / Modified: 00:32:59" itemprop="dateCreated datePublished" datetime="2019-05-05T00:09:24+08:00">2019-05-05</time>
             
 
             
@@ -479,6 +479,7 @@
 <p>遇到了个似乎问题差不多的老哥 <a href="https://stackoverflow.com/questions/48595240/map-decreasing-with-training-tensorflow-object-detection-ssd" target="_blank" rel="noopener">https://stackoverflow.com/questions/48595240/map-decreasing-with-training-tensorflow-object-detection-ssd</a> 但是我调了它说的这个参数，并没有什么效果。然后我发现同样的 model，用 pytorch 有这个问题，但是封进 fastai 的版本就没有这个毛病。</p>
 <p>然后由于不满足与只 train 不 valid，然后加了 validation，然后就进入了 6h 一个 epoch 然后发现 valid 炸了的状态，后来发帖才知道可以 <code>learn.validate()</code> （然而这个函数对数据的 type 也有一些奇怪的隐含要求.. doc 写得不太清楚）</p>
 <p>哦读入的时候也很坑，搞了好久那个 databunch，因为看它 doc 里写说什么如果用 pytorch 的 vanilla dataset，有些 fastai 的函数不滋兹（x然而后来也没用上）。用的那个 <code>ObjectItemList</code>，然后它 <code>get_label_from_func</code> 之后竟然会把 bounding box 的坐标给 norm 成 [-1,1] 之间的.. 然后我转成 [0..1] 的时候又翻车了一万次.. 因为我之前搞成一个 list 就可以，但是 fastai 它不爽，要用个 <code>bb_pad_collate</code> 给封成一个 torch tensor= =</p>
+<p>其实 doc 里有写.. 但我总是之后才找到..</p>
 <p>然后有个坑是那个 ImageBBox 的坐标默认顺序是 <code>(top, left, bottom, right)</code>，和我之前的也不一样= =，然后就翻车了.. 倒也没炸掉，只是 loss 奇高，but really time consuming</p>
 <p>现在能顺利 run 起来了，除了偶尔它莫名其妙 out of memory （也可能是服务器上别的 process 搞得，说不好）以外没啥毛病（#flag）</p>
 <p>这几天在 forum 开了一万个帖子.. 感觉自己太 push 了（（</p>

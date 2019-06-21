@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      appId: 'MFOAFRM2TL',
+      apiKey: 'cd77d6af2d9d1fecb8c392250ed56bb3',
+      indexName: 'ir1d-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="复习得很用心吧。。但是考得挺难的。。感觉有点白给了。。  最后一题题面没说整数，顺手写了个梯度下降，好不容易老师溜达过来问了一嘴发现是整数。。。">
+<meta name="keywords" content="算分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算分期末复习">
+<meta property="og:url" content="https://ir1d.cf/2019/06/21/算分期末复习/index.html">
+<meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="复习得很用心吧。。但是考得挺难的。。感觉有点白给了。。  最后一题题面没说整数，顺手写了个梯度下降，好不容易老师溜达过来问了一嘴发现是整数。。。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59009078-dd24f180-885e-11e9-991a-3a25ab0eddd6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59009081-e2823c00-885e-11e9-9d8b-f612f9e65184.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59011172-51af5e80-8866-11e9-9cf2-8f056d293a98.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59054095-89012800-88c5-11e9-9944-3338b0a90108.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59076291-e918be00-8907-11e9-8228-d7203c2216da.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59076728-19f9f280-890a-11e9-8f08-ef75f27a693c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59076936-15820980-890b-11e9-8338-b3385eaba55d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59077335-c50bab80-890c-11e9-82b8-6fe9d3b6d3ec.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59077878-07ce8300-890f-11e9-8334-7c255b264747.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/58977562-97cfd800-87fc-11e9-9caa-c30ddebb1acb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/58977593-a3bb9a00-87fc-11e9-9ef5-26678699d376.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/58977778-f39a6100-87fc-11e9-9ca1-c9ee015a2079.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59001595-be643200-8841-11e9-91cb-e819d45a01e3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59002250-595e0b80-8844-11e9-9600-1f509cc62b9c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59002256-5e22bf80-8844-11e9-9658-9e695c4fb52c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003644-67625b00-8849-11e9-9f12-c49bf8d98b14.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003769-d9d33b00-8849-11e9-8005-1f75c4ceaaa8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003777-e2c40c80-8849-11e9-97d4-ff9a001964e7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003789-e9528400-8849-11e9-9fd6-61c24ea4d771.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003794-f1aabf00-8849-11e9-87da-dbe8b55ede77.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59003814-05eebc00-884a-11e9-8e37-a0ad2255aba1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59104342-eea3f180-8963-11e9-8dda-e8d05c95251d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59114336-8d871880-8979-11e9-8247-dc7e881856b7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59114553-f9698100-8979-11e9-8acc-2e971cad9855.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59114611-1900a980-897a-11e9-82e2-ccf8719c594b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59116219-aabde600-897d-11e9-9f20-f5a9e67841a1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59117443-46e8ec80-8980-11e9-9d3c-e146304c14e7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59149679-41a4a400-8a4b-11e9-8028-e155a2bea89d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59150705-5ccae000-8a5a-11e9-83bb-d66d8e19ee91.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59155750-fcbc5400-8ac2-11e9-8202-4323659837dd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59155754-0776e900-8ac3-11e9-94b9-6df0176d7e67.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59155756-0fcf2400-8ac3-11e9-92f3-a10f9b901815.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59155758-13fb4180-8ac3-11e9-9012-5691f29da5f3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59155761-1bbae600-8ac3-11e9-8122-9ac77dd8730e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59156271-bec32e00-8aca-11e9-8954-cb0908961592.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59159940-33b25a00-8b03-11e9-9d43-da5597a30c23.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59161956-c4952f80-8b1b-11e9-9af1-c9b99704a5b0.png">
+<meta property="og:updated_time" content="2019-06-21T15:53:57.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算分期末复习">
+<meta name="twitter:description" content="复习得很用心吧。。但是考得挺难的。。感觉有点白给了。。  最后一题题面没说整数，顺手写了个梯度下降，好不容易老师溜达过来问了一嘴发现是整数。。。">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/10709657/59009078-dd24f180-885e-11e9-991a-3a25ab0eddd6.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://ir1d.cf/2019/06/21/算分期末复习/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>算分期末复习 | Neverland</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955771-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100955771-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neverland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">你是我不愿醒来的梦啊<br>真是柔情一场</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+    <a href="/friends/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-star"></i> <br />Friends</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ir1d.cf/2019/06/21/算分期末复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算分期末复习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-21 23:50:36 / Modified: 23:53:57" itemprop="dateCreated datePublished" datetime="2019-06-21T23:50:36+08:00">2019-06-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/21/算分期末复习/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/21/算分期末复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>复习得很用心吧。。但是考得挺难的。。感觉有点白给了。。</p>
+</li>
+<li><p>最后一题题面没说整数，顺手写了个梯度下降，好不容易老师溜达过来问了一嘴发现是整数。。。</p>
+</li>
+</ul>
+<a id="more"></a>
+<p>课本例题<br>课本习题 还差 7,9,11<br>ppt 例题<br>21 个 npc <a href="http://wmdcstdio.com/2018/06/23/karp-npc-21/" target="_blank" rel="noopener">http://wmdcstdio.com/2018/06/23/karp-npc-21/</a><br>24 网络流 <a href="https://blog.csdn.net/herano/article/details/70180828" target="_blank" rel="noopener">https://blog.csdn.net/herano/article/details/70180828</a><br><a href="https://www.zjyelizaveta.com/2017/09/21/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%B5%8124%E9%A2%98-Part-1/" target="_blank" rel="noopener">https://www.zjyelizaveta.com/2017/09/21/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%B5%8124%E9%A2%98-Part-1/</a><br>算导 平摊分析 网络流</p>
+<p>可行流：加一个新源点 限制流量<br>上下界网络流</p>
+<p>最小割输出方案 <a href="https://blog.csdn.net/semiwaker/article/details/62883701" target="_blank" rel="noopener">https://blog.csdn.net/semiwaker/article/details/62883701</a><br>残量网络里和 S 连通的点是 S 点集里的点</p>
+<p>回溯法 各种树 多米诺性质<br><img src="https://user-images.githubusercontent.com/10709657/59009078-dd24f180-885e-11e9-991a-3a25ab0eddd6.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59009081-e2823c00-885e-11e9-9d8b-f612f9e65184.png" alt="image">最后的结果是 z0?</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59011172-51af5e80-8866-11e9-9cf2-8f056d293a98.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59054095-89012800-88c5-11e9-9944-3338b0a90108.png" alt="image"><br>逆序数列：在 i 右边，并且小于 i 的元素个数记作 B_i<br>heapify 是从 i 向叶子调整（把儿子中较大的换到父结点），复杂度依赖于结点的高度<br><img src="https://user-images.githubusercontent.com/10709657/59076291-e918be00-8907-11e9-8228-d7203c2216da.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59076728-19f9f280-890a-11e9-8f08-ef75f27a693c.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59076936-15820980-890b-11e9-8338-b3385eaba55d.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59077335-c50bab80-890c-11e9-82b8-6fe9d3b6d3ec.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59077878-07ce8300-890f-11e9-8334-7c255b264747.png" alt="image"><br>P 规约到 Q，说明 Q 至少和 P 一样难，复杂度不会低于 P</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/58977562-97cfd800-87fc-11e9-9caa-c30ddebb1acb.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/58977593-a3bb9a00-87fc-11e9-9ef5-26678699d376.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/58977778-f39a6100-87fc-11e9-9ca1-c9ee015a2079.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59001595-be643200-8841-11e9-91cb-e819d45a01e3.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59002250-595e0b80-8844-11e9-9600-1f509cc62b9c.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59002256-5e22bf80-8844-11e9-9658-9e695c4fb52c.png" alt="image"><br>递归树<br>dp: 一个最优决策序列的任何子序列本身一定是相对于<br>子序列的初始和结束状态的最优的决策序列<br>贪心：<br><img src="https://user-images.githubusercontent.com/10709657/59003644-67625b00-8849-11e9-9f12-c49bf8d98b14.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59003769-d9d33b00-8849-11e9-8005-1f75c4ceaaa8.png" alt="image"><br>套路<br><img src="https://user-images.githubusercontent.com/10709657/59003777-e2c40c80-8849-11e9-97d4-ff9a001964e7.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59003789-e9528400-8849-11e9-9fd6-61c24ea4d771.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59003794-f1aabf00-8849-11e9-87da-dbe8b55ede77.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59003814-05eebc00-884a-11e9-8e37-a0ad2255aba1.png" alt="image"></p>
+<p>贪心证 prim,kruskal,dijkstra</p>
+<p>3SAT 是说 3 元合取范式，MAX-SAT 是说一堆合取范式里能不能满足 k 个</p>
+<p>构件设计法</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59104342-eea3f180-8963-11e9-8dda-e8d05c95251d.png" alt="image"></p>
+<p>近似算法的证明。。<br><img src="https://user-images.githubusercontent.com/10709657/59114336-8d871880-8979-11e9-8247-dc7e881856b7.png" alt="image"></p>
+<p>NPC 证明</p>
+<p>Karp 的 21 道 NPC 证明（去年小班课必读论文）</p>
+<p><a href="https://people.eecs.berkeley.edu/~luca/cs172/karp.pdf" target="_blank" rel="noopener">https://people.eecs.berkeley.edu/~luca/cs172/karp.pdf</a></p>
+<p>中文简易版</p>
+<p><a href="http://wmdcstdio.com/2018/06/23/karp-npc-21/" target="_blank" rel="noopener">http://wmdcstdio.com/2018/06/23/karp-npc-21/</a></p>
+<p>14 个 NPC 证明</p>
+<p><a href="http://www.docin.com/p-789421911.html" target="_blank" rel="noopener">http://www.docin.com/p-789421911.html</a></p>
+<p>CSDN 比较好的博客</p>
+<p><a href="https://blog.csdn.net/golden1314521/article/details/51470999" target="_blank" rel="noopener">https://blog.csdn.net/golden1314521/article/details/51470999</a></p>
+<p>百度文库 NPC 问题整理</p>
+<p><a href="https://wenku.baidu.com/view/65e548191a37f111f0855b2c?pcf=2" target="_blank" rel="noopener">https://wenku.baidu.com/view/65e548191a37f111f0855b2c?pcf=2</a></p>
+<p>网络流 24 题</p>
+<p>一篇比较全的博客</p>
+<p><a href="https://www.cnblogs.com/zsnuo/p/8909613.html" target="_blank" rel="noopener">https://www.cnblogs.com/zsnuo/p/8909613.html</a></p>
+<h2 id="09"><a href="#09" class="headerlink" title="09"></a>09</h2><p><img src="https://user-images.githubusercontent.com/10709657/59114553-f9698100-8979-11e9-8acc-2e971cad9855.png" alt="image"><br>平摊分析的三种方法<br>– 聚集分析<br>– 记账法<br>– 势能法<br><img src="https://user-images.githubusercontent.com/10709657/59114611-1900a980-897a-11e9-82e2-ccf8719c594b.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59116219-aabde600-897d-11e9-9f20-f5a9e67841a1.png" alt="image"></p>
+<p>我觉得有问题的：平摊分析、网络流、近似、随机<br>贪心证明：线段覆盖</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59117443-46e8ec80-8980-11e9-9d3c-e146304c14e7.png" alt="image"><br>dinic n^3 ff mC ek nm^2</p>
+<h2 id="网络流-24"><a href="#网络流-24" class="headerlink" title="网络流 24"></a>网络流 24</h2><p>最大权闭合子图的权值等于所有正权点之和减去最小割 <a href="https://blog.csdn.net/yo_bc/article/details/75322370" target="_blank" rel="noopener">https://blog.csdn.net/yo_bc/article/details/75322370</a> S 连正权，T 连负权，原图的边容量 inf<br>最小路径覆盖：方案即为 S 出发的所有满流边，每条满流边上的点<br>二分图最小点权覆盖、最大点权独立集 转化为最大匹配<br>|最大独立集| = |V|-|最大匹配数|<br>路径互不相交 -&gt; 不能重点，不能重边 -&gt; 说明了每个点只能经过一次<br>仅在数字结点处相交 -&gt; 可以重点，不能重边 -&gt; 不用拆点，只限制边权即可<br>最大权不相交路径问题转化为最大费用最大流模型<br>21、最长 k 可重区间集问题 要想一会。。把重复 k 次转换成选 k 条路径，每条路径内部区间互不相交</p>
+<ol>
+<li>平面上线段：为了避免线段与 x 轴垂直的情况，需要将所有的端点坐标 ×2 ，然后左端点 −1</li>
+</ol>
+<h2 id="18"><a href="#18" class="headerlink" title="18"></a>18</h2><p>恰好覆盖：写出算法及复杂度<br>NPC 证明：证明强独⽴集是 NPC 的<br>近似算法：证明最⼩顶点覆盖的 MVC 算法的正确性即近似⽐</p>
+<p>有向环覆盖对应拆点后二分图的完备匹配 <a href="https://blog.csdn.net/u013480600/article/details/39159407" target="_blank" rel="noopener">https://blog.csdn.net/u013480600/article/details/39159407</a><br>我们找到这 n 条边，起点互不相同、终点互不相同，可以认为是构成若干个环</p>
+<h2 id="近似"><a href="#近似" class="headerlink" title="近似"></a>近似</h2><p>近似算法：写出求极大匹配的贪心算法，求该算法和最大匹配算法的近似比，找出紧实例<br>证明最⼩顶点覆盖的 MVC 算法的正确性即近似⽐</p>
+<h2 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h2><p>伪码，输出一个不是最大的随机数</p>
+<h2 id="npc"><a href="#npc" class="headerlink" title="npc"></a>npc</h2><p>恰好覆盖：写出算法及复杂度</p>
+<p>找数组中出现次数超过一半的元素 O（n）</p>
+<p>课后题<br>Select 算法 3 个一组，nlogn<br>5 个 n</p>
+<h2 id="12"><a href="#12" class="headerlink" title="12"></a>12</h2><p><img src="https://user-images.githubusercontent.com/10709657/59149679-41a4a400-8a4b-11e9-8028-e155a2bea89d.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59150705-5ccae000-8a5a-11e9-83bb-d66d8e19ee91.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59155750-fcbc5400-8ac2-11e9-8202-4323659837dd.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59155754-0776e900-8ac3-11e9-94b9-6df0176d7e67.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59155756-0fcf2400-8ac3-11e9-92f3-a10f9b901815.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59155758-13fb4180-8ac3-11e9-9012-5691f29da5f3.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59155761-1bbae600-8ac3-11e9-8122-9ac77dd8730e.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59156271-bec32e00-8aca-11e9-8954-cb0908961592.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59159940-33b25a00-8b03-11e9-9d43-da5597a30c23.png" alt="image"></p>
+<p><a href="https://cs.stackexchange.com/questions/1240/how-do-i-construct-reductions-between-problems-to-prove-a-problem-is-np-complete" target="_blank" rel="noopener">https://cs.stackexchange.com/questions/1240/how-do-i-construct-reductions-between-problems-to-prove-a-problem-is-np-complete</a></p>
+<p>First, unless you’re just doing homework, you have to decide which NP-hard problem to reduce to your problem. This is largely a question of “smell”. If the number 3 appears anywhere in the problem statement, try reducing from 𝟥𝖲𝖠𝖳 or 𝟥𝖢𝗈𝗅𝗈𝗋 or 𝟥𝖯𝖺𝗋𝗍𝗂𝗍𝗂𝗈𝗇. (Yes, I’m serious.) If your problem involves finding an optimal subsequence or permutation or path, try reducing from 𝖧𝖺𝗆𝗂𝗅𝗍𝗈𝗇𝗂𝖺𝗇𝖢𝗒𝖼𝗅𝖾 or 𝖧𝖺𝗆𝗂𝗅𝗍𝗈𝗇𝗂𝖺𝗇𝖯𝖺𝗍𝗁. If your problem asks for the smallest subset with a certain property, try 𝖢𝗅𝗂𝗊𝗎𝖾; if it asks for the largest subset with a certain property, try 𝖨𝗇𝖽𝖾𝗉𝖾𝗇𝖽𝖾𝗇𝗍𝖲𝖾𝗍. If your problem involves doing something in the plane, try 𝖯𝗅𝖺𝗇𝖺𝗋𝖢𝗂𝗋𝖼𝗎𝗂𝗍𝖲𝖠𝖳 or 𝖯𝗅𝖺𝗇𝖺𝗋𝖳𝖲𝖯. And so on. If your problem doesn’t “smell” like anything, 𝟥𝖲𝖠𝖳 or 𝖢𝗂𝗋𝖼𝗎𝗂𝗍𝖲𝖠𝖳 is probably your best bet.<br><img src="https://user-images.githubusercontent.com/10709657/59161956-c4952f80-8b1b-11e9-9af1-c9b99704a5b0.png" alt="image"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Ir1d</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://ir1d.cf/2019/06/21/算分期末复习/" title="算分期末复习">https://ir1d.cf/2019/06/21/算分期末复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算分/" rel="tag"># 算分</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/21/概统期末复习/" rel="next" title="概统期末复习">
+                <i class="fa fa-chevron-left"></i> 概统期末复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ir1d" />
+            
+              <p class="site-author-name" itemprop="name">Ir1d</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">88</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ir1d" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#09"><span class="nav-number">1.</span> <span class="nav-text">09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络流-24"><span class="nav-number">2.</span> <span class="nav-text">网络流 24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18"><span class="nav-number">3.</span> <span class="nav-text">18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#近似"><span class="nav-number">4.</span> <span class="nav-text">近似</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机"><span class="nav-number">5.</span> <span class="nav-text">随机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npc"><span class="nav-number">6.</span> <span class="nav-text">npc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12"><span class="nav-number">7.</span> <span class="nav-text">12</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ir1d</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://ir1d.cf/2019/06/21/算分期末复习/';
+        this.page.identifier = '2019/06/21/算分期末复习/';
+        this.page.title = '算分期末复习';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+
+</body>
+</html>

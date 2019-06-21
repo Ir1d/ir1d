@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      appId: 'MFOAFRM2TL',
+      apiKey: 'cd77d6af2d9d1fecb8c392250ed56bb3',
+      indexName: 'ir1d-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="[x] https://github.com/lydiahallie/javascript-questions  JS 好难，之前会的都是皮毛，复习了好多东西。。考完：我复习的都是皮毛。。JS 太神仙了吧">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js期末复习">
+<meta property="og:url" content="https://ir1d.cf/2019/06/21/js期末复习/index.html">
+<meta property="og:site_name" content="Neverland">
+<meta property="og:description" content="[x] https://github.com/lydiahallie/javascript-questions  JS 好难，之前会的都是皮毛，复习了好多东西。。考完：我复习的都是皮毛。。JS 太神仙了吧">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082500-fa70c300-8925-11e9-87aa-14b114e7da08.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082521-0eb4c000-8926-11e9-947a-654feed17732.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082200-94d00700-8924-11e9-866b-c6e7576ac9e1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082319-19228a00-8925-11e9-9d4f-5120f1c2b138.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082343-3192a480-8925-11e9-9b12-6fb69f0f4be3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59082373-6141ac80-8925-11e9-9f9b-7d0c6e7cfd9f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59083042-4886c600-8928-11e9-9f92-5b087c94ebc9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59083053-5a686900-8928-11e9-977f-7e8b77c86209.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59083064-68b68500-8928-11e9-9d0d-92cb68a71237.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59084527-28f29c00-892e-11e9-94f3-0434757a0eef.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59084537-2f811380-892e-11e9-84ff-976b675ecb54.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59086787-598a0400-8935-11e9-89fe-a8c431caf839.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59086957-ec2aa300-8935-11e9-8917-d61bd972772e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59087172-84c12300-8936-11e9-849a-7e1f4b0c05bd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59087295-d79ada80-8936-11e9-863b-dac6faf309f6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59088130-29dcfb00-8939-11e9-9f42-35ea1c4c7345.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59088902-6dd0ff80-893b-11e9-8846-5415f2ff968b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59088919-76293a80-893b-11e9-9669-7c8248f25ff8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59089403-9efdff80-893c-11e9-8454-68fb7b63bd22.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59089417-a58c7700-893c-11e9-8dee-395763a82aa3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59089361-842b8b00-893c-11e9-9365-17bceeda75bc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59089696-5561e480-893d-11e9-8d8c-8385e3b636af.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59090054-40398580-893e-11e9-93d5-ccda5f5f0a85.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59090174-a1f9ef80-893e-11e9-903d-d408e9ebbe26.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59450076-033c2a00-8e3b-11e9-94ac-c6a10e896201.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59451697-a2165580-8e3e-11e9-9672-87ee27328d70.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59451748-c2461480-8e3e-11e9-96bd-cb75f78155d6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59451905-279a0580-8e3f-11e9-89f6-1f901bc9310a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59451913-2d8fe680-8e3f-11e9-9446-6b1426c73e11.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59475218-f809ee00-8e7c-11e9-8825-31294ee7d2eb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59475393-ca717480-8e7d-11e9-9156-b06980e5fbca.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59475410-ec6af700-8e7d-11e9-8013-b020c33621a5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59476033-60f36500-8e81-11e9-823f-01ea5f8619ea.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59476527-ba5c9380-8e83-11e9-8303-954c3f270185.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59476554-db24e900-8e83-11e9-92e7-f24d7a924040.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59655331-7b547800-91cc-11e9-8aa1-b250598bca78.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59655942-988a4600-91ce-11e9-99c2-9005851b95c3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59656159-4dbcfe00-91cf-11e9-9e99-08096685fd8b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59656190-5f9ea100-91cf-11e9-9b62-40751e30d889.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59661434-6502e800-91dd-11e9-81b4-b61e05d9e4d5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59661540-9e3b5800-91dd-11e9-947b-790438757215.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59661690-ea869800-91dd-11e9-9373-dc023a55187c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59661755-1144ce80-91de-11e9-92d8-a92e9c8c8e06.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59662154-ec049000-91de-11e9-9e73-8fb0f9c8b1cd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59662164-f0c94400-91de-11e9-989c-3af61fa829ec.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59662276-3128c200-91df-11e9-8b22-d3b354fe5bae.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59662904-78fc1900-91e0-11e9-8465-32bb4153c821.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59668545-46a3e900-91eb-11e9-9b52-84363be78dea.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59668964-fb3e0a80-91eb-11e9-837c-114737480530.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59669828-84097600-91ed-11e9-9d06-164bebf22442.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59670012-c3d05d80-91ed-11e9-8d55-7a8b0b40f8a1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59670300-4c4efe00-91ee-11e9-84b0-c6be2944a960.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59673346-b3bb7c80-91f3-11e9-9e42-410f5b99f27a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59673352-b7e79a00-91f3-11e9-9ff3-c822acfc6f0e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59673361-bcac4e00-91f3-11e9-994a-be1dc322ccca.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59673389-ce8df100-91f3-11e9-8eca-39763e157254.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59673620-30e6f180-91f4-11e9-99a5-0d5bd54c10ef.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59681965-c2ac2a00-9207-11e9-9c35-606d7691669a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59681969-c63fb100-9207-11e9-9c7f-05e4539038da.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59683572-fd639180-920a-11e9-9ad2-e3d3236f96bf.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59685024-ce9aea80-920d-11e9-827c-ed3155c3ffa2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59685061-e2dee780-920d-11e9-9a0e-d809550105ca.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59685110-00ac4c80-920e-11e9-9c95-1df2f425fa0a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59685126-0a35b480-920e-11e9-901a-f378a5a52cb7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59685146-1457b300-920e-11e9-9344-2875eaec2795.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59692442-7ff24e00-9217-11e9-9646-d8b1551514d6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59843833-f1eba400-938b-11e9-9744-ca4d2f1953a4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59844634-fc0ea200-938d-11e9-8026-a73df0b5c9df.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59844708-21031500-938e-11e9-87ef-bf6077e9e79d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59845256-86a3d100-938f-11e9-8017-6361c9860296.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59845673-81935180-9390-11e9-8e4e-b87a8b029dde.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59845890-03837a80-9391-11e9-9983-a90d6b2a5368.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59846812-6f66e280-9393-11e9-97b9-139f76f446cc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59846822-742b9680-9393-11e9-92b7-f7b09cc9c53b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59847460-1ac46700-9395-11e9-8e04-097011708988.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59847759-f9b04600-9395-11e9-9e23-7b523ef090f1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59848150-08e3c380-9397-11e9-9092-29c0bffb267a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59848389-9aebcc00-9397-11e9-88cc-0625692e3937.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59848403-a212da00-9397-11e9-852c-c7fe7d021c48.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59853076-bc05ea00-93a2-11e9-9b61-1608eae29466.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59853089-c1fbcb00-93a2-11e9-9f91-df181bcefd42.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59853107-cde78d00-93a2-11e9-9e5b-0689b43f2e32.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59853130-d770f500-93a2-11e9-8f90-a2a738aeb54d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59853292-2454cb80-93a3-11e9-8b4f-5f907ba434f2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59854405-726ace80-93a5-11e9-998f-ab294b6b734b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/10709657/59862974-676c6a00-93b6-11e9-9012-8e7c1a159011.png">
+<meta property="og:updated_time" content="2019-06-21T15:43:37.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js期末复习">
+<meta name="twitter:description" content="[x] https://github.com/lydiahallie/javascript-questions  JS 好难，之前会的都是皮毛，复习了好多东西。。考完：我复习的都是皮毛。。JS 太神仙了吧">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/10709657/59082500-fa70c300-8925-11e9-87aa-14b114e7da08.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://ir1d.cf/2019/06/21/js期末复习/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>js期末复习 | Neverland</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955771-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100955771-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neverland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">你是我不愿醒来的梦啊<br>真是柔情一场</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+    <a href="/friends/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-star"></i> <br />Friends</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ir1d.cf/2019/06/21/js期末复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ir1d">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neverland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js期末复习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-21 23:36:49 / Modified: 23:43:37" itemprop="dateCreated datePublished" datetime="2019-06-21T23:36:49+08:00">2019-06-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/21/js期末复习/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/21/js期末复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>[x] <a href="https://github.com/lydiahallie/javascript-questions" target="_blank" rel="noopener">https://github.com/lydiahallie/javascript-questions</a></li>
+</ul>
+<p>JS 好难，之前会的都是皮毛，复习了好多东西。。<br>考完：我复习的都是皮毛。。JS 太神仙了吧</p>
+<a id="more"></a>
+<p>js string immutable<br>toFixed, toPrecision 是四舍五入<br>传的都是引⽤</p>
+<p>箭头函数表达式的语法比函数表达式更简洁，并且没有自己的 this，arguments，super 或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59082500-fa70c300-8925-11e9-87aa-14b114e7da08.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59082521-0eb4c000-8926-11e9-947a-654feed17732.png" alt="image"></p>
+<p>字符串在声明后，其值就不会再发⽣变化（ immutable）<br>（任何操作都不会改变字符串的值）<br><img src="https://user-images.githubusercontent.com/10709657/59082200-94d00700-8924-11e9-866b-c6e7576ac9e1.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59082319-19228a00-8925-11e9-9d4f-5120f1c2b138.png" alt="image"><br>const 的指向不能变，但是指向的地方的值可以变<br>JS 传引用<br><img src="https://user-images.githubusercontent.com/10709657/59082343-3192a480-8925-11e9-9b12-6fb69f0f4be3.png" alt="image"><br><code>new Array</code> 参数只有一个的时候会被当做是数组里数的个数，而 <code>Array.of(2)</code> 是 <code>[2]</code>，仍为元素值<br><img src="https://user-images.githubusercontent.com/10709657/59082373-6141ac80-8925-11e9-9f9b-7d0c6e7cfd9f.png" alt="image"><br>push 尾，unshift 头；pop 尾，shift 头；pop 和 shift 都会返回被删除的元素<br><code>splice(start, deleteCount, …items)</code>， 如 <code>splice(1, 2, “cat”, “bat”, “pat”)</code><br><code>slice(start, end)</code> 也可用于获取数组的一部分<br>数组是 object，也可添加⾃定义的 property<br><code>.toFixed</code>，<code>.toPrecision</code> 都是四舍五入<br>sort 从小到大: <code>(v1, v2) =&gt; v1 - v2</code><br>函数的 property 可以相当于实现带记忆的函数</p>
+<p>对⼀个 function object 使⽤ typeof 操作符<br>返回 “function”，⽽不是 “object”，但是 function 是 object，可以加 property<br>Symbol 只能作为 function 被调⽤ （也即，调⽤时前⾯不能加 new）<br><img src="https://user-images.githubusercontent.com/10709657/59083042-4886c600-8928-11e9-9f92-5b087c94ebc9.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59083053-5a686900-8928-11e9-977f-7e8b77c86209.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59083064-68b68500-8928-11e9-9d0d-92cb68a71237.png" alt="image"><br>Node.js： global；browser：window<br>若不加 use strict,变量在赋值后会注册成一个全局变量，加了之后不会<br><img src="https://user-images.githubusercontent.com/10709657/59084527-28f29c00-892e-11e9-94f3-0434757a0eef.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59084537-2f811380-892e-11e9-84ff-976b675ecb54.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59086787-598a0400-8935-11e9-89fe-a8c431caf839.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59086957-ec2aa300-8935-11e9-8917-d61bd972772e.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59087172-84c12300-8936-11e9-849a-7e1f4b0c05bd.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59087295-d79ada80-8936-11e9-863b-dac6faf309f6.png" alt="image"></p>
+<p>arguments 总是忠实记录着函数调⽤时实际传⼊的参数<br><img src="https://user-images.githubusercontent.com/10709657/59088130-29dcfb00-8939-11e9-9f42-35ea1c4c7345.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59088902-6dd0ff80-893b-11e9-8846-5415f2ff968b.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59088919-76293a80-893b-11e9-9669-7c8248f25ff8.png" alt="image"></p>
+<p><code>creature.say_hello.call(cat, 1, 2)</code> 等于 <code>creature.say_hello.apply(dog, [3, 4])</code><br><img src="https://user-images.githubusercontent.com/10709657/59089403-9efdff80-893c-11e9-8454-68fb7b63bd22.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59089417-a58c7700-893c-11e9-8dee-395763a82aa3.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59089361-842b8b00-893c-11e9-9365-17bceeda75bc.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59089696-5561e480-893d-11e9-8d8c-8385e3b636af.png" alt="image"></p>
+<p>函数的 length：参数个数， <strong> 除了 有默认值的 和 rest </strong></p>
+<p>bind 的 args 参数有点相当于是 python 里的 partial，传给函数的前几个参数了<br>main function 里的 <code>this: {}</code>, <code>new.target: undefined</code>, <code>arguments 看起来好像是 cli 的 arguments</code></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59090054-40398580-893e-11e9-93d5-ccda5f5f0a85.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59090174-a1f9ef80-893e-11e9-903d-d408e9ebbe26.png" alt="image"><br>输出分别是 233 和 undefined。因为在箭头函数生成的时候 this 还没有<br>函数和闭包一一对应：包含 该函数本身、以及在此时可以访问到的所有变量</p>
+<p>Object.getOwnPropertyNames obj.hasOwnProperty 不会去 obj 的原型链上查找<br>in 会顺着原型链找<br>Object.getOwnPropertyNames 找 string 类型的 key，<br>Object.getOwnPropertySymbols 找 symbol 类型</p>
+<p>Object 的 property 的三种默认属性：writable: false, 但必须 use strict 才会不可写<br><img src="https://user-images.githubusercontent.com/10709657/59450076-033c2a00-8e3b-11e9-94ac-c6a10e896201.png" alt="image"><br>读取没有 getter 的 property 返回 undefined<br>在严格模式下 对⼀个没有 setter 的 property 赋值 会触发运⾏时错误<br><img src="https://user-images.githubusercontent.com/10709657/59451697-a2165580-8e3e-11e9-9672-87ee27328d70.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59451748-c2461480-8e3e-11e9-96bd-cb75f78155d6.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59451905-279a0580-8e3f-11e9-89f6-1f901bc9310a.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59451913-2d8fe680-8e3f-11e9-9446-6b1426c73e11.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59475218-f809ee00-8e7c-11e9-8825-31294ee7d2eb.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59475393-ca717480-8e7d-11e9-9156-b06980e5fbca.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59475410-ec6af700-8e7d-11e9-8013-b020c33621a5.png" alt="image"><br>for .. in 枚举的是 property （下标），for .. of 枚举的是值<br>for .. of 不改变原来值</p>
+<p>原型链不得有环<br>⼀个通过字⾯量创建的 object 在缺省情况下，其原型链的⻓度是 2<br>⼀个通过字⾯量创建的 function 在缺省情况下，其原型链的⻓度是 3<br><strong>原型链 P358 TODO</strong></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59476033-60f36500-8e81-11e9-823f-01ea5f8619ea.png" alt="image"><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names</a><br><img src="https://user-images.githubusercontent.com/10709657/59476527-ba5c9380-8e83-11e9-8303-954c3f270185.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59476554-db24e900-8e83-11e9-92e7-f24d7a924040.png" alt="image"></p>
+<p>Object.assign(target, source);<br>Object.create(proto, [propertiesObject])<br><img src="https://user-images.githubusercontent.com/10709657/59655331-7b547800-91cc-11e9-8aa1-b250598bca78.png" alt="image"><br>OBject.seal 管的更多<br><img src="https://user-images.githubusercontent.com/10709657/59655942-988a4600-91ce-11e9-99c2-9005851b95c3.png" alt="image"><br>OBject.freeze 管的更更多<br><img src="https://user-images.githubusercontent.com/10709657/59656159-4dbcfe00-91cf-11e9-9e99-08096685fd8b.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59656190-5f9ea100-91cf-11e9-9b62-40751e30d889.png" alt="image"><br>用 Object.seal()密封的对象可以改变它们现有的属性。使用 Object.freeze() 冻结的对象中现有属性是不可变的。</p>
+<p><code>Array</code><br>reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: number[]) =&gt; number):<br><img src="https://user-images.githubusercontent.com/10709657/59661434-6502e800-91dd-11e9-81b4-b61e05d9e4d5.png" alt="image"><br>Array.prototype.every/some 对于每个元素调用一个 callback 返回一个 bool，通过 every/some 来综合结果<br><img src="https://user-images.githubusercontent.com/10709657/59661540-9e3b5800-91dd-11e9-947b-790438757215.png" alt="image"></p>
+<p>find：查找数组中满⾜给定条件的第⼀个元素<br>如果不存在满⾜给定条件的值，则返回 undefined</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59661690-ea869800-91dd-11e9-9373-dc023a55187c.png" alt="image"><br><code>Map</code><br><img src="https://user-images.githubusercontent.com/10709657/59661755-1144ce80-91de-11e9-92d8-a92e9c8c8e06.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59662154-ec049000-91de-11e9-9e73-8fb0f9c8b1cd.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59662164-f0c94400-91de-11e9-989c-3af61fa829ec.png" alt="image"></p>
+<p><code>Set</code></p>
+<p>任何⼀个 iterable object 都可以构造成 Set<br><img src="https://user-images.githubusercontent.com/10709657/59662276-3128c200-91df-11e9-8b22-d3b354fe5bae.png" alt="image"></p>
+<p>set 也可以 forEach，但是第三个参数貌似是他自己<br><img src="https://user-images.githubusercontent.com/10709657/59662904-78fc1900-91e0-11e9-8465-32bb4153c821.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59668545-46a3e900-91eb-11e9-9b52-84363be78dea.png" alt="image"><br>嵌套情况<br><img src="https://user-images.githubusercontent.com/10709657/59668964-fb3e0a80-91eb-11e9-837c-114737480530.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59669828-84097600-91ed-11e9-9d06-164bebf22442.png" alt="image"></p>
+<p>rest 是一个数组</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59670012-c3d05d80-91ed-11e9-8d55-7a8b0b40f8a1.png" alt="image"></p>
+<p><code>【startIndex】</code> 这样之后是解构那个数组的值<br>函数参数里可以直接解构<br><img src="https://user-images.githubusercontent.com/10709657/59670300-4c4efe00-91ee-11e9-84b0-c6be2944a960.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59673346-b3bb7c80-91f3-11e9-9e42-410f5b99f27a.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59673352-b7e79a00-91f3-11e9-9ff3-c822acfc6f0e.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59673361-bcac4e00-91f3-11e9-994a-be1dc322ccca.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59673389-ce8df100-91f3-11e9-8eca-39763e157254.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59673620-30e6f180-91f4-11e9-99a5-0d5bd54c10ef.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59681965-c2ac2a00-9207-11e9-9c35-606d7691669a.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59681969-c63fb100-9207-11e9-9c7f-05e4539038da.png" alt="image"><br>⼀元操作符 +<br>会将操作数转化为 number 类型的值<br>比如 <code>(+c)</code></p>
+<p>加法的隐式类型转换：<br>先 ToPrimitive，两侧有字符串的话会都转字符串，否则都转 number</p>
+<p>类型转换这章好难。。</p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59683572-fd639180-920a-11e9-9ad2-e3d3236f96bf.png" alt="image"><br>可以自定义转换的方式<br>乘除、减法的话是转 number<br><img src="https://user-images.githubusercontent.com/10709657/59685024-ce9aea80-920d-11e9-827c-ed3155c3ffa2.png" alt="image"><br>left 会隐式转成 bool<br><img src="https://user-images.githubusercontent.com/10709657/59685061-e2dee780-920d-11e9-9a0e-d809550105ca.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59685110-00ac4c80-920e-11e9-9c95-1df2f425fa0a.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59685126-0a35b480-920e-11e9-901a-f378a5a52cb7.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59685146-1457b300-920e-11e9-9344-2875eaec2795.png" alt="image"></p>
+<p><code>所有对象都是像是真的值</code><br>Two distinct objects are never equal for either strict or abstract comparisons.<br>An expression comparing Objects is only true if the operands reference the same Object<br><img src="https://user-images.githubusercontent.com/10709657/59692442-7ff24e00-9217-11e9-9646-d8b1551514d6.png" alt="image"></p>
+<p>Object 的 <code>&lt;=</code> 应该是 ARC 了。。太难了我弃疗了<br>它比 <code>&lt;</code> 会多一个 <code>If r is true or undefined</code>，这个 true 应该就是 arc 比较出来的<br><a href="https://www.ecma-international.org/ecma-262/9.0/index.html#sec-relational-operators-runtime-semantics-evaluation" target="_blank" rel="noopener">https://www.ecma-international.org/ecma-262/9.0/index.html#sec-relational-operators-runtime-semantics-evaluation</a></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59843833-f1eba400-938b-11e9-9744-ca4d2f1953a4.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59844634-fc0ea200-938d-11e9-8026-a73df0b5c9df.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59844708-21031500-938e-11e9-87ef-bf6077e9e79d.png" alt="image"></p>
+<p>事件对象有⼀个 target 属性<br>其值：事件发⽣在的 HTML 元素<br>事件处理函数（当不是箭头函数时）的 this 参数<br>表示：当前的事件监听函数所附着在的 HTML 元素<br><img src="https://user-images.githubusercontent.com/10709657/59845256-86a3d100-938f-11e9-8017-6361c9860296.png" alt="image"><br>默认是监听冒泡阶段</p>
+<h2 id="在⽗元素上监听⼦元素事件"><a href="#在⽗元素上监听⼦元素事件" class="headerlink" title="在⽗元素上监听⼦元素事件"></a>在⽗元素上监听⼦元素事件</h2><p><img src="https://user-images.githubusercontent.com/10709657/59845673-81935180-9390-11e9-8e4e-b87a8b029dde.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59845890-03837a80-9391-11e9-9983-a90d6b2a5368.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/10709657/59846812-6f66e280-9393-11e9-97b9-139f76f446cc.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59846822-742b9680-9393-11e9-92b7-f7b09cc9c53b.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59847460-1ac46700-9395-11e9-8e04-097011708988.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59847759-f9b04600-9395-11e9-9e23-7b523ef090f1.png" alt="image"><br>Generator 嵌套<br><img src="https://user-images.githubusercontent.com/10709657/59848150-08e3c380-9397-11e9-9092-29c0bffb267a.png" alt="image"><br>用 generator 实现 DFS<br><img src="https://user-images.githubusercontent.com/10709657/59848389-9aebcc00-9397-11e9-88cc-0625692e3937.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59848403-a212da00-9397-11e9-852c-c7fe7d021c48.png" alt="image"><br>generator 里 return 语句的不会在 for of 里遍历到，只有 yield 出来的会被取到<br>Array.from 的时候也是会忽视 return，尽管实际上这个值也会被放出来，需要手动去取<br><a href="https://stackoverflow.com/a/37202835/4597306" target="_blank" rel="noopener">https://stackoverflow.com/a/37202835/4597306</a><br><img src="https://user-images.githubusercontent.com/10709657/59853076-bc05ea00-93a2-11e9-9b61-1608eae29466.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59853089-c1fbcb00-93a2-11e9-9f91-df181bcefd42.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59853107-cde78d00-93a2-11e9-9e5b-0689b43f2e32.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59853130-d770f500-93a2-11e9-8f90-a2a738aeb54d.png" alt="image"><br>每⼀次在 promise 对象上调⽤ then 或 catch ⽅法<br>都会返回⼀个新的 promise 对象<br>可以在这个新对象上继续调⽤ then 或 catch ⽅法<br><img src="https://user-images.githubusercontent.com/10709657/59853292-2454cb80-93a3-11e9-8b4f-5f907ba434f2.png" alt="image"><br><img src="https://user-images.githubusercontent.com/10709657/59854405-726ace80-93a5-11e9-998f-ab294b6b734b.png" alt="image"><br>![image](<a href="https://user-images.githubusercontent.com/10709657/59854740-0f2d6c00-93a6-11e9-8e5a-7d6de74a" target="_blank" rel="noopener">https://user-images.githubusercontent.com/10709657/59854740-0f2d6c00-93a6-11e9-8e5a-7d6de74a</a><br>使用 var 关键字，你可以用相同的名称声明多个变量。然后变量将保存最新的值。</p>
+<p>你不能使用 let 或 const 来实现这一点，因为它们是块作用域的。</p>
+<p>所有对象的键（不包括 Symbol）在底层都是字符串，即使你自己没有将其作为字符串输入。</p>
+<p>obj 如果你有两个名称相同的键，则键会被替换掉。它仍然位于第一个键出现的位置，但是值是最后出现那个键的值。</p>
+<p>对象的键被自动转换为字符串<br>当字符串化一个对象时，它会变成 “[Object object]”<br><img src="https://user-images.githubusercontent.com/10709657/59862974-676c6a00-93b6-11e9-9012-8e7c1a159011.png" alt="image"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Ir1d</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://ir1d.cf/2019/06/21/js期末复习/" title="js期末复习">https://ir1d.cf/2019/06/21/js期末复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/FastAI踩坑/" rel="next" title="FastAI踩坑">
+                <i class="fa fa-chevron-left"></i> FastAI踩坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ir1d" />
+            
+              <p class="site-author-name" itemprop="name">Ir1d</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">124</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ir1d" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在⽗元素上监听⼦元素事件"><span class="nav-number">1.</span> <span class="nav-text">在⽗元素上监听⼦元素事件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ir1d</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://ir1dblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://ir1d.cf/2019/06/21/js期末复习/';
+        this.page.identifier = '2019/06/21/js期末复习/';
+        this.page.title = 'js期末复习';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ir1dblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+
+</body>
+</html>

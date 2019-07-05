@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-05T15:26:33.069Z</updated>
+  <updated>2019-07-05T15:28:30.482Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Towards Instance-level Image-to-Image Translation</title>
+    <link href="https://ir1d.cf/2019/07/05/Towards-Instance-level-Image-to-Image-Translation/"/>
+    <id>https://ir1d.cf/2019/07/05/Towards-Instance-level-Image-to-Image-Translation/</id>
+    <published>2019-07-05T15:28:03.000Z</published>
+    <updated>2019-07-05T15:28:30.482Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/07/05/5d1f6c921995c60099.png" alt="20190705232817.png"></p><p><img src="https://i.loli.net/2019/07/05/5d1f6c969891e72563.png" alt="20190705232821.png"><br>首先说下 MUNIT 等 Image to Image transmission 的不足之处（如图），需要 instance aware 的操作来保证图中的 Obejcts 也经过了stylization。</p><p>作者分析了一下 related works 的缺点：CycleGAN 假设在两种 mapping 作用下，latent space 是可分的。UNIT 中假定两个 domain 的图片可以通过某种方式 mapping 到一个共享的 latent space。MUNIT 和 DRIT 进一步假定这些 latent space 都可以 disentangle 成共享的 content space 和 domain-specific 的 attribute space。</p><p><img src="https://i.loli.net/2019/07/05/5d1f6c9d4cab154606.png" alt="20190705232828.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/05/5d1f6c921995c60099.png&quot; alt=&quot;20190705232817.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/05/
+      
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>Learning Pyramid-Context Encoder Network for High-Quality Image Inpainting</title>
@@ -474,30 +500,6 @@
     
       &lt;ul&gt;
 &lt;li&gt;SSD - Single Shot MultiBox Detector&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Faster RCNN</title>
-    <link href="https://ir1d.cf/2019/02/14/Faster-RCNN/"/>
-    <id>https://ir1d.cf/2019/02/14/Faster-RCNN/</id>
-    <published>2019-02-14T13:58:34.000Z</published>
-    <updated>2019-02-14T16:32:24.743Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>来记一下 Faster RCNN 吧…… 免得没看多少又忘光了</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>目标检测之前都在用 selective search，实在是太慢了。</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>这篇工作搞了个 Region Proposal Network，把生成 proposal 的工作交给 GPU，可以加速</p><p><img src="https://i.loli.net/2019/02/14/5c6574ea53f7b.png" alt="20190214220216.png"></p><p>无处不在的 Attention……</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h3 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h3><p><img src="https://i.loli.net/2019/02/14/5c6585693b966.png" alt="20190214231238.png"></p><p>用一个 3x3 的滑动窗口去处理 feature，然后把它送进一个 box-regression 和一个 box-classification 网络（都是全连接的）。<br>cls 和 reg 网络实际上用的是 1x1 卷积。</p><p>在滑动的过程中，每一点上，造九个 box 出来（3种大小 x 3种尺寸）。</p><p>不能训练左右的 anchor，否则由于负样本过多可能模型对正样本不是那么敏感。</p><p>新的层用标准差为 0.01 的高斯分布初始化，之前的其它层用 imagenet 上的分类网络 pretrain</p><h3 id="训练方式"><a href="#训练方式" class="headerlink" title="训练方式"></a>训练方式</h3><p>想要共享 RPN 和 Fast RCNN 之间的 feature</p><p>Alternating：先 RPN，再用 proposal 去训练 Fast RCNN。得到的网络再去初始化 RPN。迭代地来</p><p>Approximate Joint：一起训练，每一轮 SGD 里，先得到proposal，然后假装它是固定的，来训练 Fast RCNN。</p><p>作者表示这种做法忽视了 RPN 网络生成的bounding box 的坐标的梯度（后面直接用了，梯度没有传播），因此只是近似的方法</p><p>Non-Approximate Joint：</p><p>需要一个 <code>RoI warping</code> 层来解决上面梯度的问题。。感觉意思是搞了个梯度不会丢失的 ROI pooling 层？</p><p>4-Step Alternating：</p><ol><li>先训 RPN（用 ImageNet 上 pretrain的 model，在一个 region proposal task 上面 fine-tune）</li><li>用 Fast RCNN 训练一个独立的 detection 网络（利用上一步得到的 proposal）。注：这个也是 ImageNet pretrain，这一步之后两个网络还没有共享卷积层。</li><li>用 detector network 来初始化 RPN 的训练，但是固定住共享的卷积层的权重，只 fine-tune RPN 中独立的层。（现在这两个网络有共享的卷积层了。</li><li>最后继续固定那几个层的权重，fine-tune 只在 Fast-RCNN 里的层。</li></ol><h3 id="nms"><a href="#nms" class="headerlink" title="nms"></a>nms</h3><p>non-maximum suppression，用来消灭重复的 porposal regions（根据 cls 分数来评定）。paper 里写的 IoU threshold 竟然是 0.7……</p><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h2 id="改进（？）"><a href="#改进（？）" class="headerlink" title="改进（？）"></a>改进（？）</h2><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2><p><a href="http://closure11.com/rcnn-fast-rcnn-faster-rcnn%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" target="_blank" rel="noopener">http://closure11.com/rcnn-fast-rcnn-faster-rcnn%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;来记一下 Faster RCNN 吧…… 免得没看多少又忘光了&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

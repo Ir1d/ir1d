@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-06-24T13:41:43.906Z</updated>
+  <updated>2019-07-05T15:14:43.926Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Learning Raw Image Denoising with Bayer Pattern Unification and Bayer Preserving Augmentation</title>
+    <link href="https://ir1d.cf/2019/07/05/Learning-Raw-Image-Denoising-with-Bayer-Pattern-Unification-and-Bayer-Preserving-Augmentation/"/>
+    <id>https://ir1d.cf/2019/07/05/Learning-Raw-Image-Denoising-with-Bayer-Pattern-Unification-and-Bayer-Preserving-Augmentation/</id>
+    <published>2019-07-05T15:05:48.000Z</published>
+    <updated>2019-07-05T15:14:43.926Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>NTIRE Real Denoising 的冠军 team 的 report</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>对 Raw 图片做 Unify、 Data Augmentation。</p><p>不然一种 model 只能处理数据集里的某一种 Bayer Pattern，只利用到一个 subset。</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><p>BayerUnify 是说通过 Crop 来把不同的 Bayer Pattern 给归一化。由于 challenge 在用 SIDD 数据集，它是由很多种相机拍出来的，有 3 种不同的 Bayer Pattern。如果针对某一种 Bayer Pattern 处理的话不能充分利用训练集，测试的时候也需要训练三种 model 交上去。<br><img src="https://i.loli.net/2019/07/05/5d1f691265f7c40221.png" alt="20190705231321.png"></p><p>Report 里是选用 BGGR 的形式（按照左上、右上、左下、右下的顺序）当做基准，把其他的几种通过 padding + crop 来变成 BGGR。测试的时候是先做 padding，然后 denoise，最后再把 padding 和多余的部分给 crop 掉就好了。</p><p><img src="https://i.loli.net/2019/07/05/5d1f691d1d32f71957.png" alt="20190705231332.png"></p><p>BayerAug 解决的是 RAW 图片做 Data Augmentation 的问题。陈启峰在 Seeing In The Dark 里面是把 Bayer Pattern 给展开成一个 4 channel 的 feature map，大家之后也大多是这么用的。在这个 4 channel 的 map 上直接 flip 的话没办法对应回一个有实际意义的 Bayer Pattern。（比如第四行的图片就有明显的失真）</p><p><img src="https://i.loli.net/2019/07/05/5d1f69253901167968.png" alt="20190705231340.png"></p><p>为了解决这个问题，BayerAug 是这么操作的：把 Flip 和 Crop 结合起来，在 Flip 之后适当地 Crop 来保证它 Bayer Pattern 有意义，且不改变——还是 BGGR（我们选的那个基准）</p><p><img src="https://i.loli.net/2019/07/05/5d1f692f6382010594.png" alt="20190705231350.png"></p><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2><p>整个 challenge 大家基本上在用 UNet，他们选择的方案也是用 MaxPool+Deconv 搭建的 UNet。读完之后我觉得他们排名比较好还是主要靠的 BayerUnify 和 BayerAug 来进行类似 Data Augmentation 的操作。</p><p><img src="https://i.loli.net/2019/07/05/5d1f6906e128733481.png" alt="20190705231308.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;NTIRE Real Denoising 的冠军 team 的 report&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="Raw" scheme="https://ir1d.cf/tags/Raw/"/>
+    
+      <category term="Denoise" scheme="https://ir1d.cf/tags/Denoise/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Digital Image Modalities and Processing</title>
     <link href="https://ir1d.cf/2019/06/24/Digital-Image-Modalities-and-Processing/"/>
     <id>https://ir1d.cf/2019/06/24/Digital-Image-Modalities-and-Processing/</id>
     <published>2019-06-24T13:28:58.000Z</published>
-    <updated>2019-06-24T13:41:43.906Z</updated>
+    <updated>2019-07-05T15:05:06.504Z</updated>
     
-    <content type="html"><![CDATA[<p>-</p><a id="more"></a><h2 id="Low-level"><a href="#Low-level" class="headerlink" title="Low level"></a>Low level</h2><p>preprocessing to remvoe noise, shadow or enhance an image.</p><p>image -&gt; image</p><h2 id="mid-level"><a href="#mid-level" class="headerlink" title="mid level"></a>mid level</h2><p>segmenting an image into regions / objects;<br>describing an image concisely</p><p>image -&gt; attributes (edges, lines, regions)</p><h2 id="high-level"><a href="#high-level" class="headerlink" title="high level"></a>high level</h2><p>make sense of an image; image understanding</p>]]></content>
+    <content type="html"><![CDATA[<p>-</p><a id="more"></a><h2 id="Low-level"><a href="#Low-level" class="headerlink" title="Low level"></a>Low level</h2><p>preprocessing to remove noise, shadow or enhance an image.</p><p>image -&gt; image</p><h2 id="mid-level"><a href="#mid-level" class="headerlink" title="mid level"></a>mid level</h2><p>segmenting an image into regions / objects;<br>describing an image concisely</p><p>image -&gt; attributes (edges, lines, regions)</p><h2 id="high-level"><a href="#high-level" class="headerlink" title="high level"></a>high level</h2><p>make sense of an image; image understanding</p>]]></content>
     
     <summary type="html">
     
@@ -479,31 +505,6 @@
       <category term="Photoshop" scheme="https://ir1d.cf/tags/Photoshop/"/>
     
       <category term="jsx" scheme="https://ir1d.cf/tags/jsx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 笔记</title>
-    <link href="https://ir1d.cf/2018/12/09/LeetCode-%E7%AC%94%E8%AE%B0/"/>
-    <id>https://ir1d.cf/2018/12/09/LeetCode-笔记/</id>
-    <published>2018-12-09T06:00:55.000Z</published>
-    <updated>2018-12-09T10:46:23.130Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>LeetCode 笔记</li></ul><p>工具用的是 leetcode-cli，可惜这货在网站上登录之后本地 cli 存的 session 就掉了，又得重新登录</p><a id="more"></a><ul><li>342</li></ul><p>判断一个数是不是 4 的幂次。我们知道 2 的幂次的话是：<code>x &amp;&amp; (x &amp; (x - 1)) == 0</code>，4 的话只需要额外看一下二进制表示里所有的 1 都在最高位就行。</p><ul><li>405</li></ul><p>十进制转十六进制，想到可以 sprintf 一波，最简单</p><ul><li>665</li></ul><p>最长上升子序列：lower_bound<br>最长不下降子序列：upper_bound</p><ul><li>594</li></ul><p>求一个最长的子序列，使得它的最大值和最小值的差恰好为 1。</p><p>注意是子序列，所以就找相邻的两个数的出现次数之和的最大值咯</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;LeetCode 笔记&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;工具用的是 leetcode-cli，可惜这货在网站上登录之后本地 cli 存的 session 就掉了，又得重新登录&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="LeetCode" scheme="https://ir1d.cf/tags/LeetCode/"/>
     
   </entry>
   

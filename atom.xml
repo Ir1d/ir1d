@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-05T15:26:06.138Z</updated>
+  <updated>2019-07-05T15:26:33.069Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ir1d.cf/2019/07/05/Learning-Pyramid-Context-Encoder-Network-for-High-Quality-Image-Inpainting/"/>
     <id>https://ir1d.cf/2019/07/05/Learning-Pyramid-Context-Encoder-Network-for-High-Quality-Image-Inpainting/</id>
     <published>2019-07-05T15:25:06.000Z</published>
-    <updated>2019-07-05T15:26:06.138Z</updated>
+    <updated>2019-07-05T15:26:33.069Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/07/05/5d1f6bfda431333221.png" alt="20190705232548.png"></p><p>这篇 inpainting 的工作比较有意思，它没有 follow partial convolution 这种思路，而是使用的原版的 convolution。这个 PeN-Net是基于 UNet设计的，先是一个  pyramid-context encoder，再是一个 multi-scale decoder 。 Decoder中间加了一些 Attention Module，它里面使用了 dilated conv 的分组卷积，扩大了感受野同时不会增大很多运算开销。</p>]]></content>
     
@@ -38,7 +38,7 @@
       <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
     
     
-      <category term="INpainting" scheme="https://ir1d.cf/tags/INpainting/"/>
+      <category term="inpainting" scheme="https://ir1d.cf/tags/inpainting/"/>
     
   </entry>
   
@@ -74,7 +74,7 @@
     <link href="https://ir1d.cf/2019/07/05/Foreground-aware-Image-Inpainting/"/>
     <id>https://ir1d.cf/2019/07/05/Foreground-aware-Image-Inpainting/</id>
     <published>2019-07-05T15:23:38.000Z</published>
-    <updated>2019-07-05T15:24:20.726Z</updated>
+    <updated>2019-07-05T15:26:38.438Z</updated>
     
     <content type="html"><![CDATA[<ul><li>Inpainting guided by edges.</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>这篇文章是专注于前景物品的 inpainting 上。作者考虑到对背景的 inpainting 不是那么 challenging，以为背景一般都挺常见的，而前景物品是我们关注的重点，更希望能较好地处理它。具体做法是先找到前景物品，然后求它的 contour（edge），再对这个 contour 进行修补，最后用我们补好的 contour 来还原回整图。网络结构设计也是一个 coarse-to-fine 的思路。</p><p><img src="https://i.loli.net/2019/07/05/5d1f6b9c48a5b82913.png" alt="20190705232410.png"></p><p><img src="https://i.loli.net/2019/07/05/5d1f6ba09b9a768963.png" alt="20190705232415.png"></p>]]></content>
     
@@ -89,7 +89,7 @@
       <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
     
     
-      <category term="Inpainting" scheme="https://ir1d.cf/tags/Inpainting/"/>
+      <category term="inpainting" scheme="https://ir1d.cf/tags/inpainting/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-06-21T15:53:57.567Z</updated>
+  <updated>2019-06-24T13:41:43.906Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Digital Image Modalities and Processing</title>
+    <link href="https://ir1d.cf/2019/06/24/Digital-Image-Modalities-and-Processing/"/>
+    <id>https://ir1d.cf/2019/06/24/Digital-Image-Modalities-and-Processing/</id>
+    <published>2019-06-24T13:28:58.000Z</published>
+    <updated>2019-06-24T13:41:43.906Z</updated>
+    
+    <content type="html"><![CDATA[<p>-</p><a id="more"></a><h2 id="Low-level"><a href="#Low-level" class="headerlink" title="Low level"></a>Low level</h2><p>preprocessing to remvoe noise, shadow or enhance an image.</p><p>image -&gt; image</p><h2 id="mid-level"><a href="#mid-level" class="headerlink" title="mid level"></a>mid level</h2><p>segmenting an image into regions / objects;<br>describing an image concisely</p><p>image -&gt; attributes (edges, lines, regions)</p><h2 id="high-level"><a href="#high-level" class="headerlink" title="high level"></a>high level</h2><p>make sense of an image; image understanding</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;-&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="DIP" scheme="https://ir1d.cf/tags/DIP/"/>
+    
+  </entry>
   
   <entry>
     <title>算分期末复习</title>
@@ -482,30 +504,6 @@
     
     
       <category term="LeetCode" scheme="https://ir1d.cf/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CF950F Treeland Tour</title>
-    <link href="https://ir1d.cf/2018/12/07/CF950F-Treeland-Tour/"/>
-    <id>https://ir1d.cf/2018/12/07/CF950F-Treeland-Tour/</id>
-    <published>2018-12-07T11:53:03.000Z</published>
-    <updated>2019-04-24T08:09:31.854Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>一个点有权值的无根树，求一个链，使得这个链上的点权的 lis 长度最大</li></ul><a id="more"></a><p>说起来是我打的第一次 cf 吧……</p><p>很科学的做法：</p><p><a href="https://www.cnblogs.com/cxhscst2/p/7219887.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxhscst2/p/7219887.html</a></p><p>通过一次 dfs 把它转换成从子树向上合并答案的过程。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;一个点有权值的无根树，求一个链，使得这个链上的点权的 lis 长度最大&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="codeforces" scheme="https://ir1d.cf/tags/codeforces/"/>
     
   </entry>
   

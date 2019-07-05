@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-05T15:14:43.926Z</updated>
+  <updated>2019-07-05T15:22:54.629Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Free-Form Image Inpainting with Gated Convolution</title>
+    <link href="https://ir1d.cf/2019/07/05/Free-Form-Image-Inpainting-with-Gated-Convolution/"/>
+    <id>https://ir1d.cf/2019/07/05/Free-Form-Image-Inpainting-with-Gated-Convolution/</id>
+    <published>2019-07-05T15:22:10.000Z</published>
+    <updated>2019-07-05T15:22:54.629Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Gated Conv</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>这篇文章承接之前 Partial Convolution 的思路，说把所有 pixel 一视同仁的 convolution 会生成一些扭曲的效果图，基于同样的思路，我们在 convolution 的时候加一个 mask 上去来 guide 它学习没有洞的部分的信息。</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>与 partial convolution 不同的是，partial convolution 中的 guiding mask 是通过 pooling 等操作得到的，而 gated convolution 让一个 convolution 支路来学这个 mask。通过这种方式来起到类似于 spatial attention 的效果。<br>实现上 Gated Convolution 就是用一个支路过 convolution，activation，batchnorm，然后再 sigmoid，并乘回另一支路经过一个 convolution 后的结果。</p><p><img src="https://i.loli.net/2019/07/05/5d1f6b49625e777807.png" alt="20190705232248.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Gated Conv&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="inpainting" scheme="https://ir1d.cf/tags/inpainting/"/>
+    
+  </entry>
   
   <entry>
     <title>Learning Raw Image Denoising with Bayer Pattern Unification and Bayer Preserving Augmentation</title>
@@ -479,32 +503,6 @@
       <category term="mkdocs" scheme="https://ir1d.cf/tags/mkdocs/"/>
     
       <category term="Elasticsearch" scheme="https://ir1d.cf/tags/Elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Photoshop 脚本</title>
-    <link href="https://ir1d.cf/2019/01/10/Photoshop-%E8%84%9A%E6%9C%AC/"/>
-    <id>https://ir1d.cf/2019/01/10/Photoshop-脚本/</id>
-    <published>2019-01-10T15:07:06.000Z</published>
-    <updated>2019-01-10T15:12:21.849Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>11 月末写了个 ps 脚本来整理图片…… 一直没来得及记录</li></ul><a id="more"></a><p>需求是给每组图片对齐，拍的时候误差不是很大，对齐就用自动对齐就行。可惜图片数量太多，大概 4k 张，一组 5-7 张，手动来怕是要难受死。</p><p>用 ps 来操作的话，大概就是打开文件到图层，对齐，然后导出各图层至文件。开始的时候还试用现成的那个导入文件到堆栈，可惜和后面的操作接不上= = 不过那个导出图片的还是好用的 XD</p><p>对齐之后遇到了个问题，会对齐出来白边，然而我需要从这组图中找到一个尽量大的有色矩形。。。折腾了好久也没弄明白，最后搜到刚好前几天有人发布了一个解决方案。爽爆：<a href="https://developer71240.github.io/crop-to-opaque/" target="_blank" rel="noopener">https://developer71240.github.io/crop-to-opaque/</a></p><p>（不过人家禁止再分发，所以我的 gist 里面删掉了那部分，把人家的那段粘进 crop 函数就好啦）</p><p>Gist：<a href="https://gist.github.com/Ir1d/14af313f15d3fc91b23e70897daa2ca4" target="_blank" rel="noopener">https://gist.github.com/Ir1d/14af313f15d3fc91b23e70897daa2ca4</a></p><p>总体来说 Ps 的脚本体验及其糟糕…… 文档奇差，不过海星吧，印象中它是扩展了某种 jsx，然后直接去看那种 jsx 的 api 就星。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;11 月末写了个 ps 脚本来整理图片…… 一直没来得及记录&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Photoshop" scheme="https://ir1d.cf/tags/Photoshop/"/>
-    
-      <category term="jsx" scheme="https://ir1d.cf/tags/jsx/"/>
     
   </entry>
   

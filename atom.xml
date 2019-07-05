@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-05T15:22:54.629Z</updated>
+  <updated>2019-07-05T15:26:06.138Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learning Pyramid-Context Encoder Network for High-Quality Image Inpainting</title>
+    <link href="https://ir1d.cf/2019/07/05/Learning-Pyramid-Context-Encoder-Network-for-High-Quality-Image-Inpainting/"/>
+    <id>https://ir1d.cf/2019/07/05/Learning-Pyramid-Context-Encoder-Network-for-High-Quality-Image-Inpainting/</id>
+    <published>2019-07-05T15:25:06.000Z</published>
+    <updated>2019-07-05T15:26:06.138Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/07/05/5d1f6bfda431333221.png" alt="20190705232548.png"></p><p>这篇 inpainting 的工作比较有意思，它没有 follow partial convolution 这种思路，而是使用的原版的 convolution。这个 PeN-Net是基于 UNet设计的，先是一个  pyramid-context encoder，再是一个 multi-scale decoder 。 Decoder中间加了一些 Attention Module，它里面使用了 dilated conv 的分组卷积，扩大了感受野同时不会增大很多运算开销。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/05/5d1f6bfda431333221.png&quot; alt=&quot;20190705232548.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这篇 inpainting 的工作比较有意思，它没有 follow partia
+      
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="INpainting" scheme="https://ir1d.cf/tags/INpainting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Attention-guided Network for Ghost-free High Dynamic Range Imaging</title>
+    <link href="https://ir1d.cf/2019/07/05/Attention-guided-Network-for-Ghost-free-High-Dynamic-Range-Imaging/"/>
+    <id>https://ir1d.cf/2019/07/05/Attention-guided-Network-for-Ghost-free-High-Dynamic-Range-Imaging/</id>
+    <published>2019-07-05T15:24:35.000Z</published>
+    <updated>2019-07-05T15:24:54.910Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/07/05/5d1f6bc007b8788474.png" alt="20190705232446.png"></p><p>AHDRNet 是用来解决 Ghost-Free 地 HDR。</p><p>DRDBs是  dilated residual dense blocks。</p><p>先用一个 attention module 来处理 misalignment 和 saturation，然后再用 DRDB 来进行 Merging Network</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/05/5d1f6bc007b8788474.png&quot; alt=&quot;20190705232446.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;AHDRNet 是用来解决 Ghost-Free 地 HDR。&lt;/p&gt;
+&lt;p&gt;D
+      
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="HDR" scheme="https://ir1d.cf/tags/HDR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Foreground-aware Image Inpainting</title>
+    <link href="https://ir1d.cf/2019/07/05/Foreground-aware-Image-Inpainting/"/>
+    <id>https://ir1d.cf/2019/07/05/Foreground-aware-Image-Inpainting/</id>
+    <published>2019-07-05T15:23:38.000Z</published>
+    <updated>2019-07-05T15:24:20.726Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Inpainting guided by edges.</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>这篇文章是专注于前景物品的 inpainting 上。作者考虑到对背景的 inpainting 不是那么 challenging，以为背景一般都挺常见的，而前景物品是我们关注的重点，更希望能较好地处理它。具体做法是先找到前景物品，然后求它的 contour（edge），再对这个 contour 进行修补，最后用我们补好的 contour 来还原回整图。网络结构设计也是一个 coarse-to-fine 的思路。</p><p><img src="https://i.loli.net/2019/07/05/5d1f6b9c48a5b82913.png" alt="20190705232410.png"></p><p><img src="https://i.loli.net/2019/07/05/5d1f6ba09b9a768963.png" alt="20190705232415.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Inpainting guided by edges.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="Inpainting" scheme="https://ir1d.cf/tags/Inpainting/"/>
+    
+  </entry>
   
   <entry>
     <title>Free-Form Image Inpainting with Gated Convolution</title>
@@ -429,80 +506,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Face Detection Demo 评测</title>
-    <link href="https://ir1d.cf/2019/02/11/Face-Detection-Demo-%E8%AF%84%E6%B5%8B/"/>
-    <id>https://ir1d.cf/2019/02/11/Face-Detection-Demo-评测/</id>
-    <published>2019-02-11T13:00:24.000Z</published>
-    <updated>2019-02-11T15:51:07.811Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>Face Detection 代码测试</li></ul><a id="more"></a><p>总体来说其实 doc 都蛮清楚，搞了这么久其实还是自己基本功不够扎实</p><p>Google 真好用.webp</p><h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><a href="https://github.com/mahyarnajibi/SSH" target="_blank" rel="noopener">https://github.com/mahyarnajibi/SSH</a></p><p>编译 <code>caffe-ssh</code> 之后要把 <code>caffe-ssh/python</code> 塞进 <code>PYTHONPATH</code>，方法是 <code>echo $PYTHONPATH=xxx</code></p><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2><p><a href="https://github.com/sciencefans/RSA-for-object-detection" target="_blank" rel="noopener">https://github.com/sciencefans/RSA-for-object-detection</a></p><p>需要 matlab。</p><p>跑的时候可能需要自己 <code>addpath</code>，一个是加那个 <code>caffemex</code> 下面的 <code>matlab</code> 文件夹（类似上面的 pycaffe），另一个是要加 <code>predict/utils/bin</code> 这个目录，因为底下有 <code>nms_mex</code> 这个东西……</p><p><code>caffemex</code> 编译的时候如果 <code>make test</code> 如果报错是正常的，好像是因为魔改版的 caffe 加了新层没有加上配套的测试用例</p><h2 id="face-py-faster-rcnn"><a href="#face-py-faster-rcnn" class="headerlink" title="face-py-faster-rcnn"></a>face-py-faster-rcnn</h2><p>这个比 Detectron 要扎心得多……</p><p><a href="https://github.com/playerkk/face-py-faster-rcnn" target="_blank" rel="noopener">https://github.com/playerkk/face-py-faster-rcnn</a></p><p>他那个远古的 caffe-faster-rcnn 有问题，搜索一波得知使用 <code>merge -X theirs</code> 这种方式把新的 caffe 合进来就行（caffe 那个仓库就行，不是非得要 pytorch 里的那个）</p><p>它 README 拉到最下面才是那个 face 上面训的 model，不然前面那堆 model 其实都是直接在 wider 上面训的（印象中）</p><p>然后那个 <code>tools/demo.py</code> 里面找 model 的时候可能有些不尽人意，用的时候就写死成本机绝对路径就好了</p><h2 id="HR-ER"><a href="#HR-ER" class="headerlink" title="HR_ER"></a>HR_ER</h2><p>需要 matlab 环境</p><p><a href="https://github.com/peiyunh/tiny" target="_blank" rel="noopener">https://github.com/peiyunh/tiny</a></p><p>编译 matconvnet 的时候请务必指定 cudaRoot 和 cudnnRoot，否则可能看起来很正常然而 <code>CUDNN_STATUS_BAD_PARAM</code> 或者 <img src="https://i.loli.net/2019/02/11/5c618449c3b2e.png" alt="20190211221848.png"></p><p>其实应该这样的啦<br><img src="https://i.loli.net/2019/02/11/5c61845b33874.png" alt="20190211221907.png"></p><p>后面都海星，注意那个 <code>cd utils</code> 是指的是 tiny 下面的那个 utils = =</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;Face Detection 代码测试&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OI Wiki 相关的技能点</title>
-    <link href="https://ir1d.cf/2019/02/09/OI-Wiki-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8A%80%E8%83%BD%E7%82%B9/"/>
-    <id>https://ir1d.cf/2019/02/09/OI-Wiki-相关的技能点/</id>
-    <published>2019-02-09T06:43:08.000Z</published>
-    <updated>2019-04-24T08:09:48.446Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>记录下吧，免得吹逼的时候忘记了（×</li></ul><a id="more"></a><ol><li>python-markdown + mkdocs 的方案（当时还不知道有 vuepress）</li><li>找到 remarkjs 来做 lint，而且搞了几个自用的插件，似乎和 pymdownx 还算是兼容</li><li>魔改 gitment，后换用 gitalk</li><li>大量修改 mkdocs-material 的主题（React）</li><li>搭建 elasticsearch 替换原有搜索（比 Algolia Docsearch 不知道高到哪里去了）</li><li>nginx 配置 brotil，gzip，用 acme.sh 签证书，配置 patch、一系列优化</li><li>用 mathjax-node 配置服务器端渲染 mathjax （mathjax-ssr 雾）</li><li>配置 gulp 来压缩构建产物等一系列操作（感谢 @Margatroid 大佬 carry）</li><li>配置 instantClick（感谢 @frank 大佬 carry）</li></ol><pre><del>10. 这玩意肯定能凑出来十条的</del></pre><ol><li>搞了个 lintbot，自动对 pr 做 lint</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;记录下吧，免得吹逼的时候忘记了（×&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="oiwiki" scheme="https://ir1d.cf/tags/oiwiki/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mkdocs 配置 Elasticsearch</title>
-    <link href="https://ir1d.cf/2019/01/23/mkdocs-%E9%85%8D%E7%BD%AE-Elasticsearch/"/>
-    <id>https://ir1d.cf/2019/01/23/mkdocs-配置-Elasticsearch/</id>
-    <published>2019-01-23T13:40:16.000Z</published>
-    <updated>2019-01-24T06:38:29.997Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>mkdocs 配置 Elasticsearch</li></ul><a id="more"></a><p>按照 <a href="https://imququ.com/post/elasticsearch.html" target="_blank" rel="noopener">https://imququ.com/post/elasticsearch.html</a></p><p>除了 elasticsearch.yml 里不需要再配置 analyzer，现在新版本是在建 index 的时候放到 setting 字段里 <a href="https://github.com/elastic/elasticsearch/issues/2630" target="_blank" rel="noopener">https://github.com/elastic/elasticsearch/issues/2630</a></p><p>分词插件在 <a href="https://github.com/medcl/elasticsearch-analysis-ik" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik</a></p><p>ubuntu 上面按照官网的来直接 apt 装，比 docker 还方便（雾）</p><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><p>用 express 封装了一下搜索和查询结果（main.js）</p><p>关于 cors，还是被坑了一下，在 oi-wiki.org 搜的时候，存到了 cache 里，再用别的域名搜的时候，就会被 cors 给拦住。需要加上 <code>add_header &#39;Vary&#39; &quot;Origin&quot;;</code>，来告诉 client side 这个 cors 的域名可能会有多种情况。</p><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>主要改的 <code>assets/javascripts/components/Material/Search/Result.jsx</code>，因为不想每打一个字就发一个请求，就给 delay 了一下，参见 <a href="https://github.com/Ir1d/mkdocs-material/tree/es" target="_blank" rel="noopener">https://github.com/Ir1d/mkdocs-material/tree/es</a></p><h2 id="es-配置"><a href="#es-配置" class="headerlink" title="es 配置"></a>es 配置</h2><h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>（init.js）</p><p><code>client.bulk</code> 是个好东西</p><h3 id="搭配-github-webhook"><a href="#搭配-github-webhook" class="headerlink" title="搭配 github webhook"></a>搭配 github webhook</h3><p>用的是 <code>modified</code> 和 <code>remoed</code> 字段，过程和导入类似。</p><h3 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h3><p>分别是 <code>h1</code>, <code>h2</code>, <code>content</code>（全文）, <code>url</code>（方便前端直接调，其实写在 express 也行，当时没考虑那么多）</p><p>由于全文之前是 markdown 文档，这里是用 <code>strip-markdown-math</code> 给 markdown 格式删一删（不过还剩了很多空行没删掉= =），由于 <code>strip-markdown</code> 不删掉数学公式（<code>remark-math</code> 是外部插件），所以我就封装（fork）了下。</p><p>相关代码：<a href="https://gist.github.com/Ir1d/eb1cc5d749be93238f3a4118156e5b5b" target="_blank" rel="noopener">https://gist.github.com/Ir1d/eb1cc5d749be93238f3a4118156e5b5b</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;mkdocs 配置 Elasticsearch&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="mkdocs" scheme="https://ir1d.cf/tags/mkdocs/"/>
-    
-      <category term="Elasticsearch" scheme="https://ir1d.cf/tags/Elasticsearch/"/>
     
   </entry>
   

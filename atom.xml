@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-05T15:28:30.482Z</updated>
+  <updated>2019-07-08T04:50:25.223Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Latent Filter Scaling for Multimodal Unsupervised Image-to-Image Translation</title>
+    <link href="https://ir1d.cf/2019/07/08/Latent-Filter-Scaling-for-Multimodal-Unsupervised-Image-to-Image-Translation/"/>
+    <id>https://ir1d.cf/2019/07/08/Latent-Filter-Scaling-for-Multimodal-Unsupervised-Image-to-Image-Translation/</id>
+    <published>2019-07-08T01:15:06.000Z</published>
+    <updated>2019-07-08T04:50:25.223Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>多个 target domain 的 image to image translation</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>Multimodeal unsupervised image-to-image translation —— translate an image from the source domain to many images in the target domain.</p><p>之前的方法更多的是 unconditional 地把 latent code 给 map 到 image。本文把 latent vector 用来修改 Convolution filter，进一步实现了 source domain content 和 target domain style 的 disentanglement。</p><h2 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h2><p>有比较多的工作致力于保证 vector 到 image 的这样一个 mapping 的质量上。</p><p>InfoGAN 通过 disentanglement 来提升修改 latent code 的可解释性.</p><p>其他一些方法也试图让两个 latent code 进行 interpolation，要求生成的图片也是对应地 semantically interpolated。</p><p>也有一些方法考虑的是寻找 application-specific disentangled mapping，希望修改 latent code 的某一部分能修改到生成图片的某一部分。</p><p>CycleGAN 用了 cycle-consistency loss 来保证 image quality。</p><p>对于 conditional 的 image to image translation，之前的方法有的把 latent vector 和 input image 给 concat 起来，然后说这样往往会导致网络忽略 latent code。Conditional 任务最大的困难之处在于，既要保留原图片的结构，又要保证 latent vector 产生的 influence 和 variability。任务的核心是对于输入的 image 和 vector，通过改变 vector 可以改变输出图片的 appearance，从而使用不同的 vector 来生成不同 target domain 的图片。</p><p>PixelNN 中需要把 some form of output image 也喂给 GAN 来实现 multi-modality。这里面 some form 就比如是 low resolution 的 image<br>或者 normal map，然后这种额外的信息会控制最终的输出图片。MADGAN 和 Casacded Refinement Networks 都局限于只能对 a constant and discrete number 的 target domain 起作用。</p><p>latent code 也经常被看做是 output image 的 compressed form。这样训练之后常常可以发现网络把 input vector 中的某些部分对应到 output image 的一些 semantic 特征，比如说 MNIST 里 vector 的某一维度就可能对应到生成图片的笔迹的宽度或角度。之前的方法往往设计成不断把 input image 进行压缩，直至把它和 latent code concat 起来有用。最成功的一种实现是通过 disentanglement，限制 compression 的过程，把每个图片看作是 latent code 和 content code 两部分决定的。latent code 是 domain specific，而 content code 是在 source 和 target 之间 shared。（MUNIT）</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>这篇文章从 Convolution filter 的角度出发，认为 disentanglement 其实是不必要的。</p><p>之前的工作一般把 latent code 看做是全图的 encoded data，把这个 code 和 input image 直接 concat 起来或者经过 encoding 之后再 concat 起来。</p><p>本文中作者认为可以把 latent code 看做是局部变化的 modulator，用来描述网络 convolution 操作的 modifier。之前的方法更多的是通过在 input image 后 concat 不同 channel 的信息，而本文中就好比是用不同的笔刷在图片上操作。</p><p>“latent code corresponds to local changes in the input image”</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><p>具体操作就是：给出一个 k 维的 latent code，和一张输入图像，将 latent code 送入一个全连接网络来为每一个卷积层产生一个 scaler（这个 scaler 应该就是一个标量，来调节卷积核的尺度）。然后将图像送入卷积网，每一个卷积核都被对应的 scalar 所缩放。简单的说，就是让 k*1 维的标量 z，每一个维度都与 feature map 相乘。</p><p><img src="https://i.loli.net/2019/07/08/5d22af349974087156.png" alt="20190708104923.png"></p><p>这个 scalar 作用在 feature map 和作用在 filter 上是等价的，放在 feature map 上更好实现一些。</p><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><p>MUNIT 是可以 disentangle input image 然后做 style transfer，而本文方法是在 target domain 的 disentanglement，每一种 noise code 对应一种 style。</p><h2 id="改进（？）"><a href="#改进（？）" class="headerlink" title="改进（？）"></a>改进（？）</h2><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2><p><a href="https://blog.csdn.net/qq_35422491/article/details/90677705" target="_blank" rel="noopener">https://blog.csdn.net/qq_35422491/article/details/90677705</a></p><p>添加一个可训练的全连接网络来将 latent code 映射成 scalar 来与网络的每一个 feature map 相乘。这个 scalar 是在 ReLU 和 normalization 的操作之前直接卷积层的输出相乘的</p><p>作者用一个 subsection 比较了一下 AdaIN。AdaIN 中是简单地用 input style “去计算” 这个 scale，而本文中是从 latent code 中学出来这个 scale。（但我觉得貌似 AdaIN 也可以看做是学出来的吧）。不过有一点区别的确，本文中的 scale 乘上 feature map 的操作是在 normalization 之前（等价于 filter scaling），而 AdaIN 应该是之后。</p><p><img src="https://i.loli.net/2019/07/08/5d22b0c94467e95237.png" alt="20190708105608.png"><img src="https://i.loli.net/2019/07/08/5d22b2d1a481e53108.png" alt="20190708110448.png"></p><p>StyleGAN 在这点上就很像了，作用在 AdaIN 上相当于是 scaling 了。</p><p>为什么我觉得有点像 stylegan 在 multimodel i2i 上的应用..</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;多个 target domain 的 image to image translation&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="paperReading" scheme="https://ir1d.cf/categories/paperReading/"/>
+    
+    
+      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
+    
+  </entry>
   
   <entry>
     <title>Towards Instance-level Image-to-Image Translation</title>
@@ -484,30 +508,6 @@
     
     
       <category term="photoshop" scheme="https://ir1d.cf/tags/photoshop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Single Shot MultiBox Detector 笔记</title>
-    <link href="https://ir1d.cf/2019/02/15/Single-Shot-MultiBox-Detector-%E7%AC%94%E8%AE%B0/"/>
-    <id>https://ir1d.cf/2019/02/15/Single-Shot-MultiBox-Detector-笔记/</id>
-    <published>2019-02-15T04:10:06.000Z</published>
-    <updated>2019-02-15T04:10:56.623Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>SSD - Single Shot MultiBox Detector</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>解决 bounding box proposal 太慢的问题，作者表示我们可以干掉这一阶段，同时准确性也差不多好</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h2 id="改进（？）"><a href="#改进（？）" class="headerlink" title="改进（？）"></a>改进（？）</h2><h2 id="other-comment"><a href="#other-comment" class="headerlink" title="other comment"></a>other comment</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;SSD - Single Shot MultiBox Detector&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
     
   </entry>
   

@@ -118,7 +118,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/07/10/5d24c95fd447488793.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/10/5d25a3f82a3f753698.png">
-<meta property="og:updated_time" content="2019-07-10T08:48:04.169Z">
+<meta property="og:updated_time" content="2019-07-12T17:29:33.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Homomorphic Latent Space Interpolation for Unpaired Image-to-image Translation">
 <meta name="twitter:description" content="Latent Space Interpolation">
@@ -406,12 +406,24 @@
                 
               
 
-              <time title="Created: 2019-07-10 01:03:21 / Modified: 16:48:04" itemprop="dateCreated datePublished" datetime="2019-07-10T01:03:21+08:00">2019-07-10</time>
+              <time title="Created: 2019-07-10 01:03:21" itemprop="dateCreated datePublished" datetime="2019-07-10T01:03:21+08:00">2019-07-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-13 01:29:33" itemprop="dateModified" datetime="2019-07-13T01:29:33+08:00">2019-07-13</time>
               
             
           </span>
@@ -486,7 +498,10 @@
 <h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><p>文中定义一些 grouped feature，比如各种情绪（喜怒哀乐这种），然后目标是学习 Encoder（E），使得 $F_i = E(I_i), F_j = E(I_j), I(F_i, F_j)$ 是 interpolate 出来的结果要尽量真实。用一个 decoder 来把 latent feature 给 map 回 image space，这样设计来保证 feature 没有丢失原图的信息。</p>
 <p>Decoder 和 Reconstruction 都是用 perceptual loss 训的。</p>
 <p>本文的 encoder 在训练的时候是用 vgg 的 intermediate layer 当做 guide 来学的，具体来说是 minimize $E(I)$ 过一个 1x1 conv 之后和 VGG 的 <code>ReLU5_1</code> 层输出的 l2 loss。作者表示这一层的 semantic information 起到了额外的 guidance 作用，相当于是一项 regularization。</p>
-<p>作者表示 $F<em>i + \alpha (F_j-F_i)$ 这么 interpolate 的话只定义了一种插值方式。文中作者对这个公式进行了扩展，变为 $I_v(F_i, F_j) = F_i + \sum</em>{k=1}^c v^k T^k(F_j-F_i)$。</p>
+<p>作者表示</p>
+<script type="math/tex; mode=display">F_i + \alpha (F_j-F_i)</script><p>这么 interpolate 的话只定义了一种插值方式。文中作者对这个公式进行了扩展，变为</p>
+<p><script type="math/tex">I_v(F_i, F_j) = F_i + \sum_{k=1}^c v^k T^k(F_j-F_i)</script> 。</p>
+<p>// 我也不知道为啥公式要换一行才不会炸啊.. 我也很绝望啊</p>
 <p>作者通过同态来解决这个问题<img src="https://i.loli.net/2019/07/10/5d25a3f82a3f753698.png" alt="20190710163815.png"> 这里的 A 是把 latent feature 转成 attribute vector 的映射。</p>
 
       

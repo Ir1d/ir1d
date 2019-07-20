@@ -118,7 +118,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/07/20/5d32a77f498e579321.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/20/5d32a775a64e327813.png">
-<meta property="og:updated_time" content="2019-07-20T05:32:57.846Z">
+<meta property="og:updated_time" content="2019-07-20T05:34:51.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wine 配置中文字体">
 <meta name="twitter:description" content="昨晚手贱点了下自动更新，炸了好多自己的配置  比如 /etc/ImageMagick-6/policy.xml 下面对 pdf 的权限 比如 QT 程序渲染中文字体的顺序= = 比如 wine 的中文字体 最后这个其实没有意识到到底是啥问题，不过折腾了半个小时终于解决了，还是要记录一下。 因为我用的是 deepin-wine，它调用 winecfg 的方式是 WINEPREFIX=~/.deep">
@@ -406,7 +406,7 @@
                 
               
 
-              <time title="Created: 2019-07-20 13:26:43 / Modified: 13:32:57" itemprop="dateCreated datePublished" datetime="2019-07-20T13:26:43+08:00">2019-07-20</time>
+              <time title="Created: 2019-07-20 13:26:43 / Modified: 13:34:51" itemprop="dateCreated datePublished" datetime="2019-07-20T13:26:43+08:00">2019-07-20</time>
             
 
             
@@ -428,7 +428,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作/" itemprop="url" rel="index"><span itemprop="name">操作</span></a></span>
 
                 
                 
@@ -488,7 +488,7 @@
 <p><img src="https://i.loli.net/2019/07/20/5d32a77f498e579321.png" alt="20190720133246.png"></p>
 <p>最后按照这篇（<a href="https://blog.csdn.net/gzj2013/article/details/85236433）里面改了那个注册表项" target="_blank" rel="noopener">https://blog.csdn.net/gzj2013/article/details/85236433）里面改了那个注册表项</a> <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</code>，反正 另一篇（<a href="https://forum.ubuntu.org.cn/viewtopic.php?t=290155）" target="_blank" rel="noopener">https://forum.ubuntu.org.cn/viewtopic.php?t=290155）</a> 里面说改 <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes</code> 对我而言没啥用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;SimSun&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;simsun.ttc&quot;</span><br></pre></td></tr></table></figure>
-<p>还在 afr 大佬的指点下尝试了 winetricks-zh，但是我这里说 wineserver not found，一直跑不起来。</p>
+<p>还在 asfr 大佬的指点下尝试了 winetricks-zh，但是我这里说 wineserver not found，一直跑不起来。</p>
 <p>不过好在问题最终解决啦（</p>
 <p>虽然没有回到原始的字体，现在全员宋体好像也还行。</p>
 <p><img src="https://i.loli.net/2019/07/20/5d32a775a64e327813.png" alt="20190720133236.png"></p>

@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/07/10/5d25a89be90db19297.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/10/5d25aa1f814bd98800.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/10/5d25ace1a859026249.png">
-<meta property="og:updated_time" content="2019-07-11T02:39:06.718Z">
+<meta property="og:updated_time" content="2019-07-12T17:46:37.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Multi-Channel Attention Selection GAN with Cascaded Semantic Guidance for Cross-View Image Translation">
 <meta name="twitter:description" content="用 semantic 信息来指到生成 cross view 的图片">
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 10:39:06" itemprop="dateModified" datetime="2019-07-11T10:39:06+08:00">2019-07-11</time>
+                <time title="Modified: 2019-07-13 01:46:37" itemprop="dateModified" datetime="2019-07-13T01:46:37+08:00">2019-07-13</time>
               
             
           </span>
@@ -502,7 +502,7 @@
 <p>用不同尺度的 pooling 来得到多样的信息，然后 upsample 到同样大小并 concat 起来，再分两个 branch，其中一路是 attention，最后 element-wise 乘到 feature map 上做 scaling。</p>
 <p>multi channel selection 是说把这么多中间结果配上 weight，然后乘起来求个和。</p>
 <p><img src="https://i.loli.net/2019/07/10/5d25aa1f814bd98800.png" alt="20190710170431.png"></p>
-<p>在两阶段中 G 和 D 好像都是 share weight 的吧。作者表示这样可以 reduce the network capacity。</p>
+<p>在两阶段中 D 好像都是 share weight 的吧（也必须 share 吧，不share 没啥意义），但是特意说了 Generator 和 semantic map 的生成器 不是 share weight 的。作者表示不然就会导致 reduce the network capacity。</p>
 <p>为了解决开头提出的 noisy semantic label 的问题，本文提出一种 uncertainty-guided pixel loss。</p>
 <p><img src="https://i.loli.net/2019/07/10/5d25ace1a859026249.png" alt="20190710171617.png"></p>
 <h2 id="comments"><a href="#comments" class="headerlink" title="comments"></a>comments</h2><p>它两阶段之间的信息交互不是只传一个 3 channel 图，而是把前一层的 feature map 也给传过来.. 感觉就肯定要比 DeepFill2 那种只给个图要好..</p>
@@ -653,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">139</span>
+                    <span class="site-state-item-count">140</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -879,7 +879,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">93</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

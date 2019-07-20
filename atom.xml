@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-10T13:13:38.754Z</updated>
+  <updated>2019-07-20T05:32:57.846Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wine 配置中文字体</title>
+    <link href="https://ir1d.cf/2019/07/20/wine-%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93/"/>
+    <id>https://ir1d.cf/2019/07/20/wine-中文字体/</id>
+    <published>2019-07-20T05:26:43.000Z</published>
+    <updated>2019-07-20T05:32:57.846Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>昨晚手贱点了下自动更新，炸了好多自己的配置</li></ul><p>比如 <code>/etc/ImageMagick-6/policy.xml</code> 下面对 pdf 的权限</p><p>比如 QT 程序渲染中文字体的顺序= =</p><p>比如 wine 的中文字体</p><p>最后这个其实没有意识到到底是啥问题，不过折腾了半个小时终于解决了，还是要记录一下。</p><p>因为我用的是 deepin-wine，它调用 winecfg 的方式是 <code>WINEPREFIX=~/.deepinwine/Deepin-WeChat deepin-wine regedit zh.reg</code>，试几下就知道怎么用了（</p><p>然后我把 <code>~/.wine/drive_c/windows/Fonts</code> 软连接到本地的 Fonts 文件夹，不好用，</p><p>又把 <code>~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts</code> 软链接过去，也还是布星</p><p>现象是有的字正常，有的还是框</p><p><img src="https://i.loli.net/2019/07/20/5d32a77f498e579321.png" alt="20190720133246.png"></p><p>最后按照这篇（<a href="https://blog.csdn.net/gzj2013/article/details/85236433）里面改了那个注册表项" target="_blank" rel="noopener">https://blog.csdn.net/gzj2013/article/details/85236433）里面改了那个注册表项</a> <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</code>，反正 另一篇（<a href="https://forum.ubuntu.org.cn/viewtopic.php?t=290155）" target="_blank" rel="noopener">https://forum.ubuntu.org.cn/viewtopic.php?t=290155）</a> 里面说改 <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes</code> 对我而言没啥用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;SimSun&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;simsun.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;simsun.ttc&quot;</span><br></pre></td></tr></table></figure><p>还在 afr 大佬的指点下尝试了 winetricks-zh，但是我这里说 wineserver not found，一直跑不起来。</p><p>不过好在问题最终解决啦（</p><p>虽然没有回到原始的字体，现在全员宋体好像也还行。</p><p><img src="https://i.loli.net/2019/07/20/5d32a775a64e327813.png" alt="20190720133236.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;昨晚手贱点了下自动更新，炸了好多自己的配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;比如 &lt;code&gt;/etc/ImageMagick-6/policy.xml&lt;/code&gt; 下面对 pdf 的权限&lt;/p&gt;
+&lt;p&gt;比如 QT 程序渲染中文字体的顺序= =&lt;/p&gt;
+&lt;p&gt;比如
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="wine" scheme="https://ir1d.cf/tags/wine/"/>
+    
+      <category term="wechat" scheme="https://ir1d.cf/tags/wechat/"/>
+    
+  </entry>
   
   <entry>
     <title>EnlightenGAN: Deep Light Enhancement without Paired Supervision</title>
@@ -46,9 +78,9 @@
     <link href="https://ir1d.cf/2019/07/10/Multi-Channel-Attention-Selection-GAN-with-Cascaded-Semantic-Guidancefor-Cross-View-Image-Translation/"/>
     <id>https://ir1d.cf/2019/07/10/Multi-Channel-Attention-Selection-GAN-with-Cascaded-Semantic-Guidancefor-Cross-View-Image-Translation/</id>
     <published>2019-07-09T17:11:41.000Z</published>
-    <updated>2019-07-11T02:39:06.718Z</updated>
+    <updated>2019-07-12T17:46:37.464Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>用 semantic 信息来指到生成 cross view 的图片</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>本文解决的问题是两个视角之间的 overlap 比较小。</p><p>之前有一些工作是同时生成 semantic 信息和 image。</p><p>但是训练用的 semantic map 往往比较粗糙（甚至是用一些 pretrain 的分割网络获得的），可能会有一些 misguiding。</p><p>作者表示用一个 single phase 的生成网络并不能很好地捕捉两个视角之间的复杂的场景结构关系。而且 3 channel 的 generation space 可能不足以学到一个关于这样复杂的生成问题的很好地 mapping。</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>文中提出了一种 coarse-to-fine 的两阶段生成思路，然后用 attention 机制选取合适的中间结果来辅助最后的 final output 的质量。</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><p>本文中也是用预训练的 segmentation 方法来得到 semantic map。</p><p>这个 semantic map 还被用来限制最后的 final output ，求它的 segmentation 并和输入的 map 相比较，相当于是做个 reconstruction 的限制吧。</p><p><img src="https://i.loli.net/2019/07/10/5d25a89be90db19297.png" alt="20190710165803.png"></p><p>用不同尺度的 pooling 来得到多样的信息，然后 upsample 到同样大小并 concat 起来，再分两个 branch，其中一路是 attention，最后 element-wise 乘到 feature map 上做 scaling。</p><p>multi channel selection 是说把这么多中间结果配上 weight，然后乘起来求个和。</p><p><img src="https://i.loli.net/2019/07/10/5d25aa1f814bd98800.png" alt="20190710170431.png"></p><p>在两阶段中 G 和 D 好像都是 share weight 的吧。作者表示这样可以 reduce the network capacity。</p><p>为了解决开头提出的 noisy semantic label 的问题，本文提出一种 uncertainty-guided pixel loss。</p><p><img src="https://i.loli.net/2019/07/10/5d25ace1a859026249.png" alt="20190710171617.png"></p><h2 id="comments"><a href="#comments" class="headerlink" title="comments"></a>comments</h2><p>它两阶段之间的信息交互不是只传一个 3 channel 图，而是把前一层的 feature map 也给传过来.. 感觉就肯定要比 DeepFill2 那种只给个图要好..</p>]]></content>
+    <content type="html"><![CDATA[<ul><li>用 semantic 信息来指到生成 cross view 的图片</li></ul><a id="more"></a><h2 id="主要解决什么问题"><a href="#主要解决什么问题" class="headerlink" title="主要解决什么问题"></a>主要解决什么问题</h2><p>本文解决的问题是两个视角之间的 overlap 比较小。</p><p>之前有一些工作是同时生成 semantic 信息和 image。</p><p>但是训练用的 semantic map 往往比较粗糙（甚至是用一些 pretrain 的分割网络获得的），可能会有一些 misguiding。</p><p>作者表示用一个 single phase 的生成网络并不能很好地捕捉两个视角之间的复杂的场景结构关系。而且 3 channel 的 generation space 可能不足以学到一个关于这样复杂的生成问题的很好地 mapping。</p><h2 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h2><p>文中提出了一种 coarse-to-fine 的两阶段生成思路，然后用 attention 机制选取合适的中间结果来辅助最后的 final output 的质量。</p><h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><p>本文中也是用预训练的 segmentation 方法来得到 semantic map。</p><p>这个 semantic map 还被用来限制最后的 final output ，求它的 segmentation 并和输入的 map 相比较，相当于是做个 reconstruction 的限制吧。</p><p><img src="https://i.loli.net/2019/07/10/5d25a89be90db19297.png" alt="20190710165803.png"></p><p>用不同尺度的 pooling 来得到多样的信息，然后 upsample 到同样大小并 concat 起来，再分两个 branch，其中一路是 attention，最后 element-wise 乘到 feature map 上做 scaling。</p><p>multi channel selection 是说把这么多中间结果配上 weight，然后乘起来求个和。</p><p><img src="https://i.loli.net/2019/07/10/5d25aa1f814bd98800.png" alt="20190710170431.png"></p><p>在两阶段中 D 好像都是 share weight 的吧（也必须 share 吧，不share 没啥意义），但是特意说了 Generator 和 semantic map 的生成器 不是 share weight 的。作者表示不然就会导致 reduce the network capacity。</p><p>为了解决开头提出的 noisy semantic label 的问题，本文提出一种 uncertainty-guided pixel loss。</p><p><img src="https://i.loli.net/2019/07/10/5d25ace1a859026249.png" alt="20190710171617.png"></p><h2 id="comments"><a href="#comments" class="headerlink" title="comments"></a>comments</h2><p>它两阶段之间的信息交互不是只传一个 3 channel 图，而是把前一层的 feature map 也给传过来.. 感觉就肯定要比 DeepFill2 那种只给个图要好..</p>]]></content>
     
     <summary type="html">
     
@@ -432,9 +464,9 @@
       <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="pytorch" scheme="https://ir1d.cf/tags/pytorch/"/>
-    
       <category term="Fast.AI" scheme="https://ir1d.cf/tags/Fast-AI/"/>
+    
+      <category term="pytorch" scheme="https://ir1d.cf/tags/pytorch/"/>
     
   </entry>
   
@@ -486,29 +518,6 @@
     
     
       <category term="代数结构" scheme="https://ir1d.cf/tags/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>概统期中笔记</title>
-    <link href="https://ir1d.cf/2019/04/24/%E6%A6%82%E7%BB%9F%E6%9C%9F%E4%B8%AD%E7%AC%94%E8%AE%B0/"/>
-    <id>https://ir1d.cf/2019/04/24/概统期中笔记/</id>
-    <published>2019-04-24T07:48:40.000Z</published>
-    <updated>2019-04-24T07:53:04.382Z</updated>
-    
-    <content type="html"><![CDATA[<p>我发现上回整理了这个 post 的模板之后根本就没写过 post.. gg</p><p>概统这波.. 讲道理没什么难度的.. 是我送了</p><a id="more"></a><p><img src="https://i.loli.net/2019/04/24/5cc0152fa8789.png" alt="20190424155005.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0154722af5.png" alt="20190424155029.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0154e5352e.png" alt="20190424155037.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01553b4472.png" alt="20190424155042.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0155a035d9.png" alt="20190424155048.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0156b0dd4b.png" alt="20190424155106.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01570610a6.png" alt="20190424155111.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01576523c5.png" alt="20190424155117.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0157cb663e.png" alt="20190424155123.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc015810c873.png" alt="20190424155127.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01587600cb.png" alt="20190424155134.png"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我发现上回整理了这个 post 的模板之后根本就没写过 post.. gg&lt;/p&gt;
-&lt;p&gt;概统这波.. 讲道理没什么难度的.. 是我送了&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="概率统计" scheme="https://ir1d.cf/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   

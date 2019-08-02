@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ir1d.cf/"/>
-  <updated>2019-07-20T05:34:51.796Z</updated>
+  <updated>2019-08-02T09:26:34.284Z</updated>
   <id>https://ir1d.cf/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python 合成雨线</title>
+    <link href="https://ir1d.cf/2019/08/02/python-%E5%90%88%E6%88%90%E9%9B%A8%E7%BA%BF/"/>
+    <id>https://ir1d.cf/2019/08/02/python-合成雨线/</id>
+    <published>2019-08-02T09:22:58.000Z</published>
+    <updated>2019-08-02T09:26:34.284Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>基于 <a href="https://github.com/liruoteng/RainStreakGen" target="_blank" rel="noopener">https://github.com/liruoteng/RainStreakGen</a></li></ul><a id="more"></a><p>主要在改 Render_BSD_streak_typewise.m</p><p>最坑的是 bwareafilt 函数，各种尝试貌似走了不少弯路，最后还是发现这里的实现用起来很不错 <a href="https://github.com/AndersDHenriksen/SanityChecker/blob/master/AllChecks.py#L118" target="_blank" rel="noopener">https://github.com/AndersDHenriksen/SanityChecker/blob/master/AllChecks.py#L118</a></p><p>gaussian_filter 最后还会默认把范围压成 [0,1]，有个参数要设置一下，不过我直接乘 255 了</p><p><a href="https://stackoverflow.com/a/45020378/4597306" target="_blank" rel="noopener">https://stackoverflow.com/a/45020378/4597306</a> 这里说 truncate 这个参数在 skimage 和 matlab 里不同，不过我试了下看不出来什么区别的说</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;基于 &lt;a href=&quot;https://github.com/liruoteng/RainStreakGen&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/liruoteng/RainStreakGen&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="python" scheme="https://ir1d.cf/tags/python/"/>
+    
+      <category term="derain" scheme="https://ir1d.cf/tags/derain/"/>
+    
+  </entry>
   
   <entry>
     <title>wine 配置中文字体</title>
@@ -494,30 +520,6 @@
     
     
       <category term="paperReading" scheme="https://ir1d.cf/tags/paperReading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代组期中笔记</title>
-    <link href="https://ir1d.cf/2019/04/24/%E4%BB%A3%E7%BB%84%E6%9C%9F%E4%B8%AD%E7%AC%94%E8%AE%B0/"/>
-    <id>https://ir1d.cf/2019/04/24/代组期中笔记/</id>
-    <published>2019-04-24T07:53:22.000Z</published>
-    <updated>2019-04-24T08:02:23.761Z</updated>
-    
-    <content type="html"><![CDATA[<p>本来以为会特别硬核.. 一直在抢救证明题.. 结果最后一堆算实例.. gggg</p><p>在群同态基本定理上建立的知识体系.. 却想不清楚它本身是怎么证明的了.. QAQ</p><p>熬夜抢救考试之后突击测 12 分钟跑简直要了命了.. 这么个阴天也能晒伤我真是服了= =</p><a id="more"></a><p>Ir1d XD+, [21.04.19 22:36]<br>子群判定定理<br>子群格</p><p>Ir1d XD+, [22.04.19 14:44]<br>同态的表示形式<br>群同态定理</p><p>Ir1d XD+, [22.04.19 20:24]<br>置换之积 从右向左</p><p><img src="https://i.loli.net/2019/04/24/5cc0165ec623a.png" alt="20190424155509.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016626b4d2.png" alt="20190424155513.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01666c4f40.png" alt="20190424155517.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0166a51296.png" alt="20190424155521.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0166f9c76a.png" alt="20190424155525.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01682210af.png" alt="20190424155544.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016865d6f6.png" alt="20190424155549.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc01689cc3f6.png" alt="20190424155552.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0168d3af9b.png" alt="20190424155556.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016927f18e.png" alt="20190424155559.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016951fc90.png" alt="20190424155604.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016989fbe3.png" alt="20190424155607.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0169b9a5bc.png" alt="20190424155610.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc0169f7caed.png" alt="20190424155613.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016a42b2b5.png" alt="20190424155618.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016a7a1c18.png" alt="20190424155621.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016abc53fd.png" alt="20190424155626.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016af2b3d9.png" alt="20190424155629.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016b2d4eb9.png" alt="20190424155633.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016dd8294b.png" alt="20190424155715.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016ba9b73f.png" alt="20190424155641.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016e599a0c.png" alt="20190424155724.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016e913680.png" alt="20190424155727.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016ec7f110.png" alt="20190424155731.png"></p><p><img src="https://i.loli.net/2019/04/24/5cc016f6cdd72.png" alt="20190424155741.png"></p><p>于是期中就考完了吧.. 冷静分析一下其实这学期一直在翘课，期中复习得也很仓促.. 中间病得很厉害.. 然后是不是还有 challenge 翻车需要背锅.. 就很僵硬.. 下半学期也好不到哪里去吧.. 一万个大作业.. 三个 kaggle.. 然后还有 4 个 pre.. 一篇综述.. 希望期末可以认认真真地认认真真..</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本来以为会特别硬核.. 一直在抢救证明题.. 结果最后一堆算实例.. gggg&lt;/p&gt;
-&lt;p&gt;在群同态基本定理上建立的知识体系.. 却想不清楚它本身是怎么证明的了.. QAQ&lt;/p&gt;
-&lt;p&gt;熬夜抢救考试之后突击测 12 分钟跑简直要了命了.. 这么个阴天也能晒伤我真是服了= =&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://ir1d.cf/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="代数结构" scheme="https://ir1d.cf/tags/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
